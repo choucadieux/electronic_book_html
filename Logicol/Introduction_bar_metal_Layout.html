@@ -191,6 +191,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../General/Pont_diode.html">Diode Bridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../AOP/01_Introduction_amplificateur.html">Resume</a></li>
@@ -200,7 +204,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Amplificateur class A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Class A amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/09_class_B.html">Amplificateur class B</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/10_class_AB.html">Amplificateur class AB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/11_class_C.html">Amplificateur class C</a></li>
@@ -488,7 +492,7 @@ It inverts the logical value of its input:</p>
 <a class="reference internal image-reference" href="../_images/porte_NOT.svg"><img alt="../_images/porte_NOT.svg" src="../_images/porte_NOT.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">NOT Gate (European standard)</span><a class="headerlink" href="#porte-not" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">NOT Gate (European standard)</span><a class="headerlink" href="#porte-not" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The corresponding <strong>truth table</strong> is:</p>
@@ -514,7 +518,7 @@ The input <strong>A</strong> is connected to both transistor gates, while the ou
 <a class="reference internal image-reference" href="../_images/CMOS_NOT.svg"><img alt="../_images/CMOS_NOT.svg" src="../_images/CMOS_NOT.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">NOT Gate implemented with CMOS transistors</span><a class="headerlink" href="#porte-not-cmos" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">NOT Gate implemented with CMOS transistors</span><a class="headerlink" href="#porte-not-cmos" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The purpose of this section is not to deeply analyze the internal behavior of this circuit.</p>
@@ -526,7 +530,7 @@ The input <strong>A</strong> is connected to both transistor gates, while the ou
 <a class="reference internal image-reference" href="../_images/layeur_3D.svg"><img alt="../_images/layeur_3D.svg" src="../_images/layeur_3D.svg" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">NOT Gate implemented with CMOS transistors — 3D layer view</span><a class="headerlink" href="#porte-not-cmos-layer-3d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">NOT Gate implemented with CMOS transistors — 3D layer view</span><a class="headerlink" href="#porte-not-cmos-layer-3d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From this representation, we can see that the base layer is <strong>p-doped</strong>, forming the substrate on which the transistors are built.
@@ -536,7 +540,7 @@ The <strong>gate regions</strong> of the CMOS transistors are shown in <strong>r
 <a class="reference internal image-reference" href="../_images/layer_not.svg"><img alt="../_images/layer_not.svg" src="../_images/layer_not.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">NOT Gate implemented with CMOS transistors — 2D layer view</span><a class="headerlink" href="#porte-not-cmos-layer" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">NOT Gate implemented with CMOS transistors — 2D layer view</span><a class="headerlink" href="#porte-not-cmos-layer" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -580,7 +584,7 @@ The goal of this section is to design and understand the <strong>NAND gate</stro
 <a class="reference internal image-reference" href="../_images/porte_NAND.svg"><img alt="../_images/porte_NAND.svg" src="../_images/porte_NAND.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">NAND Gate (European standard)</span><a class="headerlink" href="#porte-nand" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">NAND Gate (European standard)</span><a class="headerlink" href="#porte-nand" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -591,7 +595,7 @@ The goal of this section is to design and understand the <strong>NAND gate</stro
 <a class="reference internal image-reference" href="../_images/CMOS_NAND.svg"><img alt="../_images/CMOS_NAND.svg" src="../_images/CMOS_NAND.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">NAND Gate implemented with CMOS transistors</span><a class="headerlink" href="#porte-nand-cmos" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">NAND Gate implemented with CMOS transistors</span><a class="headerlink" href="#porte-nand-cmos" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As we can see, the <strong>NAND gate</strong> requires <strong>four transistors</strong> — two <strong>PMOS</strong> and two <strong>NMOS</strong>.
@@ -605,7 +609,7 @@ Since the NOT gate itself uses two transistors, implementing an AND gate in CMOS
 <a class="reference internal image-reference" href="../_images/layer_nand.svg"><img alt="../_images/layer_nand.svg" src="../_images/layer_nand.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">NAND Gate implemented with CMOS transistors — 2D layer view</span><a class="headerlink" href="#porte-nand-cmos-layer" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">NAND Gate implemented with CMOS transistors — 2D layer view</span><a class="headerlink" href="#porte-nand-cmos-layer" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here’s your corrected, polished, and translated version in clear academic English:</p>
@@ -652,7 +656,7 @@ The reasoning is identical to that used for the <strong>NOT</strong> and <strong
 <a class="reference internal image-reference" href="../_images/porte_NOR.svg"><img alt="../_images/porte_NOR.svg" src="../_images/porte_NOR.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 54 </span><span class="caption-text">NOR Gate (European standard)</span><a class="headerlink" href="#porte-nor" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">NOR Gate (European standard)</span><a class="headerlink" href="#porte-nor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -667,7 +671,7 @@ Other standards exist (such as the American one), which may look different, but 
 <a class="reference internal image-reference" href="../_images/CMOS_NOR.svg"><img alt="../_images/CMOS_NOR.svg" src="../_images/CMOS_NOR.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">NOR Gate implemented with CMOS transistors</span><a class="headerlink" href="#porte-nor-cmos" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">NOR Gate implemented with CMOS transistors</span><a class="headerlink" href="#porte-nor-cmos" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As we saw earlier, both the <strong>NAND</strong> and <strong>NOR</strong> gates require <strong>four CMOS transistors</strong> to function.</p>
@@ -684,7 +688,7 @@ Since a NOT gate itself uses two transistors, this brings the total to <strong>s
 <a class="reference internal image-reference" href="../_images/layer_nor.svg"><img alt="../_images/layer_nor.svg" src="../_images/layer_nor.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">NOR Gate implemented with CMOS transistors — 2D layer view</span><a class="headerlink" href="#porte-nor-cmos-layer" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">NOR Gate implemented with CMOS transistors — 2D layer view</span><a class="headerlink" href="#porte-nor-cmos-layer" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that you know how to build basic logic gates, you can construct <strong>any other fundamental logic function</strong>, such as <strong>AND</strong>, <strong>OR</strong>, or even more complex <strong>flip-flop</strong> circuits.</p>
