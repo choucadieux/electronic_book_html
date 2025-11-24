@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Book on electronics</title>
+    <title>Réunion 18/11/2025 &#8212; Book on electronics</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,7 +57,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Base_componant/transistor/Untitled';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Base_componant/transistor/untitled';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -184,27 +184,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../Capacite.html">Capacitor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JFET.html">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">General circuit</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../General/Pont_diode.html">Diode Bridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Regulateur/Diode_Zener.html">Stabilisateur série à diode Zener</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/01_Introduction_amplificateur.html">Resume</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/02_Inverting_amplifier.html">Inverting Amplifier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../AOP/03_Non_inverseur_amplificator.html">AOP Non inverseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/04_Suiveur.html">Voltage Follower (Buffer)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../AOP/05_Differential_amplificator.html">Amplifcateur différentiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Amplificateur class A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Class A amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/09_class_B.html">Amplificateur class B</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/10_class_AB.html">Amplificateur class AB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/11_class_C.html">Amplificateur class C</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/12_class_D.html">Amplificateur class D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Jonction_PN.html">Jonction PN</a></li>
 </ul>
 
     </div>
@@ -276,7 +287,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBase_componant/transistor/Untitled.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBase_componant/transistor/untitled.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +317,7 @@
       
       
       
-      <li><a href="../../_sources/Base_componant/transistor/Untitled.ipynb" target="_blank"
+      <li><a href="../../_sources/Base_componant/transistor/untitled.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -316,7 +327,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -390,7 +401,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Réunion 18/11/2025</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,9 +410,9 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-intervenant">1. Présentation intervenant</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -412,7 +423,28 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="reunion-18-11-2025">
+<h1>Réunion 18/11/2025<a class="headerlink" href="#reunion-18-11-2025" title="Link to this heading">#</a></h1>
+<p><strong>Réunion entre 4 temps</strong></p>
+<section id="presentation-intervenant">
+<h2>1. Présentation intervenant<a class="headerlink" href="#presentation-intervenant" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Parcours</p></li>
+</ul>
+<p>Maxime PIONNAT, Aéronique spatial et défense</p>
+<p><strong>PARIS</strong></p>
+<p>Senior biness manageur</p>
+<p>4 ans d’affaire</p>
+<p>responsabilité 80 90 ingénieurs collaborateurs</p>
+<p>travail client safran défense</p>
+<p>Nice, classe préparatoire, estp, deuxième école d’ingénieur, conception aéronique
+Batiment, ingénieur travaux, moins d’un ans.</p>
+<p>Poste d’ingénieur biness manageur (4 ans) poste actuel</p>
+<p>Défense, spatial aéronitique</p>
+<p>Add</p>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -458,9 +490,9 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-intervenant">1. Présentation intervenant</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

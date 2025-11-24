@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Regulateur/Pond_diviseur_tension';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Resume" href="../AOP/01_Introduction_amplificateur.html" />
+    <link rel="next" title="Zener diode series stabilizer" href="Diode_Zener.html" />
     <link rel="prev" title="Freewheeling Diode" href="../General/Diode_roue_libre.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -196,6 +196,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
@@ -495,7 +497,7 @@ The <strong>input voltage</strong> is applied across both resistors, while the <
 <a class="reference internal image-reference" href="../_images/pond_diviseur_tension.svg"><img alt="../_images/pond_diviseur_tension.svg" src="../_images/pond_diviseur_tension.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Voltage Divider Circuit</span><a class="headerlink" href="#circuit-electrique-pond-diviseur-tension" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Voltage Divider Circuit</span><a class="headerlink" href="#circuit-electrique-pond-diviseur-tension" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -718,7 +720,7 @@ As shown in <a class="reference internal" href="#bloc-pond-diviseur-tension"><sp
 <a class="reference internal image-reference" href="../_images/bloc.svg"><img alt="../_images/bloc.svg" src="../_images/bloc.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Block diagram of a voltage divider</span><a class="headerlink" href="#bloc-pond-diviseur-tension" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Block diagram of a voltage divider</span><a class="headerlink" href="#bloc-pond-diviseur-tension" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To model this behavior, we add a <strong>load resistance</strong> <span class="math notranslate nohighlight">\(R_L\)</span> in parallel with <span class="math notranslate nohighlight">\(R_2\)</span>, as shown in <a class="reference internal" href="#circuit-electrique-pond-diviseur-tension-avec-charge"><span class="std std-ref">Voltage Divider Circuit with Load</span></a>.</p>
@@ -726,7 +728,7 @@ As shown in <a class="reference internal" href="#bloc-pond-diviseur-tension"><sp
 <a class="reference internal image-reference" href="../_images/Pont_divisuer_tension_charge.svg"><img alt="../_images/Pont_divisuer_tension_charge.svg" src="../_images/Pont_divisuer_tension_charge.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Voltage Divider Circuit with Load</span><a class="headerlink" href="#circuit-electrique-pond-diviseur-tension-avec-charge" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Voltage Divider Circuit with Load</span><a class="headerlink" href="#circuit-electrique-pond-diviseur-tension-avec-charge" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The equation of the new circuit is given by:</p>
@@ -925,11 +927,11 @@ V_\text{out} = V_\text{in} \cdot \frac{R_2}{R_1 + R_2}
       </div>
     </a>
     <a class="right-next"
-       href="../AOP/01_Introduction_amplificateur.html"
+       href="Diode_Zener.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Resume</p>
+        <p class="prev-next-title">Zener diode series stabilizer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

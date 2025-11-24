@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'General/Diode_roue_libre';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Resume" href="../AOP/01_Introduction_amplificateur.html" />
+    <link rel="next" title="Voltage divider bridge" href="../Regulateur/Pond_diviseur_tension.html" />
     <link rel="prev" title="Diode Bridge" href="Pont_diode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,6 +193,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Pont_diode.html">Diode Bridge</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Freewheeling Diode</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../AOP/01_Introduction_amplificateur.html">Resume</a></li>
@@ -202,7 +208,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Amplificateur class A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Class A amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/09_class_B.html">Amplificateur class B</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/10_class_AB.html">Amplificateur class AB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/11_class_C.html">Amplificateur class C</a></li>
@@ -489,7 +495,7 @@ In the next section, we will explain <strong>why</strong> this overvoltage appea
 <a class="reference internal image-reference" href="../_images/diode_roue_libre_problem.svg"><img alt="../_images/diode_roue_libre_problem.svg" src="../_images/diode_roue_libre_problem.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Freewheel diode assembly problem</span><a class="headerlink" href="#diode-roue-libre" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Freewheel diode assembly problem</span><a class="headerlink" href="#diode-roue-libre" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -499,7 +505,7 @@ In the next section, we will explain <strong>why</strong> this overvoltage appea
 <a class="reference internal image-reference" href="../_images/montage_pose_problem.svg"><img alt="../_images/montage_pose_problem.svg" src="../_images/montage_pose_problem.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Freewheeling Diode Study Assembly</span><a class="headerlink" href="#montage-pose-problem" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Freewheeling Diode Study Assembly</span><a class="headerlink" href="#montage-pose-problem" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To understand the issue, consider the following circuit.
@@ -539,7 +545,7 @@ This overvoltage can easily <strong>exceed the breakdown voltage</strong> of com
 <a class="reference internal image-reference" href="../_images/diode_roue_libre_1_spice.svg"><img alt="../_images/diode_roue_libre_1_spice.svg" src="../_images/diode_roue_libre_1_spice.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Initial circuit (no flyback diode)</span><a class="headerlink" href="#diode-roue-libre-1-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Initial circuit (no flyback diode)</span><a class="headerlink" href="#diode-roue-libre-1-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This first setup shows the inductive load switched directly by the interrupting device (no freewheeling diode present).
@@ -717,7 +723,7 @@ This process <strong>limits the voltage spike</strong> and <strong>protects the 
 <a class="reference internal image-reference" href="../_images/diode_roue_libre_2_spice.svg"><img alt="../_images/diode_roue_libre_2_spice.svg" src="../_images/diode_roue_libre_2_spice.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Initial circuit with flyback diode</span><a class="headerlink" href="#diode-roue-libre-2-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Initial circuit with flyback diode</span><a class="headerlink" href="#diode-roue-libre-2-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -938,11 +944,11 @@ After each pulse or after the contact fully opens, the energy exchange between (
       </div>
     </a>
     <a class="right-next"
-       href="../AOP/01_Introduction_amplificateur.html"
+       href="../Regulateur/Pond_diviseur_tension.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Resume</p>
+        <p class="prev-next-title">Voltage divider bridge</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

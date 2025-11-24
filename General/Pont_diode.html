@@ -193,6 +193,12 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Diode Bridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Diode_roue_libre.html">Freewheeling Diode</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../AOP/01_Introduction_amplificateur.html">Resume</a></li>
@@ -202,7 +208,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Amplificateur class A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Class A amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/09_class_B.html">Amplificateur class B</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/10_class_AB.html">Amplificateur class AB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AOP/11_class_C.html">Amplificateur class C</a></li>
@@ -502,7 +508,7 @@ For example, when a system must maintain a specific polarity (e.g., +10 V), and 
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit.svg"><img alt="../_images/pont_diode_circuit.svg" src="../_images/pont_diode_circuit.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Electrical schematic of a diode bridge circuit</span><a class="headerlink" href="#pont-diode-circuit" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Electrical schematic of a diode bridge circuit</span><a class="headerlink" href="#pont-diode-circuit" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The circuit shown above consists of <strong>four diodes</strong> arranged <strong>symmetrically</strong>.
@@ -534,7 +540,7 @@ V_s = V_e
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_1.svg"><img alt="../_images/pont_diode_circuit_cas_1.svg" src="../_images/pont_diode_circuit_cas_1.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 1</span><a class="headerlink" href="#pont-diode-circuit-cas-1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 1</span><a class="headerlink" href="#pont-diode-circuit-cas-1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -551,7 +557,7 @@ V_s = -V_e
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_2.svg"><img alt="../_images/pont_diode_circuit_cas_2.svg" src="../_images/pont_diode_circuit_cas_2.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 2</span><a class="headerlink" href="#pont-diode-circuit-cas-2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 2</span><a class="headerlink" href="#pont-diode-circuit-cas-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Thus, in both cases, the output voltage <span class="math notranslate nohighlight">\(V_s\)</span> remains <strong>positive</strong>, regardless of the polarity of <span class="math notranslate nohighlight">\(V_e\)</span>.</p>
@@ -570,7 +576,7 @@ V_s = 0
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_3.svg"><img alt="../_images/pont_diode_circuit_cas_3.svg" src="../_images/pont_diode_circuit_cas_3.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 3</span><a class="headerlink" href="#pont-diode-circuit-cas-3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 3</span><a class="headerlink" href="#pont-diode-circuit-cas-3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -615,7 +621,7 @@ We start with the model shown in the <a class="reference internal" href="#model-
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_spice.svg"><img alt="../_images/pont_diode_circuit_spice.svg" src="../_images/pont_diode_circuit_spice.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">SPICE model of the diode bridge circuit</span><a class="headerlink" href="#model-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">SPICE model of the diode bridge circuit</span><a class="headerlink" href="#model-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the schematic above, we can see the <strong>diode bridge</strong> just as we previously constructed it.

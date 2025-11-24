@@ -195,6 +195,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
@@ -696,7 +698,7 @@ Parameters:
 <a class="reference internal image-reference" href="../_images/DIode_1D_mesh.svg"><img alt="../_images/DIode_1D_mesh.svg" src="../_images/DIode_1D_mesh.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 60 </span><span class="caption-text">1D representation of a diode used for simulation.</span><a class="headerlink" href="#diode-1d-mesh-introduction-simulation" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">1D representation of a diode used for simulation.</span><a class="headerlink" href="#diode-1d-mesh-introduction-simulation" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The next cell provides an overview of all the elements that have been created.</p>
@@ -743,26 +745,26 @@ Node 4 : x = 3.8827372556479795e-07
 <p><strong>Structural parameters</strong></p>
 <ul class="simple">
 <li><p>Silicon permittivity</p></li>
-<li><p>Bandgap energy (E_g)</p></li>
-<li><p>Electron affinity (\chi)</p></li>
+<li><p>Bandgap energy <span class="math notranslate nohighlight">\(E_g\)</span></p></li>
+<li><p>Electron affinity <span class="math notranslate nohighlight">\(\chi\)</span></p></li>
 </ul>
 <p><strong>Electrical parameters</strong></p>
 <ul class="simple">
-<li><p>Effective density of states in the conduction band ((N_c))</p></li>
-<li><p>Effective density of states in the valence band ((N_v))</p></li>
-<li><p>Intrinsic carrier concentration ((n_i))</p></li>
-<li><p>Electron mobility (\mu_n), hole mobility (\mu_p)</p></li>
+<li><p>Effective density of states in the conduction band (<span class="math notranslate nohighlight">\(N_c\)</span>)</p></li>
+<li><p>Effective density of states in the valence band (<span class="math notranslate nohighlight">\(N_v\)</span>)</p></li>
+<li><p>Intrinsic carrier concentration (<span class="math notranslate nohighlight">\(n_i\)</span>)</p></li>
+<li><p>Electron mobility <span class="math notranslate nohighlight">\(\mu_n\)</span>, hole mobility <span class="math notranslate nohighlight">\(\mu_p\)</span></p></li>
 <li><p>Effective masses</p></li>
 </ul>
 <p><strong>Temperature-dependent parameters</strong></p>
 <ul class="simple">
-<li><p>(E_g(T))</p></li>
-<li><p>(n_i(T))</p></li>
-<li><p>Mobilities (\mu(T)), if modeled</p></li>
+<li><p><span class="math notranslate nohighlight">\(E_g(T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n_i(T)\)</span></p></li>
+<li><p>Mobilities <span class="math notranslate nohighlight">\(\mu(T)\)</span>, if modeled</p></li>
 </ul>
 <p><strong>Recombination parameters</strong></p>
 <ul class="simple">
-<li><p>Carrier lifetimes (\tau_n) and (\tau_p) (later adjusted using <code class="docutils literal notranslate"><span class="pre">set_parameter</span></code>)</p></li>
+<li><p>Carrier lifetimes <span class="math notranslate nohighlight">\(\tau_n\)</span> and <span class="math notranslate nohighlight">\(\tau_p\)</span> (later adjusted using <code class="docutils literal notranslate"><span class="pre">set_parameter</span></code>)</p></li>
 <li><p>SRH recombination parameters</p></li>
 <li><p>Auger recombination parameters</p></li>
 </ul>
@@ -804,28 +806,28 @@ Node 4 : x = 3.8827372556479795e-07
 </div>
 <p>These values correspond to the <strong>minority carrier lifetimes</strong> in a semiconductor:</p>
 <ul class="simple">
-<li><p><strong>τₙ (taun)</strong>: lifetime of electrons when they are minority carriers</p></li>
-<li><p><strong>τₚ (taup)</strong>: lifetime of holes when they are minority carriers</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\tau_n\)</span> (taun)</strong>: lifetime of electrons when they are minority carriers</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\tau_p\)</span> (taup)</strong>: lifetime of holes when they are minority carriers</p></li>
 </ul>
 <p>To give a sense of typical magnitudes, the following table summarizes the expected values:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Material</p></th>
-<th class="head"><p>Typical τₙ, τₚ</p></th>
+<th class="head"><p>Typical <span class="math notranslate nohighlight">\(\tau_n\)</span>, <span class="math notranslate nohighlight">\(\tau_p\)</span></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>High-quality pure Si</p></td>
-<td><p>(10^{-5}) to (10^{-3}) s</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-5}\)</span> to <span class="math notranslate nohighlight">\(10^{-3}\)</span> s</p></td>
 </tr>
 <tr class="row-odd"><td><p>Moderately doped Si</p></td>
-<td><p>(10^{-6}) to (10^{-8}) s</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-6}\)</span> to <span class="math notranslate nohighlight">\(10^{-8}\)</span> s</p></td>
 </tr>
 <tr class="row-even"><td><p>Heavily doped Si</p></td>
-<td><p>(10^{-9}) to (10^{-11}) s</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-9}\)</span> to <span class="math notranslate nohighlight">\(10^{-11}\)</span> s</p></td>
 </tr>
 <tr class="row-odd"><td><p>Degraded / irradiated Si</p></td>
-<td><p>(10^{-12}) to (10^{-14}) s</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-12}\)</span> to <span class="math notranslate nohighlight">\(10^{-14}\)</span> s</p></td>
 </tr>
 </tbody>
 </table>
@@ -850,13 +852,13 @@ The speed of recombination of excess electron-hole pairs depends strongly on the
 <p>The purpose here is to create <strong>node models</strong>, although the role of these models may not yet be entirely clear. In DEVSIM, a <em>node model</em> defines a spatially dependent quantity on each mesh node. These models are later used by the Poisson and drift–diffusion solvers to compute charge, electric field, and carrier transport.</p>
 <p>At the end, the doping profile is defined by the following equation:</p>
 <div class="math notranslate nohighlight">
-\[
+\[\begin{split}
 \text{NetDoping}(x) =
 \begin{cases}
--1\times 10^{18} &amp; x &lt; 0.5\times 10^{-5} \quad \text{(P-type region)} \
+-1\times 10^{18} &amp; x &lt; 0.5\times 10^{-5} \quad \text{(P-type region)} \\
 +1\times 10^{18} &amp; x &gt; 0.5\times 10^{-5} \quad \text{(N-type region)}
 \end{cases}
-\]</div>
+\end{split}\]</div>
 <p>This creates a classic <strong>PN junction</strong>: acceptor concentration on the left, donor concentration on the right.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1134,7 +1136,7 @@ J_p = q \mu_p p \nabla \psi - q D_p \nabla p
 <p><strong>Goal:</strong> solve the device at <strong>equilibrium</strong>, i.e., without any voltage applied to the contacts.</p>
 <p>At equilibrium:</p>
 <ul class="simple">
-<li><p><strong>No contact is biased</strong> ((V = 0))</p></li>
+<li><p><strong>No contact is biased</strong> (<span class="math notranslate nohighlight">\(V = 0\)</span>)</p></li>
 <li><p>The device is at <strong>thermodynamic equilibrium</strong></p></li>
 <li><p>The <strong>quasi-Fermi levels</strong> for electrons and holes are constant:
 $<span class="math notranslate nohighlight">\(

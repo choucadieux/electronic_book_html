@@ -196,6 +196,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="current nav bd-sidenav">
@@ -522,7 +524,7 @@ It is a relatively simple configuration consisting of an <strong>operational amp
 <a class="reference internal image-reference" href="../_images/Aopnoninverting.svg"><img alt="../_images/Aopnoninverting.svg" src="../_images/Aopnoninverting.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Non-inverting amplifier</span><a class="headerlink" href="#aopnoinverting" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Non-inverting amplifier</span><a class="headerlink" href="#aopnoinverting" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The main difference between this configuration and the <strong>inverting amplifier</strong> studied previously lies in which input terminal is used.
@@ -544,7 +546,7 @@ It shows that the voltage gain depends on the resistor ratio <span class="math n
 <a class="reference internal image-reference" href="../_images/Aopnoninverting_demonstration.svg"><img alt="../_images/Aopnoninverting_demonstration.svg" src="../_images/Aopnoninverting_demonstration.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Illustration to aid the step-by-step derivation of <span class="math notranslate nohighlight">\(V_\text{out} = f(V_\text{in})\)</span></span><a class="headerlink" href="#aopnoinverting-demonstration" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Illustration to aid the step-by-step derivation of <span class="math notranslate nohighlight">\(V_\text{out} = f(V_\text{in})\)</span></span><a class="headerlink" href="#aopnoinverting-demonstration" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The goal is to <strong>derive the output voltage as a function of the input voltage</strong>:</p>
@@ -624,7 +626,7 @@ G = 1 + \frac{R_2}{R_1}
 <a class="reference internal image-reference" href="../_images/Aopnoninverting_pyspace.svg"><img alt="../_images/Aopnoninverting_pyspace.svg" src="../_images/Aopnoninverting_pyspace.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">No Inverting amplifier circuit setup for SPICE simulation</span><a class="headerlink" href="#aopnoninverting-pyspace" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">No Inverting amplifier circuit setup for SPICE simulation</span><a class="headerlink" href="#aopnoninverting-pyspace" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the <a class="reference internal" href="#aopnoninverting-pyspace"><span class="std std-ref">No Inverting amplifier circuit setup for SPICE simulation</span></a>, you can observe the complete circuit layout and the accessible nodes.</p>
@@ -850,7 +852,7 @@ I_2
 <a class="reference internal image-reference" href="../_images/Amplifier_quadripole.svg"><img alt="../_images/Amplifier_quadripole.svg" src="../_images/Amplifier_quadripole.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Simplified quadripole model of an amplifier</span><a class="headerlink" href="#quadripole-simple" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Simplified quadripole model of an amplifier</span><a class="headerlink" href="#quadripole-simple" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This <strong>two-port (quadripole) representation</strong> is widely used to describe amplifiers in a <strong>linear, small-signal regime</strong>.
@@ -896,7 +898,7 @@ It provides a compact and analytical way to relate the <strong>input and output 
 <a class="reference internal image-reference" href="../_images/Amplifier_bandwidth.svg"><img alt="../_images/Amplifier_bandwidth.svg" src="../_images/Amplifier_bandwidth.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Amplifier frequency response (bandwidth)</span><a class="headerlink" href="#amplifier-bandwidth" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Amplifier frequency response (bandwidth)</span><a class="headerlink" href="#amplifier-bandwidth" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1004,7 +1006,7 @@ It provides a compact and analytical way to relate the <strong>input and output 
 <a class="reference internal image-reference" href="../_images/Linearity_and_saturation.svg"><img alt="../_images/Linearity_and_saturation.svg" src="../_images/Linearity_and_saturation.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Amplifier linearity and saturation</span><a class="headerlink" href="#amplifier-linearity" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Amplifier linearity and saturation</span><a class="headerlink" href="#amplifier-linearity" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">

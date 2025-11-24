@@ -57,6 +57,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Base_componant/transistor/Bipolaire';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -191,6 +193,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../General/Pont_diode.html">Diode Bridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/01_Introduction_amplificateur.html">Resume</a></li>
@@ -200,7 +208,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Amplificateur class A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Class A amplifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/09_class_B.html">Amplificateur class B</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/10_class_AB.html">Amplificateur class AB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AOP/11_class_C.html">Amplificateur class C</a></li>
@@ -416,6 +424,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physique">Physique</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-equations">Theoretical Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-equations">Visualizing the Equations</a></li>
 </ul>
             </nav>
         </div>
@@ -526,6 +536,174 @@ This arrow indicates the <strong>conventional current direction</strong> and mus
 </figure>
 </section>
 </section>
+<section id="theoretical-equations">
+<h2>Theoretical Equations<a class="headerlink" href="#theoretical-equations" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to review the key equations governing a bipolar transistor.</p>
+<p>First, the simplest relationship is between the <strong>base and emitter</strong>. This can be modeled as a diode, which has two states. If the voltage between the base and emitter is below the threshold voltage - typically around 0.7 V - the voltage across the junction is effectively 0 V. If the base-emitter voltage exceeds 0.7 V, it becomes fixed at 0.7 V.</p>
+<figure class="align-center" id="transistor-npn-diagram">
+<a class="reference internal image-reference" href="../../_images/Diagrama_de_Transistor_NPN.svg"><img alt="../../_images/Diagrama_de_Transistor_NPN.svg" src="../../_images/Diagrama_de_Transistor_NPN.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">NPN transistor diagram</span><a class="headerlink" href="#transistor-npn-diagram" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+V_\text{BE} =
+\begin{cases}
+V_\text{BE} &lt; 0.7\ \text{V} \quad \rightarrow \quad V_\text{BE} = 0\ \text{V} \quad (\text{transistor off}) \\
+V_\text{BE} &gt; 0.7\ \text{V} \quad \rightarrow \quad V_\text{BE} = 0.7\ \text{V} \quad (\text{transistor on})
+\end{cases}
+\end{split}\]</div>
+<p>When the transistor is <strong>on</strong>, the relationship between the output current (emitter current) and the input current (collector current) is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+I_{C} = f(I_{E})\\
+I_{C} = I_{E} \frac{\beta_{CC}}{\beta_{CC} + 1}
+\end{cases}
+\end{split}\]</div>
+<p>Conversely, we can express the emitter current as a function of the collector current:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+I_{E} = f(I_{C})\\
+I_{E} = I_{C} \frac{\beta_{CC}+1}{\beta_{CC}}
+\end{cases}
+\end{split}\]</div>
+<p>With <span class="math notranslate nohighlight">\(\beta\)</span> being an internal transistor parameter provided by the manufacturer, the relationship between the three currents in the transistor is:</p>
+<div class="math notranslate nohighlight">
+\[
+I_E = I_B + I_C
+\]</div>
+<p>Finally, an important point is the power dissipated by the transistor, which is crucial to determine whether additional cooling measures are required:</p>
+<div class="math notranslate nohighlight">
+\[
+P = V_\text{CE} \cdot I_C
+\]</div>
+<p>In the next sections, the goal is to visualize these equations in practice.</p>
+</section>
+<section id="visualizing-the-equations">
+<h2>Visualizing the Equations<a class="headerlink" href="#visualizing-the-equations" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to visualize the different equations and observe how they behave in an <strong>NGSPACE</strong> simulation.
+The test setup used for this purpose is shown in <a class="reference internal" href="#montage-test-transistor-bipolaire"><span class="std std-ref">Test setup for a bipolar transistor</span></a>.</p>
+<figure class="align-center" id="montage-test-transistor-bipolaire">
+<a class="reference internal image-reference" href="../../_images/montage_test_transistor_bipolaire.svg"><img alt="../../_images/montage_test_transistor_bipolaire.svg" src="../../_images/montage_test_transistor_bipolaire.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Test setup for a bipolar transistor</span><a class="headerlink" href="#montage-test-transistor-bipolaire" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Transistor&#39;</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s2">&quot;lib/bjt.lib&quot;</span><span class="p">)</span>
+
+<span class="n">Vbase</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_kΩ</span><span class="p">)</span>
+<span class="n">Vcollector</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">0</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_kΩ</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;2n2222a&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vbase</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">.01</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tension $V_</span><span class="si">{BE}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">base</span><span class="p">,</span> <span class="n">u_mA</span><span class="p">(</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vbase</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;Base-Emitter Diode curve&#39;</span><span class="p">,</span> <span class="s1">&#39;Valeur théorique&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vbe [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Ib [mA]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.74</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/100d6175030535240400b018329d2a6a0e514da1afda75ce042512167925726d.png" src="../../_images/100d6175030535240400b018329d2a6a0e514da1afda75ce042512167925726d.png" />
+</div>
+</div>
+<p>Il est possible de voir la tension entre la base et le collecteur, c’est une courbe qui est très proche de la fonction de transfert d’une diode.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Transistor&#39;</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s2">&quot;lib/bjt.lib&quot;</span><span class="p">)</span>
+
+<span class="n">Ibase</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">I</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="nd">@u_uA</span><span class="p">)</span> 
+<span class="n">Vcollector</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;collector&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;2n2222a&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;$I_C$ = f($V_</span><span class="si">{CE}</span><span class="s2">$)&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">base_current</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">base_current</span> <span class="o">=</span> <span class="n">base_current</span><span class="nd">@u_uA</span>
+    <span class="n">Ibase</span><span class="o">.</span><span class="n">dc_value</span> <span class="o">=</span> <span class="n">base_current</span>
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vcollector</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">.01</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="n">u_mA</span><span class="p">(</span><span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vce [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Ic [mA]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f3f7a7e918be7621fe84e64330641e5d69af932caa95f16d6d5afe364d35671e.png" src="../../_images/f3f7a7e918be7621fe84e64330641e5d69af932caa95f16d6d5afe364d35671e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;$β = I_C / I_B = f(V_</span><span class="si">{CE}</span><span class="s2">)$&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">base_current</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">base_current</span> <span class="o">=</span> <span class="n">base_current</span><span class="nd">@u_uA</span>
+    <span class="n">Ibase</span><span class="o">.</span><span class="n">dc_value</span> <span class="o">=</span> <span class="n">base_current</span>
+    
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vcollector</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">.01</span><span class="p">))</span>
+   
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">collector</span><span class="p">,</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">Vcollector</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">base_current</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;V_</span><span class="si">{CE}</span><span class="s1">[V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;β&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\sacha\anaconda3\envs\pymc_env\Lib\site-packages\PySpice\Unit\Unit.py:1704: RuntimeWarning: divide by zero encountered in divide
+  results = super(UnitValues, self).__array_ufunc__(ufunc, method, *args, **kwargs)
+</pre></div>
+</div>
+<img alt="../../_images/dcafde37400832e5a8755c95f770e3d0a11065702a0345d934b4da8c778f8803.png" src="../../_images/dcafde37400832e5a8755c95f770e3d0a11065702a0345d934b4da8c778f8803.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -602,6 +780,8 @@ This arrow indicates the <strong>conventional current direction</strong> and mus
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physique">Physique</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-equations">Theoretical Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-equations">Visualizing the Equations</a></li>
 </ul>
   </nav></div>
 
