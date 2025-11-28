@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Regulateur/regulateur_tension_serie_AOP_2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Resume" href="../AOP/01_Introduction_amplificateur.html" />
+    <link rel="prev" title="Series Transistor Voltage Regulator" href="regulateur_tension_serie_transistor_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -194,10 +194,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regulateur</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Pond_diviseur_tension.html">Voltage divider bridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Diode_Zener.html">Zener diode series stabilizer</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Régulateur de tension série avec AOP</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
@@ -432,7 +435,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-voltage-at-the-transistor">Output Voltage at the Transistor</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regulation-loop">Regulation Loop</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spice-setup">SPICE Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-circuit-characteristics-as-a-function-of-the-load-resistance">Evolution of the Circuit Characteristics as a Function of the Load Resistance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-voltage-as-a-function-of-the-load-resistance">Output Voltage as a Function of the Load Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-the-zener-diode">Evolution of the Power Dissipated in the Zener Diode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-transistor-q-1-as-a-function-of-the-load-resistance">Evolution of the Power Dissipated in Transistor <span class="math notranslate nohighlight">\(Q_1\)</span> as a Function of the Load Resistance</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
             </nav>
@@ -464,6 +474,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Probe.Plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Library</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpiceLibrary</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Probe.WaveForm</span><span class="w"> </span><span class="kn">import</span> <span class="n">OperatingPoint</span>
 </pre></div>
 </div>
 </div>
@@ -501,7 +512,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../_images/bloc_logique.svg"><img alt="../_images/bloc_logique.svg" src="../_images/bloc_logique.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener-3-notebook" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener-3-notebook" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can see that the regulator is made up of four logical blocks. The goal is to eventually construct an electronic circuit that performs voltage regulation.</p>
@@ -513,7 +524,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_AOP.svg"><img alt="../_images/regulateur_tension_serie_AOP.svg" src="../_images/regulateur_tension_serie_AOP.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Régulateur de tension série avec un AOP</span><a class="headerlink" href="#regulateur-tension-serie-aop" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Régulateur de tension série avec un AOP</span><a class="headerlink" href="#regulateur-tension-serie-aop" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This circuit is very similar to the previous one. It still uses a Zener diode <span class="math notranslate nohighlight">\(D_1\)</span> as the voltage reference, and the transistor <span class="math notranslate nohighlight">\(Q_1\)</span> is responsible for supplying current to the load. Resistors <span class="math notranslate nohighlight">\(R_1\)</span> and <span class="math notranslate nohighlight">\(R_2\)</span> act as the sensing elements for the output voltage.</p>
@@ -528,7 +539,7 @@ Therefore, care must be taken to ensure that the op-amp remains properly biased 
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_AOP_bloc.svg"><img alt="../_images/regulateur_tension_serie_AOP_bloc.svg" src="../_images/regulateur_tension_serie_AOP_bloc.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Series voltage regulator with an op-amp — block diagram</span><a class="headerlink" href="#regulateur-tension-serie-aop-bloc" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Series voltage regulator with an op-amp — block diagram</span><a class="headerlink" href="#regulateur-tension-serie-aop-bloc" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -560,7 +571,7 @@ Since the op-amp output must produce (U_\text{out}) plus the base–emitter volt
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_AOP_demonstration.svg"><img alt="../_images/regulateur_tension_serie_AOP_demonstration.svg" src="../_images/regulateur_tension_serie_AOP_demonstration.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Complete demonstration circuit for the voltage regulator</span><a class="headerlink" href="#regulateur-tension-serie-aop-demonstration" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Complete demonstration circuit for the voltage regulator</span><a class="headerlink" href="#regulateur-tension-serie-aop-demonstration" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We now detail the derivation of all the electrical equations governing this simple Zener-transistor regulator.</p>
@@ -621,6 +632,32 @@ Since the op-amp output must produce (U_\text{out}) plus the base–emitter volt
 <p>Now, the goal is to run simulations on SPACE.</p>
 </section>
 </section>
+<section id="regulation-loop">
+<h2>Regulation Loop<a class="headerlink" href="#regulation-loop" title="Link to this heading">#</a></h2>
+<p>In the diagram shown in <a class="reference internal" href="#bloc-logique-diode-zener-3-notebook"><span class="std std-ref">Logical blocks of a regulator</span></a>, we can see a section of the circuit that creates a feedback loop. This feedback mechanism is what transforms a merely stabilized system into a regulated one. The diagram in <a class="reference internal" href="#regulateur-tension-serie-aop-boucle-retro"><span class="std std-ref">Explanation of the feedback loop within the system</span></a> illustrates this concept.</p>
+<figure class="align-center" id="regulateur-tension-serie-aop-boucle-retro">
+<a class="reference internal image-reference" href="../_images/regulateur_tension_serie_AOP_boucle_retro.svg"><img alt="../_images/regulateur_tension_serie_AOP_boucle_retro.svg" src="../_images/regulateur_tension_serie_AOP_boucle_retro.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Explanation of the feedback loop within the system</span><a class="headerlink" href="#regulateur-tension-serie-aop-boucle-retro" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>At first glance, the diagram in <a class="reference internal" href="#regulateur-tension-serie-aop-boucle-retro"><span class="std std-ref">Explanation of the feedback loop within the system</span></a> may seem complex. However, when examined step by step, the operation of the feedback loop becomes much easier to understand.</p>
+<p>Let us begin by considering what happens when the load resistance <span class="math notranslate nohighlight">\(R_L\)</span> decreases. According to Ohm’s law <span class="math notranslate nohighlight">\(U = R \cdot I\)</span>, the output voltage <span class="math notranslate nohighlight">\(U_\text{out}\)</span> also decreases.</p>
+<p>Since <span class="math notranslate nohighlight">\(U_\text{out}\)</span> decreases, the voltage across <span class="math notranslate nohighlight">\(R_1\)</span>, denoted <span class="math notranslate nohighlight">\(U_{R1}\)</span>, also decreases, because:</p>
+<div class="math notranslate nohighlight">
+\[U_\text{out} = U_{R1} + U_{R2}\]</div>
+<p>As a result, the voltage at the inverting input <span class="math notranslate nohighlight">\(v^{-}\)</span> of the op-amp drops. The operational amplifier always acts to maintain <span class="math notranslate nohighlight">\(v^{+} = v^{-}\)</span>, so this decrease causes the op-amp to increase its output current in order to restore the balance.</p>
+<p>This increased output drives more base current into the transistor, which in turn increases the emitter current. Consequently, the current flowing through the output resistor <span class="math notranslate nohighlight">\(R_\text{out}\)</span> rises, and by Ohm’s law, this increase in current raises the output voltage—thus completing the regulation action.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>This explanation still needs to be improved further, as some parts remain unclear.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The opposite reasoning applies when the load resistance <span class="math notranslate nohighlight">\(R_L\)</span> increases.</p>
+</div>
+</section>
 <section id="spice-setup">
 <h2>SPICE Setup<a class="headerlink" href="#spice-setup" title="Link to this heading">#</a></h2>
 <p>The next objective is to implement this circuit in SPICE. Before writing the SPICE netlist, we use the following schematic:</p>
@@ -628,7 +665,7 @@ Since the op-amp output must produce (U_\text{out}) plus the base–emitter volt
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_AOP_SPACE.svg"><img alt="../_images/regulateur_tension_serie_AOP_SPACE.svg" src="../_images/regulateur_tension_serie_AOP_SPACE.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Simple voltage regulation circuit implemented in SPICE</span><a class="headerlink" href="#regulateur-tension-serie-aop-space" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Simple voltage regulation circuit implemented in SPICE</span><a class="headerlink" href="#regulateur-tension-serie-aop-space" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Following this schematic, the SPICE code can be written as follows:</p>
@@ -674,10 +711,19 @@ Since the op-amp output must produce (U_\text{out}) plus the base–emitter volt
 <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span>    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">R_1</span><span class="p">)</span>
 
 <span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Initialisation resistance courant</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R2</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R3</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+
+
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Initialisation zener diode</span>
 <span class="c1"># ---------------------------------------------------------</span>
 <span class="c1"># Zener diode for base voltage stabilization</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DZENER&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DZENER&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">DZ</span><span class="o">.</span><span class="n">plus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
 <span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Transistor Stage</span>
@@ -685,6 +731,8 @@ Since the op-amp output must produce (U_\text{out}) plus the base–emitter volt
 <span class="c1"># BJT(name, collector, base, emitter, model)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;collecteur&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="s1">&#39;emetteur&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;2N2222A&#39;</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;UA741&#39;</span><span class="p">,</span> <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">Q1</span><span class="o">.</span><span class="n">collector</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
 <span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Emitter Load</span>
@@ -771,9 +819,14 @@ Node xu1.6 : -1.1 V
 Node xu1.12 : 14.9 V
 Node xu1.11 : 15.0 V
 Node base : 13.0 V
-Node v- :  4.9 V
-Node emetteur : 12.3 V
+Node q1_collector : 20.0 V
+Node dz_cathode :  0.0 V
 Node v+ :  5.2 V
+Node r1_minus :  0.0 V
+Node v- :  4.9 V
+Node r2_minus :  4.9 V
+Node emetteur : 12.3 V
+Node r3_minus :  5.2 V
 Node vee : -15.0 V
 Node vcc : 15.0 V
 Node collecteur : 20.0 V
@@ -783,18 +836,474 @@ Branch a$poly$e.xu1.egnd#bra : 0.114 mA
 Branch vin : 22.942 mA
 Branch vcc : 1.655 mA
 Branch vee : -1.667 mA
+Branch vr1_minus : 4.913 mA
+Branch vr2_minus : 4.913 mA
+Branch vr3_minus : 3.152 mA
+Branch vdz_cathode : 3.152 mA
 Branch v.xu1.vb : 0.011 mA
 Branch v.xu1.vc : 0.012 mA
 Branch v.xu1.ve : -0.000 mA
 Branch v.xu1.vlp : 0.000 mA
 Branch v.xu1.vln : 0.000 mA
+Branch vq1_collector : -19.790 mA
 Branch v.xu1.vlim : -0.114 mA
 Branch h.xu1.hlim : 0.000 mA
 </pre></div>
 </div>
 </div>
 </div>
-<p>La tension de sortie de notre système est visible au niveau du noeud <code class="docutils literal notranslate"><span class="pre">emetteur</span></code> dans notre cas cela <span class="math notranslate nohighlight">\(13 V\)</span> dans notre système.</p>
+<p>The output voltage of our system is visible at the <code class="docutils literal notranslate"><span class="pre">emitter</span></code> node; in our case, it is <span class="math notranslate nohighlight">\(13 \ \text{V}\)</span> in our system.</p>
+</section>
+<section id="evolution-of-the-circuit-characteristics-as-a-function-of-the-load-resistance">
+<h2>Evolution of the Circuit Characteristics as a Function of the Load Resistance<a class="headerlink" href="#evolution-of-the-circuit-characteristics-as-a-function-of-the-load-resistance" title="Link to this heading">#</a></h2>
+<section id="output-voltage-as-a-function-of-the-load-resistance">
+<h3>Output Voltage as a Function of the Load Resistance<a class="headerlink" href="#output-voltage-as-a-function-of-the-load-resistance" title="Link to this heading">#</a></h3>
+<p>The goal here is to observe how the output voltage changes as the load resistance varies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calcul_puissance</span><span class="p">(</span><span class="n">analysis</span><span class="p">:</span> <span class="n">OperatingPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the power dissipated by transistor Q1</span>
+<span class="sd">    using the results of the SPICE operating-point analysis.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis : OperatingPoint</span>
+<span class="sd">        Operating-point simulation result.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Power dissipated by the transistor (in watts).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Extract electrical quantities</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+
+    <span class="c1"># Collector current </span>
+    <span class="c1"># (SPICE convention: negative value means current entering the device)</span>
+    <span class="n">I_C</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vq1_collector&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Collector and emitter voltages</span>
+    <span class="n">V_C</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;collecteur&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">V_E</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;emetteur&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Collector–Emitter voltage</span>
+    <span class="n">V_CE</span> <span class="o">=</span> <span class="n">V_C</span> <span class="o">-</span> <span class="n">V_E</span>
+
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Power dissipation</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">P_Q</span> <span class="o">=</span> <span class="n">V_CE</span> <span class="o">*</span> <span class="n">I_C</span>    <span class="c1"># Power: P = VCE × IC</span>
+
+    <span class="k">return</span> <span class="n">P_Q</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calcul_puissance_diode</span><span class="p">(</span><span class="n">analysis</span><span class="p">:</span> <span class="n">OperatingPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the power dissipated by the Zener diode</span>
+<span class="sd">    using the results of the SPICE operating-point analysis.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis : OperatingPoint</span>
+<span class="sd">        Operating-point simulation result.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Power dissipated by the Zener diode (in watts).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Extract electrical quantities</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+
+    <span class="c1"># Zener diode current</span>
+    <span class="c1"># (SPICE convention: positive = current flowing from anode to cathode)</span>
+    <span class="n">I_DZ</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vdz_cathode&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Voltage at the diode anode (assuming cathode is at ground or fixed node)</span>
+    <span class="n">V_DZ</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;v+&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Power dissipation</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">P_Z</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">V_DZ</span> <span class="o">*</span> <span class="n">I_DZ</span><span class="p">)</span>       <span class="c1"># Power: P = V × I</span>
+
+    <span class="k">return</span> <span class="n">P_Z</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Circuit Definition : Montage Stabilisateur (Zener + BJT)</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Output Resistance </span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">start</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">end</span>   <span class="o">=</span> <span class="mi">6</span>
+<span class="n">num</span>   <span class="o">=</span> <span class="mi">300</span>
+<span class="n">R_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+
+<span class="n">data</span>        <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>   <span class="c1"># correspond à la tension de sortie</span>
+<span class="n">puissanceQ1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>   <span class="c1"># correspond à la puissance absorbé par le transistor</span>
+<span class="n">diode</span>       <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>   <span class="c1"># correspond à la puissance absorbé par la diode zener</span>
+
+<span class="k">for</span> <span class="n">Rout</span> <span class="ow">in</span> <span class="n">R_out</span> <span class="p">:</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Circuit Initialization</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Montage Regulateur&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Include required component libraries</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s2">&quot;lib/bjt.lib&quot;</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s2">&quot;lib/zener.lib&quot;</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Input Supply</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">V_in</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">@</span> <span class="n">u_V</span>                    <span class="c1"># Input supply voltage [V]</span>
+    
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;collecteur&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">V_in</span><span class="p">)</span>
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Polarization tension</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">V_polarization</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>   <span class="n">V_polarization</span><span class="nd">@u_V</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span> <span class="n">V_polarization</span><span class="nd">@u_V</span><span class="p">)</span>
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Initialisation resistance</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">R_1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">@</span> <span class="n">u_kOhm</span>             <span class="c1"># R1 [Ω]</span>
+    <span class="n">R_2</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">@</span> <span class="n">u_kOhm</span>             <span class="c1"># R2 [Ω]</span>
+    <span class="n">R_3</span> <span class="o">=</span> <span class="mf">4.7</span> <span class="o">@</span> <span class="n">u_kOhm</span>             <span class="c1"># R3 [Ω]</span>
+    
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;collecteur&#39;</span><span class="p">,</span>   <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="n">R_3</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;emetteur&#39;</span><span class="p">,</span>     <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="n">R_2</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span>    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">R_1</span><span class="p">)</span>
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Initialisation resistance courant</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R2</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R3</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+    
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Initialisation zener diode</span>
+    <span class="c1"># ---------------------------------------------------------</span>
+    <span class="c1"># Zener diode for base voltage stabilization</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DZENER&#39;</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">DZ</span><span class="o">.</span><span class="n">plus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Transistor Stage</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># BJT(name, collector, base, emitter, model)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;collecteur&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="s1">&#39;emetteur&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;2N2222A&#39;</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;UA741&#39;</span><span class="p">,</span> <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">)</span>
+    
+    <span class="n">circuit</span><span class="o">.</span><span class="n">Q1</span><span class="o">.</span><span class="n">collector</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Emitter Load</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">R_emitter</span> <span class="o">=</span> <span class="n">Rout</span> <span class="o">@</span> <span class="n">u_Ohm</span>           <span class="c1"># Emitter resistor [Ω]</span>
+    
+    <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;emetteur&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">R_emitter</span><span class="p">);</span>
+
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Simulator Initialization</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>            <span class="c1"># Simulation temperature [°C]</span>
+        <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>     <span class="c1"># Nominal device temperature [°C]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Run Operating Point Simulation</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
+    
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="c1"># Save data</span>
+    <span class="c1"># ------------------------------------------------------------</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;emetteur&#39;</span><span class="p">])</span>
+    <span class="n">puissanceQ1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calcul_puissance</span><span class="p">(</span><span class="n">analysis</span><span class="p">))</span>
+    <span class="n">diode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calcul_puissance_diode</span><span class="p">(</span><span class="n">analysis</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Output Voltage vs Load Resistance Plot</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Plot Configuration</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="s2">&quot;Output Voltage vs Load Resistance</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;for a Zener-Based Stabilizer&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Load curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Logarithmic scale for the load resistance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+
+<span class="c1"># Axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Load Resistance $R_L$ / Ohm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Output Voltage $V_</span><span class="si">{out}</span><span class="s2">$ / V&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Plot</span>
+<span class="c1"># ============================================================</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cd21352d4c051caebb8c017e14251d71d664a002793c3f28515ae3c099880ab0.png" src="../_images/cd21352d4c051caebb8c017e14251d71d664a002793c3f28515ae3c099880ab0.png" />
+</div>
+</div>
+<p>This time, it can be observed that the system is much more sensitive to the load resistance. As soon as the resistance decreases, the output voltage drops significantly. This effect occurs because transistor (<span class="math notranslate nohighlight">\(Q_1\)</span>) becomes saturated and can no longer supply enough current to maintain the output voltage. Therefore, it is essential to have a relatively high load resistance for proper operation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Circuit Definition : Montage Stabilisateur (Zener + BJT)</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Circuit Initialization</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Montage Regulateur&#39;</span><span class="p">)</span>
+
+<span class="c1"># Include required component libraries</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s2">&quot;lib/bjt.lib&quot;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s2">&quot;lib/zener.lib&quot;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Input Supply</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">V_in</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">@</span> <span class="n">u_V</span>                    <span class="c1"># Input supply voltage [V]</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;collecteur&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">V_in</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Polarization tension</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">V_polarization</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>   <span class="n">V_polarization</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span> <span class="n">V_polarization</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Initialisation resistance</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">R_1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">@</span> <span class="n">u_kOhm</span>             <span class="c1"># R1 [Ω]</span>
+<span class="n">R_2</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">@</span> <span class="n">u_kOhm</span>             <span class="c1"># R2 [Ω]</span>
+<span class="n">R_3</span> <span class="o">=</span> <span class="mf">4.7</span> <span class="o">@</span> <span class="n">u_kOhm</span>             <span class="c1"># R3 [Ω]</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;collecteur&#39;</span><span class="p">,</span>   <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="n">R_3</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;emetteur&#39;</span><span class="p">,</span>     <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="n">R_2</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span>    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">R_1</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Initialisation resistance courant</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R2</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R3</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Initialisation zener diode</span>
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="c1"># Zener diode for base voltage stabilization</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DZENER&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">DZ</span><span class="o">.</span><span class="n">plus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Transistor Stage</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># BJT(name, collector, base, emitter, model)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">BJT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;collecteur&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="s1">&#39;emetteur&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;2N2222A&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;UA741&#39;</span><span class="p">,</span> <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">Q1</span><span class="o">.</span><span class="n">collector</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Emitter Load</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">R_emitter</span> <span class="o">=</span> <span class="n">Rout</span> <span class="o">@</span> <span class="n">u_Ohm</span>           <span class="c1"># Emitter resistor [Ω]</span>
+<span class="c1"># Résistance variable dans le temps (820 → 300 Ω à t = 0.5 s)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;emetteur&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;r = {820 - 520*u(time-0.003)}&#39;</span><span class="p">);</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">Rl</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Circuit Definition</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Simulation 1 seconde</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mf">0.0001</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_ms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Output Voltage vs Load Resistance Plot</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Plot Configuration</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Evolution of output voltage with a rapid change in output resistance&quot;</span><span class="p">)</span>
+
+<span class="c1"># output voltage vs load resistance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;emetteur&quot;</span><span class="p">],</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Output voltage / V&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ms&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">2.975</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Plot</span>
+<span class="c1"># ============================================================</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/555d976c565c3d2c15dd29b120e01b1e30b4525a77083e776bb2055ada5bd087.png" src="../_images/555d976c565c3d2c15dd29b120e01b1e30b4525a77083e776bb2055ada5bd087.png" />
+</div>
+</div>
+<p>It is possible to observe the rapid evolution of the voltage in the circuit. Note that this is not fully representative of real conditions, as the load resistance is changed abruptly from 820 Ω to 300 Ω. However, it clearly demonstrates the operation of the feedback loop.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to estimate the stabilization time.</p>
+</div>
+</section>
+<section id="evolution-of-the-power-dissipated-in-the-zener-diode">
+<h3>Evolution of the Power Dissipated in the Zener Diode<a class="headerlink" href="#evolution-of-the-power-dissipated-in-the-zener-diode" title="Link to this heading">#</a></h3>
+<p>The objective is to examine how the power dissipated by the Zener diode varies as a function of the load resistance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Zener Diode Power Dissipation Plot</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Plot Configuration</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Power Dissipated by the Zener Diode&quot;</span><span class="p">)</span>
+
+<span class="c1"># Power vs load resistance (converted to mW)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">diode</span><span class="p">),</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Logarithmic scale on the load axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+
+<span class="c1"># Axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Load Resistance $R_L$ / Ohm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power Dissipation $P$ / W&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Plot</span>
+<span class="c1"># ============================================================</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1cf608b98e1acb74789795a5e0fb72b2cf24d292c7b3e00c7e9560dea8675edf.png" src="../_images/1cf608b98e1acb74789795a5e0fb72b2cf24d292c7b3e00c7e9560dea8675edf.png" />
+</div>
+</div>
+<p>It can be observed that the power dissipated by the Zener diode is very low. This is because the operational amplifier protects the Zener diode, preventing it from being exposed to excessive power. As a result, there is no longer any concern about the Zener diode being damaged by power dissipation. Therefore, if your regulator is frequently connected and disconnected, this system is a more suitable choice.</p>
+</section>
+<section id="evolution-of-the-power-dissipated-in-transistor-q-1-as-a-function-of-the-load-resistance">
+<h3>Evolution of the Power Dissipated in Transistor <span class="math notranslate nohighlight">\(Q_1\)</span> as a Function of the Load Resistance<a class="headerlink" href="#evolution-of-the-power-dissipated-in-transistor-q-1-as-a-function-of-the-load-resistance" title="Link to this heading">#</a></h3>
+<p>The objective is to examine how the power dissipated in the transistor changes as the load resistance is varied.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Transistor Power Dissipation Plot</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Plot Configuration</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Power Dissipated by the Transistor&quot;</span><span class="p">)</span>
+
+<span class="c1"># Power vs load resistance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">puissanceQ1</span><span class="p">),</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Logarithmic scale on the load axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+
+<span class="c1"># Axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Load Resistance $R_L$ / Ohm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power Dissipation $P$ / W&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Plot</span>
+<span class="c1"># ============================================================</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03f13f2b8798187e8cefb3a8e6ac29f8864ee518aea703729c016315f6fee867.png" src="../_images/03f13f2b8798187e8cefb3a8e6ac29f8864ee518aea703729c016315f6fee867.png" />
+</div>
+</div>
+<p>It can be observed that the power dissipated in the transistor is not constant as a function of the load resistance. When the load resistance is high, the power dissipated by the transistor is relatively low. However, as the load resistance decreases, the power dissipation increases significantly, following an approximately exponential trend. In the following sections, the goal will be to reduce this effect.</p>
+<p>Dans la suite de le chapitre <em>Rajout d’un limiteur de courant</em> l’objectif est de limité la puissance dissiper lorsque la puissance de charge baisse trop et donc ne pas endommager le trnasistor et par suite la carte électronique.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Rajout d&#39;un limiteur de courant</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
@@ -832,6 +1341,24 @@ Branch h.xu1.hlim : 0.000 mA
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="regulateur_tension_serie_transistor_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Series Transistor Voltage Regulator</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../AOP/01_Introduction_amplificateur.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Resume</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -866,7 +1393,14 @@ Branch h.xu1.hlim : 0.000 mA
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-voltage-at-the-transistor">Output Voltage at the Transistor</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regulation-loop">Regulation Loop</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spice-setup">SPICE Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-circuit-characteristics-as-a-function-of-the-load-resistance">Evolution of the Circuit Characteristics as a Function of the Load Resistance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-voltage-as-a-function-of-the-load-resistance">Output Voltage as a Function of the Load Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-the-zener-diode">Evolution of the Power Dissipated in the Zener Diode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-transistor-q-1-as-a-function-of-the-load-resistance">Evolution of the Power Dissipated in Transistor <span class="math notranslate nohighlight">\(Q_1\)</span> as a Function of the Load Resistance</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
   </nav></div>

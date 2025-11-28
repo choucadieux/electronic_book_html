@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Regulateur/regulateur_tension_serie_transistor_2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Resume" href="../AOP/01_Introduction_amplificateur.html" />
+    <link rel="next" title="Régulateur de tension série avec AOP" href="regulateur_tension_serie_AOP_2.html" />
     <link rel="prev" title="Zener diode series stabilizer" href="Diode_Zener.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -197,7 +197,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Pond_diviseur_tension.html">Voltage divider bridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Diode_Zener.html">Zener diode series stabilizer</a></li>
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Series Transistor Voltage Regulator</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Amplificator</span></p>
 <ul class="nav bd-sidenav">
@@ -414,6 +417,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Series Transistor Voltage Regulator</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
@@ -438,11 +442,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spice-simulation">SPICE Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-circuit-characteristics-as-a-function-of-the-load-resistance">Evolution of the Circuit Characteristics as a Function of the Load Resistance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-voltage-as-a-function-of-the-load-resistance">Output Voltage as a Function of the Load Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-the-zener-diode">Evolution of the Power Dissipated in the Zener Diode</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-transistor-q-2-as-a-function-of-the-load-resistance">Evolution of the Power Dissipated in Transistor <span class="math notranslate nohighlight">\(Q_2\)</span> as a Function of the Load Resistance</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -510,7 +518,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../_images/bloc_logique.svg"><img alt="../_images/bloc_logique.svg" src="../_images/bloc_logique.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener-second-notebook" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener-second-notebook" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can see that the regulator is made up of four logical blocks. The goal is to eventually construct an electronic circuit that performs voltage regulation.</p>
@@ -522,7 +530,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_transistor_2.svg"><img alt="../_images/regulateur_tension_serie_transistor_2.svg" src="../_images/regulateur_tension_serie_transistor_2.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Series voltage regulator with a transistor</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Series voltage regulator with a transistor</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This circuit is very similar to the one presented in the section
@@ -538,7 +546,7 @@ Second, between the load and transistor <span class="math notranslate nohighligh
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_transistor_2_with_bloc.svg"><img alt="../_images/regulateur_tension_serie_transistor_2_with_bloc.svg" src="../_images/regulateur_tension_serie_transistor_2_with_bloc.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Series voltage regulator with a transistor — block diagram</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-with-bloc" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Series voltage regulator with a transistor — block diagram</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-with-bloc" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -576,7 +584,7 @@ This makes it much easier to adjust and control the output voltage.</p>
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_transistor_2_demonstration.svg"><img alt="../_images/regulateur_tension_serie_transistor_2_demonstration.svg" src="../_images/regulateur_tension_serie_transistor_2_demonstration.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Series voltage regulator with transistor — diagram for the demonstration</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-demonstration" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Series voltage regulator with transistor — diagram for the demonstration</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-demonstration" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="output-voltage">
@@ -644,7 +652,7 @@ $<span class="math notranslate nohighlight">\(U_{R1} = U_{Z1} + U_{BE1}\)</span>
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_transistor_2_boucle_retro.svg"><img alt="../_images/regulateur_tension_serie_transistor_2_boucle_retro.svg" src="../_images/regulateur_tension_serie_transistor_2_boucle_retro.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Explanation of the feedback loop within the system</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-boucle-retro" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Explanation of the feedback loop within the system</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-boucle-retro" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At first glance, the diagram in <a class="reference internal" href="#regulateur-tension-serie-transistor-2-boucle-retro"><span class="std std-ref">Explanation of the feedback loop within the system</span></a> may seem complex. However, when examined step by step, the operation of the loop becomes much easier to understand.</p>
@@ -677,7 +685,7 @@ $<span class="math notranslate nohighlight">\(U_{R1} = U_{Z1} + U_{BE1}\)</span>
 <a class="reference internal image-reference" href="../_images/regulateur_tension_serie_transistor_2_space.svg"><img alt="../_images/regulateur_tension_serie_transistor_2_space.svg" src="../_images/regulateur_tension_serie_transistor_2_space.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Series voltage regulator — circuit schematic for implementation in SPACE</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-space" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Series voltage regulator — circuit schematic for implementation in SPACE</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-space" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -913,15 +921,15 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 
     <span class="c1"># Zener diode current</span>
     <span class="c1"># (SPICE convention: positive = current flowing from anode to cathode)</span>
-    <span class="n">I_DZ</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vdz_anode&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">I_DZ</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vdz_cathode&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="c1"># Voltage at the diode anode (assuming cathode is at ground or fixed node)</span>
-    <span class="n">V_DZ</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;dz_anode&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">V_DZ</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;diode&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="c1"># ------------------------------------------------------------</span>
     <span class="c1"># Power dissipation</span>
     <span class="c1"># ------------------------------------------------------------</span>
-    <span class="n">P_Z</span> <span class="o">=</span> <span class="n">V_DZ</span> <span class="o">*</span> <span class="n">I_DZ</span>       <span class="c1"># Power: P = V × I</span>
+    <span class="n">P_Z</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">V_DZ</span> <span class="o">*</span> <span class="n">I_DZ</span><span class="p">)</span>       <span class="c1"># Power: P = V × I</span>
 
     <span class="k">return</span> <span class="n">P_Z</span>
 </pre></div>
@@ -1007,7 +1015,7 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
     <span class="c1"># ------------------------------------------------------------</span>
     <span class="c1"># Emitter Load</span>
     <span class="c1"># ------------------------------------------------------------</span>
-    <span class="n">R_emitter</span> <span class="o">=</span> <span class="mi">820</span> <span class="o">@</span> <span class="n">u_Ohm</span>           <span class="c1"># Emitter resistor [Ω]</span>
+    <span class="n">R_emitter</span> <span class="o">=</span> <span class="n">Rout</span> <span class="o">@</span> <span class="n">u_Ohm</span>           <span class="c1"># Emitter resistor [Ω]</span>
     
     <span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;emettor&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">R_emitter</span><span class="p">);</span>
     <span class="n">circuit</span><span class="o">.</span><span class="n">Rl</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
@@ -1028,8 +1036,7 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;emettor&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">puissanceQ2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calcul_puissance</span><span class="p">(</span><span class="n">analysis</span><span class="p">))</span>
-    <span class="c1">#diode.append(calcul_puissance_diode(analysis))</span>
-    
+    <span class="n">diode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calcul_puissance_diode</span><span class="p">(</span><span class="n">analysis</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1070,10 +1077,10 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/09611eee567205c6f8ec462774b1cd6767297ec6268d6801d1115668e8529ebd.png" src="../_images/09611eee567205c6f8ec462774b1cd6767297ec6268d6801d1115668e8529ebd.png" />
+<img alt="../_images/53ec74e2a88e0aaff7846106c25143f66730d9961a20af24ebed8bbf710e50d1.png" src="../_images/53ec74e2a88e0aaff7846106c25143f66730d9961a20af24ebed8bbf710e50d1.png" />
 </div>
 </div>
-<p>This time, the output voltage no longer depends on the load resistance; it is completely independent. However, one may still wonder what happens if the load resistance is changed during the simulation.</p>
+<p>This time, compared to the previous system, we can see that the output voltage remains stable down to a certain load resistance. However, if the resistance is decreased further, the voltage drops sharply. This occurs because the transistor becomes saturated and can no longer supply more current than it is already delivering.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
@@ -1135,7 +1142,7 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 <span class="c1"># Emitter Load</span>
 <span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Résistance variable dans le temps (820 → 300 Ω à t = 0.5 s)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;emettor&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;r = {820 - 520*u(time-0.5)}&#39;</span><span class="p">);</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;emettor&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;r = {820 - 520*u(time-0.003)}&#39;</span><span class="p">);</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">Rl</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
 <span class="c1"># ============================================================</span>
@@ -1144,7 +1151,7 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 
 <span class="c1"># Simulation 1 seconde</span>
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_s</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mf">0.0001</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_ms</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1163,11 +1170,12 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Evolution of output voltage with a rapid change in output resistance&quot;</span><span class="p">)</span>
 
 <span class="c1"># output voltage vs load resistance</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;emettor&quot;</span><span class="p">],</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;emettor&quot;</span><span class="p">],</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Axis labels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Output voltage / V&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ms&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">2.975</span><span class="p">,</span> <span class="mf">3.050</span><span class="p">)</span>
 
 <span class="c1"># Display the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1179,18 +1187,22 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3c3d7081f45a7aee281913ae81bb3c83580e83e44579d8a262ef29cd80491085.png" src="../_images/3c3d7081f45a7aee281913ae81bb3c83580e83e44579d8a262ef29cd80491085.png" />
+<img alt="../_images/0b82ea1f69dd4da6d9dd7eaf47753199621e467248e40970219322ec52b60c6a.png" src="../_images/0b82ea1f69dd4da6d9dd7eaf47753199621e467248e40970219322ec52b60c6a.png" />
 </div>
 </div>
-<p>It is important to qualify what was stated earlier: with a direct variation of the load resistance, we can observe that the output voltage changes only very slightly. This clearly demonstrates the regulation effect, which is not present in the simple stabilization configuration.</p>
+<p>It is possible to observe the rapid evolution of the voltage in the circuit. Note that this is not fully representative of real conditions, as the load resistance is changed abruptly from 820 Ω to 300 Ω. However, it clearly demonstrates the operation of the feedback loop.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to estimate the stabilization time.</p>
+</div>
 </section>
-<section id="evolution-of-the-power-dissipated-in-transistor-q-2-as-a-function-of-the-load-resistance">
-<h3>Evolution of the Power Dissipated in Transistor <span class="math notranslate nohighlight">\(Q_2\)</span> as a Function of the Load Resistance<a class="headerlink" href="#evolution-of-the-power-dissipated-in-transistor-q-2-as-a-function-of-the-load-resistance" title="Link to this heading">#</a></h3>
-<p>The objective is to examine how the power dissipated in the transistor changes as the load resistance is varied.</p>
+<section id="evolution-of-the-power-dissipated-in-the-zener-diode">
+<h3>Evolution of the Power Dissipated in the Zener Diode<a class="headerlink" href="#evolution-of-the-power-dissipated-in-the-zener-diode" title="Link to this heading">#</a></h3>
+<p>The objective is to examine how the power dissipated by the Zener diode varies as a function of the load resistance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
-<span class="c1"># Transistor Power Dissipation Plot</span>
+<span class="c1"># Zener Diode Power Dissipation Plot</span>
 <span class="c1"># ============================================================</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1198,10 +1210,10 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 <span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Plot Configuration</span>
 <span class="c1"># ------------------------------------------------------------</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Power Dissipated by the Transistor&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Power Dissipated by the Zener Diode&quot;</span><span class="p">)</span>
 
-<span class="c1"># Power vs load resistance</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">puissanceQ2</span><span class="p">)</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Power vs load resistance (converted to mW)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">diode</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Logarithmic scale on the load axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
@@ -1220,17 +1232,59 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/059b88a4a415231356f648420555fc7b5b1552971b3686de46dd38ae34e4a15a.png" src="../_images/059b88a4a415231356f648420555fc7b5b1552971b3686de46dd38ae34e4a15a.png" />
+<img alt="../_images/b0b1faae6c5bcb3d4e754ba633e00f46984e4abbe826d34113e58bd3dc0c84a8.png" src="../_images/b0b1faae6c5bcb3d4e754ba633e00f46984e4abbe826d34113e58bd3dc0c84a8.png" />
 </div>
 </div>
-<p>We can see that the voltage and power absorbed by the transistor remain constant regardless of the power.</p>
-<p>There are still several aspects of this notebook that need refinement and further investigation.</p>
+<p>The power dissipated by the diode increases as the load resistance increases. Therefore, it is important to ensure that the diode can handle this power, especially if the system has no load connected.</p>
+</section>
+<section id="evolution-of-the-power-dissipated-in-transistor-q-2-as-a-function-of-the-load-resistance">
+<h3>Evolution of the Power Dissipated in Transistor <span class="math notranslate nohighlight">\(Q_2\)</span> as a Function of the Load Resistance<a class="headerlink" href="#evolution-of-the-power-dissipated-in-transistor-q-2-as-a-function-of-the-load-resistance" title="Link to this heading">#</a></h3>
+<p>The objective is to examine how the power dissipated in the transistor changes as the load resistance is varied.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Transistor Power Dissipation Plot</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Plot Configuration</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Power Dissipated by the Transistor&quot;</span><span class="p">)</span>
+
+<span class="c1"># Power vs load resistance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">puissanceQ2</span><span class="p">),</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Logarithmic scale on the load axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+
+<span class="c1"># Axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Load Resistance $R_L$ / Ohm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power Dissipation $P$ / W&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Plot</span>
+<span class="c1"># ============================================================</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/873f5015a09ec3ffe38bf53ebb838ed600e0c06a1e40ef04ae377df2a4aa6af9.png" src="../_images/873f5015a09ec3ffe38bf53ebb838ed600e0c06a1e40ef04ae377df2a4aa6af9.png" />
+</div>
+</div>
+<p>It can be observed that the power dissipated in the transistor is not constant as a function of the load resistance. When the load resistance is high, the power dissipated by the transistor is relatively low. However, as the load resistance decreases, the power dissipation increases significantly, following an approximately exponential trend. In the following sections, the goal will be to reduce this effect.</p>
 </section>
 </section>
-<section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=qJXxw_bw5Jg">https://www.youtube.com/watch?v=qJXxw_bw5Jg</a></p>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=qJXxw_bw5Jg">https://www.youtube.com/watch?v=qJXxw_bw5Jg</a></p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1273,11 +1327,11 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../AOP/01_Introduction_amplificateur.html"
+       href="regulateur_tension_serie_AOP_2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Resume</p>
+        <p class="prev-next-title">Régulateur de tension série avec AOP</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1297,6 +1351,7 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Series Transistor Voltage Regulator</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
@@ -1321,11 +1376,15 @@ At this stage, I am not entirely sure what causes this discrepancy.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spice-simulation">SPICE Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-circuit-characteristics-as-a-function-of-the-load-resistance">Evolution of the Circuit Characteristics as a Function of the Load Resistance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-voltage-as-a-function-of-the-load-resistance">Output Voltage as a Function of the Load Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-the-zener-diode">Evolution of the Power Dissipated in the Zener Diode</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution-of-the-power-dissipated-in-transistor-q-2-as-a-function-of-the-load-resistance">Evolution of the Power Dissipated in Transistor <span class="math notranslate nohighlight">\(Q_2\)</span> as a Function of the Load Resistance</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
