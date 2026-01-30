@@ -1,0 +1,159 @@
+Traceback (most recent call last):
+  File "C:\Users\sacha\anaconda3\envs\game\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 1265, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\jupyter_core\utils\__init__.py", line 160, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\sacha\anaconda3\envs\game\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 703, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 1021, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 915, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from PySpice.Spice.Netlist import Circuit, SubCircuit
+from PySpice.Unit import *
+import matplotlib.pyplot as plt
+import numpy as np
+
+############################################
+# Sous-circuit Memristor (modèle HP simple)
+############################################
+
+class Memristor(SubCircuit):
+    __nodes__ = ('p', 'n')
+
+    def __init__(self, name, K, C, Ron, Roff):
+        super().__init__(name, *self.__nodes__)
+
+        # Variable d'état interne phi (0 <= phi <= 1)
+        # dphi/dt = K * V(p,n)
+        self.C('phi', 'phi', self.gnd, C)
+        self.VCCS('phi', 'phi', self.gnd, 'p', 'n', K)
+
+        # Résistance dépendante de l'état
+        self.BehavioralResistor(
+            'mem', 'p', 'n',
+            resistance='Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))'
+        )
+
+
+############################################
+# Circuit principal
+############################################
+
+circuit = Circuit("Memristor I-V")
+
+# Source sinusoïdale
+f = 2        # Hz
+V_amp = 1    # V
+
+circuit.SinusoidalVoltageSource(
+    'in', 'vin', circuit.gnd,
+    amplitude=V_amp @ u_V,
+    frequency=f @ u_Hz
+)
+
+# Paramètres du memristor
+K = 2e-4                 # constante de mobilité
+C = 1e-6 @ u_F           # capacité d'état
+Ron = 100 @ u_Ohm
+Roff = 1e6 @ u_Ohm
+
+# Enregistrement du sous-circuit
+circuit.subcircuit(
+    Memristor(
+        'memristor',
+        K=K,
+        C=C,
+        Ron=Ron,
+        Roff=Roff
+    )
+)
+
+# Instanciation
+circuit.X('M1', 'memristor', 'vin', circuit.gnd)
+
+############################################
+# Simulation transitoire
+############################################
+
+simulator = circuit.simulator(
+    temperature=25,
+    nominal_temperature=25
+)
+
+analysis = simulator.transient(
+    step_time=1 @ u_ms,
+    end_time=2 @ u_s
+)
+
+############################################
+# Tracé I–V
+############################################
+
+# Tension
+v = np.array(analysis['vin'])
+
+# Courant dans la source (donc dans le memristor)
+i = -np.array(analysis.branches['vin'])
+
+plt.figure(figsize=(6, 5))
+plt.plot(v, i)
+plt.xlabel("Tension (V)")
+plt.ylabel("Courant (A)")
+plt.title("Boucle I–V du memristor")
+plt.grid(True)
+plt.show()
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mValueError[0m                                Traceback (most recent call last)
+Input [1;32mIn [10][0m, in [0;36m<cell line: 51>[1;34m()[0m
+[0;32m     48[0m Roff [38;5;241m=[39m [38;5;241m1e6[39m [38;5;241m@[39m u_Ohm
+[0;32m     50[0m [38;5;66;03m# Enregistrement du sous-circuit[39;00m
+[0;32m     51[0m circuit[38;5;241m.[39msubcircuit(
+[1;32m---> 52[0m     [43mMemristor[49m[43m([49m
+[0;32m     53[0m [43m        [49m[38;5;124;43m'[39;49m[38;5;124;43mmemristor[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[0;32m     54[0m [43m        [49m[43mK[49m[38;5;241;43m=[39;49m[43mK[49m[43m,[49m
+[0;32m     55[0m [43m        [49m[43mC[49m[38;5;241;43m=[39;49m[43mC[49m[43m,[49m
+[0;32m     56[0m [43m        [49m[43mRon[49m[38;5;241;43m=[39;49m[43mRon[49m[43m,[49m
+[0;32m     57[0m [43m        [49m[43mRoff[49m[38;5;241;43m=[39;49m[43mRoff[49m
+[0;32m     58[0m [43m    [49m[43m)[49m
+[0;32m     59[0m )
+[0;32m     61[0m [38;5;66;03m# Instanciation[39;00m
+[0;32m     62[0m circuit[38;5;241m.[39mX([38;5;124m'[39m[38;5;124mM1[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mmemristor[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mvin[39m[38;5;124m'[39m, circuit[38;5;241m.[39mgnd)
+
+Input [1;32mIn [10][0m, in [0;36mMemristor.__init__[1;34m(self, name, K, C, Ron, Roff)[0m
+[0;32m     19[0m [38;5;28mself[39m[38;5;241m.[39mVCCS([38;5;124m'[39m[38;5;124mphi[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mphi[39m[38;5;124m'[39m, [38;5;28mself[39m[38;5;241m.[39mgnd, [38;5;124m'[39m[38;5;124mp[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mn[39m[38;5;124m'[39m, K)
+[0;32m     21[0m [38;5;66;03m# Résistance dépendante de l'état[39;00m
+[1;32m---> 22[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mBehavioralResistor[49m[43m([49m
+[0;32m     23[0m [43m    [49m[38;5;124;43m'[39;49m[38;5;124;43mmem[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mp[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mn[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[0;32m     24[0m [43m    [49m[43mresistance[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mRon*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))[39;49m[38;5;124;43m'[39;49m
+[0;32m     25[0m [43m[49m[43m)[49m
+
+File [1;32m~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\__init__.py:56[0m, in [0;36m_make_function.<locals>.function[1;34m(self, *args, **kwargs)[0m
+[0;32m     55[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mfunction[39m([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m---> 56[0m     [38;5;28;01mreturn[39;00m element_class([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+File [1;32m~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\Netlist.py:691[0m, in [0;36mFixedPinElement.__init__[1;34m(self, netlist, name, *args, **kwargs)[0m
+[0;32m    688[0m             [38;5;28;01mraise[39;00m [38;5;167;01mNameError[39;00m([38;5;124m"[39m[38;5;124mNode [39m[38;5;124m'[39m[38;5;132;01m{}[39;00m[38;5;124m'[39m[38;5;124m is missing for element [39m[38;5;132;01m{}[39;00m[38;5;124m"[39m[38;5;241m.[39mformat(pin_definition[38;5;241m.[39mname, [38;5;28mself[39m[38;5;241m.[39mname))
+[0;32m    689[0m         pin_definition_nodes[38;5;241m.[39mappend((pin_definition, node))
+[1;32m--> 691[0m [38;5;28msuper[39m()[38;5;241m.[39m[38;5;21m__init__[39m(netlist, name, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[0;32m    693[0m [38;5;28mself[39m[38;5;241m.[39m_pins [38;5;241m=[39m [Pin([38;5;28mself[39m, pin_definition, netlist[38;5;241m.[39mget_node(node, [38;5;28;01mTrue[39;00m))
+[0;32m    694[0m               [38;5;28;01mfor[39;00m pin_definition, node [38;5;129;01min[39;00m pin_definition_nodes]
+
+File [1;32m~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\Netlist.py:526[0m, in [0;36mElement.__init__[1;34m(self, netlist, name, *args, **kwargs)[0m
+[0;32m    524[0m         [38;5;28;01mpass[39;00m [38;5;66;03m# cf. NonLinearVoltageSource[39;00m
+[0;32m    525[0m     [38;5;28;01melse[39;00m:
+[1;32m--> 526[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m'[39m[38;5;124mUnknown argument [39m[38;5;132;01m{}[39;00m[38;5;124m=[39m[38;5;132;01m{}[39;00m[38;5;124m'[39m[38;5;241m.[39mformat(key, value))
+[0;32m    528[0m [38;5;28mself[39m[38;5;241m.[39m_pins [38;5;241m=[39m ()
+[0;32m    529[0m netlist[38;5;241m.[39m_add_element([38;5;28mself[39m)
+
+[1;31mValueError[0m: Unknown argument resistance=Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))
+ValueError: Unknown argument resistance=Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))
+

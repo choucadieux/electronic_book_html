@@ -1,0 +1,985 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Memristor &#8212; Book on electronics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Base_componant/Memristor';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Book on electronics - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Book on electronics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Book on Electronics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diode/Diode.html">Diode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Passif circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Passif/RC.html">RL Circuit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Essential Circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/Pont_diode.html">Diode Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Regulator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Amplificator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AOP/01_Introduction_amplificateur.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/02_Inverting_amplifier.html">Inverting Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/04_Suiveur.html">Voltage Follower (Buffer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Class A amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/09_class_B.html">Amplificateur class B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/10_class_AB.html">Amplificateur class AB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/11_class_C.html">Amplificateur class C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/12_class_D.html">Amplificateur class D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logic Gate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/NOT.html">Porte NOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/AND.html">AND and NAND Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/OR.html">OR and NOR Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/XOR.html">XOR and NXOR Gate</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Schmit Trigger</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/intro.html">Schmitt Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/Hysteresis_aop.html">Schmitt Trigger Using an Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/Hysteresis_transistor.html">Schmitt Trigger using a Bipolar Transistor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Introduction/Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Introduction/Jonction_PN.html">Jonction PN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBase_componant/Memristor.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Base_componant/Memristor.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Memristor</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-creation-memristor">Class creation Memristor</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="memristor">
+<h1>Memristor<a class="headerlink" href="#memristor" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Standard import</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># ----- Spice import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="class-creation-memristor">
+<h2>Class creation Memristor<a class="headerlink" href="#class-creation-memristor" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">c1</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;V-I&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Memristor IV curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;linear_memristor.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/35120c8817e88b2e394c514c531f70050bd78c86368b74604317e6228cb54157.png" src="../_images/35120c8817e88b2e394c514c531f70050bd78c86368b74604317e6228cb54157.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Memristor</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.00005</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">SwitchRoff</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="mi">20</span><span class="p">,</span> <span class="n">SwitchRon</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">)</span>
+        <span class="n">SubCircuit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">__nodes__</span><span class="p">)</span>
+        <span class="c1"># self.parameters = {&#39;K&#39;: K, &#39;Kp&#39;: Kp, &#39;C&#39;: C, &#39;Vto&#39;: Vto}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;R2&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">12</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VoltageControlledSwitch</span><span class="p">(</span><span class="s1">&#39;sw&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_switch&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_switch&#39;</span><span class="p">,</span> <span class="s2">&quot;SW&quot;</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">SwitchRon</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">SwitchRoff</span><span class="p">,</span> <span class="n">Vt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">,</span> <span class="s1">&#39;NMOS&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">)</span>
+        <span class="c1"># M1 drain gate source body</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MemristorsInSeries</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.00045</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
+        <span class="n">SubCircuit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">__nodes__</span><span class="p">)</span>
+        <span class="c1"># self.parameters = {&#39;K&#39;: K, &#39;Kp&#39;: Kp, &#39;C&#39;: C, &#39;Vto&#39;: Vto}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem0&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem0&#39;</span><span class="p">,</span> <span class="s1">&#39;mem0&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;o0&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="s1">&#39;mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_all_nodes_Cmem</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
+    <span class="c1"># this only works for the first level of subcircuits</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">subcircuit</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuits</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;cmem&#39;</span><span class="p">:</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;X&quot;</span><span class="o">+</span><span class="n">subcircuit</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_all_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">currentName</span><span class="p">):</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">subcircuit</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuits</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">currentName</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">subcircuitName</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span> <span class="o">+</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">subcircuitName</span> <span class="o">=</span> <span class="n">currentName</span> <span class="o">+</span> <span class="s2">&quot;.X&quot;</span> <span class="o">+</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">:</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subcircuitName</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">nodes</span> <span class="o">+=</span> <span class="n">get_all_nodes_recursive</span><span class="p">(</span><span class="n">subcircuit</span><span class="p">,</span> <span class="n">subcircuitName</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_all_cmem_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
+    <span class="n">all_nodes</span> <span class="o">=</span> <span class="n">get_all_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">cmem_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">all_nodes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;cmem&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">cmem_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cmem_nodes</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_initial_condition</span><span class="p">(</span><span class="n">simulator</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
+    <span class="n">kwargDict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">IC</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">get_all_cmem_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
+        <span class="n">kwargDict</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">IC</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargDict</span><span class="p">)</span>
+    <span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span><span class="o">**</span><span class="n">kwargDict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vd</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;NMOS Transistor&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">vs</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">vd</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_kHz</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">phi</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">)</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="c1"># IMPORTANT! the initial condition is neccesary for capacitor to work</span>
+<span class="n">add_initial_condition</span><span class="p">(</span><span class="n">simulator</span><span class="p">,</span> <span class="n">circuit</span><span class="p">)</span>
+
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mf">0.0001</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">use_initial_condition</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># vd vs ID</span>
+<span class="n">vds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;SPICE simulation of memristor IV curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;memristor_circuit_simulation.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;XMem1.Cmem&#39;: 0}
+</pre></div>
+</div>
+<img alt="../_images/f29e5f8a11d29ddf277d7aa3d6fc57a792ebc2a416fe415e2efce3a924390b9c.png" src="../_images/f29e5f8a11d29ddf277d7aa3d6fc57a792ebc2a416fe415e2efce3a924390b9c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Classe Memristor corrigée</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Memristor</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="p">,</span> <span class="n">Roff</span><span class="p">,</span> <span class="n">Ron</span><span class="p">):</span>
+        <span class="n">SubCircuit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">transconductance</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;R2&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">12</span> <span class="o">@</span> <span class="n">u_Ω</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">VoltageControlledSwitch</span><span class="p">(</span>
+            <span class="s1">&#39;sw&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> 
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;switch&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s2">&quot;switch&quot;</span><span class="p">,</span> <span class="s2">&quot;SW&quot;</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span><span class="p">,</span> <span class="n">Vt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;memristor_nmos&#39;</span><span class="p">,</span> <span class="s1">&#39;NMOS&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;memristor_nmos&#39;</span><span class="p">)</span>
+
+<span class="c1"># Circuit</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s2">&quot;Memristor IV&quot;</span><span class="p">)</span>
+
+<span class="c1"># Source sinusoïdale</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Hz</span>
+<span class="n">V_offset</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># V</span>
+<span class="n">V_amplitude</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># V</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># s</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">offset</span><span class="o">=</span><span class="n">V_offset</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">amplitude</span><span class="o">=</span><span class="n">V_amplitude</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="n">f</span> <span class="o">@</span> <span class="n">u_Hz</span><span class="p">,</span>
+    <span class="n">delay</span><span class="o">=</span><span class="n">delay</span> <span class="o">@</span> <span class="n">u_s</span>
+<span class="p">)</span>
+
+<span class="c1"># Valeurs des paramètres du memristor (d&#39;après l&#39;article)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mf">2e-4</span>
+<span class="n">Kp</span> <span class="o">=</span> <span class="mf">1.3e-4</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mf">1e-6</span>  <span class="c1"># 1 µF (valeur typique)</span>
+<span class="n">Vto</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">Roff</span> <span class="o">=</span> <span class="mf">1e6</span>
+<span class="n">Ron</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Enregistrement du sous-circuit</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span>
+    <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> 
+    <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span> <span class="o">@</span> <span class="n">u_F</span><span class="p">,</span> 
+    <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span> <span class="o">@</span> <span class="n">u_Ω</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span> <span class="o">@</span> <span class="n">u_Ω</span>
+<span class="p">))</span>
+
+<span class="c1"># Instanciation du memristor</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">)</span>
+
+<span class="c1"># Simulation</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">2</span><span class="nd">@u_s</span><span class="p">)</span>
+
+<span class="c1"># Affichage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">],</span> <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vin&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tension (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Courant (A)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Courbe I-V du Memristor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/92f5af01e5ea17cb0169147e9a5e365cfddc6b1476e6cf474248b7ac2d3204af.png" src="../_images/92f5af01e5ea17cb0169147e9a5e365cfddc6b1476e6cf474248b7ac2d3204af.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vin&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WaveForm vin [ 0.00000000e+00 -1.74574229e-16 -1.89098218e-16 ...  2.45801702e-14
+  4.81397754e-15 -2.31051620e-25]@A
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1">############################################</span>
+<span class="c1"># Sous-circuit Memristor (modèle HP simple)</span>
+<span class="c1">############################################</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Memristor</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">Ron</span><span class="p">,</span> <span class="n">Roff</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
+
+        <span class="c1"># Variable d&#39;état interne phi (0 &lt;= phi &lt;= 1)</span>
+        <span class="c1"># dphi/dt = K * V(p,n)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+
+        <span class="c1"># Résistance dépendante de l&#39;état</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">BehavioralResistor</span><span class="p">(</span>
+            <span class="s1">&#39;mem&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span>
+            <span class="n">resistance</span><span class="o">=</span><span class="s1">&#39;Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))&#39;</span>
+        <span class="p">)</span>
+
+
+<span class="c1">############################################</span>
+<span class="c1"># Circuit principal</span>
+<span class="c1">############################################</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s2">&quot;Memristor I-V&quot;</span><span class="p">)</span>
+
+<span class="c1"># Source sinusoïdale</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># Hz</span>
+<span class="n">V_amp</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># V</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">amplitude</span><span class="o">=</span><span class="n">V_amp</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="n">f</span> <span class="o">@</span> <span class="n">u_Hz</span>
+<span class="p">)</span>
+
+<span class="c1"># Paramètres du memristor</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mf">2e-4</span>                 <span class="c1"># constante de mobilité</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mf">1e-6</span> <span class="o">@</span> <span class="n">u_F</span>           <span class="c1"># capacité d&#39;état</span>
+<span class="n">Ron</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">@</span> <span class="n">u_Ohm</span>
+<span class="n">Roff</span> <span class="o">=</span> <span class="mf">1e6</span> <span class="o">@</span> <span class="n">u_Ohm</span>
+
+<span class="c1"># Enregistrement du sous-circuit</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span>
+    <span class="n">Memristor</span><span class="p">(</span>
+        <span class="s1">&#39;memristor&#39;</span><span class="p">,</span>
+        <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
+        <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span>
+        <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span><span class="p">,</span>
+        <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Instanciation</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span> <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">)</span>
+
+<span class="c1">############################################</span>
+<span class="c1"># Simulation transitoire</span>
+<span class="c1">############################################</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mi">1</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">2</span> <span class="o">@</span> <span class="n">u_s</span>
+<span class="p">)</span>
+
+<span class="c1">############################################</span>
+<span class="c1"># Tracé I–V</span>
+<span class="c1">############################################</span>
+
+<span class="c1"># Tension</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">])</span>
+
+<span class="c1"># Courant dans la source (donc dans le memristor)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tension (V)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Courant (A)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Boucle I–V du memristor&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 51&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="n">Roff</span> <span class="o">=</span> <span class="mf">1e6</span> <span class="o">@</span> <span class="n">u_Ohm</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="c1"># Enregistrement du sous-circuit</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span>
+<span class="ne">---&gt; </span><span class="mi">52</span>     <span class="n">Memristor</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>         <span class="s1">&#39;memristor&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>         <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>         <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="c1"># Instanciation</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span> <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">)</span>
+
+<span class="nn">Input In [10],</span> in <span class="ni">Memristor.__init__</span><span class="nt">(self, name, K, C, Ron, Roff)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="c1"># Résistance dépendante de l&#39;état</span>
+<span class="ne">---&gt; </span><span class="mi">22</span> <span class="bp">self</span><span class="o">.</span><span class="n">BehavioralResistor</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="s1">&#39;mem&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">resistance</span><span class="o">=</span><span class="s1">&#39;Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\__init__.py:56,</span> in <span class="ni">_make_function.&lt;locals&gt;.function</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="k">return</span> <span class="n">element_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\Netlist.py:691,</span> in <span class="ni">FixedPinElement.__init__</span><span class="nt">(self, netlist, name, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span>             <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s2">&quot;Node &#39;</span><span class="si">{}</span><span class="s2">&#39; is missing for element </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pin_definition</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>         <span class="n">pin_definition_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">pin_definition</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">691</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">693</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pin_definition</span><span class="p">,</span> <span class="n">netlist</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span>               <span class="k">for</span> <span class="n">pin_definition</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pin_definition_nodes</span><span class="p">]</span>
+
+<span class="nn">File ~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\Netlist.py:526,</span> in <span class="ni">Element.__init__</span><span class="nt">(self, netlist, name, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span>         <span class="k">pass</span> <span class="c1"># cf. NonLinearVoltageSource</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">526</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown argument </span><span class="si">{}</span><span class="s1">=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pins</span> <span class="o">=</span> <span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="n">netlist</span><span class="o">.</span><span class="n">_add_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: Unknown argument resistance=Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Base_componant"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-creation-memristor">Class creation Memristor</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sacha COMTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

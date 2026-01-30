@@ -1,0 +1,1182 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Schmitt Trigger using a CMOS Transistor &#8212; Book on electronics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Secrurity/Schmitt_Trigger/Hysteresis_CMOS';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Book on electronics - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Book on electronics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Book on Electronics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/diode/Diode.html">Diode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Passif circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Passif/RC.html">RL Circuit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Essential Circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../General/Pont_diode.html">Diode Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Regulator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Amplificator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/01_Introduction_amplificateur.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/02_Inverting_amplifier.html">Inverting Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/04_Suiveur.html">Voltage Follower (Buffer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Class A amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/09_class_B.html">Amplificateur class B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/10_class_AB.html">Amplificateur class AB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/11_class_C.html">Amplificateur class C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/12_class_D.html">Amplificateur class D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logic Gate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/NOT.html">Porte NOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/AND.html">AND and NAND Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/OR.html">OR and NOR Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/XOR.html">XOR and NXOR Gate</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Schmit Trigger</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Schmitt Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hysteresis_aop.html">Schmitt Trigger Using an Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hysteresis_transistor.html">Schmitt Trigger using a Bipolar Transistor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Introduction/Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Introduction/Jonction_PN.html">Jonction PN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FSecrurity/Schmitt_Trigger/Hysteresis_CMOS.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Secrurity/Schmitt_Trigger/Hysteresis_CMOS.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Schmitt Trigger using a CMOS Transistor</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit">Circuit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehension-du-circuit">Compréhension du circuit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#porte-inverseur">Porte Inverseur</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehension-du-circuit-complet">Compréhension du circuit complet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valeur-de-seuil">Valeur de seuil</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transistor-nmos">Transistor NMOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-du-circuit-complet">Simulation du circuit complet</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="schmitt-trigger-using-a-cmos-transistor">
+<h1>Schmitt Trigger using a CMOS Transistor<a class="headerlink" href="#schmitt-trigger-using-a-cmos-transistor" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuitFactory</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Probe.Plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Library</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpiceLibrary</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Probe.WaveForm</span><span class="w"> </span><span class="kn">import</span> <span class="n">OperatingPoint</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<p>The objective of this chapter is to present the design of a Schmitt trigger implemented using CMOS transistors. In the previous chapter, a Schmitt trigger based on bipolar transistors was analyzed. While bipolar solutions are functionally effective, they are relatively complex to implement at the layout and process layer level, particularly in the context of digital integrated circuits.</p>
+<p>By contrast, CMOS technology offers a much simpler and more scalable fabrication process. It is therefore far better suited for large-scale integration and low-power digital systems. As a result, CMOS-based Schmitt triggers are widely adopted in modern electronic designs, especially in integrated digital and mixed-signal applications.</p>
+<section id="circuit">
+<h3>Circuit<a class="headerlink" href="#circuit" title="Link to this heading">#</a></h3>
+<p>The circuit is shown in Figure <a class="reference internal" href="#cmos-circuit"><span class="std std-ref">CMOS-based Schmitt trigger circuit</span></a>. It consists of four CMOS transistors: two PMOS transistors and two NMOS transistors arranged to implement a Schmitt trigger behavior.</p>
+<figure class="align-center" id="cmos-circuit">
+<a class="reference internal image-reference" href="../../_images/CMOS_circuit.svg"><img alt="../../_images/CMOS_circuit.svg" src="../../_images/CMOS_circuit.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">CMOS-based Schmitt trigger circuit</span><a class="headerlink" href="#cmos-circuit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The objective of the next section is to analyze the operating principle of this circuit and to understand how the interaction between the transistors creates the hysteresis effect.</p>
+</section>
+</section>
+<section id="comprehension-du-circuit">
+<h2>Compréhension du circuit<a class="headerlink" href="#comprehension-du-circuit" title="Link to this heading">#</a></h2>
+<section id="porte-inverseur">
+<h3>Porte Inverseur<a class="headerlink" href="#porte-inverseur" title="Link to this heading">#</a></h3>
+<p>Tout d’abord, il est possible de voir qu’il y a un schéma très proche d’un circuit inverseur avec les transistors <em>M2</em> et <em>M3</em>. La <a class="reference internal" href="#cmos-circuit-firt-part"><span class="std std-ref">Montage inverseur avec CMOS</span></a> permet de visualiser le montage.</p>
+<figure class="align-center" id="cmos-circuit-firt-part">
+<a class="reference internal image-reference" href="../../_images/CMOS_circuit_firt_part.svg"><img alt="../../_images/CMOS_circuit_firt_part.svg" src="../../_images/CMOS_circuit_firt_part.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Montage inverseur avec CMOS</span><a class="headerlink" href="#cmos-circuit-firt-part" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Le montage est très simple a comprendre la <a class="reference internal" href="#cmos-circuit-firt-part-demonstration"><span class="std std-ref">Visualisation des CMOS dans un montage inverseur</span></a> résume sont fonctionnement.</p>
+<ul class="simple">
+<li><p>Lorsqu’il y a un niveau haut ou un <code class="docutils literal notranslate"><span class="pre">1</span></code> en entrée alors :</p>
+<ul>
+<li><p>Le transistor <span class="math notranslate nohighlight">\(M_2\)</span> est bloqué</p></li>
+<li><p>Le transistor <span class="math notranslate nohighlight">\(M_3\)</span> est passant et donc la sortie <span class="math notranslate nohighlight">\(V_{int}\)</span> est relier à la masse ce qui va donner un niveau bas ou <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+</li>
+<li><p>A l’inverse lorsqu’il y a un niveau bas ou un <code class="docutils literal notranslate"><span class="pre">0</span></code> en entrées alors :</p>
+<ul>
+<li><p>Le transistor <span class="math notranslate nohighlight">\(M_3\)</span> est bloqué</p></li>
+<li><p>Le transistor <span class="math notranslate nohighlight">\(M_2\)</span> est passant et donc la sortie <span class="math notranslate nohighlight">\(V_{int}\)</span> est relier à la sortie <span class="math notranslate nohighlight">\(V_DD\)</span> du circuit et donc au niveau haut ou <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-center" id="cmos-circuit-firt-part-demonstration">
+<a class="reference internal image-reference" href="../../_images/CMOS_circuit_firt_part_demonstration.svg"><img alt="../../_images/CMOS_circuit_firt_part_demonstration.svg" src="../../_images/CMOS_circuit_firt_part_demonstration.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Visualisation des CMOS dans un montage inverseur</span><a class="headerlink" href="#cmos-circuit-firt-part-demonstration" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Les lignes de code a pour objectif de simuler cette partie de signal</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Wn_list</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> 
+<span class="n">Wp_list</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">list_in</span>  <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_out</span> <span class="o">=</span> <span class="p">[]</span> 
+
+<span class="k">for</span> <span class="n">Wn</span><span class="p">,</span> <span class="n">Wp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">Wn_list</span><span class="p">,</span> <span class="n">Wp_list</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;CMOS Inverter&#39;</span><span class="p">)</span>
+    
+    <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_nmos_bulk.mod&#39;</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_pmos_bulk.mod&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Alimentation</span>
+    <span class="n">VDD</span> <span class="o">=</span> <span class="mf">1.2</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;dd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">VDD</span><span class="nd">@u_V</span><span class="p">)</span>
+    
+    <span class="c1"># Entrée</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">0</span><span class="nd">@u_V</span><span class="p">)</span>
+    
+    <span class="c1"># NMOS</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+        <span class="s1">&#39;n&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;vout&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+        <span class="n">l</span><span class="o">=</span><span class="mf">.35</span><span class="nd">@u_um</span><span class="p">,</span>
+        <span class="n">w</span><span class="o">=</span><span class="n">Wn</span><span class="nd">@u_um</span>        
+    <span class="p">)</span>
+    
+    <span class="c1"># PMOS</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+        <span class="s1">&#39;p&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;vout&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+        <span class="n">l</span><span class="o">=</span><span class="mf">.35</span><span class="nd">@u_um</span><span class="p">,</span>
+        <span class="n">w</span><span class="o">=</span><span class="n">Wp</span><span class="nd">@u_um</span>      <span class="c1"># ← à modifier</span>
+    <span class="p">)</span>
+
+    
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vin</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">VDD</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
+
+    <span class="n">list_in</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">])</span> 
+    <span class="n">list_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;vout&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">Wp</span><span class="p">,</span> <span class="n">Wn</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list_in</span><span class="p">,</span> <span class="n">list_out</span><span class="p">,</span> <span class="n">Wp_list</span><span class="p">,</span> <span class="n">Wn_list</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Wp=</span><span class="si">{</span><span class="n">Wp</span><span class="si">}</span><span class="s1">, Wn=</span><span class="si">{</span><span class="n">Wn</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vin [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Vout [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/270c6c395b17b414358c1bd51cedb1bab69077aeff527e37835b23e120203a26.png" src="../../_images/270c6c395b17b414358c1bd51cedb1bab69077aeff527e37835b23e120203a26.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">Wp</span><span class="p">,</span> <span class="n">Wn</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list_in</span><span class="p">,</span> <span class="n">list_out</span><span class="p">,</span> <span class="n">Wp_list</span><span class="p">,</span> <span class="n">Wn_list</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Wp=</span><span class="si">{</span><span class="n">Wp</span><span class="si">}</span><span class="s1">, Wn=</span><span class="si">{</span><span class="n">Wn</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vin [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Vout [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">.4</span><span class="p">,</span> <span class="mf">.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ed548bd7d9c64675c5f1d634ea3281ced8da96633abc61262200b2c4bb5a1b09.png" src="../../_images/ed548bd7d9c64675c5f1d634ea3281ced8da96633abc61262200b2c4bb5a1b09.png" />
+</div>
+</div>
+<p>Plusieurs points sont à noté sur se graphique.</p>
+<p>Tout d’abord, il est possible de bien voir la porte inverseur. Lorsque <span class="math notranslate nohighlight">\(V_{in}\)</span> est faible alors il est possible de voir que la tension de sortie <span class="math notranslate nohighlight">\(V_{out}\)</span> est importante et vis-versa. Si la tension d’entrée est forte <span class="math notranslate nohighlight">\(V_{in}\)</span>, alors il est possible de voir que la tension de sortie est faible <span class="math notranslate nohighlight">\(V_{out}\)</span>.</p>
+<p>Un autre point qui est important est que les palier change en fonction de la taille de la grille, <em>w</em> / <em>l</em> (<a class="reference internal" href="#cmos-circuit-w-l"><span class="std std-ref">Dimension W L d’une grille sur un composant CMOS</span></a>) il est possible de voir que la tension de seuil change. C’est un des points très importants pour jouer sur les valeurs seuils.</p>
+<figure class="align-center" id="cmos-circuit-w-l">
+<a class="reference internal image-reference" href="../../_images/CMOS_circuit_W_L.svg"><img alt="../../_images/CMOS_circuit_W_L.svg" src="../../_images/CMOS_circuit_W_L.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Dimension W L d’une grille sur un composant CMOS</span><a class="headerlink" href="#cmos-circuit-w-l" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Le dernier point important est que les palier ne sont pas aussi propre que prévu. Lorsqu’on dessine les paliers le résultat attendu est la chose suivante donc ce sont des palier parfaitement plan (or dans notre cas se n’est pas le cas). De plus les transistion ne sont pas parfaitement vertical.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transition</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">nbr_point</span> <span class="o">=</span> <span class="n">list_in</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list_in</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">list_out</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulation&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">list_in</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+         <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">VDD</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">transition</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nbr_point</span> <span class="o">-</span> <span class="n">transition</span><span class="p">)]),</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theorique&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vin [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Vout [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/dfd7ee3e6510d248d9647a6ca80572a5ea095f096ed73cfa1b839ad4b24a87fe.png" src="../../_images/dfd7ee3e6510d248d9647a6ca80572a5ea095f096ed73cfa1b839ad4b24a87fe.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="comprehension-du-circuit-complet">
+<h2>Compréhension du circuit complet<a class="headerlink" href="#comprehension-du-circuit-complet" title="Link to this heading">#</a></h2>
+<p>Maintenant, que nous avons étudier rapidement une porte inverseuse, l’objectif cette fois est d’étudier, le circuit complet.</p>
+<p>Mais avant de cela il faut des briques en plus, qui n’ont pas encore été énoncé, l’un de ces briques et la valeur de seuil <span class="math notranslate nohighlight">\(V_{TH}\)</span></p>
+<section id="valeur-de-seuil">
+<h3>Valeur de seuil<a class="headerlink" href="#valeur-de-seuil" title="Link to this heading">#</a></h3>
+<section id="transistor-nmos">
+<h4>Transistor NMOS<a class="headerlink" href="#transistor-nmos" title="Link to this heading">#</a></h4>
+<p>Tout d’abord, la valeur de seuil d’un NMOS <span class="math notranslate nohighlight">\(V_\text{THN}\)</span> est la tension grille-source miminmales à partie de laquelle :</p>
+<ul class="simple">
+<li><p>un canal d’inversion n se forme</p></li>
+<li><p>le transistor commence à conduire</p></li>
+</ul>
+<p>Pour cela il faut que la tension entre la la grille et la source soit supérieur à cette tension de seuil :</p>
+<div class="math notranslate nohighlight">
+\[V_{GS} \approx V_{THN}\]</div>
+<p>Donc l’objectif est de déterminer cette valeur de <span class="math notranslate nohighlight">\(V_{THN}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+V_{THN} = V_{FB} + 2\phi_F + \gamma
+\left(\sqrt{2\phi_F + V_{SB}} - \sqrt{2\phi_F}\right)
+\]</div>
+<p>avec :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V_{FB}\)</span> - tension de bande plate : <span class="math notranslate nohighlight">\(V_{FB} = \Phi_{MS} - \frac{Q_{ox}}{C_{ox}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi_F\)</span> - potentiel de Fermi : <span class="math notranslate nohighlight">\(\phi_F = \frac{kT}{q}\ln\left(\frac{N_A}{n_i}\right)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> - coefficient d’effet de substrat : <span class="math notranslate nohighlight">\(\gamma = \frac{\sqrt{2q\varepsilon_{si}N_A}}{C_{ox}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{SB}\)</span> - tension source–bulk : <strong>effet body</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Très</span> <span class="n">bonne</span> <span class="n">question</span> <span class="err">—</span> <span class="n">c</span><span class="err">’</span><span class="n">est</span> <span class="o">**</span><span class="n">fondamental</span><span class="o">**</span> <span class="n">pour</span> <span class="n">comprendre</span> <span class="n">ton</span> <span class="n">trigger</span> <span class="n">de</span> <span class="n">Schmitt</span> <span class="err">👍</span>
+<span class="n">Je</span> <span class="n">vais</span> <span class="n">répondre</span> <span class="o">**</span><span class="n">de</span> <span class="n">façon</span> <span class="n">progressive</span><span class="o">**</span><span class="p">,</span> <span class="n">du</span> <span class="o">**</span><span class="n">physique</span><span class="o">**</span> <span class="n">au</span> <span class="o">**</span><span class="n">pratique</span> <span class="n">en</span> <span class="n">SPICE</span><span class="o">**</span><span class="p">,</span> <span class="n">avec</span> <span class="n">les</span> <span class="o">**</span><span class="n">formules</span> <span class="n">clés</span><span class="o">**.</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 1️⃣ Définition de ( V_{THN} )</span>
+
+<span class="n">Le</span> <span class="o">**</span><span class="n">seuil</span> <span class="n">d</span><span class="err">’</span><span class="n">un</span> <span class="n">NMOS</span><span class="o">**</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">}</span> <span class="p">)</span> <span class="n">est</span> <span class="n">la</span> <span class="o">**</span><span class="n">tension</span> <span class="n">grille</span><span class="err">–</span><span class="n">source</span> <span class="n">minimale</span><span class="o">**</span> <span class="n">à</span> <span class="n">partir</span> <span class="n">de</span> <span class="n">laquelle</span> <span class="p">:</span>
+
+<span class="o">*</span> <span class="n">un</span> <span class="o">**</span><span class="n">canal</span> <span class="n">d</span><span class="err">’</span><span class="n">inversion</span> <span class="n">n</span><span class="o">**</span> <span class="n">se</span> <span class="n">forme</span>
+<span class="o">*</span> <span class="n">le</span> <span class="n">transistor</span> <span class="n">commence</span> <span class="n">à</span> <span class="n">conduire</span>
+
+<span class="n">Condition</span> <span class="p">:</span>
+<span class="p">[</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">GS</span><span class="p">}</span> \<span class="n">ge</span> <span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 2️⃣ Formule physique complète (MOS long canal)</span>
+
+<span class="n">La</span> <span class="n">formule</span> <span class="n">théorique</span> <span class="n">est</span> <span class="p">:</span>
+
+<span class="p">[</span>
+\<span class="n">boxed</span><span class="p">{</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">}</span> <span class="o">=</span> <span class="n">V_</span><span class="p">{</span><span class="n">FB</span><span class="p">}</span> <span class="o">+</span> <span class="mi">2</span>\<span class="n">phi_F</span> <span class="o">+</span> \<span class="n">gamma</span>
+\<span class="n">left</span><span class="p">(</span>\<span class="n">sqrt</span><span class="p">{</span><span class="mi">2</span>\<span class="n">phi_F</span> <span class="o">+</span> <span class="n">V_</span><span class="p">{</span><span class="n">SB</span><span class="p">}}</span> <span class="o">-</span> \<span class="n">sqrt</span><span class="p">{</span><span class="mi">2</span>\<span class="n">phi_F</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1">### Où :</span>
+
+<span class="c1">### 🔹 ( V_{FB} ) — tension de bande plate</span>
+
+<span class="p">[</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">FB</span><span class="p">}</span> <span class="o">=</span> \<span class="n">Phi_</span><span class="p">{</span><span class="n">MS</span><span class="p">}</span> <span class="o">-</span> \<span class="n">frac</span><span class="p">{</span><span class="n">Q_</span><span class="p">{</span><span class="n">ox</span><span class="p">}}{</span><span class="n">C_</span><span class="p">{</span><span class="n">ox</span><span class="p">}}</span>
+<span class="p">]</span>
+
+<span class="c1">### 🔹 ( \phi_F ) — potentiel de Fermi</span>
+
+<span class="p">[</span>
+\<span class="n">phi_F</span> <span class="o">=</span> \<span class="n">frac</span><span class="p">{</span><span class="n">kT</span><span class="p">}{</span><span class="n">q</span><span class="p">}</span>\<span class="n">ln</span>\<span class="n">left</span><span class="p">(</span>\<span class="n">frac</span><span class="p">{</span><span class="n">N_A</span><span class="p">}{</span><span class="n">n_i</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1">### 🔹 ( \gamma ) — coefficient d’effet de substrat</span>
+
+<span class="p">[</span>
+\<span class="n">gamma</span> <span class="o">=</span> \<span class="n">frac</span><span class="p">{</span>\<span class="n">sqrt</span><span class="p">{</span><span class="mi">2</span><span class="n">q</span>\<span class="n">varepsilon_</span><span class="p">{</span><span class="n">si</span><span class="p">}</span><span class="n">N_A</span><span class="p">}}{</span><span class="n">C_</span><span class="p">{</span><span class="n">ox</span><span class="p">}}</span>
+<span class="p">]</span>
+
+<span class="c1">### 🔹 ( V_{SB} ) — tension source–bulk</span>
+
+<span class="err">→</span> <span class="o">**</span><span class="n">effet</span> <span class="n">body</span><span class="o">**</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 3️⃣ Cas simplifié (bulk = source)</span>
+
+<span class="n">Dans</span> <span class="o">**</span><span class="mi">90</span> <span class="o">%</span> <span class="n">des</span> <span class="n">circuits</span> <span class="n">CMOS</span><span class="o">**</span> <span class="p">:</span>
+
+<span class="p">[</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">SB</span><span class="p">}</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">]</span>
+
+<span class="n">Donc</span> <span class="p">:</span>
+<span class="p">[</span>
+\<span class="n">boxed</span><span class="p">{</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">}</span> <span class="o">=</span> <span class="n">V_</span><span class="p">{</span><span class="n">TH0</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">avec</span> <span class="p">:</span>
+<span class="p">[</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">TH0</span><span class="p">}</span> <span class="o">=</span> <span class="n">V_</span><span class="p">{</span><span class="n">FB</span><span class="p">}</span> <span class="o">+</span> <span class="mi">2</span>\<span class="n">phi_F</span>
+<span class="p">]</span>
+
+<span class="err">👉</span> <span class="n">C</span><span class="err">’</span><span class="n">est</span> <span class="o">**</span><span class="n">le</span> <span class="n">seuil</span> <span class="n">nominal</span><span class="o">**</span> <span class="n">fourni</span> <span class="n">par</span> <span class="n">la</span> <span class="n">techno</span><span class="o">.</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 4️⃣ Valeurs typiques (ordre de grandeur)</span>
+
+<span class="o">|</span> <span class="n">Technologie</span> <span class="o">|</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">}</span> <span class="p">)</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="o">-----------</span> <span class="o">|</span> <span class="o">-------------</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">180</span> <span class="n">nm</span>      <span class="o">|</span> <span class="mf">0.45</span> <span class="err">–</span> <span class="mf">0.55</span> <span class="n">V</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">130</span> <span class="n">nm</span>      <span class="o">|</span> <span class="mf">0.40</span> <span class="err">–</span> <span class="mf">0.50</span> <span class="n">V</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">65</span> <span class="n">nm</span>       <span class="o">|</span> <span class="mf">0.30</span> <span class="err">–</span> <span class="mf">0.45</span> <span class="n">V</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">Low</span><span class="o">-</span><span class="n">Vt</span>      <span class="o">|</span> <span class="mf">0.20</span> <span class="err">–</span> <span class="mf">0.30</span> <span class="n">V</span> <span class="o">|</span>
+
+<span class="err">➡️</span> <span class="n">En</span> <span class="o">**</span><span class="n">PTM</span> <span class="mi">65</span> <span class="n">nm</span><span class="o">**</span><span class="p">,</span> <span class="n">typiquement</span> <span class="p">:</span>
+<span class="p">[</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">}</span> \<span class="n">approx</span> <span class="mf">0.35</span>\ \<span class="n">text</span><span class="p">{</span><span class="n">V</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 5️⃣ Influence de l’effet body (important dans ton Schmitt)</span>
+
+<span class="n">Si</span> <span class="o">**</span><span class="n">source</span> <span class="err">≠</span> <span class="n">bulk</span><span class="o">**</span><span class="p">,</span> <span class="n">alors</span> <span class="p">:</span>
+
+<span class="p">[</span>
+\<span class="n">Delta</span> <span class="n">V_</span><span class="p">{</span><span class="n">TH</span><span class="p">}</span> <span class="o">=</span> \<span class="n">gamma</span>
+\<span class="n">left</span><span class="p">(</span>\<span class="n">sqrt</span><span class="p">{</span><span class="mi">2</span>\<span class="n">phi_F</span> <span class="o">+</span> <span class="n">V_</span><span class="p">{</span><span class="n">SB</span><span class="p">}}</span> <span class="o">-</span> \<span class="n">sqrt</span><span class="p">{</span><span class="mi">2</span>\<span class="n">phi_F</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="err">👉</span> <span class="n">Exemple</span> <span class="p">:</span>
+
+<span class="o">*</span> <span class="p">(</span> \<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="p">)</span>
+<span class="o">*</span> <span class="p">(</span> <span class="mi">2</span>\<span class="n">phi_F</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="p">)</span>
+<span class="o">*</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">SB</span><span class="p">}</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="p">)</span>
+
+<span class="p">[</span>
+\<span class="n">Delta</span> <span class="n">V_</span><span class="p">{</span><span class="n">TH</span><span class="p">}</span> \<span class="n">approx</span> <span class="mf">0.11</span>\ \<span class="n">text</span><span class="p">{</span><span class="n">V</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="err">➡️</span> <span class="o">**</span><span class="n">Le</span> <span class="n">seuil</span> <span class="n">augmente</span><span class="o">**</span> <span class="err">→</span> <span class="n">exactement</span> <span class="n">ce</span> <span class="n">qui</span> <span class="n">crée</span> <span class="n">l</span><span class="err">’</span><span class="n">hystérésis</span><span class="o">.</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 6️⃣ Modèle pratique (SPICE niveau circuit)</span>
+
+<span class="n">En</span> <span class="n">analyse</span> <span class="n">logique</span> <span class="o">/</span> <span class="n">Schmitt</span> <span class="p">:</span>
+
+<span class="p">[</span>
+<span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">,</span>\<span class="n">text</span><span class="p">{</span><span class="n">eff</span><span class="p">}}</span> \<span class="n">approx</span> <span class="n">V_</span><span class="p">{</span><span class="n">TH0</span><span class="p">}</span> <span class="o">+</span> \<span class="n">gamma</span> \<span class="n">left</span><span class="p">(</span>\<span class="n">sqrt</span><span class="p">{</span><span class="mi">2</span>\<span class="n">phi_F</span> <span class="o">+</span> <span class="n">V_</span><span class="p">{</span><span class="n">SB</span><span class="p">}}</span> <span class="o">-</span> \<span class="n">sqrt</span><span class="p">{</span><span class="mi">2</span>\<span class="n">phi_F</span><span class="p">}</span>\<span class="n">right</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">Et</span> <span class="n">le</span> <span class="n">transistor</span> <span class="n">commence</span> <span class="n">à</span> <span class="n">conduire</span> <span class="n">quand</span> <span class="p">:</span>
+<span class="p">[</span>
+<span class="n">V_</span><span class="p">{</span><span class="ow">in</span><span class="p">}</span> <span class="o">&gt;</span> <span class="n">V_</span><span class="p">{</span><span class="n">source</span><span class="p">}</span> <span class="o">+</span> <span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">,</span>\<span class="n">text</span><span class="p">{</span><span class="n">eff</span><span class="p">}}</span>
+<span class="p">]</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 7️⃣ Comment obtenir ( V_{THN} ) dans SPICE</span>
+
+<span class="c1">### 📌 Méthode 1 — Lire le modèle</span>
+
+<span class="n">Dans</span> <span class="n">ton</span> <span class="n">fichier</span> <span class="err">`</span><span class="o">.</span><span class="n">mod</span><span class="err">`</span> <span class="p">:</span>
+
+<span class="err">```</span><span class="n">spice</span>
+<span class="n">VTH0</span> <span class="o">=</span> <span class="mf">0.36</span>
+<span class="n">GAMMA</span> <span class="o">=</span> <span class="mf">0.45</span>
+<span class="n">PHI</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="err">```</span>
+
+<span class="c1">### 📌 Méthode 2 — Simulation DC</span>
+
+<span class="err">```</span><span class="n">spice</span>
+<span class="o">.</span><span class="n">dc</span> <span class="n">Vin</span> <span class="mi">0</span> <span class="mf">1.2</span> <span class="mi">1</span><span class="n">m</span>
+<span class="err">```</span>
+
+<span class="err">→</span> <span class="n">Observer</span> <span class="n">le</span> <span class="n">courant</span> <span class="p">(</span> <span class="n">I_D</span> <span class="p">)</span> <span class="n">vs</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">GS</span><span class="p">}</span> <span class="p">)</span>
+
+<span class="o">---</span>
+
+<span class="c1"># 8️⃣ Lien direct avec ton Schmitt trigger</span>
+
+<span class="n">Dans</span> <span class="n">ton</span> <span class="n">montage</span> <span class="p">:</span>
+
+<span class="o">*</span> <span class="n">Quand</span> <span class="err">`</span><span class="n">vinter</span><span class="err">`</span> <span class="n">monte</span> <span class="err">→</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">SB</span><span class="p">}</span> \<span class="n">uparrow</span> <span class="p">)</span>
+<span class="o">*</span> <span class="n">Donc</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">THN</span><span class="p">}</span> \<span class="n">uparrow</span> <span class="p">)</span>
+<span class="o">*</span> <span class="n">Donc</span> <span class="n">le</span> <span class="n">seuil</span> <span class="n">de</span> <span class="n">bascule</span> <span class="n">change</span>
+
+<span class="err">👉</span> <span class="o">**</span><span class="n">L</span><span class="err">’</span><span class="n">hystérésis</span> <span class="n">vient</span> <span class="n">directement</span> <span class="n">de</span> <span class="n">la</span> <span class="n">dépendance</span> <span class="n">de</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">TH</span><span class="p">}</span> <span class="p">)</span> <span class="n">à</span> <span class="p">(</span> <span class="n">V_</span><span class="p">{</span><span class="n">SB</span><span class="p">}</span> <span class="p">)</span><span class="o">**</span>
+
+<span class="o">---</span>
+
+<span class="c1">## 🔥 En une phrase</span>
+
+<span class="o">&gt;</span> <span class="n">Le</span> <span class="n">seuil</span> <span class="n">d</span><span class="err">’</span><span class="n">un</span> <span class="n">NMOS</span> <span class="n">se</span> <span class="n">calcule</span> <span class="n">à</span> <span class="n">partir</span> <span class="n">de</span> <span class="n">son</span> <span class="n">seuil</span> <span class="n">nominal</span> <span class="o">**</span><span class="n">modifié</span> <span class="n">par</span> <span class="n">l</span><span class="err">’</span><span class="n">effet</span> <span class="n">body</span><span class="o">**</span><span class="p">,</span> <span class="n">et</span> <span class="n">c</span><span class="err">’</span><span class="n">est</span> <span class="n">exactement</span> <span class="n">ce</span> <span class="n">mécanisme</span> <span class="n">que</span> <span class="n">ton</span> <span class="n">trigger</span> <span class="n">de</span> <span class="n">Schmitt</span> <span class="n">exploite</span><span class="o">.</span>
+
+<span class="n">Si</span> <span class="n">tu</span> <span class="n">veux</span><span class="p">,</span> <span class="n">je</span> <span class="n">peux</span> <span class="n">maintenant</span> <span class="p">:</span>
+
+<span class="o">*</span> <span class="err">🔬</span> <span class="n">Calculer</span> <span class="o">**</span><span class="n">les</span> <span class="n">seuils</span> <span class="n">haut</span> <span class="n">et</span> <span class="n">bas</span><span class="o">**</span> <span class="n">de</span> <span class="n">TON</span> <span class="n">montage</span>
+<span class="o">*</span> <span class="err">📊</span> <span class="n">Faire</span> <span class="n">le</span> <span class="n">lien</span> <span class="o">**</span><span class="n">équations</span> <span class="err">⇄</span> <span class="n">simulation</span><span class="o">**</span>
+<span class="o">*</span> <span class="err">🧠</span> <span class="n">T</span><span class="err">’</span><span class="n">expliquer</span> <span class="n">la</span> <span class="n">même</span> <span class="n">chose</span> <span class="n">côté</span> <span class="o">**</span><span class="n">PMOS</span><span class="o">**</span>
+
+<span class="n">Dis</span><span class="o">-</span><span class="n">moi</span> <span class="err">👌</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+    <span class="n">Très</span> <span class="n">bonne</span> <span class="n">question</span> <span class="err">—</span> <span class="n">c</span><span class="err">’</span><span class="n">est</span> <span class="o">**</span><span class="n">fondamental</span><span class="o">**</span> <span class="n">pour</span> <span class="n">comprendre</span> <span class="n">ton</span> <span class="n">trigger</span> <span class="n">de</span> <span class="n">Schmitt</span> <span class="err">👍</span>
+                        <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid character &#39;—&#39; (U+2014)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="simulation-du-circuit-complet">
+<h2>Simulation du circuit complet<a class="headerlink" href="#simulation-du-circuit-complet" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># CMOS AND Gate (implemented as NAND + inverter if needed)</span>
+<span class="c1"># Technology: PTM 65 nm</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Create the circuit object</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Hysteresis CMOS&#39;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Model Libraries</span>
+<span class="c1"># Include NMOS and PMOS transistor models</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_nmos_bulk.mod&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_pmos_bulk.mod&#39;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Power Supply Definition</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Supply voltage</span>
+<span class="n">VDD</span> <span class="o">=</span> <span class="mf">1.2</span>
+
+<span class="c1"># DC power supply (VDD)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;dd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">)</span>
+
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Input Signal Definitions</span>
+<span class="c1"># Two pulse voltage sources are used to test all logic states</span>
+<span class="c1"># ============================================================</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">2</span>                        <span class="c1"># fréquence [Hz]</span>
+<span class="n">V_offset</span> <span class="o">=</span> <span class="n">VDD</span><span class="o">/</span><span class="mi">2</span>             <span class="c1"># offset DC</span>
+<span class="n">V_amplitude</span> <span class="o">=</span> <span class="n">VDD</span><span class="o">/</span><span class="mi">2</span>          <span class="c1"># amplitude du signal sin</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">offset</span><span class="o">=</span><span class="n">V_offset</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">amplitude</span><span class="o">=</span><span class="n">V_amplitude</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="n">f</span> <span class="o">@</span> <span class="n">u_Hz</span><span class="p">,</span>
+    <span class="n">delay</span><span class="o">=</span><span class="n">delay</span> <span class="o">@</span> <span class="n">u_s</span>
+<span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># CMOS Logic Core</span>
+<span class="c1"># Trigger Implementation</span>
+<span class="c1"># ============================================================</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+    <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">@</span> <span class="n">u_um</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="s1">&#39;vinter&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+    <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">@</span> <span class="n">u_um</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+    <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="s1">&#39;vinter&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+    <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_um</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+    <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+    <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_um</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+    <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;vinter&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+    <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">@</span> <span class="n">u_um</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+    <span class="mi">6</span><span class="p">,</span>
+    <span class="s1">&#39;v+&#39;</span><span class="p">,</span> <span class="s1">&#39;vinter&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+    <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+    <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_um</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Transient Simulation</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_ms</span><span class="p">,</span>    <span class="c1"># pas de temps : 1 ms (à ajuster si besoin)</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">2</span><span class="nd">@u_s</span>       <span class="c1"># durée totale : 2 secondes</span>
+<span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Transient Simulation</span>
+<span class="c1"># ============================================================</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vin&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vinter&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4b99934658d1a324104c4495a108a7aa6c1192a89f99aa8082d0d995d247c81f.png" src="../../_images/4b99934658d1a324104c4495a108a7aa6c1192a89f99aa8082d0d995d247c81f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vin&quot;</span><span class="p">],</span> <span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vinter&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2923875a250&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/637ce0385a4fd6d084979acd85409df160087f4f61512d66b74a52f50bbab696.png" src="../../_images/637ce0385a4fd6d084979acd85409df160087f4f61512d66b74a52f50bbab696.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Secrurity\Schmitt_Trigger"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit">Circuit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehension-du-circuit">Compréhension du circuit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#porte-inverseur">Porte Inverseur</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehension-du-circuit-complet">Compréhension du circuit complet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valeur-de-seuil">Valeur de seuil</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transistor-nmos">Transistor NMOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-du-circuit-complet">Simulation du circuit complet</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sacha COMTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bus I2C &#8212; Book on electronics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'System_communication/filaire/I2C';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Book on electronics - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Book on electronics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Book on Electronics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/diode/Diode.html">Diode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Passif circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Passif/RC.html">RL Circuit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Essential Circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../General/Pont_diode.html">Diode Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Regulator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Amplificator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/01_Introduction_amplificateur.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/02_Inverting_amplifier.html">Inverting Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/04_Suiveur.html">Voltage Follower (Buffer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Class A amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/09_class_B.html">Amplificateur class B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/10_class_AB.html">Amplificateur class AB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/11_class_C.html">Amplificateur class C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/12_class_D.html">Amplificateur class D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logic Gate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/NOT.html">Porte NOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/AND.html">AND and NAND Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/OR.html">OR and NOR Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/XOR.html">XOR and NXOR Gate</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Schmit Trigger</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/intro.html">Schmitt Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/Hysteresis_aop.html">Schmitt Trigger Using an Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/Hysteresis_transistor.html">Schmitt Trigger using a Bipolar Transistor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Introduction/Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Introduction/Jonction_PN.html">Jonction PN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FSystem_communication/filaire/I2C.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/System_communication/filaire/I2C.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bus I2C</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectif">Objectif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-overview">Quick Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">Topology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scl-signal">SCL Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sda-signal">SDA Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#master-slave">Master / Slave</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-visualization">Communication Visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-timing-diagram">Fundamental Timing Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start">Start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmission-d-octet">Transmission d’octet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmission-d-une-addresse">Transmission d’une addresse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-ecriture">Lecture / Ecriture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ecriture">Ecriture</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture">Lecture</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fin-de-la-trame">Fin de la trame</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collision">Collision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referance">Referance</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bus-i2c">
+<h1>Bus I2C<a class="headerlink" href="#bus-i2c" title="Link to this heading">#</a></h1>
+<section id="objectif">
+<h2>Objectif<a class="headerlink" href="#objectif" title="Link to this heading">#</a></h2>
+<p>L’objectif de ce notebook a deux objectifs le premier est d’expliquer comment fonctionne le bus I2C. Pour ensuite, voir comment mettre en place l’architecture électronique de se système.</p>
+</section>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="history">
+<h2>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<p>The <span class="math notranslate nohighlight">\(I^2C\)</span> (<em>Inter-Integrated Circuit</em>) standard was developed by Philips in 1982. It is now maintained by NXP Semiconductors, the former semiconductor division of Philips.</p>
+<p>Several major revisions have been released over the years:</p>
+<ul class="simple">
+<li><p>version 1.0 in 1992,</p></li>
+<li><p>version 2.0 in 1998,</p></li>
+<li><p>version 2.1 in 2000,</p></li>
+<li><p>version 3.0 in 2007,</p></li>
+<li><p>version 4.0 in February 2012,</p></li>
+<li><p>version 5.0 in October 2012,</p></li>
+<li><p>version 6.0 in April 2014,</p></li>
+</ul>
+<p>and the current version 7.0, released in October 2021.</p>
+<p>It is important to note that <span class="math notranslate nohighlight">\(I^2C\)</span> is a proprietary bus owned by NXP. Using the bus as a communication standard in your products is free, but if you plan to design or implement your own <span class="math notranslate nohighlight">\(I^2C\)</span> controller (for example, a hardware IP core), you may need to obtain a license from NXP.</p>
+<p>This notebook is based on the <span class="math notranslate nohighlight">\(I^2C\)</span> specification version 7.0.</p>
+</section>
+<section id="quick-overview">
+<h2>Quick Overview<a class="headerlink" href="#quick-overview" title="Link to this heading">#</a></h2>
+<section id="topology">
+<h3>Topology<a class="headerlink" href="#topology" title="Link to this heading">#</a></h3>
+<p>As its name suggests, the <span class="math notranslate nohighlight">\(I^2C\)</span> architecture is a <strong>bus-based architecture</strong>. The <a class="reference internal" href="#bus-topologie"><span class="std std-ref">Visualization of a bus topology</span></a> illustrates this, with the white dots representing the devices connected on the bus. All elements are therefore <strong>connected to the same physical cable(s)</strong>.</p>
+<figure class="align-center" id="bus-topologie">
+<a class="reference internal image-reference" href="../../_images/bus_topologie.svg"><img alt="../../_images/bus_topologie.svg" src="../../_images/bus_topologie.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Visualization of a bus topology</span><a class="headerlink" href="#bus-topologie" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <a class="reference internal" href="#i2c-modelisation-electrique-simple"><span class="std std-ref">First simplified view of an I^2C architecture</span></a> provides a simplified view of the system. Two wires are essential, even though they will not be studied further in detail:</p>
+<ul class="simple">
+<li><p><strong>VDD</strong>: the reference voltage used to bias the lines.</p></li>
+<li><p><strong>GND</strong>: the ground reference of the circuit.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>All devices on the bus must share the same ground reference; otherwise, communication issues may occur.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The system includes two pull-up resistors on the <em>SDA</em> and <em>SCL</em> lines. This means that when nothing is driving the bus, both lines remain at a logical <strong>high (1)</strong> level.</p>
+</div>
+<figure class="align-center" id="i2c-modelisation-electrique-simple">
+<a class="reference internal image-reference" href="../../_images/I2C_modélisation_electrique_simple.svg"><img alt="../../_images/I2C_mod%C3%A9lisation_electrique_simple.svg" src="../../_images/I2C_mod%C3%A9lisation_electrique_simple.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">First simplified view of an <span class="math notranslate nohighlight">\(I^2C\)</span> architecture</span><a class="headerlink" href="#i2c-modelisation-electrique-simple" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="scl-signal">
+<h3>SCL Signal<a class="headerlink" href="#scl-signal" title="Link to this heading">#</a></h3>
+<p>The <strong>SCL</strong> line corresponds to the <strong>clock signal</strong> of the system. It synchronizes all data transfers.</p>
+</section>
+<section id="sda-signal">
+<h3>SDA Signal<a class="headerlink" href="#sda-signal" title="Link to this heading">#</a></h3>
+<p>The <strong>SDA</strong> line is the <strong>data line</strong>, where information is transmitted.</p>
+</section>
+<section id="master-slave">
+<h3>Master / Slave<a class="headerlink" href="#master-slave" title="Link to this heading">#</a></h3>
+<p>As shown in <a class="reference internal" href="#i2c-modelisation-electrique-simple"><span class="std std-ref">First simplified view of an I^2C architecture</span></a>, an <span class="math notranslate nohighlight">\(I^2C\)</span> bus involves two types of roles: <strong>master</strong> and <strong>slave</strong>.</p>
+<p>A <strong>master</strong> can:</p>
+<ul class="simple">
+<li><p>select the device it wants to communicate with,</p></li>
+<li><p>decide whether it wants to read or write,</p></li>
+<li><p>initiate and control the communication process.</p></li>
+</ul>
+<p>A <strong>slave</strong> simply responds to the master and follows its instructions. It never initiates communication on its own.</p>
+</section>
+</section>
+<section id="communication-visualization">
+<h2>Communication Visualization<a class="headerlink" href="#communication-visualization" title="Link to this heading">#</a></h2>
+<section id="fundamental-timing-diagram">
+<h3>Fundamental Timing Diagram<a class="headerlink" href="#fundamental-timing-diagram" title="Link to this heading">#</a></h3>
+<p>A data bit is considered valid on the bus only when the <strong>SCL</strong> line is <strong>high</strong>.
+The transmitter must therefore place the data on the <strong>SDA</strong> line while <strong>SCL is low</strong>, and hold it stable while <strong>SCL is high</strong>, as shown in <a class="reference internal" href="#chronogramme-fondamental-i2c"><span class="std std-ref">Fundamental timing diagram for the I^2C bus</span></a>.
+This behavior is common to most synchronous communication buses.</p>
+<figure class="align-center" id="chronogramme-fondamental-i2c">
+<a class="reference internal image-reference" href="../../_images/chronogramme-fondamental.svg"><img alt="../../_images/chronogramme-fondamental.svg" src="../../_images/chronogramme-fondamental.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Fundamental timing diagram for the <span class="math notranslate nohighlight">\(I^2C\)</span> bus</span><a class="headerlink" href="#chronogramme-fondamental-i2c" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We can now examine how data transmission starts.</p>
+</section>
+<section id="start">
+<h3>Start<a class="headerlink" href="#start" title="Link to this heading">#</a></h3>
+<p>There may be several potential masters on the same bus, but only one can control it at any given time.
+To take control of the bus, a master must generate a <strong>START condition</strong>.</p>
+<p>Before communication begins, both <strong>SDA</strong> and <strong>SCL</strong> are held high thanks to the pull-up resistors.</p>
+<p>To initiate communication, the master pulls <strong>SDA</strong> low <strong>while SCL remains high</strong>.
+This falling edge on SDA, with SCL held high, defines the <strong>START condition</strong>.
+After issuing START, the master controls the bus and begins generating the clock pulses on <strong>SCL</strong>.</p>
+<p>This is illustrated in <a class="reference internal" href="#i2c-start"><span class="std std-ref">START condition generated by the master</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In most systems, microcontrollers are the devices that act as I²C masters.</p>
+</div>
+<figure class="align-center" id="i2c-start">
+<a class="reference internal image-reference" href="../../_images/I2C_start.svg"><img alt="../../_images/I2C_start.svg" src="../../_images/I2C_start.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">START condition generated by the master</span><a class="headerlink" href="#i2c-start" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Resume Start</strong></p>
+<ul class="simple">
+<li><p>SCL   : <span class="math notranslate nohighlight">\(1 → 0\)</span></p></li>
+<li><p>SDA   : <span class="math notranslate nohighlight">\(1 → 0\)</span></p></li>
+<li><p>The master’s control of the clock</p></li>
+</ul>
+</div>
+</section>
+<section id="transmission-d-octet">
+<h3>Transmission d’octet<a class="headerlink" href="#transmission-d-octet" title="Link to this heading">#</a></h3>
+<p>Avant de voir comment le maitre peut choisir avec qu’elle esclave parler, il faut tout d’abord, expliquer comment transmettre des données au sein de la ligne. Tout d’abord, les données sont passer par octet, donc il va y avoir des pacqué avec 8 bits.</p>
+<p>Il va y avoir 7 bits de poids fort et un composant qui ne nomme ACK qui est un bit d’aquitement.</p>
+<p>Le maitre va envoyer les 7 bit sur la ligne. Puis le dernier bit le 8ème, il va le conserver au niveau 1. Et c’est l’esclave qui va forcer la ligne à 0, pour dire qu’il a bien recus toutes les informations. Puis ensuite lme maitre peut continuer de transmettre les informations jusqu’à qu’il lache la ligne.</p>
+<p>La <a class="reference internal" href="#i2c-simple-vision-maitre-esclave"><span class="std std-ref">Transmission d’un octet sur un ligne I2C</span></a> résume toutes les informations ditent.</p>
+<figure class="align-center" id="i2c-simple-vision-maitre-esclave">
+<a class="reference internal image-reference" href="../../_images/I2C_simple_vision_maitre_esclave.svg"><img alt="../../_images/I2C_simple_vision_maitre_esclave.svg" src="../../_images/I2C_simple_vision_maitre_esclave.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Transmission d’un octet sur un ligne I2C</span><a class="headerlink" href="#i2c-simple-vision-maitre-esclave" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>SCL : Horloge imposée par le maître.</p></li>
+<li><p>SDAM : Niveaux de SDA imposés par le maître.</p></li>
+<li><p>SDAE : Niveaux de SDA imposés par l’esclave.</p></li>
+<li><p>SDAR : Niveaux de SDA réels résultants.</p></li>
+</ul>
+</section>
+<section id="transmission-d-une-addresse">
+<h3>Transmission d’une addresse<a class="headerlink" href="#transmission-d-une-addresse" title="Link to this heading">#</a></h3>
+<p>Après que le maitre est prit le controle de la ligne, il faut qu’il puisse choisir avec qu’elle composant il veut communiquer pour cela, il va envoyer une adresse qui correspond au composant ou le maitre veut soit écrire ou lire des informations.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Chaque composant de la ligne doit avoir une adresse et chaque adresse doit être unique. Sinon, cela peut poser des problèmes sur la ligne.</p>
+</div>
+<p>L’addresse d’un composant est codé sur 6 bits. Ce qui donne au maximum 64 appareils qui sont connecté sur la même ligne. Mais attention, toutes les addresses ne sont pas disponible. Ce qui réduit le nombre de composant possible. Une représentation de la trame est donnée sur <a class="reference internal" href="#I2C_adresse.svg"><code class="xref myst docutils literal notranslate"><span class="pre">I2C_adresse.svg</span></code></a></p>
+<figure class="align-center" id="i2c-adresse">
+<a class="reference internal image-reference" href="../../_images/I2C_adresse.svg"><img alt="../../_images/I2C_adresse.svg" src="../../_images/I2C_adresse.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Addressage d’un maitre à un composant</span><a class="headerlink" href="#i2c-adresse" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensuite, il est possible de voir qu’entre ACK et le bit 0, il y a <code class="docutils literal notranslate"><span class="pre">R/W</span></code> donc le maitre demande au composant soit de lire une information ou soit d’écrire une information.</p>
+<ul class="simple">
+<li><p><em>0</em> : Ecriture (maître -&gt; esclave)</p></li>
+<li><p><em>1</em> : Lecture (esclave -&gt; maître)</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Il est important de noté que pour bien différencier les données au adresses.</p>
+<ul class="simple">
+<li><p>Les <em>données</em> sont notées : <strong>D</strong></p></li>
+<li><p>Les <em>adressses</em> sont notées : <strong>A</strong></p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Les adresses réservées</strong></p>
+<p>Il y a deux types d’addresse qui sont réservé :</p>
+<ul class="simple">
+<li><p>00000XXX</p></li>
+<li><p>111111XX</p></li>
+</ul>
+<p>Ces adresses sont réversé à des modes de fonctionnement particuliers. Une explication va être donnée plus tard dans ce chapitre.</p>
+</div>
+<p>Dans la suite l’objectif est de comprendre comment sont envoyer les données suite au fait que l’addresse à été sélectionné.</p>
+</section>
+<section id="lecture-ecriture">
+<h3>Lecture / Ecriture<a class="headerlink" href="#lecture-ecriture" title="Link to this heading">#</a></h3>
+<section id="ecriture">
+<h4>Ecriture<a class="headerlink" href="#ecriture" title="Link to this heading">#</a></h4>
+<p>Pour l’écrire, tout d’abord (cf. <a class="reference internal" href="#i2c-simple-ecriture"><span class="std std-ref">I2C écriture des données (adresse + exemple)</span></a>), le maitre envoie l’addresse du composant ou il veut écrire. Ensuite, le 7ème bit, il le met à 0, ce qui ,veut dire qu’il veut écrire. Ensuite, l’esclave valide qu’il est prêt. Enfin, le maitre envoie les données sur le bus pour le composant. Ensuite,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’écriture d’un octet dans certains composants (Mémoire, microcontroleur, ….) peut prendre un certain temps. Il est donc possible quer le maitre soit obligé d’attendre l’acquittement ACK avant de passer à la suite.</p>
+</div>
+<figure class="align-center" id="i2c-simple-ecriture">
+<a class="reference internal image-reference" href="../../_images/I2C_simple_ecriture.svg"><img alt="../../_images/I2C_simple_ecriture.svg" src="../../_images/I2C_simple_ecriture.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">I2C écriture des données (adresse + exemple)</span><a class="headerlink" href="#i2c-simple-ecriture" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="lecture">
+<h4>Lecture<a class="headerlink" href="#lecture" title="Link to this heading">#</a></h4>
+<p>La lecture des données par le maitre (cf. <a class="reference internal" href="#i2c-simple-lecture"><span class="std std-ref">I2C lecture des données (adresse + exemple)</span></a>), se fait de la même manière que l’écriture. Tout d’abord, le maitre envoie l’addresse, du composant qu’il veut lire des informations. Ensuite, le composant va envoyer les données pour la lecture. La seule différence, vient après c’est l’esclave qui les bits sur la ligne et non, le maitre. Enfin, pour savoir si l’esclave doit continuer a écrire ou pas sur la ligne, c’est le maitre qui choisi, grâce au <em>ACK</em>.</p>
+<ul class="simple">
+<li><p>Si le maître positionne ACK à ‘0’, alors il veut avoir le bit suivant</p></li>
+<li><p>Si le maitre laisse ACK à ‘1’, alors il va envoyer la condition d’arrêt.</p></li>
+</ul>
+<figure class="align-center" id="i2c-simple-lecture">
+<a class="reference internal image-reference" href="../../_images/I2C_simple_lecture.svg"><img alt="../../_images/I2C_simple_lecture.svg" src="../../_images/I2C_simple_lecture.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">I2C lecture des données (adresse + exemple)</span><a class="headerlink" href="#i2c-simple-lecture" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="fin-de-la-trame">
+<h3>Fin de la trame<a class="headerlink" href="#fin-de-la-trame" title="Link to this heading">#</a></h3>
+<p>Tout d’abord, comme la condition de départ, le lancement ou l’arrêt d’une communication ne peut se faire que par le maitre.</p>
+<p>La condition d’arrêt est très simple. Le maitre va passer le signal de SDA à ‘1’ mais aussi arrêté l’horloge du système en la laissant à 1. Comme cela est montrer sur la <a class="reference internal" href="#i2c-simple-end"><span class="std std-ref">Fin de communication entre le maitre est l’esclave</span></a></p>
+<figure class="align-center" id="i2c-simple-end">
+<a class="reference internal image-reference" href="../../_images/I2C_simple.svg"><img alt="../../_images/I2C_simple.svg" src="../../_images/I2C_simple.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Fin de communication entre le maitre est l’esclave</span><a class="headerlink" href="#i2c-simple-end" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="collision">
+<h2>Collision<a class="headerlink" href="#collision" title="Link to this heading">#</a></h2>
+<p>Comme vu précedement, il est possible d’avoir plusieurs maitre sur la même ligne. Un problème qui peut venir est lorsque deux maitre veut prendre en même temps la ligne. Donc cela va créer une colision.</p>
+<p>Il y a trois cas possibles :</p>
+<ul class="simple">
+<li><p>Les différents maîtres envoient les mêmes données au même moment. Les données ne sont pas corrompues, la transmission s’effectue normalement, comme si un seul maître avait parlé. Ce cas est rare.</p></li>
+<li><p>Un maître impose un <code class="docutils literal notranslate"><span class="pre">0</span></code> sur le bus. Il relira forcément <code class="docutils literal notranslate"><span class="pre">0</span></code> et continuera à transmettre. Il ne peut pas alors détecter un éventuel conflit.</p></li>
+<li><p>Un maître cherche à appliquer un <code class="docutils literal notranslate"><span class="pre">1</span></code> sur le bus. S’il ne relit pas un niveau <code class="docutils literal notranslate"><span class="pre">1</span></code>, c’est qu’un autre maître a pris la parole en même temps. Le premier perd alors immédiatement le contrôle du bus, pour ne pas perturber la transmission du second. Il continue néanmoins à lire les données au cas celles-ci lui auraient été destinées.</p></li>
+</ul>
+</section>
+<section id="referance">
+<h2>Referance<a class="headerlink" href="#referance" title="Link to this heading">#</a></h2>
+<p><strong>Cours</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.technologuepro.com/cours-systemes-embarques/cours-systemes-embarques-Bus-I2C.htm">https://www.technologuepro.com/cours-systemes-embarques/cours-systemes-embarques-Bus-I2C.htm</a></p></li>
+<li><p><a class="reference external" href="https://www.electronique-mixte.fr/i2c/">https://www.electronique-mixte.fr/i2c/</a></p></li>
+<li></li>
+</ul>
+<p><strong>Documentation</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf"><em>Documentation officiel I2C</em></a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./System_communication\filaire"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectif">Objectif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-overview">Quick Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">Topology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scl-signal">SCL Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sda-signal">SDA Signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#master-slave">Master / Slave</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-visualization">Communication Visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-timing-diagram">Fundamental Timing Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start">Start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmission-d-octet">Transmission d’octet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmission-d-une-addresse">Transmission d’une addresse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-ecriture">Lecture / Ecriture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ecriture">Ecriture</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture">Lecture</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fin-de-la-trame">Fin de la trame</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collision">Collision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referance">Referance</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sacha COMTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

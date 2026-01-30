@@ -1,0 +1,1046 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Diode Bridge &#8212; Book on electronics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'General/Pont_diode';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Freewheeling Diode" href="Diode_roue_libre.html" />
+    <link rel="prev" title="RL Circuit" href="../Passif/RC.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Book on electronics - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Book on electronics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Book on Electronics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/diode/Diode.html">Diode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Passif circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Passif/RC.html">RL Circuit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Essential Circuit</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Diode Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diode_roue_libre.html">Freewheeling Diode</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Regulator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Amplificator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AOP/01_Introduction_amplificateur.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/02_Inverting_amplifier.html">Inverting Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/04_Suiveur.html">Voltage Follower (Buffer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/08_class_A.html">Class A amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/09_class_B.html">Amplificateur class B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/10_class_AB.html">Amplificateur class AB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/11_class_C.html">Amplificateur class C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/12_class_D.html">Amplificateur class D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AOP/13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logic Gate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/NOT.html">Porte NOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/AND.html">AND and NAND Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/OR.html">OR and NOR Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/XOR.html">XOR and NXOR Gate</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Schmit Trigger</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/intro.html">Schmitt Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/Hysteresis_aop.html">Schmitt Trigger Using an Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/Hysteresis_transistor.html">Schmitt Trigger using a Bipolar Transistor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Introduction/Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Introduction/Jonction_PN.html">Jonction PN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeneral/Pont_diode.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/General/Pont_diode.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Diode Bridge</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit">Circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-principle">Operating Principle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-v-e-v-text-seuil">Case 1: <span class="math notranslate nohighlight">\(V_e &gt; V_{\text{seuil}}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-v-e-v-text-seuil">Case 2: <span class="math notranslate nohighlight">\(V_e &lt; -V_{\text{seuil}}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3-v-text-seuil-v-e-v-text-seuil">Case 3: <span class="math notranslate nohighlight">\(-V_{\text{seuil}} &lt; V_e &lt; V_{\text{seuil}}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-results-and-analysis">Simulation Results and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dead-zone-behavior">Dead Zone Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effet-aute-frequence-temps-de-monte">Effet aute fréquence - temps de monté</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="diode-bridge">
+<h1>Diode Bridge<a class="headerlink" href="#diode-bridge" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuitFactory</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Probe.Plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Library</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpiceLibrary</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>A <strong>diode bridge</strong> is a <strong>rectifier circuit</strong> that converts an <strong>alternating voltage</strong> (which alternates between positive and negative values) into a <strong>unidirectional voltage</strong> that is either entirely positive or entirely negative.
+This circuit is also known as a <strong>Graetz bridge</strong> or simply a <strong>rectifier circuit</strong>.</p>
+<p>On its own, a diode bridge is not particularly useful — it is typically combined with other components such as a <strong>resistor</strong> and a <strong>capacitor</strong> (in parallel) to form an <strong>AC–DC converter</strong>, which provides a smooth DC voltage from an AC source.</p>
+<p>However, the diode bridge can also serve as an <strong>autonomous protection circuit</strong>.
+For example, when a system must maintain a specific polarity (e.g., +10 V), and there is a risk of connecting a –10 V source by mistake, the bridge ensures that the <strong>output polarity remains correct</strong>, thus protecting the following components.</p>
+</section>
+<section id="circuit">
+<h2>Circuit<a class="headerlink" href="#circuit" title="Link to this heading">#</a></h2>
+<figure class="align-center" id="pont-diode-circuit">
+<a class="reference internal image-reference" href="../_images/pont_diode_circuit.svg"><img alt="../_images/pont_diode_circuit.svg" src="../_images/pont_diode_circuit.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Electrical schematic of a diode bridge circuit</span><a class="headerlink" href="#pont-diode-circuit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The circuit shown above consists of <strong>four diodes</strong> arranged <strong>symmetrically</strong>.
+Both the input and output have <strong>two terminals</strong>:</p>
+<ul class="simple">
+<li><p>The <strong>input</strong> is typically connected to an <strong>AC source</strong>.</p></li>
+<li><p>The <strong>output</strong> delivers a <strong>rectified voltage</strong>, which remains positive (or negative) depending on the configuration.</p></li>
+</ul>
+</section>
+<section id="operating-principle">
+<h2>Operating Principle<a class="headerlink" href="#operating-principle" title="Link to this heading">#</a></h2>
+<p>The operation of the diode bridge can be analyzed in <strong>two main cases</strong>:</p>
+<ol class="arabic simple">
+<li><p>When the <strong>input voltage</strong> is <strong>below</strong> the <strong>diode threshold voltage</strong> (<span class="math notranslate nohighlight">\(V_\text{seuil}\)</span>):
+The diodes <strong>do not conduct</strong>, and no current flows through the load.</p></li>
+<li><p>When the <strong>input voltage</strong> is <strong>above</strong> <span class="math notranslate nohighlight">\(V_\text{seuil}\)</span>:
+The diodes start to <strong>conduct in pairs</strong>, allowing current to flow <strong>in the same direction</strong> through the load, regardless of the input polarity.</p></li>
+</ol>
+<p>This results in a <strong>rectified output</strong>, where both halves of the input AC waveform are converted into a <strong>unidirectional (pulsating DC)</strong> voltage.</p>
+<section id="case-1-v-e-v-text-seuil">
+<h3>Case 1: <span class="math notranslate nohighlight">\(V_e &gt; V_{\text{seuil}}\)</span><a class="headerlink" href="#case-1-v-e-v-text-seuil" title="Link to this heading">#</a></h3>
+<p>When the input voltage <span class="math notranslate nohighlight">\(V_e\)</span> is <strong>greater</strong> than the threshold voltage <span class="math notranslate nohighlight">\(V_{\text{seuil}}\)</span>, as shown in the <a class="reference internal" href="#pont-diode-circuit-cas-1"><span class="std std-ref">Electrical schematic of the diode bridge – Case 1</span></a>, <strong>two diodes conduct</strong> (acting as short circuits), while the other two remain <strong>blocked</strong> (open circuits).</p>
+<p>As a result, the output voltage satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+V_s = V_e
+\]</div>
+<figure class="align-center" id="pont-diode-circuit-cas-1">
+<a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_1.svg"><img alt="../_images/pont_diode_circuit_cas_1.svg" src="../_images/pont_diode_circuit_cas_1.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 1</span><a class="headerlink" href="#pont-diode-circuit-cas-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="case-2-v-e-v-text-seuil">
+<h3>Case 2: <span class="math notranslate nohighlight">\(V_e &lt; -V_{\text{seuil}}\)</span><a class="headerlink" href="#case-2-v-e-v-text-seuil" title="Link to this heading">#</a></h3>
+<p>In this case, as shown in the <a class="reference internal" href="#pont-diode-circuit-cas-2"><span class="std std-ref">Electrical schematic of the diode bridge – Case 2</span></a> and similarly to <a class="reference internal" href="#pont-diode-circuit-cas-1">Case 1</a>, two diodes are <strong>conducting</strong> and two are <strong>blocked</strong>.
+However, the current now flows through the <strong>opposite pair</strong> of diodes.</p>
+<p>By observing the schematic, we can see that:</p>
+<div class="math notranslate nohighlight">
+\[
+V_s = -V_e
+\]</div>
+<figure class="align-center" id="pont-diode-circuit-cas-2">
+<a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_2.svg"><img alt="../_images/pont_diode_circuit_cas_2.svg" src="../_images/pont_diode_circuit_cas_2.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 2</span><a class="headerlink" href="#pont-diode-circuit-cas-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Thus, in both cases, the output voltage <span class="math notranslate nohighlight">\(V_s\)</span> remains <strong>positive</strong>, regardless of the polarity of <span class="math notranslate nohighlight">\(V_e\)</span>.</p>
+</section>
+<section id="case-3-v-text-seuil-v-e-v-text-seuil">
+<h3>Case 3: <span class="math notranslate nohighlight">\(-V_{\text{seuil}} &lt; V_e &lt; V_{\text{seuil}}\)</span><a class="headerlink" href="#case-3-v-text-seuil-v-e-v-text-seuil" title="Link to this heading">#</a></h3>
+<p>When the input voltage <span class="math notranslate nohighlight">\(V_e\)</span> lies <strong>between</strong> <span class="math notranslate nohighlight">\(-V_{\text{seuil}}\)</span> and <span class="math notranslate nohighlight">\(V_{\text{seuil}}\)</span>, neither pair of diodes conducts — both remain in a <strong>blocked</strong> state.
+As a result, <strong>no current flows</strong> through the circuit.</p>
+<p>This situation is represented in the <a class="reference internal" href="#pont-diode-circuit-cas-3"><span class="std std-ref">Electrical schematic of the diode bridge – Case 3</span></a>.
+Therefore, the output voltage is:</p>
+<div class="math notranslate nohighlight">
+\[
+V_s = 0
+\]</div>
+<figure class="align-center" id="pont-diode-circuit-cas-3">
+<a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_3.svg"><img alt="../_images/pont_diode_circuit_cas_3.svg" src="../_images/pont_diode_circuit_cas_3.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 3</span><a class="headerlink" href="#pont-diode-circuit-cas-3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Case</p></th>
+<th class="head text-left"><p>Input Voltage</p></th>
+<th class="head text-left"><p>Conducting Diodes</p></th>
+<th class="head text-left"><p>Output Voltage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>1</strong></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V_e &gt; V_{\text{seuil}}\)</span></p></td>
+<td class="text-left"><p>Two (forward conduction)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V_s = V_e \)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>2</strong></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V_e &lt; -V_{\text{seuil}}\)</span></p></td>
+<td class="text-left"><p>Two (opposite pair)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V_s = -V_e\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>3</strong></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(-V_{\text{seuil}} &lt; V_e &lt; V_{\text{seuil}}\)</span></p></td>
+<td class="text-left"><p>None</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(V_s = 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In summary, the <strong>diode bridge</strong> ensures that the <strong>output voltage is always positive</strong>, regardless of the <strong>input polarity</strong>.
+This property makes it an essential element in <strong>rectifier circuits</strong> and <strong>polarity protection systems</strong>.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<p>The objective of this section is to <strong>build the diode bridge circuit</strong> and then perform <strong>simulations</strong> to better understand its operation.
+We start with the model shown in the <a class="reference internal" href="#model-spice"><span class="std std-ref">SPICE model of the diode bridge circuit</span></a>.</p>
+<figure class="align-center" id="model-spice">
+<a class="reference internal image-reference" href="../_images/pont_diode_circuit_spice.svg"><img alt="../_images/pont_diode_circuit_spice.svg" src="../_images/pont_diode_circuit_spice.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">SPICE model of the diode bridge circuit</span><a class="headerlink" href="#model-spice" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the schematic above, we can see the <strong>diode bridge</strong> just as we previously constructed it.
+The circuit includes <strong>four nodes</strong>:</p>
+<ul class="simple">
+<li><p><strong>Input terminals:</strong> <code class="docutils literal notranslate"><span class="pre">in_plus</span></code> and <code class="docutils literal notranslate"><span class="pre">in_min</span></code></p></li>
+<li><p><strong>Output terminals:</strong> <code class="docutils literal notranslate"><span class="pre">out_plus</span></code> and <code class="docutils literal notranslate"><span class="pre">out_min</span></code></p></li>
+</ul>
+<p>Additionally, the <strong>voltage source</strong> is represented by <code class="docutils literal notranslate"><span class="pre">Vinput</span></code>.</p>
+<p>However, two <strong>extra resistors</strong> appear in the SPICE model that were <strong>not present</strong> in the original circuit diagram (cf. <a class="reference internal" href="#pont-diode-circuit"><span class="std std-ref">Electrical schematic of a diode bridge circuit</span></a>):</p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Rload</span></code></strong> — the <strong>load resistor</strong>, representing the external circuit connected to the bridge output.
+Its purpose is to simulate the <strong>behavior of the connected load</strong> and observe how it affects the output voltage and current.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Rref</span></code></strong> — the <strong>reference resistor</strong>, which is <strong>essential for simulation stability</strong>.
+Without it, the circuit would lack a proper reference node, causing all node voltages to <strong>float</strong>, which prevents the simulator from performing valid calculations.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Rref</span></code> resistor must be <strong>very large</strong> to ensure that only a <strong>negligible leakage current</strong> flows through it, minimizing any influence on the circuit’s normal operation.</p>
+</div>
+<p>Once the model is defined, we can proceed to <strong>run the simulation</strong>, analyze the <strong>voltage and current waveforms</strong>, and compare them to the <strong>theoretical behavior</strong> described earlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------</span>
+<span class="c1"># Circuit Definition</span>
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Full-Wave Bridge Rectifier (1N4004)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Include the diode model library</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/diodes_standard-rectifiers.lib&#39;</span><span class="p">)</span>
+
+<span class="c1"># AC input source (10 V amplitude, 50 Hz)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="nd">@u_Hz</span><span class="p">)</span>
+
+<span class="c1"># Reference to ground (important for simulation)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;ref&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_mΩ</span><span class="p">)</span>
+
+<span class="c1"># Bridge diodes</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span>   <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D2&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span>   <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D3&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span>  <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+
+<span class="c1"># Load resistor</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_kΩ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resistor Rload
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">40</span><span class="nd">@u_ms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot input and output voltage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;in_plus&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input (AC)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out_plus&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out_min&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Output (rectified)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Full-Wave Bridge Rectifier (1N4004)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [ms]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3c928f1720280da2e9e505a68ae32997f619a08ee67faeffbea93c5510e4847d.png" src="../_images/3c928f1720280da2e9e505a68ae32997f619a08ee67faeffbea93c5510e4847d.png" />
+</div>
+</div>
+<section id="simulation-results-and-analysis">
+<h3>Simulation Results and Analysis<a class="headerlink" href="#simulation-results-and-analysis" title="Link to this heading">#</a></h3>
+<p>The <strong>input signal</strong> varies between <strong>–10 V</strong> and <strong>+10 V</strong>, as expected.
+However, the <strong>output signal</strong> only varies between <strong>0 V</strong> and approximately <strong>8.7 V</strong>.</p>
+<p>We can observe that the <strong>output voltage does not reach 10 V</strong>.
+This difference can be explained by the <strong>voltage drops</strong> across the <strong>two conducting diodes</strong> in the bridge during each half-cycle.
+Each diode introduces a drop of roughly <strong>0.7 V</strong>, which gives:</p>
+<div class="math notranslate nohighlight">
+\[
+V_{\text{out}} \approx V_{\text{in}} - 2 \times 0.7 = 10 - 1.4 = 8.6~\text{V}
+\]</div>
+<p>This theoretical value closely matches the <strong>8.7 V</strong> measured in the simulation output.</p>
+<p>Furthermore, when the <strong>input signal becomes negative</strong>, the <strong>output signal remains positive</strong> — confirming the rectifying function of the diode bridge.</p>
+<p>Finally, we can notice the presence of a <strong>dead zone</strong> around zero volts.
+As discussed in the previous section, this occurs when the input voltage lies between <span class="math notranslate nohighlight">\(-V_{\text{seuil}}\)</span> and <span class="math notranslate nohighlight">\(V_{\text{seuil}}\)</span>, meaning none of the diodes conduct.</p>
+<p>In the <strong>next section</strong>, we will focus on <strong>analyzing and reducing this dead zone</strong> to improve the quality of the rectified signal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------</span>
+<span class="c1"># Circuit Definition</span>
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Full-Wave Bridge Rectifier (1N4004)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Include the diode model library</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/diodes_standard-rectifiers.lib&#39;</span><span class="p">)</span>
+
+<span class="c1"># AC input source (10 V amplitude, 50 Hz)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mf">1.5</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="nd">@u_Hz</span><span class="p">)</span>
+
+<span class="c1"># Reference to ground (important for simulation)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;ref&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_mΩ</span><span class="p">)</span>
+
+<span class="c1"># Bridge diodes</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span>   <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D2&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span>   <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D3&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span>  <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+
+<span class="c1"># Load resistor</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_kΩ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resistor Rload
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">40</span><span class="nd">@u_ms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot input and output voltage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;in_plus&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input (AC)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out_plus&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out_min&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Output (rectified)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vseuil&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Full-Wave Bridge Rectifier (1N4004)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [ms]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fe0cfd5f2e7c7859a110ded44aa8f2e9f283d43009b9680d6152fc97c2ee47eb.png" src="../_images/fe0cfd5f2e7c7859a110ded44aa8f2e9f283d43009b9680d6152fc97c2ee47eb.png" />
+</div>
+</div>
+</section>
+<section id="dead-zone-behavior">
+<h3>Dead Zone Behavior<a class="headerlink" href="#dead-zone-behavior" title="Link to this heading">#</a></h3>
+<p>When the <strong>input signal</strong> (blue curve) is between <strong>–0.7 V</strong> and <strong>+0.7 V</strong>, the <strong>output signal</strong> remains approximately <strong>0 V</strong>.
+This corresponds to the <strong>non-conduction region</strong> of the diodes in the bridge.</p>
+<p>Once the <strong>input voltage exceeds the threshold</strong> of ±0.7 V, the <strong>output signal begins to rise</strong>, following the rectified behavior of the bridge.</p>
+<p>In most applications, this effect is <strong>negligible</strong>, but it is important to <strong>consider carefully when dealing with small signals</strong>, as the dead zone can significantly affect the response.</p>
+</section>
+</section>
+<section id="effet-aute-frequence-temps-de-monte">
+<h2>Effet aute fréquence - temps de monté<a class="headerlink" href="#effet-aute-frequence-temps-de-monte" title="Link to this heading">#</a></h2>
+<p>Il faut faire attention avec les diodes et c’est pour le temps de monté, car si la fréquence des changements est trop rapide alors les diodes ne peuvent plus suivre le temps de monté.</p>
+<p>Pour faire cela nous allons changer la fréquence du système</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frequency</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">step_time</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">end_time</span><span class="o">=</span><span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------</span>
+<span class="c1"># Circuit Definition</span>
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Full-Wave Bridge Rectifier (1N4004)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Include the diode model library</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/diodes_standard-rectifiers.lib&#39;</span><span class="p">)</span>
+
+<span class="c1"># AC input source (10 V amplitude, 50 Hz)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">5</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="nd">@u_MHz</span><span class="p">)</span>
+
+<span class="c1"># Reference to ground (important for simulation)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;ref&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_mΩ</span><span class="p">)</span>
+
+<span class="c1"># Bridge diodes</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span>   <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D2&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="s1">&#39;in_plus&#39;</span><span class="p">,</span>   <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D3&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span>  <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">D</span><span class="p">(</span><span class="s1">&#39;D4&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="s1">&#39;in_min&#39;</span><span class="p">,</span>  <span class="n">model</span><span class="o">=</span><span class="s1">&#39;DI_1N4004GL&#39;</span><span class="p">)</span>
+
+<span class="c1"># Load resistor</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;out_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;out_min&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_kΩ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resistor Rload
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">step_time</span><span class="nd">@u_ps</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="nd">@u_ns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot input and output voltage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;in_plus&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input (AC)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out_plus&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out_min&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Output (rectified)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vseuil&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Full-Wave Bridge Rectifier (1N4004)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [ns]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/38045068cabd8396bf8fdcf672c06dec2e7d1066288d815687932488c886a0f9.png" src="../_images/38045068cabd8396bf8fdcf672c06dec2e7d1066288d815687932488c886a0f9.png" />
+</div>
+</div>
+<p>It can be observed that the output waveform is not as stable as in the first example. The output voltage occasionally drops below 0 V, and the flat zero-level region has disappeared. In addition, the positive peaks are not clean and appear noisy and distorted.</p>
+<p>This behavior can be explained by examining the diode model used:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*SRC=1N4004GL;DI_1N4004GL;Diodes;Si;  400V  1.00A  2.00us   Diodes Inc. Glass Passivated Rectifier
+.MODEL DI_1N4004GL D  ( IS=65.4p RS=42.2m BV=400 IBV=5.00u
++ CJO=14.8p  M=0.333 N=1.36 TT=2.88u )
+</pre></div>
+</div>
+<p>Two parameters are particularly important at high frequencies:</p>
+<ul class="simple">
+<li><p><strong>Transit time (<code class="docutils literal notranslate"><span class="pre">TT</span> <span class="pre">=</span> <span class="pre">2.88</span> <span class="pre">µs</span></code>)</strong> – This value is extremely large compared to the input period at high frequencies (for example, 100 MHz corresponds to a 10 ns period). Such a long transit time means the diode cannot switch on or off fast enough, leading to distorted transitions, delayed conduction, and noisy peaks.</p></li>
+<li><p><strong>Zero-bias junction capacitance (<code class="docutils literal notranslate"><span class="pre">CJO</span> <span class="pre">=</span> <span class="pre">14.8</span> <span class="pre">pF</span></code>)</strong> – At high frequencies, this capacitance provides an alternate AC path through the junction, causing waveform deformation, partial conduction, and capacitive coupling effects. This can drive node voltages slightly below 0 V and introduce additional high-frequency noise.</p></li>
+</ul>
+<p>Because the 1N4004 is designed for low-frequency power rectification (e.g., 50–60 Hz mains), it is not suitable for operation in the MHz range. For clean high-frequency rectification, a fast-switching diode or a Schottky diode (with much smaller <code class="docutils literal notranslate"><span class="pre">TT</span></code> and <code class="docutils literal notranslate"><span class="pre">CJO</span></code> values) should be used.</p>
+<p>For further details on diode behavior and model parameters, see the diode section: <a class="reference internal" href="../Base_componant/diode/Diode.html"><span class="doc std std-doc">Diode notebook</span></a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./General"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Passif/RC.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">RL Circuit</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Diode_roue_libre.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Freewheeling Diode</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit">Circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-principle">Operating Principle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-v-e-v-text-seuil">Case 1: <span class="math notranslate nohighlight">\(V_e &gt; V_{\text{seuil}}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-v-e-v-text-seuil">Case 2: <span class="math notranslate nohighlight">\(V_e &lt; -V_{\text{seuil}}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3-v-text-seuil-v-e-v-text-seuil">Case 3: <span class="math notranslate nohighlight">\(-V_{\text{seuil}} &lt; V_e &lt; V_{\text{seuil}}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-results-and-analysis">Simulation Results and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dead-zone-behavior">Dead Zone Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effet-aute-frequence-temps-de-monte">Effet aute fréquence - temps de monté</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sacha COMTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

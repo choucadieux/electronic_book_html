@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Field-Effect Transistors (JFET) &#8212; Book on electronics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Base_componant/transistor/JFET';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Bipolar Junction Transistor (BJT)" href="Bipolaire.html" />
+    <link rel="prev" title="Diode" href="../diode/Diode.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Book on electronics - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Book on electronics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Book on Electronics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diode/Diode.html">Diode</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Passif circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Passif/RC.html">RL Circuit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Essential Circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../General/Pont_diode.html">Diode Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Regulator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Amplificator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/01_Introduction_amplificateur.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/02_Inverting_amplifier.html">Inverting Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/04_Suiveur.html">Voltage Follower (Buffer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Class A amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/09_class_B.html">Amplificateur class B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/10_class_AB.html">Amplificateur class AB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/11_class_C.html">Amplificateur class C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/12_class_D.html">Amplificateur class D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logic Gate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/NOT.html">Porte NOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/AND.html">AND and NAND Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/OR.html">OR and NOR Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Porte/XOR.html">XOR and NXOR Gate</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Schmit Trigger</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/intro.html">Schmitt Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/Hysteresis_aop.html">Schmitt Trigger Using an Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/Hysteresis_transistor.html">Schmitt Trigger using a Bipolar Transistor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Introduction/Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Logicol/Introduction/Jonction_PN.html">Jonction PN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBase_componant/transistor/JFET.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Base_componant/transistor/JFET.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Field-Effect Transistors (JFET)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-field-effect-transistors">Introduction to Field-Effect Transistors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jfet">JFET</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electronic-designation">Electronic Designation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-channel-jfet">N-Channel JFET</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-channel-jfet">P-Channel JFET</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-current-characteristics">Voltage-Current Characteristics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematics">Mathematics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-ohmic-region">Linear (Ohmic) Region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-current-region">Constant Current Region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-equation">Résumé équation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-configurations-in-processing-not-to-be-taken-into-account">Circuit Configurations (In processing not to be taken into account)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-source-configuration">Common Source Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-signal-model">Small-Signal Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-characteristics">Main Characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-resistance">1. Input Resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-resistance">2. Output Resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-gain">3. Voltage Gain</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biasing-dc-analysis">Biasing (DC Analysis)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="field-effect-transistors-jfet">
+<h1>Field-Effect Transistors (JFET)<a class="headerlink" href="#field-effect-transistors-jfet" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuitFactory</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Library</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpiceLibrary</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="introduction-to-field-effect-transistors">
+<h2>Introduction to Field-Effect Transistors<a class="headerlink" href="#introduction-to-field-effect-transistors" title="Link to this heading">#</a></h2>
+<p>Field-effect transistors (FETs) are a type of <strong>unipolar transistor</strong> (see <a class="reference internal" href="#fet-family"><span class="std std-ref">Family of Field-Effect Transistors</span></a>), making them a direct competitor to bipolar junction transistors (BJTs).</p>
+<figure class="align-center" id="fet-family">
+<a class="reference internal image-reference" href="../../_images/FET_Symbols.svg"><img alt="../../_images/FET_Symbols.svg" src="../../_images/FET_Symbols.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Family of Field-Effect Transistors</span><a class="headerlink" href="#fet-family" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>FETs use an <strong>electric field</strong> to control the conductivity of a channel within a semiconductor material.</p>
+<p>There are three main families of FETs. As shown in the figure above, the most common are:</p>
+<ul class="simple">
+<li><p>The large family of <strong>MOSFETs</strong></p></li>
+<li><p>The smaller family of <strong>IGBTs</strong></p></li>
+<li><p>The <strong>JFETs</strong>, which will be the focus of this notebook</p></li>
+</ul>
+</section>
+<section id="jfet">
+<h2>JFET<a class="headerlink" href="#jfet" title="Link to this heading">#</a></h2>
+<p>The “J” in JFET stands for <em>Junction</em>. There are two types of JFETs: <strong>N-channel</strong> and <strong>P-channel</strong>.</p>
+<p>This distinction is crucial for circuit design, as it affects the <strong>signs and polarities</strong> in the circuit.</p>
+<ul class="simple">
+<li><p>For an <strong>N-channel JFET</strong>, the channel is doped <em>N</em> (negatively), and the gate and substrate are doped <em>P</em> (positively).</p></li>
+<li><p>For a <strong>P-channel JFET</strong>, the polarities are reversed: the channel is <em>P-doped</em> and the gate/substrate are <em>N-doped</em>.</p></li>
+</ul>
+<p>This is illustrated in the figure below:</p>
+<figure class="align-center" id="difference-channel-n-p">
+<a class="reference internal image-reference" href="../../_images/Difference_N_P_channel.svg"><img alt="../../_images/Difference_N_P_channel.svg" src="../../_images/Difference_N_P_channel.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Difference between N-channel and P-channel JFETs</span><a class="headerlink" href="#difference-channel-n-p" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="electronic-designation">
+<h2>Electronic Designation<a class="headerlink" href="#electronic-designation" title="Link to this heading">#</a></h2>
+<section id="general">
+<h3>General<a class="headerlink" href="#general" title="Link to this heading">#</a></h3>
+<p>As shown in the symbols (cf. <a class="reference internal" href="#symbol-jfet-n"><span class="std std-ref">N-channel JFET symbol</span></a>, <a class="reference internal" href="#symbol-jfet-p"><span class="std std-ref">P-channel JFET symbol</span></a>), JFETs have three terminals:</p>
+<ul class="simple">
+<li><p><strong>Gate</strong></p></li>
+<li><p><strong>Drain</strong></p></li>
+<li><p><strong>Source</strong></p></li>
+</ul>
+<p>In circuit analysis, understanding the function of each terminal is essential.</p>
+<p>Some symbols also include a circle around the device, but this is <strong>not mandatory</strong>.
+The primary visual difference between N-channel and P-channel JFETs is the <strong>direction of the arrow</strong>.</p>
+</section>
+<section id="n-channel-jfet">
+<h3>N-Channel JFET<a class="headerlink" href="#n-channel-jfet" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="symbol-jfet-n">
+<a class="reference internal image-reference" href="../../_images/IEEE_315-1975_(1993)_8.6.10.1.b.svg"><img alt="../../_images/IEEE_315-1975_%281993%29_8.6.10.1.b.svg" src="../../_images/IEEE_315-1975_%281993%29_8.6.10.1.b.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">N-channel JFET symbol</span><a class="headerlink" href="#symbol-jfet-n" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the figure above, the arrow <strong>points toward the device</strong>, indicating an N-channel configuration.</p>
+</section>
+<section id="p-channel-jfet">
+<h3>P-Channel JFET<a class="headerlink" href="#p-channel-jfet" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="symbol-jfet-p">
+<a class="reference internal image-reference" href="../../_images/IEEE_315-1975_(1993)_8.6.11.1.b.svg"><img alt="../../_images/IEEE_315-1975_%281993%29_8.6.11.1.b.svg" src="../../_images/IEEE_315-1975_%281993%29_8.6.11.1.b.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">P-channel JFET symbol</span><a class="headerlink" href="#symbol-jfet-p" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Here, the arrow <strong>points away from the device</strong>, indicating a P-channel configuration.</p>
+</section>
+</section>
+<section id="voltage-current-characteristics">
+<h2>Voltage-Current Characteristics<a class="headerlink" href="#voltage-current-characteristics" title="Link to this heading">#</a></h2>
+<p>As discussed earlier, JFETs have <strong>three terminals</strong>.<br />
+The goal here is to provide a <strong>simple understanding</strong> of how to quickly write the key equations for a JFET.</p>
+<figure class="align-center" id="t-a-jfet-componant">
+<a class="reference internal image-reference" href="../../_images/Tension_courant_JFET_N_componant.svg"><img alt="../../_images/Tension_courant_JFET_N_componant.svg" src="../../_images/Tension_courant_JFET_N_componant.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Visualization of currents and voltages in an N-channel JFET</span><a class="headerlink" href="#t-a-jfet-componant" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We start with an <strong>N-channel JFET</strong>.
+The figure above (<a class="reference internal" href="#t-a-jfet-componant"><span class="std std-ref">Visualization of currents and voltages in an N-channel JFET</span></a>) highlights the <strong>important characteristics</strong> of the device:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V_{DS}\)</span>: Drain-source voltage, always <strong>positive</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{GS}\)</span>: Gate-source voltage, typically <strong>negative or slightly positive</strong> (&lt; 0.6 V)</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_G\)</span>: Gate current, almost <strong>zero</strong>, often approximated as <span class="math notranslate nohighlight">\(I_G = 0\)</span> in equations</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_D\)</span>: Current entering the <strong>drain</strong> terminal</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_S\)</span>: Current leaving the <strong>source</strong> terminal</p></li>
+</ul>
+<figure class="align-center" id="jfet-n-channel-en">
+<a class="reference internal image-reference" href="../../_images/JFET_n-channel_en.svg"><img alt="../../_images/JFET_n-channel_en.svg" src="../../_images/JFET_n-channel_en.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Main characteristics of an N-channel JFET</span><a class="headerlink" href="#jfet-n-channel-en" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The figure above (<a class="reference internal" href="#jfet-n-channel-en"><span class="std std-ref">Main characteristics of an N-channel JFET</span></a>) shows the <strong>graphical representation</strong> of the N-channel JFET characteristics.
+In the next section, we will formulate the corresponding <strong>equations</strong> based on these voltages and currents.</p>
+</section>
+<section id="mathematics">
+<h2>Mathematics<a class="headerlink" href="#mathematics" title="Link to this heading">#</a></h2>
+<section id="linear-ohmic-region">
+<h3>Linear (Ohmic) Region<a class="headerlink" href="#linear-ohmic-region" title="Link to this heading">#</a></h3>
+<p>This region follows the condition:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+V_{GS} &gt; V_P \\
+V_{DS} ≤ V_{GS} - V_{P}
+\end{cases}
+\end{split}\]</div>
+<p>Donc que nous sommes avant la courbe noir en ponitié, ce veut que que : It applies <strong>only when the current in an N-channel JFET is caused by a small drain-source voltage (<span class="math notranslate nohighlight">\(V_{DS}\)</span>)</strong>.</p>
+<p>The theoretical expression is:</p>
+<div class="math notranslate nohighlight">
+\[
+I_D = \frac{b W}{L} q N_d \mu_n V_{DS}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I_D\)</span> — Drain-source current</p></li>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> — Channel thickness for a given gate voltage</p></li>
+<li><p><span class="math notranslate nohighlight">\(W\)</span> — Channel width</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> — Channel length</p></li>
+<li><p><span class="math notranslate nohighlight">\(q\)</span> — Elementary charge (<span class="math notranslate nohighlight">\(1.6 \times 10^{-19}\)</span> C)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_n\)</span> — Electron mobility</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_d\)</span> — N-type donor doping concentration</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{DS}\)</span> — Drain-source voltage (approaching 0)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In practice, this equation is rarely used because it requires parameters that are difficult to measure precisely.</p>
+</div>
+<p>Instead, a more practical and commonly used approximation is:</p>
+<div class="math notranslate nohighlight" id="equation-equation-jfet-linear">
+<span class="eqno">(1)<a class="headerlink" href="#equation-equation-jfet-linear" title="Link to this equation">#</a></span>\[I_D = \frac{2 I_{DSS}}{V_P^2} \left(V_{GS} - V_P - \frac{V_{DS}}{2}\right) V_{DS}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I_{DSS}\)</span> — Maximum drain current for <span class="math notranslate nohighlight">\(V_{GS} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V_P\)</span> — Pinch-off voltage (the gate-source voltage where the channel closes)</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{GS}\)</span> — Gate-source voltage</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{DS}\)</span> — Drain-source voltage</p></li>
+</ul>
+<p>This expression is widely used in circuit design because it relies on <strong>measurable electrical parameters</strong> rather than hard-to-obtain physical constants.</p>
+<p>From this, we can derive the approximate resistance <span class="math notranslate nohighlight">\(R_{DS}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-equation-jfet-linear-resistance">
+<span class="eqno">(2)<a class="headerlink" href="#equation-equation-jfet-linear-resistance" title="Link to this equation">#</a></span>\[R_{DS} \approx \frac{V_P^2}{2 I_{DSS} (V_P - V_{GS})}\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Demonstration — Derivation of <span class="math notranslate nohighlight">\(R_{DS}\)</span></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">We start with:
+<span class="math notranslate nohighlight">\(R_{DS} = \frac{V_{DS}}{I_D}\)</span></p>
+<p class="sd-card-text">Substituting equation <a class="reference internal" href="#equation-equation-jfet-linear">(1)</a>:
+<span class="math notranslate nohighlight">\(R_{DS} = \frac{V_{DS}}{\frac{2 I_{DSS}}{V_P^2} \left(V_{GS} - V_P - \frac{V_{DS}}{2}\right) V_{DS}}\)</span></p>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(V_{DS}\)</span> tends toward 0, we can neglect <span class="math notranslate nohighlight">\(\frac{V_{DS}}{2}\)</span>, giving:
+<span class="math notranslate nohighlight">\(R_{DS} = \frac{V_{DS}}{\frac{2 I_{DSS}}{V_P^2} (V_{GS} - V_P) V_{DS}}\)</span></p>
+<p class="sd-card-text">Simplifying (canceling <span class="math notranslate nohighlight">\(V_{DS}\)</span>):
+<span class="math notranslate nohighlight">\(
+R_{DS} \approx \frac{V_P^2}{2 I_{DSS} (V_P - V_{GS})}
+\)</span></p>
+<p class="sd-card-text">which matches equation <a class="reference internal" href="#equation-equation-jfet-linear-resistance">(2)</a>.</p>
+</div>
+</details></section>
+<section id="constant-current-region">
+<h3>Constant Current Region<a class="headerlink" href="#constant-current-region" title="Link to this heading">#</a></h3>
+<p>We now move to the <strong>saturation region</strong>, where the current becomes nearly independent of <span class="math notranslate nohighlight">\(V_{DS}\)</span>,
+c’est la région qui est après les pointiés noir et qui respecte les conditions suivante :
+$<span class="math notranslate nohighlight">\(
+\begin{cases}
+V_{GS} &gt; V_P \\
+V_{DS} ≥ V_{GS} - V_{P}
+\end{cases}
+\)</span>$</p>
+<p>alors nous avons l’équation suivante</p>
+<div class="math notranslate nohighlight" id="equation-shockley">
+<span class="eqno">(3)<a class="headerlink" href="#equation-shockley" title="Link to this equation">#</a></span>\[I_{D} = I_{DSS}\left(1 - \frac{V_{GS}}{V_P}\right)^2\]</div>
+<p>L’équation <a class="reference internal" href="#equation-shockley">(3)</a> est connue sous le nom d’équation de Shockley. Avec la modulation de longueur de canal prise en compte, le courant de saturation est modifié pour devenir l’équation <a class="reference internal" href="#equation-modulation-longueur-canal">(4)</a>.</p>
+<div class="math notranslate nohighlight" id="equation-modulation-longueur-canal">
+<span class="eqno">(4)<a class="headerlink" href="#equation-modulation-longueur-canal" title="Link to this equation">#</a></span>\[I_D=I_{DSS}(1−\frac{V_{GS}}{V_P})2(1+λV_{DS})\]</div>
+<p>Dans cette équation, le terme de modulation de longueur de canal montre comment le courant de la région de saturation change avec la tension drain-source, <span class="math notranslate nohighlight">\(V_{DS}\)</span>. Gardez à l’esprit que, sous fonctionnement normal, la <strong>jonction porte-canal du JFET est polarisée en sens inverse</strong>, et donc, pour un <em>JFET à canal n</em>, <strong><span class="math notranslate nohighlight">\(v_{GS} ≤ 0\)</span></strong>.</p>
+</section>
+<section id="resume-equation">
+<h3>Résumé équation<a class="headerlink" href="#resume-equation" title="Link to this heading">#</a></h3>
+<p>En résumé les équations sont les suivantes :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I_D = \frac{2 I_{DSS}}{V_P^2} \left(V_{GS} - V_P - \frac{V_{DS}}{2}\right) V_{DS} \text{ when }
+\begin{cases}
+V_{GS} &gt; V_P \\
+V_{DS} ≤ V_{GS} - V_{P}
+\end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I_{DS} = I_{DSS}\left(1 - \frac{V_{GS}}{V_P}\right)^2 \text{ when }
+\begin{cases}
+V_{GS} &gt; V_P \\
+V_{DS} ≥ V_{GS} - V_{P}
+\end{cases}
+\end{split}\]</div>
+</section>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<p>L’objectif de cette partie est de comprendre la simulation est de comprendre les différents paramètres de la simualtion pour ensuite si le cas se présent pouvoir agir sur ces paramètres.</p>
+<p>Le modèle de simulation est le suivant (cf. <a class="reference internal" href="#spice-jfet"><span class="std std-ref">Modèle simulation Spice d’un JFET-N</span></a>):</p>
+<figure class="align-center" id="spice-jfet">
+<a class="reference internal image-reference" href="../../_images/spice_jfet.svg"><img alt="../../_images/spice_jfet.svg" src="../../_images/spice_jfet.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Modèle simulation Spice d’un JFET-N</span><a class="headerlink" href="#spice-jfet" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Tout d’abord, le fichier de la simulation est la suivante :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.model 2N3819 NJF(
+    Beta=1.304m 
+    Betatce=-.5 
+    Rd=1 
+    Rs=1 
+    Lambda=2.25m 
+    Vto=-3 
+    Vtotc=-2.5m 
+    Is=33.57f 
+    Isr=322.4f 
+    N=1 Nr=2 
+    Xti=3 
+    Alpha=311.7u 
+    Vk=243.6 
+    Cgd=1.6p 
+    M=.3622 
+    Pb=1 
+    Fc=.5 
+    Cgs=2.414p 
+    Kf=9.882E-18 
+    Af=1 
+    mfg=Vishay)
+</pre></div>
+</div>
+<p>Tout d’abord, nous pouvons reconnaitre <code class="docutils literal notranslate"><span class="pre">Rd</span> <span class="pre">=</span> <span class="pre">1</span></code> et <code class="docutils literal notranslate"><span class="pre">Rs</span> <span class="pre">=</span> <span class="pre">1</span></code> qui corresponde au résistance dans les pattes respectivements de <code class="docutils literal notranslate"><span class="pre">d</span></code> et de <code class="docutils literal notranslate"><span class="pre">s</span></code>, il est possible de voir que leur valeur est à 1 cela est du faite que dans la documentation aucune information est donnée, donc c’est à nous utilisateur de mesure ces résistances puis de les insérer dans la simulation de manière manuel. Nous pouvons aussi reconnaitre les paramètres <code class="docutils literal notranslate"><span class="pre">Cgs=2.414p</span></code> et <code class="docutils literal notranslate"><span class="pre">Cgd=1.6p</span> </code> dont les noms sont très proches du modèle de simulation. Nous pouvons aussi voir le paramètre <span class="math notranslate nohighlight">\(λ\)</span> de l’équation <a class="reference internal" href="#equation-modulation-longueur-canal">(4)</a>.</p>
+<p>Néanmoins, nous ne vayons pas les deux constantes les plus important à savoir <span class="math notranslate nohighlight">\(I_{DSS}\)</span> et <span class="math notranslate nohighlight">\(V_P\)</span> qui apparaisse dans les trois équations (<a class="reference internal" href="#equation-equation-jfet-linear">(1)</a>, <a class="reference internal" href="#equation-shockley">(3)</a>, <a class="reference internal" href="#equation-modulation-longueur-canal">(4)</a>)</p>
+<p>La tension de pincement <span class="math notranslate nohighlight">\(V_P\)</span> est noté <code class="docutils literal notranslate"><span class="pre">Vto</span></code> dans le document et elle vaut -3 : <code class="docutils literal notranslate"><span class="pre">Vto=-3</span> </code></p>
+<p>Pour <span class="math notranslate nohighlight">\(I_{DSS}\)</span> cela est du au faite que l’on ne trouve pas directement, il faut faire le calcule <a class="reference internal" href="#equation-calcul-idds">(5)</a> :</p>
+<div class="math notranslate nohighlight" id="equation-calcul-idds">
+<span class="eqno">(5)<a class="headerlink" href="#equation-calcul-idds" title="Link to this equation">#</a></span>\[\text{BeTa}=\frac{I_{DSS}}{V^2_P}\]</div>
+<p>Les équations dans Spice deviennent :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I_D =
+\begin{cases}
+0, &amp; V_{GS} \le V_T \\[6pt]
+\text{BeTa}\,(2(V_{GS}-V_T)V_{DS} - V_{DS}^2)\,(1 + \lambda V_{DS}), 
+&amp; V_{GS} &gt; V_T \ \text{and}\  V_{DS} \le V_{GS} - V_T \\[6pt]
+\text{BeTa}\,(V_{GS}-V_T)^2\,(1 + \lambda V_{DS}), 
+&amp; V_{GS} &gt; V_T \ \text{and}\  V_{DS} \ge V_{GS} - V_T
+\end{cases}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Calcule de la fonction de transfert</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Main characteristics of an N-channel JFET&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/standard.lib&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># --- Paramètres</span>
+<span class="n">Vgs_values</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="nd">@u_V</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="nd">@u_V</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="nd">@u_V</span><span class="p">,</span><span class="mi">0</span><span class="nd">@u_V</span><span class="p">]</span>   <span class="c1"># différentes tensions de grille</span>
+<span class="n">Vds_max</span> <span class="o">=</span> <span class="mi">8</span><span class="nd">@u_V</span>
+<span class="n">Vp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="n">Idss</span> <span class="o">=</span> <span class="mf">1.304e-3</span> <span class="o">*</span> <span class="n">Vp</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># --- Nœuds et alimentation</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;GS&#39;</span><span class="p">,</span> <span class="s1">&#39;gate&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="nd">@u_V</span><span class="p">)</span>   <span class="c1"># Vgs variable</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;DS&#39;</span><span class="p">,</span> <span class="s1">&#39;drain&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="nd">@u_V</span><span class="p">)</span>  <span class="c1"># Vds variable</span>
+
+<span class="c1"># Relier la source à la masse pour éviter le flottement</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_MΩ</span><span class="p">)</span>  <span class="c1"># résistance de fuite très grande</span>
+
+<span class="c1"># --- Transistor JFET N 2N3819</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">J</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;drain&#39;</span><span class="p">,</span> <span class="s1">&#39;gate&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;2N3819&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JunctionFieldEffectTransistor J1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Simulation</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">Vgs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Vgs_values</span><span class="p">):</span>
+    <span class="c1"># on fixe la tension Vgs</span>
+    <span class="n">circuit</span><span class="p">[</span><span class="s1">&#39;VGS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dc_value</span> <span class="o">=</span> <span class="n">Vgs</span>
+
+    <span class="c1"># on balaie Vds de 0 à 10V</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">VDS</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Vds_max</span><span class="p">,</span> <span class="mf">0.1</span><span class="nd">@u_V</span><span class="p">))</span>
+
+    <span class="c1"># extraction du courant de drain (note : courant entrant = négatif)</span>
+    <span class="n">Id</span> <span class="o">=</span> <span class="o">-</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vds&#39;</span><span class="p">]</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;drain&#39;</span><span class="p">],</span> <span class="n">Id</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;VGS = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">Vgs</span><span class="p">)</span><span class="si">}</span><span class="s1"> V&#39;</span><span class="p">)</span>
+
+    <span class="n">x_annot</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">Vds_max</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.95</span>
+    <span class="n">y_annot</span> <span class="o">=</span> <span class="p">(</span><span class="n">Id</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">1e3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_annot</span><span class="p">,</span> <span class="n">y_annot</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;VGS = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">Vgs</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> V&quot;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;C</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Courbe parabolique de la limite de saturation</span>
+<span class="n">Vgs_curve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Vp</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">Vds_sat</span> <span class="o">=</span> <span class="n">Vgs_curve</span> <span class="o">-</span> <span class="n">Vp</span>
+<span class="n">Id_sat</span> <span class="o">=</span> <span class="n">Idss</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Vgs_curve</span> <span class="o">/</span> <span class="n">Vp</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vds_sat</span><span class="p">,</span> <span class="n">Id_sat</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Saturation boundary&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Noms des zones</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">ymax</span><span class="p">,</span> <span class="s1">&#39;Ohmic Region&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">ymax</span><span class="p">,</span> <span class="s1">&#39;Saturation Region&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Mise en forme du graphique</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$V_</span><span class="si">{DS}</span><span class="s1">$ [V]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$I_D$ [mA]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Caractéristique de sortie du JFET 2N3819&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9e716426e168f69c88c9c6f4c393e422ab5304bb581d43a78210af1d94a2b8fc.png" src="../../_images/9e716426e168f69c88c9c6f4c393e422ab5304bb581d43a78210af1d94a2b8fc.png" />
+</div>
+</div>
+</section>
+<section id="circuit-configurations-in-processing-not-to-be-taken-into-account">
+<h2>Circuit Configurations (In processing not to be taken into account)<a class="headerlink" href="#circuit-configurations-in-processing-not-to-be-taken-into-account" title="Link to this heading">#</a></h2>
+<p>There are three basic configurations using a <strong>JFET (Junction Field Effect Transistor)</strong>, depending on which terminal is common to both the input and output:</p>
+<ul class="simple">
+<li><p><strong>Common Source (CS)</strong></p></li>
+<li><p><strong>Common Gate (CG)</strong></p></li>
+<li><p><strong>Common Drain (CD)</strong></p></li>
+</ul>
+<p>The goal of the following sections is to understand the differences between these configurations and to learn how to use them effectively.</p>
+<section id="common-source-configuration">
+<h3>Common Source Configuration<a class="headerlink" href="#common-source-configuration" title="Link to this heading">#</a></h3>
+<p>The <strong>common-source amplifier</strong> is shown in the figure below (see <a class="reference internal" href="#channel-jfet-common-source"><span class="std std-ref">Common-source configuration</span></a>).</p>
+<p>In this circuit:</p>
+<ul class="simple">
+<li><p>The <strong>source</strong> terminal is connected to <strong>ground</strong> (hence the name <em>common source</em>).</p></li>
+<li><p>The <strong>drain</strong> terminal is connected to a <strong>load resistor</strong> <span class="math notranslate nohighlight">\(R_D\)</span>, which is supplied by the <strong>DC voltage source</strong> <span class="math notranslate nohighlight">\(V_{+}\)</span>.</p></li>
+<li><p>The <strong>input signal</strong> <span class="math notranslate nohighlight">\(V_{in}\)</span> is applied to the <strong>gate</strong>.</p></li>
+<li><p>The <strong>output voltage</strong> <span class="math notranslate nohighlight">\(V_{out}\)</span> is taken between the <strong>drain</strong> and the resistor <span class="math notranslate nohighlight">\(R_D\)</span>.</p></li>
+</ul>
+<figure class="align-center" id="channel-jfet-common-source">
+<a class="reference internal image-reference" href="../../_images/N-channel_JFET_common_source.svg"><img alt="../../_images/N-channel_JFET_common_source.svg" src="../../_images/N-channel_JFET_common_source.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Common-source configuration</span><a class="headerlink" href="#channel-jfet-common-source" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This configuration is called <em>common source</em> because the <strong>source</strong> terminal is common to both the input and the output, and it is usually connected to ground.</p>
+</section>
+<section id="small-signal-model">
+<h3>Small-Signal Model<a class="headerlink" href="#small-signal-model" title="Link to this heading">#</a></h3>
+<p>The small-signal equivalent model of the JFET (see <a class="reference internal" href="#fet-modelisation"><span class="std std-ref">Small-signal model of a JFET</span></a>) can be represented as follows:</p>
+<ul class="simple">
+<li><p>The <strong>input</strong> has a resistance <span class="math notranslate nohighlight">\(R_{in}\)</span>.</p></li>
+<li><p>The <strong>transistor</strong> is modeled by a <strong>voltage-controlled current source</strong> of value <span class="math notranslate nohighlight">\(g_m\)</span> <span class="math notranslate nohighlight">\(V_{gs}\)</span>, where <span class="math notranslate nohighlight">\(g_m\)</span> is the <strong>transconductance</strong>.</p></li>
+<li><p>The <strong>output</strong> consists of the <strong>drain resistance</strong> <span class="math notranslate nohighlight">\(r_d\)</span> (the internal dynamic resistance of the JFET) in parallel with the load resistor <span class="math notranslate nohighlight">\(R_D\)</span>.</p></li>
+</ul>
+<figure class="align-center" id="fet-modelisation">
+<a class="reference internal image-reference" href="../../_images/FET_modelisation.svg"><img alt="../../_images/FET_modelisation.svg" src="../../_images/FET_modelisation.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Small-signal model of a JFET</span><a class="headerlink" href="#fet-modelisation" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="main-characteristics">
+<h3>Main Characteristics<a class="headerlink" href="#main-characteristics" title="Link to this heading">#</a></h3>
+<p>We can now derive the three main parameters of this circuit:</p>
+<ul class="simple">
+<li><p><strong>Input resistance</strong> <span class="math notranslate nohighlight">\(R_{in}\)</span></p></li>
+<li><p><strong>Output resistance</strong> <span class="math notranslate nohighlight">\(R_{out}\)</span></p></li>
+<li><p><strong>Voltage gain</strong> <span class="math notranslate nohighlight">\(A_v\)</span></p></li>
+</ul>
+<section id="input-resistance">
+<h4>1. Input Resistance<a class="headerlink" href="#input-resistance" title="Link to this heading">#</a></h4>
+<p>Since the gate of a JFET draws almost no current (due to the reverse-biased PN junction), the input resistance is very high:</p>
+<div class="math notranslate nohighlight">
+\[
+R_{in} \approx R_G
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(R_G\)</span> is the gate bias resistor.
+Typical values range from <strong>hundreds of kΩ to several MΩ</strong>.</p>
+</section>
+<section id="output-resistance">
+<h4>2. Output Resistance<a class="headerlink" href="#output-resistance" title="Link to this heading">#</a></h4>
+<p>The output resistance is the resistance seen looking into the drain terminal:</p>
+<div class="math notranslate nohighlight">
+\[
+R_{out} = r_d \parallel R_D
+\]</div>
+<p>where ( <span class="math notranslate nohighlight">\(r_d\)</span> ) is the internal drain resistance (typically tens of kΩ).</p>
+</section>
+<section id="voltage-gain">
+<h4>3. Voltage Gain<a class="headerlink" href="#voltage-gain" title="Link to this heading">#</a></h4>
+<p>The voltage gain of the common-source amplifier is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+A_v = \frac{V_{out}}{V_{in}} = -g_m R_D
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[
+R_D' = R_D \parallel r_d
+\]</div>
+<p>The <strong>negative sign</strong> indicates a <strong>phase inversion</strong> between input and output (the output decreases when the input increases).</p>
+</section>
+</section>
+<section id="summary-table">
+<h3>Summary Table<a class="headerlink" href="#summary-table" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Expression</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R_{in}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\approx R_G\)</span></p></td>
+<td><p>Very high (due to insulated gate)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(R_{out}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(= R_D \parallel r_d\)</span></p></td>
+<td><p>Moderate to high</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A_v\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(= -g_m (R_D \parallel r_d)\)</span></p></td>
+<td><p>Inverted output phase</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En résumé l’entrée est la sortie va avoir une sortie avec une impédance élévé ce qui peut posé des problèmes surtout au niveau de la sortie.</p>
+</section>
+<section id="biasing-dc-analysis">
+<h3>Biasing (DC Analysis)<a class="headerlink" href="#biasing-dc-analysis" title="Link to this heading">#</a></h3>
+<p>Before applying an AC signal, the JFET must be properly biased to operate in the <strong>active (or saturation) region</strong>.</p>
+<p>The DC equivalent circuit allows us to determine the <strong>operating point</strong> (<span class="math notranslate nohighlight">\(I_D\)</span>, <span class="math notranslate nohighlight">\(V_{GS}\)</span>, <span class="math notranslate nohighlight">\(V_D\)</span>).</p>
+<ol class="arabic simple">
+<li><p><strong>Drain Current Equation</strong></p></li>
+</ol>
+<p>The drain current in the saturation region follows the <strong>Shockley equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+I_D = I_{DSS} \left(1 - \frac{V_{GS}}{V_P}\right)^2
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I_{DSS}\)</span> = drain current for <span class="math notranslate nohighlight">\(V_{GS} = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V_P\)</span> = pinch-off voltage (negative for N-channel JFETs)</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Voltage Relations</strong></p></li>
+</ol>
+<p>From the circuit:</p>
+<div class="math notranslate nohighlight">
+\[V_D = V_{DD} - I_D R_D\]</div>
+<div class="math notranslate nohighlight">
+\[V_{GS} = V_G - V_S\]</div>
+<p>If the source is grounded (<span class="math notranslate nohighlight">\(V_S = 0\)</span>), then <span class="math notranslate nohighlight">\(V_{GS} = V_G\)</span>.</p>
+<p>If there is a <strong>source resistor</strong> <span class="math notranslate nohighlight">\(R_S\)</span> for self-biasing, then:</p>
+<div class="math notranslate nohighlight">
+\[
+V_S = I_D R_S
+\quad \text{and thus} \quad
+V_{GS} = -I_D R_S
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Operating Condition</strong></p></li>
+</ol>
+<p>For the transistor to remain in the <strong>saturation region</strong>, the following condition must be satisfied:</p>
+<div class="math notranslate nohighlight">
+\[V_{DS} &gt; V_{GS} - V_P\]</div>
+<p>This ensures the transistor operates as a voltage-controlled current source rather than a simple resistor.</p>
+<p>ref
+<a class="reference external" href="https://www.allaboutcircuits.com/textbook/semiconductors/chpt-5/simulating-jfet-circuits-using-ltspice/">https://www.allaboutcircuits.com/textbook/semiconductors/chpt-5/simulating-jfet-circuits-using-ltspice/</a>
+<a class="reference external" href="https://circuitelectronics.github.io/StudentEffort/StudentEffort/JFET_TRansistor/JFETTrans.html#jfet-voltage-controlled-resistor">https://circuitelectronics.github.io/StudentEffort/StudentEffort/JFET_TRansistor/JFETTrans.html#jfet-voltage-controlled-resistor</a></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Base_componant\transistor"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../diode/Diode.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Diode</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Bipolaire.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bipolar Junction Transistor (BJT)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-field-effect-transistors">Introduction to Field-Effect Transistors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jfet">JFET</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electronic-designation">Electronic Designation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-channel-jfet">N-Channel JFET</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-channel-jfet">P-Channel JFET</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-current-characteristics">Voltage-Current Characteristics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematics">Mathematics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-ohmic-region">Linear (Ohmic) Region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-current-region">Constant Current Region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-equation">Résumé équation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-configurations-in-processing-not-to-be-taken-into-account">Circuit Configurations (In processing not to be taken into account)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-source-configuration">Common Source Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-signal-model">Small-Signal Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-characteristics">Main Characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-resistance">1. Input Resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-resistance">2. Output Resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-gain">3. Voltage Gain</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biasing-dc-analysis">Biasing (DC Analysis)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sacha COMTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

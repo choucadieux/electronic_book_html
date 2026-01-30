@@ -1,0 +1,1878 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Inverting Amplifier &#8212; Book on electronics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'AOP/02_Inverting_amplifier';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Non-Inverting Operational Amplifier" href="03_Non_inverseur_amplificator.html" />
+    <link rel="prev" title="Resume" href="01_Introduction_amplificateur.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Book on electronics - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Book on electronics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Book on Electronics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/diode/Diode.html">Diode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Passif circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Passif/RC.html">RL Circuit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Essential Circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/Pont_diode.html">Diode Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Regulator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Alimentation/Regulateur/regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Amplificator</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Introduction_amplificateur.html">Resume</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Inverting Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Suiveur.html">Voltage Follower (Buffer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Differential_amplificator.html">Differential amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_class_A.html">Class A amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_class_B.html">Amplificateur class B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_class_AB.html">Amplificateur class AB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_class_C.html">Amplificateur class C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_class_D.html">Amplificateur class D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logic Gate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/NOT.html">Porte NOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/AND.html">AND and NAND Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/OR.html">OR and NOR Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Porte/XOR.html">XOR and NXOR Gate</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Schmit Trigger</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/intro.html">Schmitt Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/Hysteresis_aop.html">Schmitt Trigger Using an Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Secrurity/Schmitt_Trigger/Hysteresis_transistor.html">Schmitt Trigger using a Bipolar Transistor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Microelectronics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Introduction/Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Logicol/Introduction/Jonction_PN.html">Jonction PN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAOP/02_Inverting_amplifier.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/AOP/02_Inverting_amplifier.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Inverting Amplifier</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit">Circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation">Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-virtual-short-principle">Step 1 Virtual short principle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-applying-kirchhoffs-voltage-law-kvl">Step 2 Applying Kirchhoff’s voltage law (KVL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-ohms-law-and-input-current-assumption">Step 3 Ohm’s law and input current assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-solving-for-the-output-voltage">Step 4 Solving for the output voltage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-expression">Final Expression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-construction">Circuit Construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-simulation">Static Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gain-analysis">Gain Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-simulation">Dynamic Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-analysis">Signal Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saturation-simulation">Saturation Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-sensitivity">System Sensitivity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-calculation">Theoretical Calculation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity">Sensitivity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-sensitivity">Normalized Sensitivity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-calculation">Uncertainty Calculation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-uncertainty">Combined Uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-uncertainty-analysis">Monte-Carlo Uncertainty Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bode-diagram">Bode Diagram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-issues">Visualization Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-point-by-point-simulation">Method 1: Point-by-Point Simulation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-real-imaginary">Method 2 : Real &amp; Imaginary</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#result-1">Result 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#result-2">Result 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-relationship">Matrix Relationship</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth">Bandwidth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-linearity">System Linearity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distortion">Distortion</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="inverting-amplifier">
+<h1>Inverting Amplifier<a class="headerlink" href="#inverting-amplifier" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuitFactory</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Probe.Plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Library</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpiceLibrary</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="circuit">
+<h2>Circuit<a class="headerlink" href="#circuit" title="Link to this heading">#</a></h2>
+<p>On the <a class="reference internal" href="#aopinverting"><span class="std std-ref">Inverting amplifier circuit</span></a>, you can see the circuit that will be studied.<br />
+It is a relatively simple configuration, consisting of an operational amplifier (op-amp), its two bias connections, and two resistors labeled <strong><span class="math notranslate nohighlight">\(R_1\)</span></strong> and <strong><span class="math notranslate nohighlight">\(R_2\)</span></strong>.</p>
+<p>The objective is to fully understand how this circuit operates starting from its governing equations and then moving on to simulations to explore its limitations.</p>
+<figure class="align-center" id="aopinverting">
+<a class="reference internal image-reference" href="../_images/Aopinverting.svg"><img alt="../_images/Aopinverting.svg" src="../_images/Aopinverting.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Inverting amplifier circuit</span><a class="headerlink" href="#aopinverting" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="equation">
+<h2>Equation<a class="headerlink" href="#equation" title="Link to this heading">#</a></h2>
+<p>The equation <a class="reference internal" href="#equation-equation-aop-inversing">(6)</a> is straightforward.
+It shows that the gain depends on the ratio <span class="math notranslate nohighlight">\(\frac{R_2}{R_1}\)</span> between the two resistors.
+The negative sign (<span class="math notranslate nohighlight">\(-\)</span>) indicates that the output signal is <strong>inverted</strong> relative to the input.</p>
+<div class="math notranslate nohighlight" id="equation-equation-aop-inversing">
+<span class="eqno">(6)<a class="headerlink" href="#equation-equation-aop-inversing" title="Link to this equation">#</a></span>\[V_{out} = - V_{in} \cdot \frac{R_2}{R_1}\]</div>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">#</a></h2>
+<p>Consider the <strong>classic inverting amplifier</strong> configuration:</p>
+<ul class="simple">
+<li><p>The input voltage <span class="math notranslate nohighlight">\(V_{in}\)</span> is applied through resistor <span class="math notranslate nohighlight">\(R_1\)</span> to the <strong>inverting input</strong> <span class="math notranslate nohighlight">\((-)\)</span>.</p></li>
+<li><p>The <strong>non-inverting input</strong> <span class="math notranslate nohighlight">\((+)\)</span> is connected to ground <span class="math notranslate nohighlight">\((0~\text{V})\)</span>.</p></li>
+<li><p>The <strong>feedback resistor</strong> <span class="math notranslate nohighlight">\(R_2\)</span> connects the <strong>output</strong> <span class="math notranslate nohighlight">\(V_{out}\)</span> to the inverting input.</p></li>
+</ul>
+<figure class="align-center" id="aopinverting-demonstration">
+<a class="reference internal image-reference" href="../_images/Aopinverting_demonstration.svg"><img alt="../_images/Aopinverting_demonstration.svg" src="../_images/Aopinverting_demonstration.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Inverting amplifier circuit used for demonstration</span><a class="headerlink" href="#aopinverting-demonstration" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="step-1-virtual-short-principle">
+<h3>Step 1 Virtual short principle<a class="headerlink" href="#step-1-virtual-short-principle" title="Link to this heading">#</a></h3>
+<p>Under the <strong>ideal linear regime</strong> (ideal op-amp assumption):</p>
+<div class="math notranslate nohighlight">
+\[V^+ = V^-\]</div>
+<p>Since the non-inverting input is grounded:</p>
+<div class="math notranslate nohighlight">
+\[V^+ = 0 \quad \Rightarrow \quad V^- = 0\]</div>
+</section>
+<section id="step-2-applying-kirchhoffs-voltage-law-kvl">
+<h3>Step 2 Applying Kirchhoff’s voltage law (KVL)<a class="headerlink" href="#step-2-applying-kirchhoffs-voltage-law-kvl" title="Link to this heading">#</a></h3>
+<p>From the circuit:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+V_{in} = U_{R_1} \\
+V_{out} = -U_{R_2}
+\end{cases}
+\end{split}\]</div>
+<blockquote>
+<div><p>The voltage across <span class="math notranslate nohighlight">\(R_1\)</span> corresponds to the input voltage,
+while the feedback resistor <span class="math notranslate nohighlight">\(R_2\)</span> experiences the output voltage with opposite polarity.</p>
+</div></blockquote>
+</section>
+<section id="step-3-ohms-law-and-input-current-assumption">
+<h3>Step 3 Ohm’s law and input current assumption<a class="headerlink" href="#step-3-ohms-law-and-input-current-assumption" title="Link to this heading">#</a></h3>
+<p>Using <strong>Ohm’s law</strong> <span class="math notranslate nohighlight">\(U = R \cdot i\)</span>, and assuming <strong>infinite input impedance</strong>,
+the current entering the op-amp is negligible:</p>
+<div class="math notranslate nohighlight">
+\[i_{in} = 0\]</div>
+<p>Therefore, the same current flows through both resistors <span class="math notranslate nohighlight">\(R_1\)</span> and <span class="math notranslate nohighlight">\(R_2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+V_{in} = R_1 \cdot i \\
+V_{out} = -R_2 \cdot i
+\end{cases}
+\end{split}\]</div>
+<blockquote>
+<div><p>The current <span class="math notranslate nohighlight">\(i\)</span> is identical in both resistors since the op-amp draws no current.</p>
+</div></blockquote>
+</section>
+<section id="step-4-solving-for-the-output-voltage">
+<h3>Step 4 Solving for the output voltage<a class="headerlink" href="#step-4-solving-for-the-output-voltage" title="Link to this heading">#</a></h3>
+<p>From the first equation:</p>
+<div class="math notranslate nohighlight">
+\[i = \dfrac{V_{in}}{R_1}\]</div>
+<p>Substitute into the second:</p>
+<div class="math notranslate nohighlight">
+\[V_{out} = -R_2 \cdot \dfrac{V_{in}}{R_1}\]</div>
+<blockquote>
+<div><p>Substituting <span class="math notranslate nohighlight">\(i\)</span> gives the proportional relationship between output and input voltages.</p>
+</div></blockquote>
+</section>
+<section id="final-expression">
+<h3>Final Expression<a class="headerlink" href="#final-expression" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\boxed{V_{out} = - V_{in} \cdot \dfrac{R_2}{R_1}}\]</div>
+<blockquote>
+<div><p>This is the fundamental <strong>gain equation</strong> of an inverting amplifier.
+The output is inverted and scaled by the ratio <span class="math notranslate nohighlight">\(\dfrac{R_2}{R_1}\)</span>.</p>
+</div></blockquote>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>The negative sign means the output is <strong>180° out of phase</strong> with the input.</p></li>
+<li><p>In real op-amps, nonzero input bias currents and finite gain cause small deviations that can be analyzed using Kirchhoff’s current law.</p></li>
+</ul>
+</section>
+</section>
+<section id="circuit-construction">
+<h2>Circuit Construction<a class="headerlink" href="#circuit-construction" title="Link to this heading">#</a></h2>
+<figure class="align-center" id="aopinverting-montage">
+<a class="reference internal image-reference" href="../_images/Aopinverting_pyspace.svg"><img alt="../_images/Aopinverting_pyspace.svg" src="../_images/Aopinverting_pyspace.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Inverting amplifier circuit setup for SPICE simulation</span><a class="headerlink" href="#aopinverting-montage" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the <a class="reference internal" href="#aopinverting-montage"><span class="std std-ref">Inverting amplifier circuit setup for SPICE simulation</span></a> figure, you can observe the complete circuit layout and the accessible nodes.</p>
+<p>First, the circuit includes an <strong>input</strong> and an <strong>output</strong>, labeled <code class="docutils literal notranslate"><span class="pre">input</span></code> and <code class="docutils literal notranslate"><span class="pre">out</span></code>, respectively.
+These are the terminals where the input signal is applied and the output signal is measured.</p>
+<p>Next, the op-amp power supplies are labeled <code class="docutils literal notranslate"><span class="pre">VCC</span></code> and <code class="docutils literal notranslate"><span class="pre">VEE</span></code>.
+Be careful to maintain the correct polarity: <code class="docutils literal notranslate"><span class="pre">VCC</span></code> must be greater than <code class="docutils literal notranslate"><span class="pre">VEE</span></code>.</p>
+<p>Finally, there is an intermediate node <code class="docutils literal notranslate"><span class="pre">v-</span></code>, which can be used either to connect additional components or to monitor the circuit’s behavior depending on the analysis being performed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AOP_montage</span><span class="p">(</span><span class="n">SubCircuitFactory</span><span class="p">):</span>
+    <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span>
+    <span class="n">NODES</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">R1</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_kOhm</span><span class="p">,</span> <span class="n">R2</span><span class="o">=</span><span class="mi">100</span><span class="nd">@u_kOhm</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># AOP 741 </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;U1&#39;</span><span class="p">,</span> <span class="s1">&#39;UA741&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># Resistance contrôle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="n">R1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">R2</span><span class="p">)</span>
+        
+        <span class="c1"># Resistance de charge</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="nd">@u_kOhm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="static-simulation">
+<h3>Static Simulation<a class="headerlink" href="#static-simulation" title="Link to this heading">#</a></h3>
+<p>In a <strong>static simulation</strong> (or <strong>operating point analysis</strong>), we study the <strong>steady-state voltages and currents</strong>.
+For example, if an input voltage ( <span class="math notranslate nohighlight">\(V_{in}\)</span> ) is applied, the operating point of the output ( <span class="math notranslate nohighlight">\(V_{out}\)</span> ) is given by:</p>
+<div class="math notranslate nohighlight">
+\[V_{out} = - V_{in} \cdot \frac{R_2}{R_1}\]</div>
+<p>These values can be retrieved from the <strong>operating point analysis</strong>:</p>
+<div class="math notranslate nohighlight">
+\[V_{in} = V^+ = V^- \quad ; \quad V_{out} = \text{voltage at the output node}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SubCircuitElement XAMP1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span>  <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
+
+<span class="c1"># ---- print all the node</span>
+<span class="c1">#for node in analysis.nodes.values():</span>
+<span class="c1">#    print(f&#39;Node {str(node)} : {float(node[0]):4.1f} V&#39;)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Characteristic circuit&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input value  : Vin  = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> V&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output value : Vout = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> V&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gain :         A    = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="w"> </span><span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Characteristic circuit
+----------------------
+Input value  : Vin  = 1.0 V
+Output value : Vout = -10.0 V
+Gain :         A    = -10.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gain-analysis">
+<h3>Gain Analysis<a class="headerlink" href="#gain-analysis" title="Link to this heading">#</a></h3>
+<p>We can first verify that the amplifier gain matches the expected value.<br />
+From the resistors used, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{R_2}{R_1} = \frac{100}{10} = 10
+\]</div>
+<blockquote>
+<div><p>The output magnitude therefore corresponds exactly to the expected gain as given by the fundamental equation <a class="reference internal" href="#equation-equation-aop-inversing">(6)</a>.</p>
+</div></blockquote>
+<p>Additionally, the output is <strong>negative</strong>, which is consistent with the <strong>inverting amplifier</strong> configuration.</p>
+</section>
+<section id="dynamic-simulation">
+<h3>Dynamic Simulation<a class="headerlink" href="#dynamic-simulation" title="Link to this heading">#</a></h3>
+<p>The <strong>dynamic simulation</strong> (transient analysis) allows us to observe the <strong>time-domain response</strong> of the circuit when the input signal varies over time.<br />
+For example, consider a sinusoidal input:</p>
+<div class="math notranslate nohighlight">
+\[V_{in}(t) = V_0 \cdot \sin(2 \pi f t)\]</div>
+<p>The ideal output is then given by:</p>
+<div class="math notranslate nohighlight">
+\[
+V_{out}(t) = A_v \cdot V_{in}(t) = \left(-\frac{R_2}{R_1}\right) V_0 \cdot \sin(2 \pi f t)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A_v\)</span> is the <strong>voltage gain</strong> as defined in <a class="reference internal" href="#equation-equation-aop-inversing">(6)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_kHz</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SubCircuitElement XAMP1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_us</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">5</span><span class="nd">@u_ms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">vin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])</span>
+<span class="n">vout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">vin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Entrée (V_in)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">vout</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sortie (V_out)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Small signal visualization (AOP uA741)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temps (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tension (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5e398a5e879d1400bbe2a20dbf95243e884d1de64783b7a9049367ebb3a4ca53.png" src="../_images/5e398a5e879d1400bbe2a20dbf95243e884d1de64783b7a9049367ebb3a4ca53.png" />
+</div>
+</div>
+</section>
+<section id="signal-analysis">
+<h3>Signal Analysis<a class="headerlink" href="#signal-analysis" title="Link to this heading">#</a></h3>
+<p>In the graph, the <strong>blue line</strong> represents the input signal to the amplifier,<br />
+while the <strong>orange line</strong> corresponds to the output signal.</p>
+<p>We can clearly observe that the gain is <span class="math notranslate nohighlight">\(10\)</span>:<br />
+the input signal reaches a maximum of <span class="math notranslate nohighlight">\(1~\text{V}\)</span>, while the output reaches <span class="math notranslate nohighlight">\(10~\text{V}\)</span>.</p>
+<p>The output signal is also <strong>phase-shifted by 180°</strong>, indicating a negative gain.<br />
+This is characteristic of an <strong>inverting amplifier</strong>, where a positive input produces a negative output.</p>
+<p>For instance, when the input voltage is <span class="math notranslate nohighlight">\(+1~\text{V}\)</span>, the output voltage is <span class="math notranslate nohighlight">\(-10~\text{V}\)</span>, as illustrated in the graph.</p>
+</section>
+<section id="saturation-simulation">
+<h3>Saturation Simulation<a class="headerlink" href="#saturation-simulation" title="Link to this heading">#</a></h3>
+<p>When the input signal amplitude is too high, the output may <strong>reach the supply voltage limits</strong> (<span class="math notranslate nohighlight">\(+V_{CC}\)</span> and <span class="math notranslate nohighlight">\(-V_{SS}\)</span>).<br />
+In this case, the output waveform is <strong>no longer a perfect sine wave</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+V_{out}(t) =
+\begin{cases}
++V_{CC} &amp; \text{if } V_{out,ideal} &gt; +V_{CC} \\
+-V_{SS} &amp; \text{if } V_{out,ideal} &lt; -V_{SS} \\
+V_{out,ideal} &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<p>This limitation arises because the <strong>op-amp cannot output a voltage higher than</strong> <span class="math notranslate nohighlight">\(+V_{CC}\)</span> <strong>or lower than</strong> <span class="math notranslate nohighlight">\(-V_{SS}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialisation variable</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.7</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_kHz</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SubCircuitElement XAMP1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_us</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">5</span><span class="nd">@u_ms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">vin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])</span>
+<span class="n">vout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">vin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Entrée (V_in)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">vout</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sortie (V_out)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Amplificateur non-inverseur saturation (AOP uA741)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temps (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tension (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/959d0f95acb5fa4315425310ccb65c9ed802e4886a29c9b472b6eca3c08e05b8.png" src="../_images/959d0f95acb5fa4315425310ccb65c9ed802e4886a29c9b472b6eca3c08e05b8.png" />
+</div>
+</div>
+<p><strong>Output Clipping</strong></p>
+<p>The output signal can be seen to be <strong>clipped</strong>.<br />
+This happens because the signal exceeds the amplifier’s supply voltage limits, namely <span class="math notranslate nohighlight">\(+V_{CC}\)</span> and <span class="math notranslate nohighlight">\(-V_{SS}\)</span>.</p>
+<p>Since the amplifier cannot produce an output voltage beyond its power rails,<br />
+the signal is limited (clipped) at these boundaries.</p>
+<p>In other words, when the input drives the output above <span class="math notranslate nohighlight">\(+V_{CC}\)</span> or below <span class="math notranslate nohighlight">\(-V_{SS}\)</span>,<br />
+the amplifier <strong>saturates</strong>, and the waveform flattens at these voltage extremes.</p>
+</section>
+</section>
+<section id="system-sensitivity">
+<h2>System Sensitivity<a class="headerlink" href="#system-sensitivity" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to evaluate the <strong>stability of the system</strong>.<br />
+This involves calculating the <strong>sensitivity of the output</strong> with respect to component variations, as well as observing how these variations depend on temperature.</p>
+<section id="theoretical-calculation">
+<h3>Theoretical Calculation<a class="headerlink" href="#theoretical-calculation" title="Link to this heading">#</a></h3>
+<section id="sensitivity">
+<h4>Sensitivity<a class="headerlink" href="#sensitivity" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>With respect to R1</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial V_{out}}{\partial R_1} = -\frac{\partial}{\partial R_1}\left(V_{in} \frac{R_2}{R_1}\right)
+\quad \Rightarrow \quad
+\frac{\partial V_{out}}{\partial R_1} = V_{in} \frac{R_2}{R_1^2} 
+\quad \Rightarrow \quad
+\frac{\partial V_{out}}{\partial R_1} = \frac{V_{out}}{R_1}
+\]</div>
+<ul class="simple">
+<li><p><strong>With respect to R2</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial V_{out}}{\partial R_2} = \frac{\partial}{\partial R_2}\left(V_{in} \frac{R_2}{R_1}\right)
+\quad \Rightarrow \quad
+\frac{\partial V_{out}}{\partial R_2} = \frac{V_{in}}{R_1} 
+\quad \Rightarrow \quad
+\frac{\partial V_{out}}{\partial R_2} = \frac{V_{out}}{R_2}
+\]</div>
+</section>
+<section id="normalized-sensitivity">
+<h4>Normalized Sensitivity<a class="headerlink" href="#normalized-sensitivity" title="Link to this heading">#</a></h4>
+<p>The <strong>normalized sensitivity</strong> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+S_x^{norm} = \frac{x}{V_{out}} \frac{\partial V_{out}}{\partial x}
+\]</div>
+<ul class="simple">
+<li><p><strong>For R1</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+S_{R_1}^{norm} = \frac{R_1}{V_{out}} \frac{\partial V_{out}}{\partial R_1} = -1
+\]</div>
+<ul class="simple">
+<li><p><strong>For R2</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+S_{R_2}^{norm} = \frac{R_2}{V_{out}} \frac{\partial V_{out}}{\partial R_2} = 1
+\]</div>
+<p><strong>Interpretation:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S_{R_1}^{norm} = -1\)</span> : a <strong>+1% change in R1</strong> results in approximately a <strong>-1% change in V_out</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_{R_2}^{norm} = +1\)</span> : a <strong>+1% change in R2</strong> results in approximately a <strong>+1% change in V_out</strong>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="uncertainty-calculation">
+<h2>Uncertainty Calculation<a class="headerlink" href="#uncertainty-calculation" title="Link to this heading">#</a></h2>
+<section id="combined-uncertainty">
+<h3>Combined Uncertainty<a class="headerlink" href="#combined-uncertainty" title="Link to this heading">#</a></h3>
+<p>The combined output uncertainty due to resistor tolerances is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+U = \sqrt{\left(\frac{\partial V_{out}}{\partial R_1} u_{R_1}\right)^2 + \left(\frac{\partial V_{out}}{\partial R_2} u_{R_2}\right)^2} 
+\quad \Rightarrow \quad
+U = \sqrt{\left(\frac{V_{out}}{R_1} u_{R_1}\right)^2 + \left(\frac{V_{out}}{R_2} u_{R_2}\right)^2} 
+\quad \Rightarrow \quad
+U = V_{out} \cdot \sqrt{\left(\frac{u_{R_1}}{R_1}\right)^2 + \left(\frac{u_{R_2}}{R_2}\right)^2}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vout</span> <span class="o">=</span> <span class="mi">10</span>       <span class="c1"># V</span>
+<span class="n">R1</span>   <span class="o">=</span> <span class="mf">10e3</span>     <span class="c1"># 10 kΩ</span>
+<span class="n">R2</span>   <span class="o">=</span> <span class="mf">100e3</span>    <span class="c1"># 100 kΩ</span>
+<span class="n">incertitude</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># 5%</span>
+
+<span class="n">u_R1</span> <span class="o">=</span> <span class="n">R1</span> <span class="o">*</span> <span class="n">incertitude</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">u_R2</span> <span class="o">=</span> <span class="n">R2</span> <span class="o">*</span> <span class="n">incertitude</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">U</span> <span class="o">=</span> <span class="n">Vout</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">u_R1</span><span class="o">/</span><span class="n">R1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">u_R2</span><span class="o">/</span><span class="n">R2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may notice a factor of <span class="math notranslate nohighlight">\(\sqrt{3}\)</span> appearing in the equations.<br />
+This arises because the input parameters are assumed to follow a <strong>uniform (rectangular) distribution</strong>.<br />
+When converting the standard deviation of a uniform distribution to an equivalent standard uncertainty, the factor <span class="math notranslate nohighlight">\(\sqrt{3}\)</span> is <strong>mandatory</strong>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expanded uncertainty (95%) of the output voltage: </span><span class="si">{</span><span class="n">U</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> V&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding relative uncertainty: </span><span class="si">{</span><span class="n">U</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="n">Vout</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expanded uncertainty (95%) of the output voltage: 0.408 V
+Corresponding relative uncertainty: 8.2 %
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="monte-carlo-uncertainty-analysis">
+<h3>Monte-Carlo Uncertainty Analysis<a class="headerlink" href="#monte-carlo-uncertainty-analysis" title="Link to this heading">#</a></h3>
+<p>The <strong>Monte-Carlo method</strong> is a statistical approach used to estimate the uncertainty of a system by simulating many possible scenarios.<br />
+Instead of relying solely on analytical formulas, this method generates a large number of random samples for the input parameters (e.g., resistor values) based on their known tolerances or distributions.</p>
+<p>For each sample set, the output voltage is calculated. After repeating this process many times, the distribution of output values provides an estimate of the <strong>output uncertainty</strong>, including possible non-linear effects and interactions between components.</p>
+<p>This approach is particularly useful when:</p>
+<ul class="simple">
+<li><p>The system behavior is <strong>non-linear</strong>.</p></li>
+<li><p>Component variations are <strong>not independent</strong> or <strong>not normally distributed</strong>.</p></li>
+<li><p>A more <strong>realistic assessment of uncertainty</strong> is needed compared to purely analytical methods.</p></li>
+</ul>
+<p>In practice, the Monte-Carlo simulation produces a <strong>histogram of output values</strong>, from which statistical quantities such as <strong>mean, standard deviation, and confidence intervals</strong> can be extracted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R1</span>     <span class="o">=</span> <span class="mf">10e3</span>
+<span class="n">R2</span>     <span class="o">=</span> <span class="mf">100e3</span>
+<span class="n">insert</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">num</span>    <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
+<span class="n">value</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> 
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span> 
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Alimentation AOP</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="nd">@u_V</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+    
+    <span class="n">R1_result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">R1</span> <span class="o">-</span> <span class="n">R1</span><span class="o">*</span><span class="n">insert</span><span class="p">,</span> <span class="n">R1</span> <span class="o">+</span> <span class="n">R1</span><span class="o">*</span><span class="n">insert</span><span class="p">)</span>
+    <span class="n">R2_result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">R2</span> <span class="o">-</span> <span class="n">R2</span><span class="o">*</span><span class="n">insert</span><span class="p">,</span> <span class="n">R2</span> <span class="o">+</span> <span class="n">R2</span><span class="o">*</span><span class="n">insert</span><span class="p">)</span>
+
+    <span class="n">aop</span> <span class="o">=</span> <span class="n">AOP_montage</span><span class="p">(</span><span class="n">R1</span><span class="o">=</span><span class="n">R1_result</span><span class="nd">@u_Ohm</span><span class="p">,</span> <span class="n">R2</span><span class="o">=</span><span class="n">R2_result</span><span class="nd">@u_Ohm</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">aop</span><span class="p">)</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
+    
+    <span class="n">Vout</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Vout</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Output Data Distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Output Voltage (V)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Occurrences&quot;</span><span class="p">)</span>
+
+<span class="c1"># Theoretical 95% confidence interval</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="n">U</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theoretical 95%&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">U</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Monte-Carlo 95% confidence interval</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Monte-Carlo 95%&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/24a29ef511228e642fea7cf3b6ecfe9a7c069d9681cb5d5be765dc1da500b0c6.png" src="../_images/24a29ef511228e642fea7cf3b6ecfe9a7c069d9681cb5d5be765dc1da500b0c6.png" />
+</div>
+</div>
+<p><strong>Shape of the Output Signal</strong></p>
+<p>The output signal exhibits a <strong>triangular shape</strong>, rather than a Gaussian (normal) distribution.<br />
+As a result, the usual broadening factor of <strong>k = 2</strong> no longer corresponds to 95% of the values, but to a different confidence level.</p>
+<p>This effect can be clearly seen in the <strong>Monte-Carlo estimated uncertainty</strong>,<br />
+which is significantly smaller than the value obtained using the <strong>analytical method</strong>.</p>
+<p>In other words, because the output distribution is <strong>non-Gaussian</strong>,<br />
+the standard <strong>k = 2</strong> rule for confidence intervals does <strong>not apply directly</strong>.</p>
+</section>
+</section>
+<section id="bode-diagram">
+<h2>Bode Diagram<a class="headerlink" href="#bode-diagram" title="Link to this heading">#</a></h2>
+<section id="visualization-issues">
+<h3>Visualization Issues<a class="headerlink" href="#visualization-issues" title="Link to this heading">#</a></h3>
+<p>This section focuses on the <strong>Bode plot</strong> of the system.<br />
+Sometimes, plotting may encounter <strong>visualization problems</strong>, such as improperly scaled axes, overlapping curves, or missing frequency points.</p>
+<p>It is important to ensure that:</p>
+<ul class="simple">
+<li><p>The frequency range is properly defined.</p></li>
+<li><p>Both magnitude and phase plots are clearly labeled.</p></li>
+<li><p>The plot is rendered with adequate resolution and grid lines for readability.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using libraries like <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> or <code class="docutils literal notranslate"><span class="pre">control</span></code>, always check that logarithmic axes (<code class="docutils literal notranslate"><span class="pre">semilogx</span></code>) and frequency units are correctly set to avoid common display issues.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialisation variable</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.7</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">100</span><span class="nd">@u_MHz</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SubCircuitElement XAMP1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mi">100</span><span class="nd">@u_ps</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">50</span><span class="nd">@u_ns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">vin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])</span>
+<span class="n">vout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">vin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Entrée (V_in)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">vout</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sortie (V_out)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Amplificateur non-inverseur problème sortie (AOP uA741)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temps (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tension (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2d9bbdf9edf0d5f1f9ced40619966cf463a45b89d588ec2195fab52b18ddb4b9.png" src="../_images/2d9bbdf9edf0d5f1f9ced40619966cf463a45b89d588ec2195fab52b18ddb4b9.png" />
+</div>
+</div>
+<p>It can be observed that the output signal has <strong>zero amplitude</strong>.<br />
+This occurs because the amplifier has a <strong>limited bandwidth</strong>.</p>
+<p>When the input frequency exceeds this bandwidth, the amplifier can no longer follow the signal accurately.<br />
+As a result, the output amplitude is <strong>severely attenuated</strong> or even reduced to zero.</p>
+</section>
+<section id="id1">
+<h3>Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="method-1-point-by-point-simulation">
+<h4>Method 1: Point-by-Point Simulation<a class="headerlink" href="#method-1-point-by-point-simulation" title="Link to this heading">#</a></h4>
+<p>In this approach, each point of the input signal is simulated <strong>individually</strong>.<br />
+This allows precise observation of the system’s response at specific input values, making it useful for:</p>
+<ul class="simple">
+<li><p>Understanding non-linear behavior.</p></li>
+<li><p>Capturing detailed effects at particular operating points.</p></li>
+<li><p>Comparing with analytical predictions for validation.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While accurate, this method can be <strong>computationally intensive</strong> for large datasets or high-resolution signals.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">phase_shift</span><span class="p">(</span><span class="n">signal_in</span><span class="p">,</span> <span class="n">signal_out</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the phase shift (in degrees) between two signals.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal_in : array-like</span>
+<span class="sd">        Input signal.</span>
+<span class="sd">    signal_out : array-like</span>
+<span class="sd">        Output signal.</span>
+<span class="sd">    freq : float</span>
+<span class="sd">        Frequency of the input signal (Hz).</span>
+<span class="sd">    sampling_rate : float</span>
+<span class="sd">        Sampling rate of the signals (samples per second).</span>
+<span class="sd">    gain : float, optional</span>
+<span class="sd">        Gain factor applied to the output signal (default is 1).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    phase_deg : float</span>
+<span class="sd">        Phase shift between input and output signals in degrees,</span>
+<span class="sd">        normalized to the range [-180, +180].</span>
+<span class="sd">    </span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The signals are first centered by subtracting their mean.</span>
+<span class="sd">    The phase shift is computed using cross-correlation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Center the signals</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">signal_in</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal_in</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">signal_out</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">signal_out</span><span class="p">)</span>
+
+    <span class="c1"># Cross-correlation</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span>
+    <span class="n">lag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Time shift</span>
+    <span class="n">time_shift</span> <span class="o">=</span> <span class="n">lag</span> <span class="o">/</span> <span class="n">sampling_rate</span>
+
+    <span class="c1"># Phase in degrees</span>
+    <span class="n">phase_deg</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_shift</span> <span class="o">*</span> <span class="n">freq</span> <span class="o">*</span> <span class="mi">360</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
+    <span class="k">if</span> <span class="n">phase_deg</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+        <span class="n">phase_deg</span> <span class="o">-=</span> <span class="mi">360</span>  <span class="c1"># Normalize to [-180, +180]</span>
+
+    <span class="k">return</span> <span class="n">phase_deg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialisation variable</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.7</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">100</span><span class="nd">@u_MHz</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SubCircuitElement XAMP1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">gain</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">phase</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">n_periods</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">points_per_period</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-10</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">frequence</span> <span class="p">:</span>
+    <span class="c1"># ---- initialisation parameter</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;Vinput&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">i</span><span class="nd">@u_Hz</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">n_periods</span> <span class="o">/</span> <span class="n">i</span>
+    <span class="n">step_time</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">points_per_period</span><span class="p">)</span>
+
+    <span class="c1"># ---- simulation</span>
+    <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="n">step_time</span><span class="nd">@u_s</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="nd">@u_s</span><span class="p">)</span>
+
+    <span class="c1"># ---- add parameter</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">])</span>
+    <span class="n">inp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])</span>
+
+    <span class="c1">## Amplitude</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+    <span class="n">gain_lineaire</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="n">mid</span><span class="p">:]))</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="n">mid</span><span class="p">:]))</span> <span class="o">+</span> <span class="n">epsilon</span>
+    <span class="n">gain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">gain_lineaire</span><span class="p">))</span>
+
+    <span class="c1">## Phase </span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">i</span>        <span class="c1"># fréquence du signal</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">step_time</span>  <span class="c1"># ton pas temporel</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">dt</span>     <span class="c1"># fréquence d’échantillonnage</span>
+    
+    <span class="n">phase</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phase_shift</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="n">mid</span><span class="p">:],</span> <span class="n">inp</span><span class="p">[</span><span class="n">mid</span><span class="p">:],</span> <span class="n">freq</span><span class="p">,</span> <span class="n">fs</span><span class="p">))</span>
+        
+<span class="n">gain</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gain</span><span class="p">)</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-2-real-imaginary">
+<h4>Method 2 : Real &amp; Imaginary<a class="headerlink" href="#method-2-real-imaginary" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialisation variable</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.7</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_Hz</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulation AC</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">ac</span><span class="p">(</span><span class="n">start_frequency</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_Hz</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="o">=</span><span class="mi">100</span><span class="nd">@u_MHz</span><span class="p">,</span> <span class="n">number_of_points</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">variation</span><span class="o">=</span><span class="s1">&#39;dec&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">frequency</span><span class="p">)</span>
+<span class="n">gain2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]))</span>
+<span class="n">phase2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]),</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]),</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tension de sortie&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]),</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fe4f1835fe60dbcde1292ccb623209328ee458a1f1a4e771dc055b9a945843c2.png" src="../_images/fe4f1835fe60dbcde1292ccb623209328ee458a1f1a4e771dc055b9a945843c2.png" />
+</div>
+</div>
+<p>Donc nous pouvons voir que plus fréquences augmente, plus la tension de sortie baisse.</p>
+</section>
+</section>
+<section id="result">
+<h3>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
+<section id="result-1">
+<h4>Result 1<a class="headerlink" href="#result-1" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrammes de Bode&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">frequence</span><span class="p">,</span> <span class="n">gain</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>    <span class="c1"># Amplitude</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (dB)&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">frequence</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Phase</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequence / Hz&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Phase (deg)&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Ajuster le placement des courbes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/53dd0dfe5b1af2195f53f9e90a409469cf477bef51bcdfcd5ea51101406b733d.png" src="../_images/53dd0dfe5b1af2195f53f9e90a409469cf477bef51bcdfcd5ea51101406b733d.png" />
+</div>
+</div>
+</section>
+<section id="result-2">
+<h4>Result 2<a class="headerlink" href="#result-2" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrammes de Bode&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">gain2</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>    <span class="c1"># Amplitude</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude (dB)&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Phase</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequence / Hz&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Phase (deg)&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Ajuster le placement des courbes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/09015641397b2b0edb4bee15e4e204980d95ed831e40001738c9f234caa4c2b8.png" src="../_images/09015641397b2b0edb4bee15e4e204980d95ed831e40001738c9f234caa4c2b8.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>We can see that the two methods do not produce exactly the same results.<br />
+This difference arises because the second method provides a <strong>more accurate</strong> and <strong>faster</strong> solution.</p>
+<p>Moreover, it is evident that starting from <strong>100 kHz</strong>, the output signal becomes significantly attenuated.<br />
+At <strong>100 MHz</strong>, the amplifier is <strong>no longer able to follow the input signal</strong>, making it practically ineffective.</p>
+</section>
+</section>
+<section id="characteristics">
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Link to this heading">#</a></h2>
+<p>The objective of this section is to <strong>characterize the amplifier</strong>.
+We aim to determine three key aspects:</p>
+<ol class="arabic simple">
+<li><p>The <strong>matrix relationship</strong> between input and output voltages and currents.</p></li>
+<li><p>The <strong>frequency response</strong> (or bandwidth) of the amplifier.</p></li>
+<li><p>The <strong>linearity</strong> of the output signal.</p></li>
+</ol>
+</section>
+<section id="matrix-relationship">
+<h2>Matrix Relationship<a class="headerlink" href="#matrix-relationship" title="Link to this heading">#</a></h2>
+<p>The first step is to establish a <strong>matrix relation</strong> linking the <strong>input and output electrical quantities</strong> — namely, the voltages and currents.</p>
+<p>For a <strong>voltage amplifier</strong>, these quantities are described by <strong>four fundamental parameters</strong>:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(Z_e\)</span></strong> – input impedance</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(Z_s\)</span></strong> – output impedance</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(G\)</span></strong> – transconductance (gain relating input current to output voltage)</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(G_{12}\)</span></strong> – reverse transfer parameter (feedback or reverse gain)</p></li>
+</ul>
+<p>The general matrix relationship can be written as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+V_1\\[4pt]
+V_2
+\end{pmatrix} =
+\begin{pmatrix}
+Z_e &amp; G_{12}\\[4pt]
+G &amp; Z_s
+\end{pmatrix}
+\begin{pmatrix}
+I_1\\[4pt]
+I_2
+\end{pmatrix}
+\end{split}\]</div>
+<figure class="align-center" id="quadripole-simple-inverting-amplifier">
+<a class="reference internal image-reference" href="../_images/Amplifier_quadripole.svg"><img alt="../_images/Amplifier_quadripole.svg" src="../_images/Amplifier_quadripole.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Simplified quadripole model of an amplifier</span><a class="headerlink" href="#quadripole-simple-inverting-amplifier" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This <strong>two-port (quadripole) representation</strong> is widely used to describe amplifiers in a <strong>linear, small-signal regime</strong>.
+It provides a compact and analytical way to relate the <strong>input and output characteristics</strong>, which are later used to analyze <strong>gain</strong>, <strong>impedance matching</strong>, and <strong>feedback effects</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># coming soon</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="bandwidth">
+<h3>Bandwidth<a class="headerlink" href="#bandwidth" title="Link to this heading">#</a></h3>
+<p>The goal is to determine the <strong>bandwidth</strong> of the amplifier, defined as the frequency range over which the signal drops by <strong>3 dB</strong> from its maximum value.</p>
+<figure class="align-center" id="amplifier-bandwidth-inverting-amplifier">
+<a class="reference internal image-reference" href="../_images/Amplifier_bandwidth.svg"><img alt="../_images/Amplifier_bandwidth.svg" src="../_images/Amplifier_bandwidth.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Amplifier frequency response (bandwidth)</span><a class="headerlink" href="#amplifier-bandwidth-inverting-amplifier" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialisation variable</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">1.7</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">amplitude</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_Hz</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SubCircuitElement XAMP1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulation AC</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">ac</span><span class="p">(</span><span class="n">start_frequency</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_Hz</span><span class="p">,</span> <span class="n">stop_frequency</span><span class="o">=</span><span class="mi">100</span><span class="nd">@u_MHz</span><span class="p">,</span> <span class="n">number_of_points</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">variation</span><span class="o">=</span><span class="s1">&#39;dec&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">frequency</span><span class="p">)</span>
+<span class="n">gain2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]))</span>
+<span class="n">phase2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]),</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">bande_passante</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">])))</span> <span class="o">-</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Should be unit less
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------</span>
+<span class="c1"># Frequency Response (Bode Plot)</span>
+<span class="c1"># ---------------------------------------------------------</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot magnitude response in dB</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">])),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Output Voltage (dB)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Reference line for the -3 dB cutoff (bandwidth)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">bande_passante</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bandwidth Limit (-3 dB)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Axis formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">1e8</span><span class="p">)</span>
+<span class="c1">#plt.ylim(-60, 10)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Titles and labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frequency Response of the Circuit&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude [dB]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Layout optimization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Should be unit less
+</pre></div>
+</div>
+<img alt="../_images/eadf3c6c7b5424dbe564d166230d30d19150d5f5b2ca24e78c904849d99ad408.png" src="../_images/eadf3c6c7b5424dbe564d166230d30d19150d5f5b2ca24e78c904849d99ad408.png" />
+</div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Note: In Python, <code class="docutils literal notranslate"><span class="pre">np.log()</span></code> calculates the <strong>natural logarithm (ln)</strong>, not log base 10.</p>
+<ul class="simple">
+<li><p>For <strong>log base 10</strong>, use <code class="docutils literal notranslate"><span class="pre">np.log10()</span></code>.</p></li>
+<li><p>For <strong>log base 2</strong>, use <code class="docutils literal notranslate"><span class="pre">np.log2()</span></code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="system-linearity">
+<h3>System Linearity<a class="headerlink" href="#system-linearity" title="Link to this heading">#</a></h3>
+<p>Next, we analyze the <strong>linearity</strong> of the amplifier. This directly relates to the <strong>Saturation Simulation</strong> chapter.</p>
+<p>For an ideal amplifier, the input–output relationship should look like this:</p>
+<figure class="align-center" id="amplifier-linearity-inversing-amplifier">
+<a class="reference internal image-reference" href="../_images/Linearity_and_saturation.svg"><img alt="../_images/Linearity_and_saturation.svg" src="../_images/Linearity_and_saturation.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Amplifier linearity and saturation</span><a class="headerlink" href="#amplifier-linearity-inversing-amplifier" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inverting op-amp Amplifier&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/UA741.sub&#39;</span><span class="p">)</span>
+
+<span class="c1"># Alimentation AOP</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">1</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="nd">@u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">AOP_montage</span><span class="p">())</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;AMP1&#39;</span><span class="p">,</span> <span class="s1">&#39;AOP_inverting_amplifier&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;v-&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;VCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VEE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SubCircuitElement XAMP1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">operating_point</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="n">Vin</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract data</span>
+<span class="n">Vin_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">sweep</span><span class="p">)</span>       <span class="c1"># Input voltage sweep</span>
+<span class="n">Vout_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">out</span><span class="p">)</span>        <span class="c1"># Output voltage</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vin_values</span><span class="p">,</span> <span class="n">Vout_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Graph formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;DC Transfer Characteristic of Inverting Op-Amp&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Input Voltage $V_</span><span class="si">{in}</span><span class="s1">$ [V]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Output Voltage $V_</span><span class="si">{out}</span><span class="s1">$ [V]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0f035d684d990ea7e08cd8cc0a30def816f0253346e7314b322dd14301ec0fc6.png" src="../_images/0f035d684d990ea7e08cd8cc0a30def816f0253346e7314b322dd14301ec0fc6.png" />
+</div>
+</div>
+<p>To visualize this, we gradually increase the <strong>input voltage</strong> and observe the system response.</p>
+<p><strong>Observations from the graph:</strong></p>
+<ol class="arabic simple">
+<li><p>The output <strong>saturates</strong> at approximately ±15 V, consistent with previous studies.</p></li>
+<li><p>The slope is <strong>negative</strong>, confirming that the amplifier has a <strong>negative gain</strong>.</p></li>
+</ol>
+</section>
+<section id="distortion">
+<h3>Distortion<a class="headerlink" href="#distortion" title="Link to this heading">#</a></h3>
+<p>In this study, <strong>signal distortion</strong> has not been analyzed in detail.
+Future work could include measuring <strong>harmonic distortion (THD)</strong> or other non-linear effects to better characterize the amplifier.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./AOP"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_Introduction_amplificateur.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Resume</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_Non_inverseur_amplificator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Non-Inverting Operational Amplifier</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit">Circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation">Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-virtual-short-principle">Step 1 Virtual short principle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-applying-kirchhoffs-voltage-law-kvl">Step 2 Applying Kirchhoff’s voltage law (KVL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-ohms-law-and-input-current-assumption">Step 3 Ohm’s law and input current assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-solving-for-the-output-voltage">Step 4 Solving for the output voltage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-expression">Final Expression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-construction">Circuit Construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-simulation">Static Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gain-analysis">Gain Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-simulation">Dynamic Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-analysis">Signal Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saturation-simulation">Saturation Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-sensitivity">System Sensitivity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-calculation">Theoretical Calculation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity">Sensitivity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-sensitivity">Normalized Sensitivity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-calculation">Uncertainty Calculation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-uncertainty">Combined Uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-uncertainty-analysis">Monte-Carlo Uncertainty Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bode-diagram">Bode Diagram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-issues">Visualization Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-point-by-point-simulation">Method 1: Point-by-Point Simulation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-real-imaginary">Method 2 : Real &amp; Imaginary</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#result-1">Result 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#result-2">Result 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-relationship">Matrix Relationship</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bandwidth">Bandwidth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-linearity">System Linearity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distortion">Distortion</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sacha COMTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

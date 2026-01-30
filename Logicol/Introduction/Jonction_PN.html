@@ -1,0 +1,2166 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Jonction PN &#8212; Book on electronics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Logicol/Introduction/Jonction_PN';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Introduction bar métal" href="Introduction_bar_metal_Layout.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Book on electronics - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Book on electronics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Book on Electronics
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/diode/Diode.html">Diode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Passif circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Passif/RC.html">RL Circuit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Essential Circuit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../General/Pont_diode.html">Diode Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/Diode_roue_libre.html">Freewheeling Diode</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Regulator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Pond_diviseur_tension.html">Voltage divider bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/Diode_Zener.html">Zener diode series stabilizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_transistor_2.html">Series Transistor Voltage Regulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Alimentation/Regulateur/regulateur_tension_serie_AOP_2.html">Régulateur de tension série avec AOP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Analog electronics - Amplificator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/01_Introduction_amplificateur.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/02_Inverting_amplifier.html">Inverting Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/03_Non_inverseur_amplificator.html">Non-Inverting Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/04_Suiveur.html">Voltage Follower (Buffer)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/05_Differential_amplificator.html">Differential amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/06_Sommateur_amplificator.html">Amplificateur Sommateur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/07_Logarithme_amplificator.html">Amplificateur logarithme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/08_class_A.html">Class A amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/09_class_B.html">Amplificateur class B</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/10_class_AB.html">Amplificateur class AB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/11_class_C.html">Amplificateur class C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/12_class_D.html">Amplificateur class D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AOP/13_class_E.html">Amplificateur class E</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logic Gate</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Porte/NOT.html">Porte NOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Porte/AND.html">AND and NAND Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Porte/OR.html">OR and NOR Gate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Porte/XOR.html">XOR and NXOR Gate</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Schmit Trigger</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/intro.html">Schmitt Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/Hysteresis_aop.html">Schmitt Trigger Using an Operational Amplifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Secrurity/Schmitt_Trigger/Hysteresis_transistor.html">Schmitt Trigger using a Bipolar Transistor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital electronics - Microelectronics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Introduction_bar_metal_Layout.html">Introduction bar métal</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jonction PN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FLogicol/Introduction/Jonction_PN.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Logicol/Introduction/Jonction_PN.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jonction PN</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-diode-simulation">1D diode simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#device-and-region-definition">Device and Region Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-physical-parameters">Definition of Physical Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-temperature">System temperature</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#si-parameter">Si parameter</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contacts-linked-to-an-external-circuit">Contacts linked to an external circuit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contacts-with-no-external-circuit">Contacts with no external circuit</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-drift-diffusion">Initializing drift diffusion</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-driftdiffusion-solution-variables">Creating the drift–diffusion solution variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-initial-guess-for-the-solver">Setting the initial guess for the solver</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-driftdiffusion-physics">Creating the drift–diffusion physics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-continuity-equation">Electron continuity equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hole-continuity-equation">Hole continuity equation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-boundary-conditions">Contact boundary conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-for-equilibrium">Solving for Equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-equations-under-applied-bias">Solving the Equations Under Applied Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-between-the-two-solvers">Difference Between the Two Solvers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data">Save Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-data">Extract data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="jonction-pn">
+<h1>Jonction PN<a class="headerlink" href="#jonction-pn" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+</section>
+<section id="import">
+<h2>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Import Required Libraries</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Numerical and Plotting Libraries</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Devsim</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">devsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_node_values</span><span class="p">,</span> <span class="n">set_parameter</span><span class="p">,</span> <span class="n">solve</span><span class="p">,</span> <span class="n">write_devices</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">devsim.python_packages.simple_physics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">simple_physics</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">diode_common</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">devsim</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_node_model_values</span><span class="p">,</span>
+    <span class="n">get_edge_model_values</span><span class="p">,</span>
+    <span class="n">get_element_model_values</span><span class="p">,</span>
+    <span class="n">edge_average_model</span><span class="p">,</span>
+    <span class="n">edge_model</span><span class="p">,</span>
+    <span class="n">get_region_list</span><span class="p">,</span>
+    <span class="n">get_contact_list</span><span class="p">,</span>
+    <span class="n">get_element_model_values</span><span class="p">,</span>
+    <span class="n">get_node_model_list</span><span class="p">,</span>
+    <span class="n">get_edge_model_list</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">devsim</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># End of Imports</span>
+<span class="c1"># ============================================================</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h2>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h2>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<p>The goal of this first notebook is to model a <strong>PN junction</strong>, the fundamental building block of many semiconductor devices.</p>
+<p>We aim to simulate the behavior of semiconductor materials, which are essential in electronics: they form the basis of <strong>diodes</strong>, <strong>transistors</strong>, and therefore of computers and most modern electronic circuits.</p>
+<p>Semiconductors used in industry are typically <strong>doped</strong>, meaning that small amounts of impurities are added to modify their electrical properties. There are two main types of doping:</p>
+<ul class="simple">
+<li><p><strong>N-type doping</strong>: donor atoms are introduced, providing additional electrons and increasing the density of free (negatively charged) electrons.</p></li>
+<li><p><strong>P-type doping</strong>: acceptor atoms are introduced, creating a deficit of electrons. This results in an excess of holes, which act as positively charged carriers.</p></li>
+</ul>
+<p>This notebook focuses specifically on building and analyzing the junction formed by combining these two doped regions: the <strong>PN junction</strong>.</p>
+</section>
+<section id="d-diode-simulation">
+<h2>1D diode simulation<a class="headerlink" href="#d-diode-simulation" title="Link to this heading">#</a></h2>
+<section id="device-and-region-definition">
+<h3>Device and Region Definition<a class="headerlink" href="#device-and-region-definition" title="Link to this heading">#</a></h3>
+<p>The goal of this section is to define the physical model of the device—in our case, a diode composed of a positively doped region and a negatively doped region.
+Before using numerical solvers such as <strong>Poisson</strong> or <strong>drift–diffusion</strong>, we must prepare several essential elements.
+These three components are:</p>
+<ul class="simple">
+<li><p><strong>Geometry and mesh</strong> – the spatial structure of the device and its discretization.</p></li>
+<li><p><strong>Material parameters</strong> – the physical properties associated with each region.</p></li>
+<li><p><strong>Doping profile</strong> – the distribution of acceptor and donor impurities within the semiconductor.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Device and Region Definition</span>
+<span class="c1"># ============================================================</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;diode1&quot;</span>
+<span class="n">region</span> <span class="o">=</span> <span class="s2">&quot;bulk&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Role —</strong> The purpose is to assign a symbolic name to each object so that we can easily reference it later. This becomes especially useful when reusing simulations or modifying specific components, since clear names allow us to retrieve and manipulate simulation parameters efficiently.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Choose clear and meaningful names, just as you would when writing code.<br />
+For now, this notebook handles only a single device, but as soon as multiple components are involved, poor naming quickly becomes confusing<br />
+(<em>e.g., device=’diode1’, region=’bulk’</em>).</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Mesh and Material Parameters</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">diode_common</span><span class="o">.</span><span class="n">CreateMesh</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mid
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bot
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> (region: bulk)
+ (contact: top)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> (contact: bot)
+</pre></div>
+</div>
+</div>
+</div>
+<p>At the output of the function, we obtain the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mid
+bot
+ (region: bulk)
+ (contact: top)
+ (contact: bot)
+</pre></div>
+</div>
+<p>This indicates that the code has created two geometric regions, named <strong><code class="docutils literal notranslate"><span class="pre">mid</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">bot</span></code></strong>, along with two contacts named <strong><code class="docutils literal notranslate"><span class="pre">top</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">bot</span></code></strong>.
+The next step is to understand how this structure is produced by examining the <code class="docutils literal notranslate"><span class="pre">CreateMesh</span></code> function.</p>
+<p>Here is the <code class="docutils literal notranslate"><span class="pre">CreateMesh</span></code> code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">CreateMesh</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Meshing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">create_1d_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">)</span>
+    
+    <span class="n">add_1d_mesh_line</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+    <span class="n">add_1d_mesh_line</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mf">0.5e-5</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;mid&quot;</span><span class="p">)</span>
+    <span class="n">add_1d_mesh_line</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">)</span>
+    
+    <span class="n">add_1d_contact</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;metal&quot;</span><span class="p">)</span>
+    <span class="n">add_1d_contact</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;metal&quot;</span><span class="p">)</span>
+    
+    <span class="n">add_1d_region</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Si&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">tag1</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">tag2</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">)</span>
+    
+    <span class="n">finalize_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">)</span>
+    <span class="n">create_device</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_1d_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>initializes the mesh.
+According to the documentation:</p>
+<blockquote>
+<div><p><em>Create a mesh to create a 1D device</em>
+<em>mesh (str) – name of the 1D mesh being created</em></p>
+</div></blockquote>
+<p>Therefore, <strong><code class="docutils literal notranslate"><span class="pre">dio</span></code></strong> is simply the name of the mesh, chosen here to mean “diode”.</p>
+<p>Then we have:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_1d_mesh_line</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+<span class="n">add_1d_mesh_line</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mf">5e-6</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;mid&quot;</span><span class="p">)</span>
+<span class="n">add_1d_mesh_line</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The documentation states:</p>
+<blockquote>
+<div><p><em>Add a mesh line to a 1D mesh</em>
+<strong>pos</strong>: physical position of the mesh point
+<strong>ps</strong>: mesh spacing toward the positive direction
+<strong>tag</strong>: label for the position</p>
+</div></blockquote>
+<p>These lines define the segments of the 1D mesh by specifying points and the mesh spacing between them:</p>
+<ul class="simple">
+<li><p><strong>First zone</strong>: between <strong>0 µm and 5 µm</strong>, with a very fine spacing of <strong>1 nm</strong>.</p></li>
+<li><p><strong>Second zone</strong>: between <strong>5 µm and 10 µm</strong>, with a coarser spacing of <strong>100 nm</strong>.</p></li>
+</ul>
+<p>This creates two regions with different mesh densities, ensuring finer resolution where the physical quantities vary rapidly (typically near the PN junction).</p>
+<p>Next, the goal is to add contact regions. To do this, we use the following commands:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_1d_contact</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;metal&quot;</span><span class="p">)</span>
+<span class="n">add_1d_contact</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;metal&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>According to the documentation:</p>
+<blockquote>
+<div><p><strong>Add a contact to a 1D mesh</strong>
+Parameters:
+  <strong>material (str)</strong> – material of the contact being created
+  <strong>mesh (str)</strong> – mesh to which the contact is added
+  <strong>name (str)</strong> – name assigned to the contact
+  <strong>tag (str)</strong> – label indicating the position where the contact is placed</p>
+</div></blockquote>
+<p>These lines create two contacts. Both contacts use the material <code class="docutils literal notranslate"><span class="pre">&quot;metal&quot;</span></code>, meaning they are conductive terminals. As before, everything is added to the same mesh—<code class="docutils literal notranslate"><span class="pre">dio</span></code>.
+Each contact is assigned a name and a tag.
+The <strong>tag</strong> determines where the contact is positioned: one at the <code class="docutils literal notranslate"><span class="pre">top</span></code> marker and the other at the <code class="docutils literal notranslate"><span class="pre">bot</span></code> marker.</p>
+<p>Finally, we need to assign a material region between these two boundaries. This is done with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_1d_region</span><span class="p">(</span><span class="n">mesh</span><span class="o">=</span><span class="s2">&quot;dio&quot;</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">&quot;Si&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">tag1</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">tag2</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Documentation excerpt:</p>
+<blockquote>
+<div><p><strong>Add a region to a 1D mesh</strong>
+Parameters:
+  <strong>mesh (str)</strong> – mesh to which the region is added
+  <strong>tag1 (str)</strong> – label marking one boundary of the region
+  <strong>tag2 (str)</strong> – label marking the other boundary
+  <strong>region (str)</strong> – name of the region
+  <strong>material (str)</strong> – material assigned to the region</p>
+</div></blockquote>
+<p>This means that between the tags <code class="docutils literal notranslate"><span class="pre">top</span></code> and <code class="docutils literal notranslate"><span class="pre">bot</span></code>, the entire region will be filled with <strong>silicon (<code class="docutils literal notranslate"><span class="pre">Si</span></code>)</strong>.</p>
+<p>The last two lines of the function simply finalize the mesh and create the device model; they do not introduce new physical elements.</p>
+<p>In summary, the mesh now contains:</p>
+<ul class="simple">
+<li><p>the three mesh lines defined earlier,</p></li>
+<li><p>two metal contacts (<code class="docutils literal notranslate"><span class="pre">top</span></code> and <code class="docutils literal notranslate"><span class="pre">bot</span></code>),</p></li>
+<li><p>and a silicon region spanning between these two boundaries.</p></li>
+</ul>
+<figure class="align-center" id="diode-1d-mesh-introduction-simulation">
+<a class="reference internal image-reference" href="../../_images/DIode_1D_mesh.svg"><img alt="../../_images/DIode_1D_mesh.svg" src="../../_images/DIode_1D_mesh.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">1D representation of a diode used for simulation.</span><a class="headerlink" href="#diode-1d-mesh-introduction-simulation" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The next cell provides an overview of all the elements that have been created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === RÉGIONS ===</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Régions du device ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_region_list</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">))</span>
+
+<span class="c1"># === CONTACTS ===</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Contacts ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_contact_list</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">))</span>
+
+<span class="c1"># === NOEUDS (positions) ===</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">get_node_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Positions des nœuds ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">xx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> : x = </span><span class="si">{</span><span class="n">xx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Régions du device ===
+(&#39;bulk&#39;,)
+
+=== Contacts ===
+(&#39;bot&#39;, &#39;top&#39;)
+
+=== Positions des nœuds ===
+Node 0 : x = 0.0
+Node 1 : x = 1e-07
+Node 2 : x = 1.9801960392078414e-07
+Node 3 : x = 2.940980314486582e-07
+Node 4 : x = 3.8827372556479795e-07
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="definition-of-physical-parameters">
+<h3>Definition of Physical Parameters<a class="headerlink" href="#definition-of-physical-parameters" title="Link to this heading">#</a></h3>
+<p>The goal of this section is to define the material properties and the environmental conditions required for the simulation.</p>
+<p>In <strong>DEVSIM</strong>, a material (in our case, silicon, <em>Si</em>) requires a large number of physical parameters to properly describe its behavior:</p>
+<p><strong>Structural parameters</strong></p>
+<ul class="simple">
+<li><p>Silicon permittivity</p></li>
+<li><p>Bandgap energy <span class="math notranslate nohighlight">\(E_g\)</span></p></li>
+<li><p>Electron affinity <span class="math notranslate nohighlight">\(\chi\)</span></p></li>
+</ul>
+<p><strong>Electrical parameters</strong></p>
+<ul class="simple">
+<li><p>Effective density of states in the conduction band (<span class="math notranslate nohighlight">\(N_c\)</span>)</p></li>
+<li><p>Effective density of states in the valence band (<span class="math notranslate nohighlight">\(N_v\)</span>)</p></li>
+<li><p>Intrinsic carrier concentration (<span class="math notranslate nohighlight">\(n_i\)</span>)</p></li>
+<li><p>Electron mobility <span class="math notranslate nohighlight">\(\mu_n\)</span>, hole mobility <span class="math notranslate nohighlight">\(\mu_p\)</span></p></li>
+<li><p>Effective masses</p></li>
+</ul>
+<p><strong>Temperature-dependent parameters</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E_g(T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n_i(T)\)</span></p></li>
+<li><p>Mobilities <span class="math notranslate nohighlight">\(\mu(T)\)</span>, if modeled</p></li>
+</ul>
+<p><strong>Recombination parameters</strong></p>
+<ul class="simple">
+<li><p>Carrier lifetimes <span class="math notranslate nohighlight">\(\tau_n\)</span> and <span class="math notranslate nohighlight">\(\tau_p\)</span> (later adjusted using <code class="docutils literal notranslate"><span class="pre">set_parameter</span></code>)</p></li>
+<li><p>SRH recombination parameters</p></li>
+<li><p>Auger recombination parameters</p></li>
+</ul>
+<p><strong>Other parameters</strong></p>
+<ul class="simple">
+<li><p>Coefficients related to the electric field, such as saturation velocity</p></li>
+<li><p>Mobility degradation parameters (Caughey–Thomas model)</p></li>
+</ul>
+<p>To begin, the code first sets the <strong>temperature</strong> of the system, as many of the above parameters depend on it.</p>
+<section id="system-temperature">
+<h4>System temperature<a class="headerlink" href="#system-temperature" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diode_common</span><span class="o">.</span><span class="n">SetParameters</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The corresponding code is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">SetParameters</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set parameters for 300 K</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">SetSiliconParameters</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This function configures all silicon-related physical parameters at a temperature of <strong>300 K</strong>, which corresponds approximately to <strong>27 °C</strong>. It initializes the material properties that depend on temperature—such as bandgap energy, intrinsic carrier concentration, and mobilities—so that the simulation reflects realistic physical conditions.</p>
+</section>
+<section id="si-parameter">
+<h4>Si parameter<a class="headerlink" href="#si-parameter" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carrier lifetimes</span>
+<span class="n">set_parameter</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;taun&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+<span class="n">set_parameter</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;taup&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These values correspond to the <strong>minority carrier lifetimes</strong> in a semiconductor:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(\tau_n\)</span> (taun)</strong>: lifetime of electrons when they are minority carriers</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\tau_p\)</span> (taup)</strong>: lifetime of holes when they are minority carriers</p></li>
+</ul>
+<p>To give a sense of typical magnitudes, the following table summarizes the expected values:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Material</p></th>
+<th class="head"><p>Typical <span class="math notranslate nohighlight">\(\tau_n\)</span>, <span class="math notranslate nohighlight">\(\tau_p\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>High-quality pure Si</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-5}\)</span> to <span class="math notranslate nohighlight">\(10^{-3}\)</span> s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Moderately doped Si</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-6}\)</span> to <span class="math notranslate nohighlight">\(10^{-8}\)</span> s</p></td>
+</tr>
+<tr class="row-even"><td><p>Heavily doped Si</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-9}\)</span> to <span class="math notranslate nohighlight">\(10^{-11}\)</span> s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Degraded / irradiated Si</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-12}\)</span> to <span class="math notranslate nohighlight">\(10^{-14}\)</span> s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The carrier lifetime is the <strong>relaxation time constant</strong> describing how quickly the excess carrier concentration returns to equilibrium after a brief external excitation.
+The speed of recombination of excess electron-hole pairs depends strongly on the density of <strong>recombination centers</strong> in the bandgap, which originate from <strong>impurities</strong>, <strong>crystal defects</strong>, or <strong>radiation-induced damage</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Doping</span>
+<span class="n">diode_common</span><span class="o">.</span><span class="n">SetNetDoping</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This time, the goal is to modify the silicon parameters so that one region is doped <strong>acceptor-type (P-type)</strong> and the other is doped <strong>donor-type (N-type)</strong>.</p>
+<p>The corresponding code is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CreateNodeModel</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Acceptors&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0e18*step(0.5e-5-x)&quot;</span><span class="p">)</span>
+<span class="n">CreateNodeModel</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Donors&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0e18*step(x-0.5e-5)&quot;</span><span class="p">)</span>
+<span class="n">CreateNodeModel</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;NetDoping&quot;</span><span class="p">,</span> <span class="s2">&quot;Donors-Acceptors&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The purpose here is to create <strong>node models</strong>, although the role of these models may not yet be entirely clear. In DEVSIM, a <em>node model</em> defines a spatially dependent quantity on each mesh node. These models are later used by the Poisson and drift–diffusion solvers to compute charge, electric field, and carrier transport.</p>
+<p>At the end, the doping profile is defined by the following equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{NetDoping}(x) =
+\begin{cases}
+-1\times 10^{18} &amp; x &lt; 0.5\times 10^{-5} \quad \text{(P-type region)} \\
++1\times 10^{18} &amp; x &gt; 0.5\times 10^{-5} \quad \text{(N-type region)}
+\end{cases}
+\end{split}\]</div>
+<p>This creates a classic <strong>PN junction</strong>: acceptor concentration on the left, donor concentration on the right.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">get_node_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">Na</span> <span class="o">=</span> <span class="n">get_node_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Acceptors&quot;</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">get_node_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Donors&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">Nd</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Donors (N)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">Na</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Acceptors (P)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1e-1</span><span class="p">,</span> <span class="mf">1e19</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance / ym&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/166c7131c0d83e842681f687f84c140b35842885d625ce8cb9e61d9ed56aaa60.png" src="../../_images/166c7131c0d83e842681f687f84c140b35842885d625ce8cb9e61d9ed56aaa60.png" />
+</div>
+</div>
+<p>So we can clearly see the two areas, with the donor area and the acceptor area.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Initial Guess for Potential, Electron/Hole Densities</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">diode_common</span><span class="o">.</span><span class="n">InitialSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code performs the following operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Potential, Potential@n0, Potential@n1</span>
+<span class="n">CreateSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Potential&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create potential-only physical models</span>
+<span class="n">CreateSiliconPotentialOnly</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+
+<span class="c1"># Set up the contacts applying a bias</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">get_contact_list</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">circuit_contacts</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">circuit_contacts</span><span class="p">:</span>
+        <span class="n">CreateSiliconPotentialOnlyContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">set_parameter</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">GetContactBiasName</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">CreateSiliconPotentialOnlyContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First, we have:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CreateSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Potential&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This command creates the <strong>solution variable</strong> <code class="docutils literal notranslate"><span class="pre">Potential</span></code>, which will later be solved by the numerical solvers. In DEVSIM, every physical quantity to be computed (potential, electron density, hole density, etc.) must be explicitly declared as a <em>solution</em>.</p>
+<p>Next:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CreateSiliconPotentialOnly</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This line generates all the <strong>physical models</strong> required for a potential-only simulation.
+It sets up the necessary Poisson equation for the silicon region, namely:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla \cdot (\varepsilon \nabla \psi)
+= -q,(N_D - N_A + p - n)
+\]</div>
+<p>This corresponds to solving only the electrostatic potential, without carrier continuity equations (i.e., drift–diffusion is not included yet).</p>
+<p>Then we handle the contacts:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">get_contact_list</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">circuit_contacts</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">circuit_contacts</span><span class="p">:</span>
+        <span class="n">CreateSiliconPotentialOnlyContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">set_parameter</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">GetContactBiasName</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">CreateSiliconPotentialOnlyContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">get_contact_list</span></code> returns all defined contacts, which in this device are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">top</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bot</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="contacts-linked-to-an-external-circuit">
+<h3>Contacts linked to an external circuit<a class="headerlink" href="#contacts-linked-to-an-external-circuit" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">circuit_contacts</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">circuit_contacts</span><span class="p">:</span>
+    <span class="n">CreateSiliconPotentialOnlyContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the contact is connected to a circuit (SPICE interface), DEVSIM creates a contact model that interacts with external components such as:</p>
+<ul class="simple">
+<li><p>resistors</p></li>
+<li><p>voltage sources</p></li>
+<li><p>current sources</p></li>
+<li><p>transistors</p></li>
+<li><p>any SPICE-defined boundary condition</p></li>
+</ul>
+<p>This is not used in this simple simulation, but DEVSIM fully supports mixed TCAD-SPICE operation.</p>
+</section>
+<section id="contacts-with-no-external-circuit">
+<h3>Contacts with no external circuit<a class="headerlink" href="#contacts-with-no-external-circuit" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">set_parameter</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">GetContactBiasName</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">CreateSiliconPotentialOnlyContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the contact is <strong>not</strong> connected to an external circuit, then:</p>
+<ol class="arabic simple">
+<li><p>A default bias is assigned (<code class="docutils literal notranslate"><span class="pre">0.0</span></code> V in this case).</p></li>
+<li><p>A physical contact model is created for that boundary.</p></li>
+</ol>
+<p>This defines the electrostatic boundary conditions for the Poisson solver.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Note: this part of the code is not entirely clean and should be improved in the near future.<br />
+Some internal mechanisms are not yet fully clear, and the current implementation mixes contact definition and circuit handling logic.</p>
+</div>
+<section id="initializing-drift-diffusion">
+<h4>Initializing drift diffusion<a class="headerlink" href="#initializing-drift-diffusion" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Drift–Diffusion Initial Conditions (Construct Jn, Jp Models)</span>
+<span class="c1"># ============================================================</span>
+<span class="n">diode_common</span><span class="o">.</span><span class="n">DriftDiffusionInitialSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Replacing equation with equation of the same name.
+Region: bulk, Equation: PotentialEquation, Variable: Potential
+</pre></div>
+</div>
+</div>
+</div>
+<p>The goal of this section is to understand the meaning of the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">####</span>
+<span class="c1">#### drift diffusion solution variables</span>
+<span class="c1">####</span>
+<span class="n">CreateSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Electrons&quot;</span><span class="p">)</span>
+<span class="n">CreateSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Holes&quot;</span><span class="p">)</span>
+
+<span class="c1">####</span>
+<span class="c1">#### create initial guess from dc only solution</span>
+<span class="c1">####</span>
+<span class="n">set_node_values</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Electrons&quot;</span><span class="p">,</span> <span class="n">init_from</span><span class="o">=</span><span class="s2">&quot;IntrinsicElectrons&quot;</span>
+<span class="p">)</span>
+<span class="n">set_node_values</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Holes&quot;</span><span class="p">,</span> <span class="n">init_from</span><span class="o">=</span><span class="s2">&quot;IntrinsicHoles&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">###</span>
+<span class="c1">### Set up equations</span>
+<span class="c1">###</span>
+<span class="n">CreateSiliconDriftDiffusion</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">get_contact_list</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">circuit_contacts</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">circuit_contacts</span><span class="p">:</span>
+        <span class="n">CreateSiliconDriftDiffusionAtContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">CreateSiliconDriftDiffusionAtContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="creating-the-driftdiffusion-solution-variables">
+<h3>Creating the drift–diffusion solution variables<a class="headerlink" href="#creating-the-driftdiffusion-solution-variables" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CreateSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Electrons&quot;</span><span class="p">)</span>
+<span class="n">CreateSolution</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s2">&quot;Holes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These lines add two additional unknowns to the simulation:</p>
+<ul class="simple">
+<li><p><strong>Electrons</strong> → electron concentration <span class="math notranslate nohighlight">\(n(x)\)</span></p></li>
+<li><p><strong>Holes</strong> → hole concentration <span class="math notranslate nohighlight">\(p(x)\)</span></p></li>
+</ul>
+<p>Since DEVSIM solves the full drift–diffusion system, it must handle three coupled nonlinear equations:</p>
+<ul class="simple">
+<li><p>Poisson equation → electrostatic potential <span class="math notranslate nohighlight">\(\psi(x)\)</span></p></li>
+<li><p>Electron continuity equation → <span class="math notranslate nohighlight">\(n(x)\)</span></p></li>
+<li><p>Hole continuity equation → <span class="math notranslate nohighlight">\(p(x)\)</span></p></li>
+</ul>
+<p>Therefore, <span class="math notranslate nohighlight">\(n(x)\)</span> and <span class="math notranslate nohighlight">\(p(x)\)</span> must be defined as node-based unknowns, which is why <code class="docutils literal notranslate"><span class="pre">CreateSolution</span></code> is required.</p>
+</section>
+<section id="setting-the-initial-guess-for-the-solver">
+<h3>Setting the initial guess for the solver<a class="headerlink" href="#setting-the-initial-guess-for-the-solver" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">set_node_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Electrons&quot;</span><span class="p">,</span> <span class="n">init_from</span><span class="o">=</span><span class="s2">&quot;IntrinsicElectrons&quot;</span><span class="p">)</span>
+<span class="n">set_node_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Holes&quot;</span><span class="p">,</span> <span class="n">init_from</span><span class="o">=</span><span class="s2">&quot;IntrinsicHoles&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This initializes the solution with the <strong>intrinsic carrier concentrations</strong>, providing a stable starting point for Newton’s method.</p>
+<p>The intrinsic approximation used in DEVSIM follows the expression:</p>
+<div class="math notranslate nohighlight">
+\[
+n_i \exp\left(\frac{\psi - E_i}{V_T}\right)
+\]</div>
+<p>This helps the solver converge more easily, especially when strong doping gradients or steep potential barriers are present.</p>
+</section>
+<section id="creating-the-driftdiffusion-physics">
+<h3>Creating the drift–diffusion physics<a class="headerlink" href="#creating-the-driftdiffusion-physics" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CreateSiliconDriftDiffusion</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This line constructs the <strong>full drift–diffusion model</strong>, including:</p>
+<section id="electron-continuity-equation">
+<h4>Electron continuity equation<a class="headerlink" href="#electron-continuity-equation" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\nabla \cdot J_n = R - G
+\]</div>
+<p>with current density:</p>
+<div class="math notranslate nohighlight">
+\[
+J_n = q \mu_n n \nabla \psi + q D_n \nabla n
+\]</div>
+<p>DEVSIM automatically assembles:</p>
+<ul class="simple">
+<li><p>numerical derivatives</p></li>
+<li><p>Scharfetter–Gummel discretization</p></li>
+<li><p>recombination/generation models</p></li>
+<li><p>field- and doping-dependent mobilities</p></li>
+</ul>
+</section>
+<section id="hole-continuity-equation">
+<h4>Hole continuity equation<a class="headerlink" href="#hole-continuity-equation" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\nabla \cdot J_p = G - R
+\]</div>
+<p>with:</p>
+<div class="math notranslate nohighlight">
+\[
+J_p = q \mu_p p \nabla \psi - q D_p \nabla p
+\]</div>
+<p>The solver couples these two equations with Poisson’s equation, forming the complete semiconductor model.</p>
+</section>
+</section>
+<section id="contact-boundary-conditions">
+<h3>Contact boundary conditions<a class="headerlink" href="#contact-boundary-conditions" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">get_contact_list</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">circuit_contacts</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">circuit_contacts</span><span class="p">:</span>
+        <span class="n">CreateSiliconDriftDiffusionAtContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">CreateSiliconDriftDiffusionAtContact</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As before, DEVSIM checks whether the contact is connected to an external SPICE circuit or not.</p>
+<p>In all cases, the drift–diffusion contact model imposes:</p>
+<div class="math notranslate nohighlight">
+\[
+\psi = V_{\text{bias}}
+\]</div>
+<p>and equilibrium carrier concentrations:</p>
+<div class="math notranslate nohighlight">
+\[n = n_0\]</div>
+<div class="math notranslate nohighlight">
+\[p = p_0\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_0\)</span> and <span class="math notranslate nohighlight">\(p_0\)</span> are computed from the <strong>local doping</strong> at the contact.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>As before, this part of the code is technically complex, and I do not fully understand all internal mechanisms. Some of the DEVSIM functions operate as “black boxes,” and the exact implementation details require deeper knowledge of the solver.</p>
+</div>
+</section>
+<section id="solving-for-equilibrium">
+<h3>Solving for Equilibrium<a class="headerlink" href="#solving-for-equilibrium" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Equilibrium Solve (Poisson + Drift–Diffusion)</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">solve</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span>
+    <span class="n">absolute_error</span><span class="o">=</span><span class="mf">1e10</span><span class="p">,</span>
+    <span class="n">relative_error</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span>
+    <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">30</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Goal:</strong> solve the device at <strong>equilibrium</strong>, i.e., without any voltage applied to the contacts.</p>
+<p>At equilibrium:</p>
+<ul class="simple">
+<li><p><strong>No contact is biased</strong> (<span class="math notranslate nohighlight">\(V = 0\)</span>)</p></li>
+<li><p>The device is at <strong>thermodynamic equilibrium</strong></p></li>
+<li><p>The <strong>quasi-Fermi levels</strong> for electrons and holes are constant:
+$<span class="math notranslate nohighlight">\(
+F_n = F_p = \text{constant}
+\)</span>$</p></li>
+<li><p>The <strong>currents</strong> (electron, hole, and total) are all zero:
+$<span class="math notranslate nohighlight">\(
+J_n = J_p = J_\text{total} = 0
+\)</span>$</p></li>
+</ul>
+<p>DEVSIM solves <strong>simultaneously the three coupled fundamental equations</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Poisson Equation</strong>
+$<span class="math notranslate nohighlight">\(
+\nabla \cdot (\varepsilon \nabla \psi) = q , (p - n + N_D - N_A)
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\psi<span class="math notranslate nohighlight">\( is the electrostatic potential, \)</span>\varepsilon<span class="math notranslate nohighlight">\( is the permittivity, \)</span>q<span class="math notranslate nohighlight">\( is the elementary charge, \)</span>n<span class="math notranslate nohighlight">\( and \)</span>p<span class="math notranslate nohighlight">\( are carrier densities, and \)</span>N_D, N_A$ are the doping concentrations.</p></li>
+<li><p><strong>Electron Transport Equation (drift-diffusion)</strong>
+$<span class="math notranslate nohighlight">\(
+\nabla \cdot J_n = 0, \quad
+J_n = q \mu_n n \nabla \psi + q D_n \nabla n
+\)</span>$</p></li>
+<li><p><strong>Hole Transport Equation (drift-diffusion)</strong>
+$<span class="math notranslate nohighlight">\(
+\nabla \cdot J_p = 0, \quad
+J_p = q \mu_p p \nabla \psi - q D_p \nabla p
+\)</span>$</p></li>
+</ol>
+<blockquote>
+<div><p>This solution corresponds to a <strong>doped semiconductor at rest</strong>, ready to be biased or excited by a source.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Equilibrium Solve (Poisson + Drift–Diffusion)</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">solve</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span>
+    <span class="n">absolute_error</span><span class="o">=</span><span class="mf">1e10</span><span class="p">,</span>
+    <span class="n">relative_error</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span>
+    <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">30</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of equations 1395
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.00000e+08	AbsError: 2.00000e+18
+    Region: &quot;bulk&quot;	RelError: 2.00000e+08	AbsError: 2.00000e+18
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 1.00000e+08	AbsError: 1.00000e+18
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 1.00000e+08	AbsError: 1.00000e+18
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.00000e+00	AbsError: 7.89153e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.99849e+03	AbsError: 1.62447e+18
+    Region: &quot;bulk&quot;	RelError: 1.99849e+03	AbsError: 1.62447e+18
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 8.11519e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 8.12947e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 4.94574e-01	AbsError: 7.25217e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.15055e+03	AbsError: 1.50727e+18
+    Region: &quot;bulk&quot;	RelError: 2.15055e+03	AbsError: 1.50727e+18
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 7.52912e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 7.54362e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.52548e+02	AbsError: 6.76876e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.99901e+03	AbsError: 9.18406e+17
+    Region: &quot;bulk&quot;	RelError: 1.99901e+03	AbsError: 9.18406e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 4.58039e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 4.60367e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.00988e+00	AbsError: 6.25004e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.99831e+03	AbsError: 4.28638e+17
+    Region: &quot;bulk&quot;	RelError: 1.99831e+03	AbsError: 4.28638e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 2.14318e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 2.14320e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.12455e-01	AbsError: 5.59893e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.99813e+03	AbsError: 2.20594e+17
+    Region: &quot;bulk&quot;	RelError: 1.99813e+03	AbsError: 2.20594e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 1.10311e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 1.10283e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.28219e-01	AbsError: 4.85201e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.99809e+03	AbsError: 1.20701e+17
+    Region: &quot;bulk&quot;	RelError: 1.99809e+03	AbsError: 1.20701e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 6.04286e+16
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 6.02722e+16
+      Equation: &quot;PotentialEquation&quot;	RelError: 9.49064e-02	AbsError: 3.97440e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.06537e+00	AbsError: 3.65849e+16
+    Region: &quot;bulk&quot;	RelError: 2.06537e+00	AbsError: 3.65849e+16
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99997e-01	AbsError: 1.85949e+16
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99999e-01	AbsError: 1.79901e+16
+      Equation: &quot;PotentialEquation&quot;	RelError: 6.53711e-02	AbsError: 2.93397e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.99805e+03	AbsError: 7.76697e+15
+    Region: &quot;bulk&quot;	RelError: 1.99805e+03	AbsError: 7.76697e+15
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 3.88595e+15
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.99000e+02	AbsError: 3.88102e+15
+      Equation: &quot;PotentialEquation&quot;	RelError: 5.30103e-02	AbsError: 2.51577e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.00350e+00	AbsError: 2.41028e+15
+    Region: &quot;bulk&quot;	RelError: 2.00350e+00	AbsError: 2.41028e+15
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 9.97195e-01	AbsError: 1.17228e+15
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.97076e-01	AbsError: 1.23799e+15
+      Equation: &quot;PotentialEquation&quot;	RelError: 9.23037e-03	AbsError: 2.72173e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.54823e-03	AbsError: 9.05088e+10
+    Region: &quot;bulk&quot;	RelError: 1.54823e-03	AbsError: 9.05088e+10
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.89456e-04	AbsError: 4.25466e+10
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.58758e-04	AbsError: 4.79623e+10
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.61408e-08	AbsError: 1.20961e-09
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.79989e-11	AbsError: 4.86394e+02
+    Region: &quot;bulk&quot;	RelError: 2.79989e-11	AbsError: 4.86394e+02
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 1.46209e-11	AbsError: 2.43920e+02
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 1.30374e-11	AbsError: 2.42474e+02
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.40547e-13	AbsError: 5.22887e-17
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solving-the-equations-under-applied-bias">
+<h3>Solving the Equations Under Applied Bias<a class="headerlink" href="#solving-the-equations-under-applied-bias" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DC Bias Sweep on the &quot;top&quot; Contact</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">while</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mf">0.51</span><span class="p">:</span>
+    <span class="n">set_parameter</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="n">simple_physics</span><span class="o">.</span><span class="n">GetContactBiasName</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">),</span>
+                  <span class="n">value</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="n">solve</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="n">absolute_error</span><span class="o">=</span><span class="mf">1e10</span><span class="p">,</span> <span class="n">relative_error</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+    <span class="n">simple_physics</span><span class="o">.</span><span class="n">PrintCurrents</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">)</span>
+    <span class="n">simple_physics</span><span class="o">.</span><span class="n">PrintCurrents</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s2">&quot;bot&quot;</span><span class="p">)</span>
+
+    <span class="n">v</span> <span class="o">+=</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+<p><strong>Goal:</strong> Apply a voltage, solve the system, and extract the currents.</p>
+<p>This is a <strong>DC sweep</strong> (steady-state analysis), similar to what SPICE performs.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Set the “top” contact voltage to V = 0.0 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Solve Poisson + Drift–Diffusion equations</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Extract currents</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Increment voltage to V = 0.1 V</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Solve again</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Print currents</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td><p>Continue up to V = 0.5 V</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>From this procedure, we obtain:</p>
+<ul class="simple">
+<li><p>the full <strong>I(V) characteristic</strong></p></li>
+<li><p>the <strong>exponential diode curve</strong></p></li>
+<li><p>the <strong>carrier distributions</strong> for each applied bias</p></li>
+<li><p><strong>recombination rates</strong> depending on the injection level</p></li>
+<li><p>the <strong>depletion region</strong>, which shrinks under forward bias</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># DC Bias Sweep on the &quot;top&quot; Contact</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">while</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mf">0.51</span><span class="p">:</span>
+    <span class="n">set_parameter</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="n">simple_physics</span><span class="o">.</span><span class="n">GetContactBiasName</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">),</span>
+                  <span class="n">value</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="n">solve</span><span class="p">(</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span>
+        <span class="n">absolute_error</span><span class="o">=</span><span class="mf">1e10</span><span class="p">,</span>
+        <span class="n">relative_error</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span>
+        <span class="n">maximum_iterations</span><span class="o">=</span><span class="mi">30</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Print terminal currents</span>
+    <span class="n">simple_physics</span><span class="o">.</span><span class="n">PrintCurrents</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">)</span>
+    <span class="n">simple_physics</span><span class="o">.</span><span class="n">PrintCurrents</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="s2">&quot;bot&quot;</span><span class="p">)</span>
+
+    <span class="n">v</span> <span class="o">+=</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of equations 1395
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.45412e-13	AbsError: 2.51106e+02
+    Region: &quot;bulk&quot;	RelError: 1.45412e-13	AbsError: 2.51106e+02
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 2.75391e-15	AbsError: 9.95667e+01
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 9.55600e-16	AbsError: 1.51539e+02
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.41702e-13	AbsError: 3.78720e-17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>top	0.0	-8.693443938556645e-25	-2.1558854434500004e-09	-2.1558854434500012e-09
+bot	0.0	-4.7046820549940125e-08	-2.0451104162455877e-24	-4.7046820549940125e-08
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of equations 1395
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 3.68696e+02	AbsError: 2.08298e+17
+    Region: &quot;bulk&quot;	RelError: 3.68696e+02	AbsError: 2.08298e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.73734e-01	AbsError: 1.04110e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.73744e-01	AbsError: 1.04189e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.67148e+02	AbsError: 4.09542e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 4.50016e+01	AbsError: 2.42656e+16
+    Region: &quot;bulk&quot;	RelError: 4.50016e+01	AbsError: 2.42656e+16
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.73384e-01	AbsError: 1.24590e+16
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.57923e-01	AbsError: 1.18066e+16
+      Equation: &quot;PotentialEquation&quot;	RelError: 4.35703e+01	AbsError: 3.07632e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.20491e+00	AbsError: 1.64273e+15
+    Region: &quot;bulk&quot;	RelError: 1.20491e+00	AbsError: 1.64273e+15
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 4.97947e-01	AbsError: 5.54403e+14
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 4.94510e-01	AbsError: 1.08833e+15
+      Equation: &quot;PotentialEquation&quot;	RelError: 2.12451e-01	AbsError: 2.56657e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 3.84061e-01	AbsError: 1.79667e+14
+    Region: &quot;bulk&quot;	RelError: 3.84061e-01	AbsError: 1.79667e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 2.83312e-01	AbsError: 1.87886e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.64295e-02	AbsError: 1.77788e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 2.43203e-02	AbsError: 9.16533e-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 8.25467e-02	AbsError: 1.53604e+14
+    Region: &quot;bulk&quot;	RelError: 8.25467e-02	AbsError: 1.53604e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.56816e-02	AbsError: 6.84392e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 3.87074e-04	AbsError: 1.46760e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 6.47804e-03	AbsError: 5.25003e-06
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 7.29476e-06	AbsError: 4.20682e+09
+    Region: &quot;bulk&quot;	RelError: 7.29476e-06	AbsError: 4.20682e+09
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.24159e-06	AbsError: 5.18858e+07
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 5.30331e-08	AbsError: 4.15493e+09
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.40464e-10	AbsError: 5.13635e-11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 6.48096e-14	AbsError: 7.37448e+02
+    Region: &quot;bulk&quot;	RelError: 6.48096e-14	AbsError: 7.37448e+02
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 1.43541e-14	AbsError: 3.17843e+02
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 2.16365e-15	AbsError: 4.19604e+02
+      Equation: &quot;PotentialEquation&quot;	RelError: 4.82919e-14	AbsError: 8.70543e-17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>top	0.1	2.775905363080399e-09	1.1314722596688752e-07	1.1592313132996793e-07
+bot	0.0	-1.1737266843262372e-07	-1.3881215552428542e-09	-1.1876078998786658e-07
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of equations 1395
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 5.64909e+01	AbsError: 2.20974e+17
+    Region: &quot;bulk&quot;	RelError: 5.64909e+01	AbsError: 2.20974e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.89746e-01	AbsError: 1.10461e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.89746e-01	AbsError: 1.10513e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 5.49114e+01	AbsError: 4.09542e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 4.75502e+01	AbsError: 2.76447e+16
+    Region: &quot;bulk&quot;	RelError: 4.75502e+01	AbsError: 2.76447e+16
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.86049e-01	AbsError: 1.42227e+16
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.75599e-01	AbsError: 1.34219e+16
+      Equation: &quot;PotentialEquation&quot;	RelError: 4.60886e+01	AbsError: 3.07632e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.42591e+01	AbsError: 2.23648e+15
+    Region: &quot;bulk&quot;	RelError: 1.42591e+01	AbsError: 2.23648e+15
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 5.06954e-01	AbsError: 9.15443e+14
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 4.95603e-01	AbsError: 1.32104e+15
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.32565e+01	AbsError: 2.57636e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 3.94365e-01	AbsError: 1.65293e+14
+    Region: &quot;bulk&quot;	RelError: 3.94365e-01	AbsError: 1.65293e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 2.85300e-01	AbsError: 1.48159e+11
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.59600e-02	AbsError: 1.65145e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.31046e-02	AbsError: 9.16533e-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 8.26045e-02	AbsError: 1.39029e+14
+    Region: &quot;bulk&quot;	RelError: 8.26045e-02	AbsError: 1.39029e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.72489e-02	AbsError: 6.73002e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 3.42528e-04	AbsError: 1.32299e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 5.01305e-03	AbsError: 4.81359e-06
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 6.86053e-06	AbsError: 3.60293e+09
+    Region: &quot;bulk&quot;	RelError: 6.86053e-06	AbsError: 3.60293e+09
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.81710e-06	AbsError: 5.08462e+07
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 4.25299e-08	AbsError: 3.55209e+09
+      Equation: &quot;PotentialEquation&quot;	RelError: 8.98584e-10	AbsError: 4.39692e-11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 8.63912e-15	AbsError: 5.18831e+02
+    Region: &quot;bulk&quot;	RelError: 8.63912e-15	AbsError: 5.18831e+02
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.06430e-15	AbsError: 3.11373e+02
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 1.75781e-15	AbsError: 2.07458e+02
+      Equation: &quot;PotentialEquation&quot;	RelError: 8.17003e-16	AbsError: 3.01404e-17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>top	0.2	1.2832944285759479e-07	1.0080071751381564e-06	1.1363366179957512e-06
+bot	0.0	-1.0351389802923312e-06	-6.417201268020023e-08	-1.0993109929725313e-06
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of equations 1395
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 3.31314e+01	AbsError: 2.36183e+17
+    Region: &quot;bulk&quot;	RelError: 3.31314e+01	AbsError: 2.36183e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.92009e-01	AbsError: 1.18120e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.92008e-01	AbsError: 1.18063e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.15474e+01	AbsError: 4.09542e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.64120e+01	AbsError: 3.20622e+16
+    Region: &quot;bulk&quot;	RelError: 2.64120e+01	AbsError: 3.20622e+16
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.87249e-01	AbsError: 1.65490e+16
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.76898e-01	AbsError: 1.55132e+16
+      Equation: &quot;PotentialEquation&quot;	RelError: 2.49479e+01	AbsError: 3.07632e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.29233e+01	AbsError: 3.20440e+15
+    Region: &quot;bulk&quot;	RelError: 1.29233e+01	AbsError: 3.20440e+15
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 5.07497e-01	AbsError: 1.55241e+15
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 4.97028e-01	AbsError: 1.65199e+15
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.19188e+01	AbsError: 2.56874e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 4.11154e-01	AbsError: 1.62352e+14
+    Region: &quot;bulk&quot;	RelError: 4.11154e-01	AbsError: 1.62352e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 2.83863e-01	AbsError: 3.58067e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.54675e-02	AbsError: 1.58771e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 5.18226e-02	AbsError: 9.16533e-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 8.08153e-02	AbsError: 1.24600e+14
+    Region: &quot;bulk&quot;	RelError: 8.08153e-02	AbsError: 1.24600e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.70005e-02	AbsError: 6.51354e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 3.04512e-04	AbsError: 1.18087e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.51029e-03	AbsError: 4.28017e-06
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 6.09995e-06	AbsError: 2.90754e+09
+    Region: &quot;bulk&quot;	RelError: 6.09995e-06	AbsError: 2.90754e+09
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.06524e-06	AbsError: 4.83609e+07
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 3.32999e-08	AbsError: 2.85918e+09
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.41102e-09	AbsError: 3.52198e-11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 5.48923e-14	AbsError: 4.52352e+02
+    Region: &quot;bulk&quot;	RelError: 5.48923e-14	AbsError: 4.52352e+02
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.63498e-15	AbsError: 2.11516e+02
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 3.04602e-15	AbsError: 2.40836e+02
+      Equation: &quot;PotentialEquation&quot;	RelError: 4.42113e-14	AbsError: 6.75414e-17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>top	0.30000000000000004	5.806848290162504e-06	1.0124612479256645e-05	1.5931460769419148e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bot	0.0	-1.3084139124353541e-05	-2.903730853546218e-06	-1.598786997789976e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of equations 1395
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.69772e+02	AbsError: 2.55019e+17
+    Region: &quot;bulk&quot;	RelError: 2.69772e+02	AbsError: 2.55019e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.92128e-01	AbsError: 1.27544e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.92128e-01	AbsError: 1.27475e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 2.68187e+02	AbsError: 4.09542e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 4.45577e+02	AbsError: 3.81955e+16
+    Region: &quot;bulk&quot;	RelError: 4.45577e+02	AbsError: 3.81955e+16
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.87431e-01	AbsError: 1.98229e+16
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.76634e-01	AbsError: 1.83726e+16
+      Equation: &quot;PotentialEquation&quot;	RelError: 4.44113e+02	AbsError: 3.07632e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.82879e+01	AbsError: 4.79517e+15
+    Region: &quot;bulk&quot;	RelError: 1.82879e+01	AbsError: 4.79517e+15
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 5.07284e-01	AbsError: 2.64761e+15
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 4.99050e-01	AbsError: 2.14756e+15
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.72816e+01	AbsError: 2.58987e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 4.80671e-01	AbsError: 1.74143e+14
+    Region: &quot;bulk&quot;	RelError: 4.80671e-01	AbsError: 1.74143e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 2.86335e-01	AbsError: 9.79040e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.50881e-02	AbsError: 1.64352e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.19247e-01	AbsError: 9.16533e-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 8.05491e-02	AbsError: 1.07018e+14
+    Region: &quot;bulk&quot;	RelError: 8.05491e-02	AbsError: 1.07018e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.66298e-02	AbsError: 6.27760e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 2.55433e-04	AbsError: 1.00741e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.66384e-03	AbsError: 3.76169e-06
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 5.13561e-06	AbsError: 2.28241e+09
+    Region: &quot;bulk&quot;	RelError: 5.13561e-06	AbsError: 2.28241e+09
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 5.10945e-06	AbsError: 4.57535e+07
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 2.36846e-08	AbsError: 2.23665e+09
+      Equation: &quot;PotentialEquation&quot;	RelError: 2.47018e-09	AbsError: 2.77884e-11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 4.26524e-14	AbsError: 5.04377e+02
+    Region: &quot;bulk&quot;	RelError: 4.26524e-14	AbsError: 5.04377e+02
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 2.00211e-15	AbsError: 2.52482e+02
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 4.04650e-15	AbsError: 2.51895e+02
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.66038e-14	AbsError: 6.29860e-17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>top	0.4	0.0002622125271691067	0.00018654040521116932	0.00044875293238027603
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bot	0.0	-0.00031770168648369084	-0.00013111905584502377	-0.0004488207423287146
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of equations 1395
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.75289e+02	AbsError: 2.79354e+17
+    Region: &quot;bulk&quot;	RelError: 1.75289e+02	AbsError: 2.79354e+17
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.92056e-01	AbsError: 1.39696e+17
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.92055e-01	AbsError: 1.39658e+17
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.73705e+02	AbsError: 4.09542e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 1.74825e+02	AbsError: 4.70673e+16
+    Region: &quot;bulk&quot;	RelError: 1.74825e+02	AbsError: 4.70673e+16
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 6.87375e-01	AbsError: 2.46034e+16
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.76326e-01	AbsError: 2.24639e+16
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.73361e+02	AbsError: 3.07632e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 2.37604e+00	AbsError: 7.27535e+15
+    Region: &quot;bulk&quot;	RelError: 2.37604e+00	AbsError: 7.27535e+15
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 5.06861e-01	AbsError: 4.32844e+15
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 5.01219e-01	AbsError: 2.94691e+15
+      Equation: &quot;PotentialEquation&quot;	RelError: 1.36796e+00	AbsError: 2.57724e-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 7.54552e-01	AbsError: 2.47265e+14
+    Region: &quot;bulk&quot;	RelError: 7.54552e-01	AbsError: 2.47265e+14
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 2.83968e-01	AbsError: 2.28131e+13
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 7.45073e-02	AbsError: 2.24452e+14
+      Equation: &quot;PotentialEquation&quot;	RelError: 3.96077e-01	AbsError: 9.16533e-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 7.62835e-02	AbsError: 8.98532e+13
+    Region: &quot;bulk&quot;	RelError: 7.62835e-02	AbsError: 8.98532e+13
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 7.59870e-02	AbsError: 5.86272e+12
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 2.22043e-04	AbsError: 8.39905e+13
+      Equation: &quot;PotentialEquation&quot;	RelError: 7.45041e-05	AbsError: 3.10589e-06
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 4.20615e-06	AbsError: 1.60259e+09
+    Region: &quot;bulk&quot;	RelError: 4.20615e-06	AbsError: 1.60259e+09
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 4.18904e-06	AbsError: 4.08925e+07
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 1.64653e-08	AbsError: 1.56170e+09
+      Equation: &quot;PotentialEquation&quot;	RelError: 6.43062e-10	AbsError: 1.92679e-11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Device: &quot;diode1&quot;	RelError: 3.92865e-15	AbsError: 6.30784e+02
+    Region: &quot;bulk&quot;	RelError: 3.92865e-15	AbsError: 6.30784e+02
+      Equation: &quot;ElectronContinuityEquation&quot;	RelError: 1.74966e-15	AbsError: 2.65317e+02
+      Equation: &quot;HoleContinuityEquation&quot;	RelError: 1.73823e-15	AbsError: 3.65467e+02
+      Equation: &quot;PotentialEquation&quot;	RelError: 4.40748e-16	AbsError: 4.72037e-17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>top	0.5	0.011810543175282611	0.006344611998005865	0.018155155173288477
+bot	0.0	-0.012249431878576914	-0.0059057988809276	-0.018155230759504516
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="difference-between-the-two-solvers">
+<h3>Difference Between the Two Solvers<a class="headerlink" href="#difference-between-the-two-solvers" title="Link to this heading">#</a></h3>
+<p>The main differences between the two types of solution are as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Solver</p></th>
+<th class="head"><p>What It Does</p></th>
+<th class="head"><p>Why It’s Needed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1) DC Solve (Equilibrium)</strong></p></td>
+<td><p>Finds the solution at V = 0 (the diode’s natural state)</p></td>
+<td><p>Necessary to initialize Newton’s method without divergence</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2) DC Solve (Bias Sweep)</strong></p></td>
+<td><p>Applies a voltage and solves the transport equations</p></td>
+<td><p>Enables building the I(V) curve and analyzing the device</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="save-data">
+<h2>Save Data<a class="headerlink" href="#save-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">write_devices</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;data/diode_1d.dat&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;tecplot&quot;</span><span class="p">)</span>
+<span class="n">write_devices</span><span class="p">(</span>
+    <span class="n">file</span><span class="o">=</span><span class="s2">&quot;diode_1d.vtk&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;vtk&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-data">
+<h2>Extract data<a class="headerlink" href="#extract-data" title="Link to this heading">#</a></h2>
+<p>L’objectif de cette partie est de visualiser les données qu’on a simuler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Data Extraction — Node Positions</span>
+<span class="c1"># ============================================================</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">get_node_model_values</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Carrier Density Plots</span>
+<span class="c1"># ============================================================</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Electrons&quot;</span><span class="p">,</span> <span class="s2">&quot;Holes&quot;</span><span class="p">,</span> <span class="s2">&quot;Donors&quot;</span><span class="p">,</span> <span class="s2">&quot;Acceptors&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">get_node_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Carrier Concentrations&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x ($\mu m$)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Density (cm⁻³)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b483b723ca46418a3f0fb788e0caa8ce4665727958bf582d493b408f873c78c7.png" src="../../_images/b483b723ca46418a3f0fb788e0caa8ce4665727958bf582d493b408f873c78c7.png" />
+</div>
+</div>
+<p>The graph is particularly insightful as it clearly illustrates the behavior of charge carriers within the PN junction. Two distinct regions can be identified:</p>
+<ul class="simple">
+<li><p>The donor region (N-type), located before 5 µm.</p></li>
+<li><p>The acceptor region (P-type), located after 5 µm.</p></li>
+</ul>
+<p>Observing the hole density (characteristic of P-type doping), we see that it is high deep within the P region. This concentration gradually decreases as we approach the junction boundary. Once across the boundary into the N region, a small number of holes can still be detected, but their presence rapidly diminishes, almost disappearing entirely, consistent with the expected behavior in a diode. The reverse is true for free electrons in the N region.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build edge-centered coordinate model</span>
+<span class="n">edge_average_model</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">node_model</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">edge_model</span><span class="o">=</span><span class="s2">&quot;xmid&quot;</span>
+<span class="p">)</span>
+<span class="n">xmid</span> <span class="o">=</span> <span class="n">get_edge_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;xmid&quot;</span><span class="p">)</span>
+
+
+<span class="n">devsim</span><span class="o">.</span><span class="n">edge_model</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;USRH_edge&quot;</span><span class="p">,</span>
+    <span class="n">equation</span><span class="o">=</span><span class="s2">&quot;-0.5*ElectronCharge*( (Electrons@n0*Holes@n0 - n_i^2)/(taup*(Electrons@n0+n1) + taun*(Holes@n0+p1)) </span><span class="se">\</span>
+<span class="s2">              + (Electrons@n1*Holes@n1 - n_i^2)/(taup*(Electrons@n1+n1) + taun*(Holes@n1+p1)) )&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Current Density Plots</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">efields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;ElectronCurrent&quot;</span><span class="p">,</span> <span class="s2">&quot;HoleCurrent&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">efields</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">get_edge_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xmid</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x ($\mu$m)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;J (A/$\mu$m²)&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xmid</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">get_edge_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;USRH_edge&quot;</span><span class="p">),</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Electricity Consumption (kWh)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;USRH&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Current Densities&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c1bd0771d306d0429b13b13cc70c93945f54e1692707c32f5f9a772140505991.png" src="../../_images/c1bd0771d306d0429b13b13cc70c93945f54e1692707c32f5f9a772140505991.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Coordonnées des edges (moyenne entre n0 et n1)</span>
+<span class="n">devsim</span><span class="o">.</span><span class="n">edge_average_model</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">node_model</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">edge_model</span><span class="o">=</span><span class="s2">&quot;xmid&quot;</span>
+<span class="p">)</span>
+<span class="n">xmid</span> <span class="o">=</span> <span class="n">devsim</span><span class="o">.</span><span class="n">get_edge_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;xmid&quot;</span><span class="p">)</span>
+
+<span class="c1"># Potentiel aux noeuds</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">devsim</span><span class="o">.</span><span class="n">get_node_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Potential&quot;</span><span class="p">)</span>
+
+<span class="c1"># Champ électrique sur les edges</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">devsim</span><span class="o">.</span><span class="n">get_edge_model_values</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ElectricField&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Replacing Edge Model xmid in region bulk of material Si
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tab:blue&#39;</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x (μm)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Potential (V)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tab:red&#39;</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Electric Field (V/cm)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xmid</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Potential and Electric Field along the device&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/939021d3fabe1cb7b44431bbd6903fb970de1474674493a8d0220b24389cc059.png" src="../../_images/939021d3fabe1cb7b44431bbd6903fb970de1474674493a8d0220b24389cc059.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Logicol\Introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Introduction_bar_metal_Layout.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction bar métal</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-diode-simulation">1D diode simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#device-and-region-definition">Device and Region Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-physical-parameters">Definition of Physical Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-temperature">System temperature</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#si-parameter">Si parameter</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contacts-linked-to-an-external-circuit">Contacts linked to an external circuit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contacts-with-no-external-circuit">Contacts with no external circuit</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-drift-diffusion">Initializing drift diffusion</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-driftdiffusion-solution-variables">Creating the drift–diffusion solution variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-initial-guess-for-the-solver">Setting the initial guess for the solver</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-driftdiffusion-physics">Creating the drift–diffusion physics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#electron-continuity-equation">Electron continuity equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hole-continuity-equation">Hole continuity equation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-boundary-conditions">Contact boundary conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-for-equilibrium">Solving for Equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-equations-under-applied-bias">Solving the Equations Under Applied Bias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-between-the-two-solvers">Difference Between the Two Solvers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data">Save Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-data">Extract data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sacha COMTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
