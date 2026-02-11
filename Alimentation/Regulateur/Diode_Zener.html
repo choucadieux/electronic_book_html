@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,7 +183,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -556,7 +558,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/bloc_logique.svg"><img alt="../../_images/bloc_logique.svg" src="../../_images/bloc_logique.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can see that the regulator is made up of four logical blocks. The goal is to eventually construct an electronic circuit that performs voltage regulation.</p>
@@ -568,7 +570,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_simple_circuit.svg"><img alt="../../_images/regulateur_tension_simple_circuit.svg" src="../../_images/regulateur_tension_simple_circuit.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Simple voltage regulation circuit</span><a class="headerlink" href="#regulateur-tension-simple-circuit" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Simple voltage regulation circuit</span><a class="headerlink" href="#regulateur-tension-simple-circuit" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In this configuration, the voltage regulator is the Zener diode <span class="math notranslate nohighlight">\(D_1\)</span>, while the control element is the transistor <span class="math notranslate nohighlight">\(Q_1\)</span>. There is no error detection or output-voltage feedback in this simplified version.</p>
@@ -580,7 +582,7 @@ In the following code, the goal is to analyze the consequences of removing this 
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_simple_bloc.svg"><img alt="../../_images/regulateur_tension_simple_bloc.svg" src="../../_images/regulateur_tension_simple_bloc.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Simple voltage regulation circuit with logical blocks</span><a class="headerlink" href="#regulateur-tension-simple-circuit-avec-bloc-logique" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Simple voltage regulation circuit with logical blocks</span><a class="headerlink" href="#regulateur-tension-simple-circuit-avec-bloc-logique" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -633,7 +635,7 @@ P_{D1} = V_\text{Zener} \cdot \frac{V_\text{in} - V_\text{Zener}}{R_1}
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_simple_demonstration.svg"><img alt="../../_images/regulateur_tension_simple_demonstration.svg" src="../../_images/regulateur_tension_simple_demonstration.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Complete demonstration circuit for the voltage regulator</span><a class="headerlink" href="#regulateur-tension-simple-circuit-demonstration-complet" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Complete demonstration circuit for the voltage regulator</span><a class="headerlink" href="#regulateur-tension-simple-circuit-demonstration-complet" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We now detail the derivation of all the electrical equations governing this simple Zener-transistor regulator.</p>
@@ -729,7 +731,7 @@ P_{Q1}
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_simple_spice.svg"><img alt="../../_images/regulateur_tension_simple_spice.svg" src="../../_images/regulateur_tension_simple_spice.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Simple voltage regulation circuit implemented in SPICE</span><a class="headerlink" href="#regulateur-tension-simple-circuit-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Simple voltage regulation circuit implemented in SPICE</span><a class="headerlink" href="#regulateur-tension-simple-circuit-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Following this schematic, the SPICE code can be written as follows:</p>
@@ -1326,7 +1328,7 @@ The goal of the following sections is to determine whether this behavior can be 
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_simple_circuit_limiteur_courant.svg"><img alt="../../_images/regulateur_tension_simple_circuit_limiteur_courant.svg" src="../../_images/regulateur_tension_simple_circuit_limiteur_courant.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Voltage stabilizer with an integrated current limiter</span><a class="headerlink" href="#regulateur-tension-simple-circuit-limiteur-courant" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Voltage stabilizer with an integrated current limiter</span><a class="headerlink" href="#regulateur-tension-simple-circuit-limiteur-courant" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This additional circuit ensures that the output current never exceeds a predefined maximum value.
@@ -1371,7 +1373,7 @@ As a result, when the load resistance becomes very small, the current is automat
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_simple_circuit_limiteur_courant_demonstration.svg"><img alt="../../_images/regulateur_tension_simple_circuit_limiteur_courant_demonstration.svg" src="../../_images/regulateur_tension_simple_circuit_limiteur_courant_demonstration.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Stabilisateur de tension avec un limiteur de tension (demonstration)</span><a class="headerlink" href="#regulateur-tension-simple-circuit-limiteur-courant-demonstration" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Stabilisateur de tension avec un limiteur de tension (demonstration)</span><a class="headerlink" href="#regulateur-tension-simple-circuit-limiteur-courant-demonstration" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="transistor-q-2-in-cutoff">
@@ -1466,7 +1468,7 @@ To validate this operating limit, the circuit can then be simulated using SPICE.
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_simple_circuit_limiteur_courant_spice.svg"><img alt="../../_images/regulateur_tension_simple_circuit_limiteur_courant_spice.svg" src="../../_images/regulateur_tension_simple_circuit_limiteur_courant_spice.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Voltage stabilizer with a current limiter (SPICE)</span><a class="headerlink" href="#regulateur-tension-simple-circuit-limiteur-courant-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Voltage stabilizer with a current limiter (SPICE)</span><a class="headerlink" href="#regulateur-tension-simple-circuit-limiteur-courant-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">

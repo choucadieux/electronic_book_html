@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Book on electronics</title>
+    <title>Basic Concepts &#8212; Book on electronics</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,9 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Base_componant/Concept_base';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Capacitor" href="Capacite.html" />
+    <link rel="prev" title="Book on Electronics" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,8 +182,10 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -421,7 +425,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Basic Concepts</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -430,9 +434,38 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-fundamental-electrical-parameters">Definition of Fundamental Electrical Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-voltage">Electrical Voltage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-current">Electric Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-charges">Electric Charges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-flux">Electric Flux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship">Relationship</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-current">Voltage / Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-charge">Current / Charge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-charge">Voltage / Charge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-flux">Voltage / Flux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-current">Flux / Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-charge">Flux / Charge</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-memristor-model">Linear Memristor Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-memristor-model">Nonlinear Memristor Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-nonlinear-memristance">Derivation of the Nonlinear Memristance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">Resume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-matrix">Writing Matrix</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -443,7 +476,802 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-concepts">
+<h1>Basic Concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Standard import</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># ----- Spice import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="definition-of-fundamental-electrical-parameters">
+<h2>Definition of Fundamental Electrical Parameters<a class="headerlink" href="#definition-of-fundamental-electrical-parameters" title="Link to this heading">#</a></h2>
+<p>The objective of this notebook is to study the fundamental parameters of electronics. There are four variables that govern electronic circuits. These parameters are:</p>
+<ul class="simple">
+<li><p>Voltage (<span class="math notranslate nohighlight">\(V\)</span>)</p></li>
+<li><p>Current (<span class="math notranslate nohighlight">\(I\)</span>)</p></li>
+<li><p>Charge (<span class="math notranslate nohighlight">\(q\)</span>)</p></li>
+<li><p>Flux (<span class="math notranslate nohighlight">\(\phi\)</span>)</p></li>
+</ul>
+<section id="electrical-voltage">
+<h3>Electrical Voltage<a class="headerlink" href="#electrical-voltage" title="Link to this heading">#</a></h3>
+<p><strong>Electrical voltage</strong> is a fundamental quantity that characterizes the energetic state of an electrical circuit.</p>
+<blockquote>
+<div><p>Electrical voltage represents the <strong>electric potential difference</strong> between two points in a circuit. It is expressed in volts (V) and corresponds to the energy exchanged per unit charge when a charge moves between these two points.</p>
+</div></blockquote>
+<p>Intuitively, voltage can be seen as the <strong>driving cause</strong> of electric charge motion: the higher the voltage, the greater the “driving force” pushing the charges, allowing electrical devices to operate.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In electrostatics (static regime), the concept of voltage is strictly equivalent to that of electric potential difference between two points.
+However, in the dynamic regime (time-varying currents and fields), this equivalence no longer always holds: electromagnetic induction phenomena require a rigorous distinction between these concepts.</p>
+</div>
+<p>The unit of voltage is the <strong>volt</strong>, denoted <span class="math notranslate nohighlight">\(V\)</span>.</p>
+</section>
+<section id="electric-current">
+<h3>Electric Current<a class="headerlink" href="#electric-current" title="Link to this heading">#</a></h3>
+<p><strong>Electric current</strong> describes the collective motion of electric charges within a conducting material.</p>
+<blockquote>
+<div><p>An electric current corresponds to the <strong>ordered motion of charge carriers</strong>, generally electrons, under the action of an electric field. This motion results from the electromagnetic force and constitutes the observable manifestation of electricity in circuits.</p>
+</div></blockquote>
+<p>From a quantitative standpoint, electric current measures the <strong>amount of electric charge passing through a cross-section of a conductor per unit time</strong>.</p>
+<p>The unit of electric current is the <strong>ampere</strong>, denoted <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</section>
+<section id="electric-charges">
+<h3>Electric Charges<a class="headerlink" href="#electric-charges" title="Link to this heading">#</a></h3>
+<p><strong>Electric charge</strong> is an intrinsic and fundamental property of matter.</p>
+<blockquote>
+<div><p>Electric charge is a scalar quantity that characterizes the ability of matter to interact through electromagnetic fields. For electromagnetic interaction, it plays a role analogous to that of mass in gravitational interaction.</p>
+</div></blockquote>
+<p>There are <strong>two types of electric charges</strong>, distinguished by their sign:</p>
+<ul class="simple">
+<li><p><strong>positive</strong> charges,</p></li>
+<li><p><strong>negative</strong> charges.</p></li>
+</ul>
+<p>Charges with the same sign repel each other, while charges with opposite signs attract each other.
+In ordinary matter, positive and negative charges are generally present in equal amounts, leading to a state of <strong>electrical neutrality</strong>.</p>
+<p>The unit of electric charge is the <strong>coulomb</strong>, denoted ( C ).</p>
+</section>
+<section id="electric-flux">
+<h3>Electric Flux<a class="headerlink" href="#electric-flux" title="Link to this heading">#</a></h3>
+<p><strong>Electric flux</strong> is a quantity from electromagnetism associated with the electric field.</p>
+<blockquote>
+<div><p>Electric flux represents the <strong>measure of the electric field passing through a given surface</strong>. It depends on both the magnitude of the field, the orientation of the surface, and its geometry.</p>
+</div></blockquote>
+<p>This concept plays a central role in the formulation of the fundamental laws of electromagnetism, particularly <strong>Gauss’s law</strong>, which relates electric flux to the electric charge enclosed by a closed surface.</p>
+</section>
+</section>
+<section id="relationship">
+<h2>Relationship<a class="headerlink" href="#relationship" title="Link to this heading">#</a></h2>
+<section id="voltage-current">
+<h3>Voltage / Current<a class="headerlink" href="#voltage-current" title="Link to this heading">#</a></h3>
+<p>This relationship is the simplest one. According to Ohm’s law, it can be written as:</p>
+<div class="math notranslate nohighlight">
+\[U = R \cdot I\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>(U) represents the voltage in volts (V),</p></li>
+<li><p>(I) represents the current in amperes (A),</p></li>
+<li><p>(R) represents the resistance in ohms (Ω).</p></li>
+</ul>
+<p>This equation shows that there is a <strong>linear relationship</strong> between voltage and current through a resistor.</p>
+<p>Another equivalent relationship can be written as:</p>
+<div class="math notranslate nohighlight">
+\[dV = R \cdot dI\]</div>
+<p>The relation remains the same, but in this case, it takes into account that the current may vary with time. This time-dependent behavior is not explicitly considered in the first equation.</p>
+<p>In the next section, this relationship will be further analyzed and extended to more complex components and systems.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the electrical circuit</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Resistor&#39;</span><span class="p">)</span>
+
+<span class="c1"># Sinusoidal voltage source connected to ground</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;input&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span> <span class="o">@</span> <span class="n">u_kHz</span><span class="p">,</span>
+    <span class="n">offset</span><span class="o">=</span><span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span>
+<span class="p">)</span>
+
+<span class="c1"># Resistor connected between input and ground</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span> <span class="o">@</span> <span class="n">u_Ohm</span><span class="p">)</span>
+
+<span class="c1"># Add a current probe to measure the resistor current</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">R1</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the simulator</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+
+<span class="c1"># Run a transient analysis</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mf">0.001</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">10</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">use_initial_condition</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot voltage and current versus time</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time signal with resistance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input voltage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vr1_minus&#39;</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Resistor current&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude / ua&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ms&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/26275d8583f85f4fdd35e7d51cbd8af949ced018330daec921c3665d10e7f99a.png" src="../_images/26275d8583f85f4fdd35e7d51cbd8af949ced018330daec921c3665d10e7f99a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot voltage as a function of current (V–I characteristic)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;V–I characteristic resistance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vr1_minus&#39;</span><span class="p">],</span>
+    <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">],</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Current (A)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage (V)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ad3f06552c8dc007f53d01a6256d27508b7ffc2b86793e68ef8a2ea25f65b848.png" src="../_images/ad3f06552c8dc007f53d01a6256d27508b7ffc2b86793e68ef8a2ea25f65b848.png" />
+</div>
+</div>
+</section>
+<section id="current-charge">
+<h3>Current / Charge<a class="headerlink" href="#current-charge" title="Link to this heading">#</a></h3>
+<p>Current and electric charge are related by the following fundamental relation:</p>
+<div class="math notranslate nohighlight">
+\[i(t) = \frac{dq(t)}{dt}\]</div>
+<p>The inverse relation is therefore an integral:</p>
+<div class="math notranslate nohighlight">
+\[q(t) = q(t_0) + \int i(t), dt\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q\)</span> is the electric charge (in coulombs [C])</p></li>
+<li><p><span class="math notranslate nohighlight">\(i\)</span> is the charge flow rate (in amperes [A = C/s])</p></li>
+</ul>
+</section>
+<section id="voltage-charge">
+<h3>Voltage / Charge<a class="headerlink" href="#voltage-charge" title="Link to this heading">#</a></h3>
+<p>The relationship between charge and voltage is defined by the capacitance.</p>
+<p>The basic equation is:</p>
+<div class="math notranslate nohighlight">
+\[Q = C \cdot V\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is the electric charge (in coulombs [C])</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> is the capacitance value (in farads [F])</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span> is the voltage (in volts [V])</p></li>
+</ul>
+<p>As with the voltage–current relationship, the dynamic form can be written as:</p>
+<div class="math notranslate nohighlight">
+\[dq = C \cdot dv\]</div>
+<p>To obtain the time-domain equation of a capacitor, we write:</p>
+<div class="math notranslate nohighlight">
+\[q(t) = C \cdot v(t)\]</div>
+<p>By differentiating with respect to time, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dq(t)}{dt} = C \cdot \frac{dv(t)}{dt}\]</div>
+<p>From the previous section, we know that:</p>
+<div class="math notranslate nohighlight">
+\[i(t) = \frac{dq(t)}{dt}\]</div>
+<p>Therefore, the fundamental capacitor equation is recovered:</p>
+<div class="math notranslate nohighlight">
+\[i(t) = C \cdot \frac{dv(t)}{dt}\]</div>
+<p>This equation directly describes the <strong>current–voltage relationship of a capacitor</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the electrical circuit</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Capacitor&#39;</span><span class="p">)</span>
+
+<span class="c1"># Sinusoidal voltage source connected to ground</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> 
+                                <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_kHz</span><span class="p">)</span>
+
+<span class="c1"># Capacitor connected between input and ground</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="nd">@u_uF</span><span class="p">)</span>
+
+<span class="c1"># Add a current probe to measure the resistor current</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">C1</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the simulator</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+
+<span class="c1"># Run a transient analysis</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mf">0.001</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">10</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">use_initial_condition</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot voltage and current versus time</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time signal with capacitor&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input voltage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vc1_minus&#39;</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Capacitor current&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude / ua&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ms&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/48a216100d3464dd2fead8028d2c4297946e092531a71c93682b2fb0fb2a5fa0.png" src="../_images/48a216100d3464dd2fead8028d2c4297946e092531a71c93682b2fb0fb2a5fa0.png" />
+</div>
+</div>
+<p>It is possible to see the current/voltage phase shift of 90°</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot voltage as a function of current (V–I characteristic)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;V–I characteristic capacitor&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vc1_minus&#39;</span><span class="p">],</span>
+    <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">],</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Current (A)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage (V)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5b6e7a17ce94cc33ba5ba5786ebc532d6bfd5c916227a71245ee65095811ef55.png" src="../_images/5b6e7a17ce94cc33ba5ba5786ebc532d6bfd5c916227a71245ee65095811ef55.png" />
+</div>
+</div>
+<p>To understand the shape of the graph, we start again from the capacitor equation:</p>
+<div class="math notranslate nohighlight">
+\[i(t) = C \cdot \frac{dv(t)}{dt}\]</div>
+<p>First, the input voltage is assumed to be sinusoidal:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = V_0 \cos(\omega t)\]</div>
+<p>Injecting this expression into the current equation gives:</p>
+<div class="math notranslate nohighlight">
+\[i(t) = C V_0 \cdot \frac{d}{dt}\cos(\omega t)\]</div>
+<div class="math notranslate nohighlight">
+\[i(t) = - C V_0 \omega \sin(\omega t)\]</div>
+<p>The objective is now to <strong>eliminate time</strong> from the equations.</p>
+<p>From the voltage expression:</p>
+<div class="math notranslate nohighlight">
+\[\cos(\omega t) = \frac{v(t)}{V_0}\]</div>
+<p>And from the current expression:</p>
+<div class="math notranslate nohighlight">
+\[\sin(\omega t) = -\frac{i(t)}{C V_0 \omega}\]</div>
+<p>Next, we square both equations:</p>
+<div class="math notranslate nohighlight">
+\[\cos^2(\omega t) = \left(\frac{v(t)}{V_0}\right)^2\]</div>
+<div class="math notranslate nohighlight">
+\[\sin^2(\omega t) = \left(\frac{i(t)}{C V_0 \omega}\right)^2\]</div>
+<p>By adding <span class="math notranslate nohighlight">\(\cos^2(\omega t)\)</span> and <span class="math notranslate nohighlight">\(\sin^2(\omega t)\)</span>, we use the trigonometric identity:</p>
+<div class="math notranslate nohighlight">
+\[\cos^2(\omega t) + \sin^2(\omega t) = 1\]</div>
+<p>which leads to:</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{v(t)}{V_0}\right)^2 + \left(\frac{i(t)}{C V_0 \omega}\right)^2 = 1\]</div>
+<p>This is exactly the equation of an <strong>ellipse</strong>.</p>
+<p>With the normalized variables:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x = \dfrac{v(t)}{V_0}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = \dfrac{i(t)}{C V_0 \omega}\)</span></p></li>
+</ul>
+<p>the trajectory in the <span class="math notranslate nohighlight">\((v, i)\)</span> plane is an ellipse, which explains the shape observed in the graph.</p>
+<p><strong>Physical interpretation:</strong>
+This elliptical Lissajous curve reflects the <strong>90° phase shift</strong> between voltage and current in an ideal capacitor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Parameters</span>
+<span class="c1"># =========================</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c1"># Voltage amplitude [V]</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mf">10e-6</span>       <span class="c1"># Capacitance [F]</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">1e3</span>         <span class="c1"># Base frequency [Hz]</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span>  <span class="c1"># Angular frequency [rad/s]</span>
+
+<span class="c1"># Time vector (10 ms duration)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">10e-3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Voltage and current for ω</span>
+<span class="c1"># =========================</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">i1</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">C</span> <span class="o">*</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Voltage and current for 2ω</span>
+<span class="c1"># =========================</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">C</span> <span class="o">*</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Voltage and current for 10ω</span>
+<span class="c1"># =========================</span>
+<span class="n">v10</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">i10</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">C</span> <span class="o">*</span> <span class="n">V0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot: I–V characteristic</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;V–I characteristic Capacitor&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i1</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ω&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i2</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2ω&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i10</span><span class="p">,</span> <span class="n">v10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;10ω&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Current [A]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>  <span class="c1"># Ensures correct ellipse shape</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/59f58d8aed7215861430e4f335627c49a946e1ecb3da7c063d2e4df8865a7bbc.png" src="../_images/59f58d8aed7215861430e4f335627c49a946e1ecb3da7c063d2e4df8865a7bbc.png" />
+</div>
+</div>
+</section>
+<section id="voltage-flux">
+<h3>Voltage / Flux<a class="headerlink" href="#voltage-flux" title="Link to this heading">#</a></h3>
+<p>A reasoning similar to the one used for capacitors can be applied to the relationship between <strong>magnetic flux</strong> and <strong>voltage</strong>.</p>
+<p>The fundamental relation is:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = \frac{d\phi(t)}{dt}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\phi(t)\)</span> is the <strong>linked magnetic flux</strong> (in webers [Wb]),</p></li>
+<li><p><span class="math notranslate nohighlight">\(v(t)\)</span> is the <strong>voltage across the inductor</strong> (in volts [V]).</p></li>
+</ul>
+<p>This equation can be inverted by integration:</p>
+<div class="math notranslate nohighlight">
+\[\phi(t) = \int v(t), dt + \phi(t_0)\]</div>
+<p>This expression shows that the magnetic flux is the <strong>time integral of the applied voltage</strong>, up to an initial condition.</p>
+</section>
+<section id="flux-current">
+<h3>Flux / Current<a class="headerlink" href="#flux-current" title="Link to this heading">#</a></h3>
+<p>The basic constitutive law of an inductor is:</p>
+<div class="math notranslate nohighlight">
+\[\phi(t) = L, i(t)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\phi(t)\)</span> is the linked magnetic flux (in webers [Wb]),</p></li>
+<li><p><span class="math notranslate nohighlight">\(i(t)\)</span> is the current flowing through the inductor (in amperes [A]),</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> is the inductance (in henries [H]).</p></li>
+</ul>
+<p>To obtain the current–voltage relationship, we follow the same steps as before.</p>
+<p>Starting from:</p>
+<div class="math notranslate nohighlight">
+\[\phi(t) = L, i(t)\]</div>
+<p>and differentiating with respect to time:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\phi(t)}{dt} = L \frac{di(t)}{dt}\]</div>
+<p>From the previous section, we know that:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = \frac{d\phi(t)}{dt}\]</div>
+<p>By substitution, we obtain the fundamental equation of an inductor:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = L \frac{di(t)}{dt}\]</div>
+<p>This equation shows that the voltage across an inductor is proportional to the <strong>rate of change of the current</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the electrical circuit</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Inductor&#39;</span><span class="p">)</span>
+
+<span class="c1"># Sinusoidal current source connected to ground</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalCurrentSource</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> 
+                                <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_A</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_kHz</span><span class="p">)</span>
+
+<span class="c1"># Inductor connected between input and ground</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="nd">@u_uH</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">L1</span><span class="o">.</span><span class="n">minus</span><span class="o">.</span><span class="n">add_current_probe</span><span class="p">(</span><span class="n">circuit</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the simulator</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+
+<span class="c1"># Run a transient analysis</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mf">0.001</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">10</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">use_initial_condition</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot voltage and current versus time</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time signal with inductor&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inductor voltage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vl1_minus&#39;</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input current&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude / ua&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ms&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e0b92693d8bea55b2abf15f9e04b2e9cfcc6fa0f59928b9ed95bd0f69236ea91.png" src="../_images/e0b92693d8bea55b2abf15f9e04b2e9cfcc6fa0f59928b9ed95bd0f69236ea91.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot voltage as a function of inductor (V–I characteristic)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;V–I characteristic inductor&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vl1_minus&#39;</span><span class="p">],</span>
+    <span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">],</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Current (A)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage (V)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e6d8414d33a379deb24119974d7fa1d6db5f0e024cfd885aa8adeb14f91c5458.png" src="../_images/e6d8414d33a379deb24119974d7fa1d6db5f0e024cfd885aa8adeb14f91c5458.png" />
+</div>
+</div>
+<p>It is possible to see the same shape as for capacitors, but this time it is <strong>rotated by 90°</strong>. In the next section, the goal will be to analyze this <strong>theoretically</strong>.</p>
+<p>To understand the graph, we start from the inductor’s fundamental equation:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = L \cdot \frac{di(t)}{dt}\]</div>
+<p>Suppose the input current is sinusoidal:</p>
+<div class="math notranslate nohighlight">
+\[i(t) = I_0 \cos(\omega t)\]</div>
+<p>Substituting into the voltage equation:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = L \ I_0 \cdot \frac{d}{dt} \cos(\omega t)\]</div>
+<div class="math notranslate nohighlight">
+\[v(t) = - L \ I_0 \ \omega \ \sin(\omega t)\]</div>
+<p>Next, we want to <strong>eliminate the explicit time variable</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\cos(\omega t) = \frac{i(t)}{I_0}, \quad \sin(\omega t) = -\frac{v(t)}{L I_0 \omega}\]</div>
+<p>Squaring both equations:</p>
+<div class="math notranslate nohighlight">
+\[
+\cos^2(\omega t) = \left(\frac{i(t)}{I_0}\right)^2, \quad
+\sin^2(\omega t) = \left(-\frac{v(t)}{L I_0 \omega}\right)^2
+\]</div>
+<p>Adding them together:</p>
+<div class="math notranslate nohighlight">
+\[
+\cos^2(\omega t) + \sin^2(\omega t) =
+\left(\frac{i(t)}{I_0}\right)^2 + \left(\frac{v(t)}{L I_0 \omega}\right)^2 = 1
+\]</div>
+<p>We obtain the <strong>equation of an ellipse</strong>.</p>
+<p>With the definitions:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x = \left(\dfrac{v(t)}{L I_0 \omega}\right)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = \left(\dfrac{i(t)}{I_0}\right)^2\)</span></p></li>
+</ul>
+<p>we can now plot or analyze the ellipse using these parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Parameters</span>
+<span class="c1"># =========================</span>
+<span class="n">I0</span> <span class="o">=</span> <span class="mi">1</span>          <span class="c1"># Currant amplitude [V]</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">10e-6</span>       <span class="c1"># Inductance H</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">1e3</span>         <span class="c1"># Base frequency [Hz]</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span>  <span class="c1"># Angular frequency [rad/s]</span>
+
+<span class="c1"># Time vector (10 ms duration)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">10e-3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Voltage and current for ω</span>
+<span class="c1"># =========================</span>
+<span class="n">i1</span> <span class="o">=</span> <span class="n">I0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">omega</span><span class="p">)</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">I0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">omega</span><span class="p">)</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Voltage and current for 2ω</span>
+<span class="c1"># =========================</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">I0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">I0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">omega</span><span class="p">)</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Voltage and current for 10ω</span>
+<span class="c1"># =========================</span>
+<span class="n">i10</span> <span class="o">=</span> <span class="n">I0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">omega</span><span class="p">)</span>
+<span class="n">v10</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">I0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">omega</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot: I–V characteristic</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;V–I characteristic inductor&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i1</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ω&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i2</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2ω&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i10</span><span class="p">,</span> <span class="n">v10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;10ω&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Current [A]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>  <span class="c1"># Ensures correct ellipse shape</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e24d17f5640dabf773b705fd550d88d94c8004e36a22534c7ab9dd7040364658.png" src="../_images/e24d17f5640dabf773b705fd550d88d94c8004e36a22534c7ab9dd7040364658.png" />
+</div>
+</div>
+</section>
+<section id="flux-charge">
+<h3>Flux / Charge<a class="headerlink" href="#flux-charge" title="Link to this heading">#</a></h3>
+<section id="linear-memristor-model">
+<h4>Linear Memristor Model<a class="headerlink" href="#linear-memristor-model" title="Link to this heading">#</a></h4>
+<p>Here, there is a problem: <strong>there is no standard component that naturally governs the relationship between flux and charge</strong>.</p>
+<p>Such a component <strong>does exist</strong>, and the goal of this section is to introduce it. This component is the <strong>memristor</strong>, which defines the relationship between magnetic flux (\phi) and electric charge (q). The relation is given by:</p>
+<div class="math notranslate nohighlight">
+\[\phi = M q\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M\)</span> = memristance (in ohms [Ω])</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> = magnetic flux (in webers [Wb])</p></li>
+<li><p><span class="math notranslate nohighlight">\(q\)</span> = electric charge (in coulombs [C])</p></li>
+</ul>
+<p>Starting from this ideal memristor equation:</p>
+<div class="math notranslate nohighlight">
+\[\phi = M \ q\]</div>
+<p>and differentiating with respect to time:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\phi}{dt} = M \frac{dq}{dt}\]</div>
+<p>we obtain the voltage-current relationship:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = M i(t)\]</div>
+<p>At first glance, it seems that this behaves very similarly to a resistor and that the component is linear. However, there is an important difference: <strong><span class="math notranslate nohighlight">\(\phi\)</span> is not necessarily linear</strong>, which gives the memristor its unique properties.</p>
+</section>
+<section id="nonlinear-memristor-model">
+<h4>Nonlinear Memristor Model<a class="headerlink" href="#nonlinear-memristor-model" title="Link to this heading">#</a></h4>
+<p>Now, the goal is to go further in the analysis and start again from the following point.</p>
+<p>The issue with the equation <span class="math notranslate nohighlight">\(v(t) = M i(t)\)</span> is that it implicitly assumes a <strong>linear relationship</strong> between flux <span class="math notranslate nohighlight">\(\phi\)</span> and charge <span class="math notranslate nohighlight">\(q\)</span>. In the previous section, <span class="math notranslate nohighlight">\(\phi(q)\)</span> was considered linear.
+In this section, however, <strong><span class="math notranslate nohighlight">\(\phi(q)\)</span> is assumed to be nonlinear</strong>.</p>
+<div class="math notranslate nohighlight">
+\[\phi(q) \quad \text{nonlinear}\]</div>
+<p>This leads to the definition of a <strong>charge-dependent memristance</strong>:</p>
+<div class="math notranslate nohighlight">
+\[M(q) = \frac{d\phi(q)}{dq}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(\frac{d\phi(q)}{dq}\)</span> is no longer constant.</p>
+<p>The voltage–current relationship can now be written as:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = M(q) , i(t) = \frac{d\phi(q)}{dq} , i(t)\]</div>
+</section>
+<section id="derivation-of-the-nonlinear-memristance">
+<h4>Derivation of the Nonlinear Memristance<a class="headerlink" href="#derivation-of-the-nonlinear-memristance" title="Link to this heading">#</a></h4>
+<p>To compute <span class="math notranslate nohighlight">\(\frac{d\phi(q)}{dq}\)</span>, we start from the general flux–charge relationship of a memristor:</p>
+<div class="math notranslate nohighlight">
+\[\phi(q) = M(q), q\]</div>
+<p>Differentiating this expression with respect to <span class="math notranslate nohighlight">\(q\)</span> and applying the product rule:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\phi(q)}{dq} = \frac{d}{dq} \bigl(M(q), q\bigr)\]</div>
+<p>Using:</p>
+<div class="math notranslate nohighlight">
+\[(uv)' = u'v + uv'\]</div>
+<p>we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\phi(q)}{dq} = M(q) + q \frac{dM(q)}{dq}\]</div>
+<p>Substituting this result into the voltage equation gives:</p>
+<div class="math notranslate nohighlight">
+\[v(t) = \left[M(q) + q \cdot M'(q)\right] i(t)\]</div>
+</section>
+<section id="interpretation">
+<h4>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h4>
+<p>This equation shows that, unlike a resistor, the voltage across a memristor depends not only on the instantaneous current but also on the <strong>history of the charge</strong> through the device.
+As a result, the memristor is <strong>nonlinear and history-dependent</strong>, which is the key property that distinguishes it from resistors, capacitors, and inductors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Parameters</span>
+<span class="c1"># =========================</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span>                          <span class="c1"># Constante integration</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>   <span class="c1"># Time vector (10s duration) </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Voltage and current </span>
+<span class="c1"># =========================</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">c1</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>   <span class="c1"># Tension in V</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                           <span class="c1"># Current in A</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot: I–V characteristic</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Memristor IV curve&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;V-I&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6fc39d2f710277fb2f25f08612f5795aba27db5941473d33221644c7e43e376e.png" src="../_images/6fc39d2f710277fb2f25f08612f5795aba27db5941473d33221644c7e43e376e.png" />
+</div>
+</div>
+<p>In other notebooks, the goal will be to delve deeper into the equations.</p>
+</section>
+</section>
+</section>
+<section id="resume">
+<h2>Resume<a class="headerlink" href="#resume" title="Link to this heading">#</a></h2>
+<p>Notebook summary is resume in <a class="reference internal" href="#base-componant-vu"><span class="std std-ref">Notebook summary</span></a></p>
+<figure class="align-center" id="base-componant-vu">
+<a class="reference internal image-reference" href="../_images/Base_componant_vu.svg"><img alt="../_images/Base_componant_vu.svg" src="../_images/Base_componant_vu.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Notebook summary</span><a class="headerlink" href="#base-componant-vu" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+</section>
+<section id="writing-matrix">
+<h2>Writing Matrix<a class="headerlink" href="#writing-matrix" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Author</p></th>
+<th class="head"><p>Reviewer</p></th>
+<th class="head"><p>Approver</p></th>
+<th class="head"><p>Section</p></th>
+<th class="head"><p>Date 1</p></th>
+<th class="head"><p>Date 2</p></th>
+<th class="head"><p>Date 3</p></th>
+<th class="head"><p>General Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sacha</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>Entire document</p></td>
+<td><p>2026-02-01</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>Initial draft of the full document</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -474,6 +1302,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Book on Electronics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Capacite.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Capacitor</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -489,9 +1335,38 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-fundamental-electrical-parameters">Definition of Fundamental Electrical Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-voltage">Electrical Voltage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-current">Electric Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-charges">Electric Charges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electric-flux">Electric Flux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship">Relationship</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-current">Voltage / Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-charge">Current / Charge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-charge">Voltage / Charge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-flux">Voltage / Flux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-current">Flux / Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-charge">Flux / Charge</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-memristor-model">Linear Memristor Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-memristor-model">Nonlinear Memristor Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-nonlinear-memristance">Derivation of the Nonlinear Memristance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume">Resume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-matrix">Writing Matrix</a></li>
+</ul>
   </nav></div>
 
 </div></div>

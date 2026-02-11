@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,9 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Base_componant/Memristor';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Diode" href="diode/Diode.html" />
+    <link rel="prev" title="Capacitor" href="Capacite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,8 +182,10 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Capacite.html">Capacitor</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -436,7 +440,36 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-creation-memristor">Class creation Memristor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Memristor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation">Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-state">Internal State</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-state-dynamics">Internal State Dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-variation">Resistance Variation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-characteristic-plot">I–V Characteristic Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conductance-model">Conductance Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-expression">Current Expression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-iv-representation">Parametric I–V Representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memristor-implementation-in-spice">Memristor Implementation in SPICE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-code">Description code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-controlled-current-source-vccs">Voltage-Controlled Current Source (VCCS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#large-resistor-r">Large Resistor <span class="math notranslate nohighlight">\(R\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-controlled-switch">Voltage-Controlled Switch</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#capacitor-memory-element">Capacitor: Memory Element</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mosfet-resistance-control">MOSFET (Resistance Control)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spice-simulation">Spice Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-phi">Importance of phi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-evolution-of-the-memristor">Resistance evolution of the Memristor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-matrix">Writing Matrix</a></li>
 </ul>
             </nav>
         </div>
@@ -495,383 +528,947 @@ It also includes setting up the formatting parameters for the plots and visualiz
 </div>
 </section>
 </section>
-<section id="class-creation-memristor">
-<h2>Class creation Memristor<a class="headerlink" href="#class-creation-memristor" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2>Memristor<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Memristors are electronic components that were <strong>theoretically predicted in 1971 by Leon O. Chua</strong>. However, it was not until <strong>2008</strong> that a research team at <strong>HP</strong> fabricated the first physical memristor.
+Like resistors, the unit of a memristor is the <strong>ohm (Ω)</strong>.</p>
+<p>The main difference between a <strong>resistor</strong> and a <strong>memristor</strong> lies in their behavior. A resistor has a <strong>fixed value</strong>; it is a scalar quantity. In contrast, a memristor is described by a <strong>nonlinear function</strong> that depends on the history of the device. This comparison is summarized in <a class="reference internal" href="#memristor-resistance"><span class="std std-ref">Memristor vs. resistor</span></a>.</p>
+<p>Unlike a resistor, whose value remains constant, the resistance of a memristor <strong>evolves as a function of the applied voltage (or current) and the duration of excitation</strong>. In particular, when a current flows in one direction, the memristance decreases, while a current flowing in the opposite direction causes the memristance to increase, the summary is in <a class="reference internal" href="#memristor-change"><span class="std std-ref">Memristor change value resistance</span></a>.</p>
+<figure class="align-center" id="memristor-change">
+<a class="reference internal image-reference" href="../_images/memristor_change.svg"><img alt="../_images/memristor_change.svg" src="../_images/memristor_change.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Memristor change value resistance</span><a class="headerlink" href="#memristor-change" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="memristor-resistance">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Memristor vs. resistor</span><a class="headerlink" href="#memristor-resistance" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Resistor</p></th>
+<th class="head"><p>Memristor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Unit</p></td>
+<td><p>Ohm (Ω)</p></td>
+<td><p>Ohm (Ω)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constitutive law</p></td>
+<td><p><span class="math notranslate nohighlight">\(U = R \cdot I\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(U = M(q) \cdot I\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Parameter type</p></td>
+<td><p><span class="math notranslate nohighlight">\(R\)</span> is constant</p></td>
+<td><p><span class="math notranslate nohighlight">\(M(q)\)</span> is variable</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>One of the <strong>key advantages</strong> of a memristor is that, when it is no longer powered by a current or voltage source, it <strong>retains its resistance value</strong>. This non-volatile property alone opens the door to many applications.</p>
+<p>For example, memristors can be used to build <strong>non-volatile RAM</strong>, meaning that memory contents are preserved even when a microcontroller or computer is powered off. This could enable <strong>ultra-low-power systems</strong> with <strong>instantaneous startup times</strong>.</p>
+<p>Another important advantage is related to <strong>scaling and integration</strong>. Memristors are extremely small and can be <strong>stacked in three-dimensional structures</strong>, allowing much higher storage densities. In contrast, traditional resistors are difficult—if not impossible—to stack efficiently. As a result, future electronic circuits could achieve significantly higher spatial density.</p>
+<p>Finally, modern computer architectures—whether <strong>Von Neumann</strong> or <strong>Harvard</strong>—suffer from the well-known <strong>memory bottleneck</strong>. Even with multi-level memory hierarchies (L1, L2, L3, etc.), processors often spend a significant amount of time waiting for data.
+In theory, memristors make it possible to <strong>perform computations directly inside memory</strong>, enabling <em>in-memory computing</em>. This paradigm could dramatically reduce data movement and has the potential to <strong>revolutionize modern electronics and computing architectures</strong>.</p>
+</section>
+<section id="equation">
+<h2>Equation<a class="headerlink" href="#equation" title="Link to this heading">#</a></h2>
+<section id="internal-state">
+<h3>Internal State<a class="headerlink" href="#internal-state" title="Link to this heading">#</a></h3>
+<p>The derivation of the equation is presented in the notebook <em><a class="reference internal" href="Concept_base.html"><span class="doc std std-doc"><em>Basic Concepts</em></span></a></em>. The purpose of this section is not to revisit the derivation, but simply to state the equations used in the model. As reported by [&#64;joglekarElusiveMemristorProperties2009], the window function is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = 1 - (2x - 1)^{2p}
+\]</div>
+<p>The corresponding integral for <span class="math notranslate nohighlight">\(p=1\)</span> is therefore :</p>
+<div class="math notranslate nohighlight">
+\[
+g(x, p=1) = -\frac{4}{3}x^{3} + 2x^{2} + C
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the integration constant.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Demonstration for p = 1</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The initial equation is:
+$<span class="math notranslate nohighlight">\(f(x) = 1 - (2x - 1)^{2p}\)</span>$</p>
+<p class="sd-card-text">For <span class="math notranslate nohighlight">\(p = 1\)</span>, we obtain:
+$<span class="math notranslate nohighlight">\(f(x, p=1) = 1 - (2x - 1)^{2}\)</span>$</p>
+<p class="sd-card-text">Expanding the square term:
+$<span class="math notranslate nohighlight">\((2x - 1)^2 = 4x^2 - 4x + 1\)</span>$</p>
+<p class="sd-card-text">Therefore:
+$<span class="math notranslate nohighlight">\(f(x, p=1) = 1 - (4x^2 - 4x + 1)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(f(x, p=1) = 1 - 4x^2 + 4x - 1\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(f(x, p=1) = -4x^2 + 4x\)</span>$</p>
+<p class="sd-card-text"><strong>Integration</strong></p>
+<p class="sd-card-text">We now integrate each term separately.</p>
+<p class="sd-card-text">For the quadratic term:</p>
+<div class="math notranslate nohighlight">
+\[\int -4x^2 \ dx = -\frac{4}{3}x^3\]</div>
+<p class="sd-card-text">For the linear term:</p>
+<div class="math notranslate nohighlight">
+\[\int 4x \ dx = 2x^2\]</div>
+<p class="sd-card-text">Combining both results gives:</p>
+<div class="math notranslate nohighlight">
+\[g(x, p=1) = -\frac{4}{3}x^3 + 2x^2\]</div>
+<p class="sd-card-text">Thus, we confirm that:</p>
+<div class="math notranslate nohighlight">
+\[g(x, p=1) = \int f(x, p=1)\ dx\]</div>
+<p class="sd-card-text">and therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\int \left[1 - (2x - 1)^2\right] \ dx = 
+-\frac{4}{3}x^3 + 2x^2
+\]</div>
+<p class="sd-card-text">This result is consistent with the analytical expression previously introduced.</p>
+</div>
+</details><p>To integrate <span class="math notranslate nohighlight">\(f(x)\)</span> for an arbitrary value of <span class="math notranslate nohighlight">\(p\)</span>, we obtain the following general expression:</p>
+<div class="math notranslate nohighlight">
+\[g(x) = x - \frac{(2x - 1)^{2p + 1}}{2(2p + 1)} + C\]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the integration constant.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Demonstration for arbitrary p</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The initial equation is:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = 1 - (2x - 1)^{2p}\]</div>
+<p class="sd-card-text"><strong>Step 1 — Integrate term by term</strong></p>
+<div class="math notranslate nohighlight">
+\[\int f(x)\,dx = \int \left[1 - (2x - 1)^{2p}\right] dx\]</div>
+<p class="sd-card-text">We integrate each term separately.</p>
+<p class="sd-card-text">First term:</p>
+<div class="math notranslate nohighlight">
+\[\int 1 \ dx = x\]</div>
+<p class="sd-card-text">Second term:</p>
+<div class="math notranslate nohighlight">
+\[h(x) = \int (2x - 1)^{2p} dx\]</div>
+<p class="sd-card-text"><strong>Step 2 — Substitution</strong></p>
+<p class="sd-card-text">Let:</p>
+<div class="math notranslate nohighlight">
+\[u = 2x - 1\]</div>
+<p class="sd-card-text">Then:</p>
+<div class="math notranslate nohighlight">
+\[\frac{du}{dx} = 2 \quad \Rightarrow \quad dx = \frac{du}{2}\]</div>
+<p class="sd-card-text">Substituting into the integral:</p>
+<div class="math notranslate nohighlight">
+\[h(x) = \int u^{2p} \frac{du}{2}\]</div>
+<div class="math notranslate nohighlight">
+\[h(x) = \frac{1}{2} \int u^{2p} du\]</div>
+<p class="sd-card-text"><strong>Step 3 — Power integration rule</strong></p>
+<p class="sd-card-text">Using the standard power rule:</p>
+<div class="math notranslate nohighlight">
+\[\int u^n du = \frac{u^{n+1}}{n+1}\]</div>
+<p class="sd-card-text">we obtain:</p>
+<div class="math notranslate nohighlight">
+\[h(x) = \frac{1}{2} \cdot \frac{u^{2p+1}}{2p+1}\]</div>
+<div class="math notranslate nohighlight">
+\[h(x) = \frac{(2x - 1)^{2p+1}}{2(2p+1)}\]</div>
+<p class="sd-card-text"><strong>Final result</strong></p>
+<p class="sd-card-text">Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+g(x) = \int f(x) \ dx= x - \frac{(2x - 1)^{2p + 1}}{2(2p + 1)} + C
+\]</div>
+<p class="sd-card-text">This completes the general proof for any integer (or real) value of <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div>
+</details><p>This expression will be used in the following sections to describe the evolution of the internal state variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">c1</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Visualization function</span>
+<span class="c1"># =========================</span>
+<span class="c1"># ---- Constante</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># Integration constant</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;V-I&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Memristor IV curve&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;linear_memristor.png&#39;</span><span class="p">)</span>
+<span class="c1"># ---- Domain of the state variable</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="c1"># ---- Window function and its analytical integral</span>
+<span class="n">f</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">)</span>
+<span class="n">g</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">g_p1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">g</span></code> function and the <code class="docutils literal notranslate"><span class="pre">g_p1</span></code> function are the same; the only difference between the two is that the <code class="docutils literal notranslate"><span class="pre">g_p1</span></code> function only works when <span class="math notranslate nohighlight">\(p=1\)</span>, while the <code class="docutils literal notranslate"><span class="pre">g</span></code> function generalizes to all values of <code class="docutils literal notranslate"><span class="pre">p</span></code></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot the window functions </span>
+<span class="c1"># and their corresponding </span>
+<span class="c1"># integrals</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Memristor Window Functions and Their Integrals (Joglekar Model)&quot;</span><span class="p">)</span>
+
+<span class="c1"># ---- Function f </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x), p = 1&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x), p = 2&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;f(x), p = 3&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+
+<span class="c1"># ---- Integration of the f function g</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c1</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Integral g(x), p = 1&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">c1</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Integral g(x), p = 2&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">c1</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Integral g(x), p = 3&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+
+<span class="c1"># ---- Parameter of the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;State variable x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Function value&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/35120c8817e88b2e394c514c531f70050bd78c86368b74604317e6228cb54157.png" src="../_images/35120c8817e88b2e394c514c531f70050bd78c86368b74604317e6228cb54157.png" />
+<img alt="../_images/f375f7c14fe299b27697b733a380bfde8837f46958c8f9c62a190611fcd341f6.png" src="../_images/f375f7c14fe299b27697b733a380bfde8837f46958c8f9c62a190611fcd341f6.png" />
 </div>
 </div>
+</section>
+</section>
+<section id="internal-state-dynamics">
+<h2>Internal State Dynamics<a class="headerlink" href="#internal-state-dynamics" title="Link to this heading">#</a></h2>
+<p>This curve represents the <strong>internal state variable</strong> of a memristor, which typically varies between 0 and 1.
+The function <span class="math notranslate nohighlight">\(f(x)\)</span> describes the <strong>rate of change of the internal state</strong>:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is close to <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> (near the boundaries), then <span class="math notranslate nohighlight">\(f(x,p) \rightarrow 0\)</span>, meaning the state changes <strong>very slowly</strong>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is close to <span class="math notranslate nohighlight">\(0.5\)</span> (the center), then <span class="math notranslate nohighlight">\(f(x,p)\)</span> reaches its <strong>maximum</strong>, and the state evolves <strong>more rapidly</strong>.</p></li>
+</ul>
+<p>The evolution of the internal state can therefore be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dx}{dt} = k \cdot I(t) \cdot f(x)
+= k \cdot I(t) \cdot \bigl(1 - (2x - 1)^{2p}\bigr)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is a device-dependent constant and <span class="math notranslate nohighlight">\(I(t)\)</span> is the current flowing through the memristor.</p>
+</section>
+<section id="resistance-variation">
+<h2>Resistance Variation<a class="headerlink" href="#resistance-variation" title="Link to this heading">#</a></h2>
+<p>As discussed previously, the memristor resistance changes as a function of the applied excitation and its duration. The resistance is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[R(x) = R_{ON}, x + R_{OFF}, (1 - x)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_{ON}\)</span> is the resistance of the <strong>doped region</strong>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{OFF}\)</span> is the resistance of the <strong>undoped region</strong>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span> represents the <strong>normalized position of the boundary</strong> between the doped and undoped regions, i.e., the ratio of the doped-region length to the total device length.</p></li>
+</ul>
+<figure class="align-center" id="equation-resistance-memristor">
+<a class="reference internal image-reference" href="../_images/equation_resistance_memristor.svg"><img alt="../_images/equation_resistance_memristor.svg" src="../_images/equation_resistance_memristor.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Memristor resistance model parameters</span><a class="headerlink" href="#equation-resistance-memristor" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <a class="reference internal" href="#equation-resistance-memristor"><span class="std std-ref">Memristor resistance model parameters</span></a> summarizes the parameters involved in this model.
+This equation provides the <strong>instantaneous resistance value</strong> as a function of the relative sizes of the doped and undoped regions. However, at this stage, it does not yet describe the <strong>dynamic evolution</strong> of the system, which requires combining the resistance equation with the state-evolution equation introduced above.</p>
+</section>
+<section id="iv-characteristic-plot">
+<h2>I–V Characteristic Plot<a class="headerlink" href="#iv-characteristic-plot" title="Link to this heading">#</a></h2>
+<p>The input excitation is assumed to be an <strong>ideal sinusoidal voltage source</strong>, given by:</p>
+<div class="math notranslate nohighlight">
+\[V(t) = \sin(\omega t)\]</div>
+<p>Injecting this expression into the internal state equation yields:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = k \sin(\omega t)\]</div>
+<p>which integrates to:</p>
+<div class="math notranslate nohighlight">
+\[x(t) = -k \cos(\omega t) + C\]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is an integration constant. In this study, the constant is assumed to be <span class="math notranslate nohighlight">\(C = 0\)</span> for simplicity.</p>
+<section id="conductance-model">
+<h3>Conductance Model<a class="headerlink" href="#conductance-model" title="Link to this heading">#</a></h3>
+<p>The chosen conductance model <span class="math notranslate nohighlight">\(G(x(t))\)</span> is exponential. While the full physical justification for selecting an exponential form is beyond the scope of this work, this choice allows for a smooth and strongly nonlinear dependence of conductance on the internal state variable. The model is therefore defined as:</p>
+<div class="math notranslate nohighlight">
+\[G(x(t)) = e^{x(t)}\]</div>
+<p>Substituting the expression of <span class="math notranslate nohighlight">\(x(t)\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[G(t) = e^{-k \cos(\omega t) + C}\]</div>
+</section>
+<section id="current-expression">
+<h3>Current Expression<a class="headerlink" href="#current-expression" title="Link to this heading">#</a></h3>
+<p>The memristor current is obtained from the relation:</p>
+<div class="math notranslate nohighlight">
+\[I(t) = G(t), V(t)\]</div>
+<p>By injecting the expressions of <span class="math notranslate nohighlight">\(G(t)\)</span> and <span class="math notranslate nohighlight">\(V(t)\)</span>, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[I(t) = e^{-k \cos(\omega t) + C} \sin(\omega t)\]</div>
+</section>
+<section id="parametric-iv-representation">
+<h3>Parametric I–V Representation<a class="headerlink" href="#parametric-iv-representation" title="Link to this heading">#</a></h3>
+<p>The parametric equations describing the memristor behavior are therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{cases}
+V(t) = \sin(\omega t), \
+I(t) = e^{-k \cos(\omega t) + C}, \sin(\omega t)
+\end{cases}
+\]</div>
+<p>These equations can be used to plot the characteristic <strong>pinched hysteresis loop</strong> of the memristor in the current–voltage (I–V) plane.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Init function</span>
+<span class="c1"># =========================</span>
+<span class="c1"># ---- constant</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Integration constant</span>
+
+<span class="c1"># ---- Time vector</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># ---- function</span>
+<span class="c1"># Single-frequency I–V curve</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                <span class="c1"># Applied voltage</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>               <span class="c1"># Internal state evolution</span>
+<span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">c1</span><span class="p">))</span> <span class="o">*</span> <span class="n">v</span>     <span class="c1"># Memristor current</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot I–V Characteristic</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Memristor I–V Characteristic (Single Frequency)&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---- I-V curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;I–V curve&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="c1"># ---- Parameter of the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4533e19bade2cc8256365b1769dd364c9d736184059f64c8371840e0ff56d559.png" src="../_images/4533e19bade2cc8256365b1769dd364c9d736184059f64c8371840e0ff56d559.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Influence of excitation </span>
+<span class="c1"># frequency on the I–V curve</span>
+<span class="c1"># =========================</span>
+<span class="c1"># ---- constant</span>
+<span class="n">w_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># pulsation of the system</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># Integration constant</span>
+
+<span class="c1"># ---- Time vector</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot I–V Characteristic</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Memristor I–V Characteristics for Different Frequencies&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---- I-V curve</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">w_list</span><span class="p">:</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>              <span class="c1"># Input voltage</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span>         <span class="c1"># Internal state evolution</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">c1</span><span class="p">))</span> <span class="o">*</span> <span class="n">v</span>       <span class="c1"># Output current</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;ω = </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1"> rad/s&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---- Parameter of the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3be251a878c4b6e9b92a3d19dd2255535d103a973b5ce653cd1accf1986b24e9.png" src="../_images/3be251a878c4b6e9b92a3d19dd2255535d103a973b5ce653cd1accf1986b24e9.png" />
+</div>
+</div>
+<p>As the input frequency changes, the <strong>voltage–current (I–V) characteristic</strong> also varies.
+When the excitation frequency increases, the <strong>hysteresis loop shrinks</strong>, eventually approaching a nearly linear resistive behavior. Conversely, at lower excitation frequencies, the <strong>hysteresis loop becomes wider</strong>, indicating stronger memory effects in the device.</p>
+<p>In the next section, the objective is to design and simulate a <strong>memristor model</strong>.</p>
+</section>
+</section>
+<section id="memristor-implementation-in-spice">
+<h2>Memristor Implementation in SPICE<a class="headerlink" href="#memristor-implementation-in-spice" title="Link to this heading">#</a></h2>
+<p>The goal is to implement a memristor using SPICE. The circuit configuration used in this study is illustrated below.</p>
+<figure class="align-center" id="memristor-pyspice">
+<a class="reference internal image-reference" href="../_images/memristor.svg"><img alt="../_images/memristor.svg" src="../_images/memristor.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Memristor implementation in PySpice</span><a class="headerlink" href="#memristor-pyspice" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Memristor</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.00005</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">SwitchRoff</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="mi">20</span><span class="p">,</span> <span class="n">SwitchRon</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Link of the program : https://github.com/jurjsorinliviu/In-Situ-Memristive-Learning-Method-for-Pattern-Classification/blob/main/memristor.py</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.00005</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> 
+                 <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                 <span class="n">SwitchRoff</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="mi">20</span><span class="p">,</span> <span class="n">SwitchRon</span><span class="o">=</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmem</span> <span class="o">=</span> <span class="s1">&#39;Cmem&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">o</span>    <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+        
         <span class="n">SubCircuit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">__nodes__</span><span class="p">)</span>
         <span class="c1"># self.parameters = {&#39;K&#39;: K, &#39;Kp&#39;: Kp, &#39;C&#39;: C, &#39;Vto&#39;: Vto}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;R2&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">12</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">VoltageControlledSwitch</span><span class="p">(</span><span class="s1">&#39;sw&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_switch&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_switch&#39;</span><span class="p">,</span> <span class="s2">&quot;SW&quot;</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">SwitchRon</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">SwitchRoff</span><span class="p">,</span> <span class="n">Vt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">,</span> <span class="s1">&#39;NMOS&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mf">1e12</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VoltageControlledSwitch</span><span class="p">(</span><span class="s1">&#39;sw&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">o</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmem</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> 
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_switch&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_switch&#39;</span><span class="p">,</span> <span class="s2">&quot;SW&quot;</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">SwitchRon</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">SwitchRoff</span><span class="p">,</span> 
+                   <span class="n">Vt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmem</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+        
         <span class="c1"># M1 drain gate source body</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">,</span> <span class="s1">&#39;NMOS&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmem</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="description-code">
+<h3>Description code<a class="headerlink" href="#description-code" title="Link to this heading">#</a></h3>
+<section id="voltage-controlled-current-source-vccs">
+<h4>Voltage-Controlled Current Source (VCCS)<a class="headerlink" href="#voltage-controlled-current-source-vccs" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first element is a <strong>voltage-controlled current source (VCCS)</strong>. This component generates a current proportional to a control voltage, leading to the following relation, which corresponds to the internal-state dynamics of the memristor:</p>
+<div class="math notranslate nohighlight">
+\[I(t) = k, V(t)\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k\)</span> is the gain of the controlled current source and represents the <strong>rate of evolution of the internal state</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V(t)\)</span> is the voltage difference between nodes <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(D\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(t)\)</span> is used to <strong>charge the capacitor</strong>, thereby updating the internal memory state.</p></li>
+</ul>
+</section>
+<section id="large-resistor-r">
+<h4>Large Resistor <span class="math notranslate nohighlight">\(R\)</span><a class="headerlink" href="#large-resistor-r" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This resistor has a very large value (on the order of gigaohms), making it effectively an open circuit. Its role is purely related to <strong>numerical stability</strong>: it prevents floating nodes and ensures convergence during SPICE simulations. It has no significant influence on the physical behavior of the memristor.</p>
+</section>
+<section id="voltage-controlled-switch">
+<h4>Voltage-Controlled Switch<a class="headerlink" href="#voltage-controlled-switch" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">VoltageControlledSwitch</span><span class="p">(</span><span class="s1">&#39;sw&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_switch&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This element is a <strong>voltage-controlled switch</strong> placed between nodes <code class="docutils literal notranslate"><span class="pre">o</span></code> and <code class="docutils literal notranslate"><span class="pre">Cmem</span></code>. The switch is controlled by the voltage at node <code class="docutils literal notranslate"><span class="pre">phi</span></code>, allowing or blocking the evolution of the memory state.</p>
+<p>The switch model is defined as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_switch&#39;</span><span class="p">,</span> <span class="s2">&quot;SW&quot;</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">SwitchRon</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">SwitchRoff</span><span class="p">,</span> <span class="n">Vt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The operating states of the switch are summarized in Table <a class="reference internal" href="#swith-state"><span class="std std-ref">Switch state</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="swith-state">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Switch state</span><a class="headerlink" href="#swith-state" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Condition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ON</p></td>
+<td><p><span class="math notranslate nohighlight">\(V(\phi) &gt; 0.5\)</span> V</p></td>
+</tr>
+<tr class="row-odd"><td><p>OFF</p></td>
+<td><p><span class="math notranslate nohighlight">\(V(\phi) &lt; 0.5\)</span> V</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This mechanism allows the <strong>memory update to be enabled or disabled</strong>.</p>
+</section>
+<section id="capacitor-memory-element">
+<h4>Capacitor: Memory Element<a class="headerlink" href="#capacitor-memory-element" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The capacitor stores the voltage <span class="math notranslate nohighlight">\(V(\text{Cmem})\)</span>, which represents the <strong>internal state of the memristor</strong>. The stored charge corresponds to the accumulated effect of the past current:</p>
+<div class="math notranslate nohighlight">
+\[V_{\text{Cmem}} \propto \int I(t) \ dt\]</div>
+<p>Thus, the capacitor implements the <strong>memory</strong> of the device.</p>
+</section>
+<section id="mosfet-resistance-control">
+<h4>MOSFET (Resistance Control)<a class="headerlink" href="#mosfet-resistance-control" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">,</span> <span class="s1">&#39;NMOS&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;my_nmos&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The MOSFET gate is driven by the voltage at node <code class="docutils literal notranslate"><span class="pre">Cmem</span></code>. As a result, the <strong>drain–source resistance</strong> becomes dependent on the stored internal state. This allows the memristor resistance to vary according to its memory, reproducing the fundamental memristive behavior.</p>
+</section>
+<section id="model-parameters">
+<h4>Model Parameters<a class="headerlink" href="#model-parameters" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.00005</span>
+<span class="n">Kp</span> <span class="o">=</span> <span class="mf">0.13e-3</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_pF</span>
+<span class="n">Vto</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">SwitchRoff</span> <span class="o">=</span> <span class="mf">1e20</span>
+<span class="n">SwitchRon</span> <span class="o">=</span> <span class="mf">1e-3</span>
+</pre></div>
+</div>
+<p>The input parameters of the memristor model are summarized in Table <a class="reference internal" href="#input-parameter-of-the-memristor"><span class="std std-ref">Input parameters of the memristor</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="input-parameter-of-the-memristor">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Input parameters of the memristor</span><a class="headerlink" href="#input-parameter-of-the-memristor" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">K</span></code></p></td>
+<td><p>Gain of the controlled current source (state evolution rate)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Kp</span></code></p></td>
+<td><p>NMOS transconductance parameter</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
+<td><p>Capacitance that <strong>stores the memory</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Vto</span></code></p></td>
+<td><p>NMOS threshold voltage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SwitchRon</span></code></p></td>
+<td><p>ON resistance of the switch</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SwitchRoff</span></code></p></td>
+<td><p>OFF resistance of the switch</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the next section, the objective is to <strong>validate the circuit</strong> by generating and analyzing the memristor <strong>current–voltage (I–V) characteristics</strong>.</p>
+</section>
+</section>
+<section id="spice-simulation">
+<h3>Spice Simulation<a class="headerlink" href="#spice-simulation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Initial conditions</span>
+<span class="c1"># =========================</span>
+<span class="n">vs</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1"># Tension point S</span>
+<span class="n">vd</span> <span class="o">=</span> <span class="mi">1</span>        <span class="c1"># Tension point D</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="mf">1.2</span>     <span class="c1"># Autorisation de la modification de la résistance du memristor</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MemristorsInSeries</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.00045</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
-        <span class="n">SubCircuit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">__nodes__</span><span class="p">)</span>
-        <span class="c1"># self.parameters = {&#39;K&#39;: K, &#39;Kp&#39;: Kp, &#39;C&#39;: C, &#39;Vto&#39;: Vto}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem0&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem0&#39;</span><span class="p">,</span> <span class="s1">&#39;mem0&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;o0&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="s1">&#39;mem&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_all_nodes_Cmem</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
-    <span class="c1"># this only works for the first level of subcircuits</span>
-    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">subcircuit</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuits</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;cmem&#39;</span><span class="p">:</span>
-                <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;X&quot;</span><span class="o">+</span><span class="n">subcircuit</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">nodes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot I–V Characteristic</span>
+<span class="c1"># =========================</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_all_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">currentName</span><span class="p">):</span>
-    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">subcircuit</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuits</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">currentName</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-            <span class="n">subcircuitName</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span> <span class="o">+</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">name</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">subcircuitName</span> <span class="o">=</span> <span class="n">currentName</span> <span class="o">+</span> <span class="s2">&quot;.X&quot;</span> <span class="o">+</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">name</span>
-        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">subcircuit</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">:</span>
-                <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subcircuitName</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="n">nodes</span> <span class="o">+=</span> <span class="n">get_all_nodes_recursive</span><span class="p">(</span><span class="n">subcircuit</span><span class="p">,</span> <span class="n">subcircuitName</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">nodes</span>
+<span class="c1"># ---- Create the circuit</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Memristor&#39;</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_all_cmem_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
-    <span class="n">all_nodes</span> <span class="o">=</span> <span class="n">get_all_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">cmem_nodes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">all_nodes</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;cmem&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">cmem_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">cmem_nodes</span>
+<span class="c1"># ---- Include memristor model</span>
+<span class="n">memristor</span> <span class="o">=</span> <span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">memristor</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">add_initial_condition</span><span class="p">(</span><span class="n">simulator</span><span class="p">,</span> <span class="n">circuit</span><span class="p">):</span>
-    <span class="n">kwargDict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">IC</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">get_all_cmem_nodes_recursive</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
-        <span class="n">kwargDict</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">IC</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">kwargDict</span><span class="p">)</span>
-    <span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span><span class="o">**</span><span class="n">kwargDict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">vd</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="mf">1.2</span>
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;NMOS Transistor&#39;</span><span class="p">)</span>
+<span class="c1"># ---- Power Supply</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">vs</span><span class="nd">@u_V</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="n">vd</span><span class="nd">@u_V</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_kHz</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="nd">@u_V</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="nd">@u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">phi</span><span class="nd">@u_V</span><span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">)</span>
 
-<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="c1"># IMPORTANT! the initial condition is neccesary for capacitor to work</span>
-<span class="n">add_initial_condition</span><span class="p">(</span><span class="n">simulator</span><span class="p">,</span> <span class="n">circuit</span><span class="p">)</span>
-
+<span class="c1"># ---- Creation memristor</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mf">0.0001</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">10</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">use_initial_condition</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># vd vs ID</span>
-<span class="n">vds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">]))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;SPICE simulation of memristor IV curve&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;memristor_circuit_simulation.png&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;XMem1.Cmem&#39;: 0}
-</pre></div>
-</div>
-<img alt="../_images/f29e5f8a11d29ddf277d7aa3d6fc57a792ebc2a416fe415e2efce3a924390b9c.png" src="../_images/f29e5f8a11d29ddf277d7aa3d6fc57a792ebc2a416fe415e2efce3a924390b9c.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuit</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># ============================================================</span>
+<span class="c1"># Simulation Setup</span>
+<span class="c1"># Transient analysis of the CMOS logic gate</span>
+<span class="c1"># ============================================================</span>
 
-<span class="c1"># Classe Memristor corrigée</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Memristor</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
-    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">)</span>
-    
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">Vto</span><span class="p">,</span> <span class="n">Roff</span><span class="p">,</span> <span class="n">Ron</span><span class="p">):</span>
-        <span class="n">SubCircuit</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">transconductance</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">(</span><span class="s1">&#39;R2&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">12</span> <span class="o">@</span> <span class="n">u_Ω</span><span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">VoltageControlledSwitch</span><span class="p">(</span>
-            <span class="s1">&#39;sw&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> 
-            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;switch&quot;</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s2">&quot;switch&quot;</span><span class="p">,</span> <span class="s2">&quot;SW&quot;</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span><span class="p">,</span> <span class="n">Vt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="s1">&#39;memristor_nmos&#39;</span><span class="p">,</span> <span class="s1">&#39;NMOS&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;Cmem&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;memristor_nmos&#39;</span><span class="p">)</span>
-
-<span class="c1"># Circuit</span>
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s2">&quot;Memristor IV&quot;</span><span class="p">)</span>
-
-<span class="c1"># Source sinusoïdale</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Hz</span>
-<span class="n">V_offset</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># V</span>
-<span class="n">V_amplitude</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># V</span>
-<span class="n">delay</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># s</span>
-
-<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span>
-    <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
-    <span class="n">offset</span><span class="o">=</span><span class="n">V_offset</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
-    <span class="n">amplitude</span><span class="o">=</span><span class="n">V_amplitude</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
-    <span class="n">frequency</span><span class="o">=</span><span class="n">f</span> <span class="o">@</span> <span class="n">u_Hz</span><span class="p">,</span>
-    <span class="n">delay</span><span class="o">=</span><span class="n">delay</span> <span class="o">@</span> <span class="n">u_s</span>
-<span class="p">)</span>
-
-<span class="c1"># Valeurs des paramètres du memristor (d&#39;après l&#39;article)</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mf">2e-4</span>
-<span class="n">Kp</span> <span class="o">=</span> <span class="mf">1.3e-4</span>
-<span class="n">C</span> <span class="o">=</span> <span class="mf">1e-6</span>  <span class="c1"># 1 µF (valeur typique)</span>
-<span class="n">Vto</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">Roff</span> <span class="o">=</span> <span class="mf">1e6</span>
-<span class="n">Ron</span> <span class="o">=</span> <span class="mi">100</span>
-
-<span class="c1"># Enregistrement du sous-circuit</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">Memristor</span><span class="p">(</span>
-    <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> 
-    <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="n">Kp</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C</span> <span class="o">@</span> <span class="n">u_F</span><span class="p">,</span> 
-    <span class="n">Vto</span><span class="o">=</span><span class="n">Vto</span><span class="p">,</span> <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span> <span class="o">@</span> <span class="n">u_Ω</span><span class="p">,</span> <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span> <span class="o">@</span> <span class="n">u_Ω</span>
-<span class="p">))</span>
-
-<span class="c1"># Instanciation du memristor</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">)</span>
-
-<span class="c1"># Simulation</span>
-<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span><span class="n">step_time</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u_ms</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">2</span><span class="nd">@u_s</span><span class="p">)</span>
-
-<span class="c1"># Affichage</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">],</span> <span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vin&quot;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tension (V)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Courant (A)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Courbe I-V du Memristor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/92f5af01e5ea17cb0169147e9a5e365cfddc6b1476e6cf474248b7ac2d3204af.png" src="../_images/92f5af01e5ea17cb0169147e9a5e365cfddc6b1476e6cf474248b7ac2d3204af.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s2">&quot;vin&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WaveForm vin [ 0.00000000e+00 -1.74574229e-16 -1.89098218e-16 ...  2.45801702e-14
-  4.81397754e-15 -2.31051620e-25]@A
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuit</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="c1">############################################</span>
-<span class="c1"># Sous-circuit Memristor (modèle HP simple)</span>
-<span class="c1">############################################</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Memristor</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
-    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">Ron</span><span class="p">,</span> <span class="n">Roff</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
-
-        <span class="c1"># Variable d&#39;état interne phi (0 &lt;= phi &lt;= 1)</span>
-        <span class="c1"># dphi/dt = K * V(p,n)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-
-        <span class="c1"># Résistance dépendante de l&#39;état</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">BehavioralResistor</span><span class="p">(</span>
-            <span class="s1">&#39;mem&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span>
-            <span class="n">resistance</span><span class="o">=</span><span class="s1">&#39;Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))&#39;</span>
-        <span class="p">)</span>
-
-
-<span class="c1">############################################</span>
-<span class="c1"># Circuit principal</span>
-<span class="c1">############################################</span>
-
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s2">&quot;Memristor I-V&quot;</span><span class="p">)</span>
-
-<span class="c1"># Source sinusoïdale</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># Hz</span>
-<span class="n">V_amp</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># V</span>
-
-<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span>
-    <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
-    <span class="n">amplitude</span><span class="o">=</span><span class="n">V_amp</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
-    <span class="n">frequency</span><span class="o">=</span><span class="n">f</span> <span class="o">@</span> <span class="n">u_Hz</span>
-<span class="p">)</span>
-
-<span class="c1"># Paramètres du memristor</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mf">2e-4</span>                 <span class="c1"># constante de mobilité</span>
-<span class="n">C</span> <span class="o">=</span> <span class="mf">1e-6</span> <span class="o">@</span> <span class="n">u_F</span>           <span class="c1"># capacité d&#39;état</span>
-<span class="n">Ron</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">@</span> <span class="n">u_Ohm</span>
-<span class="n">Roff</span> <span class="o">=</span> <span class="mf">1e6</span> <span class="o">@</span> <span class="n">u_Ohm</span>
-
-<span class="c1"># Enregistrement du sous-circuit</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span>
-    <span class="n">Memristor</span><span class="p">(</span>
-        <span class="s1">&#39;memristor&#39;</span><span class="p">,</span>
-        <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
-        <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span>
-        <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span><span class="p">,</span>
-        <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1"># Instanciation</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span> <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">)</span>
-
-<span class="c1">############################################</span>
-<span class="c1"># Simulation transitoire</span>
-<span class="c1">############################################</span>
-
+<span class="c1"># Create the simulator instance</span>
+<span class="c1"># Temperature parameters are set to nominal operating conditions</span>
 <span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
     <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
     <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
 <span class="p">)</span>
 
+<span class="c1"># ============================================================</span>
+<span class="c1"># Transient Analysis</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Perform a transient simulation to observe the dynamic behavior</span>
+<span class="c1"># of the inputs (A, B) and the output (Vout)</span>
 <span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
-    <span class="n">step_time</span><span class="o">=</span><span class="mi">1</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
-    <span class="n">end_time</span><span class="o">=</span><span class="mi">2</span> <span class="o">@</span> <span class="n">u_s</span>
+    <span class="n">step_time</span> <span class="o">=</span> <span class="mf">.0001</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">end_time</span>  <span class="o">=</span> <span class="mi">10</span>    <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Vds</span>
+<span class="c1"># =========================</span>
+<span class="n">vds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">])</span>
+
+
+<span class="c1"># =========================</span>
+<span class="c1"># Plot I–V Characteristic</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># ---- I-V curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">]),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---- Parameter of the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current (A)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;SPICE simulation of memristor IV curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/129921dabf47de846743ab14d3f63aa195839e02dadf6f9f85b3067ce3a4dcb9.png" src="../_images/129921dabf47de846743ab14d3f63aa195839e02dadf6f9f85b3067ce3a4dcb9.png" />
+</div>
+</div>
+<p>It is possible to see that the I-V signal perfectly matches the input that was theorized in the previous section. In the next section, the objective is to see how this evolves over time.</p>
+<p>In the next section, the goal is to see what the phi signal is used for.</p>
+</section>
+</section>
+<section id="importance-of-phi">
+<h2>Importance of phi<a class="headerlink" href="#importance-of-phi" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Initial conditions</span>
+<span class="c1"># =========================</span>
+<span class="n">vs</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1"># Voltage at node S</span>
+<span class="n">vd</span> <span class="o">=</span> <span class="mi">1</span>        <span class="c1"># Voltage amplitude at node D</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="mf">1.2</span>     <span class="c1"># Enables modification of the memristor resistance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Importance of phi</span>
+<span class="c1"># =========================</span>
+
+<span class="c1"># ---- Create the circuit</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Memristor&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---- Include memristor model</span>
+<span class="n">memristor</span> <span class="o">=</span> <span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13e-3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">memristor</span><span class="p">)</span>
+
+
+<span class="c1"># ---- Input Signal Definitions</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">vs</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">PulseVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;phi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;phi&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span> <span class="n">phi</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">pulse_width</span><span class="o">=</span><span class="mi">3</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">period</span><span class="o">=</span><span class="mi">6</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="c1">############################################</span>
-<span class="c1"># Tracé I–V</span>
-<span class="c1">############################################</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">SinusoidalVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">amplitude</span><span class="o">=</span><span class="n">vd</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span> <span class="o">@</span> <span class="n">u_kHz</span><span class="p">,</span>
+    <span class="n">offset</span><span class="o">=</span><span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span>
+<span class="p">)</span>
 
-<span class="c1"># Tension</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">])</span>
+<span class="c1"># ---- Creation memristor</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Simulation Setup</span>
+<span class="c1"># =========================</span>
 
-<span class="c1"># Courant dans la source (donc dans le memristor)</span>
-<span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vin&#39;</span><span class="p">])</span>
+<span class="c1"># Create the simulator instance</span>
+<span class="c1"># Temperature parameters are set to nominal operating conditions</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tension (V)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Courant (A)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Boucle I–V du memristor&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># =========================</span>
+<span class="c1"># Transient Analysis</span>
+<span class="c1"># =========================</span>
+
+<span class="c1"># Perform a transient simulation to observe the dynamic behavior</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Get variable</span>
+<span class="c1"># =========================</span>
+<span class="n">ids</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">])</span>  <span class="c1"># Currant in the memresistor</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>           <span class="c1"># Time</span>
+<span class="n">phi_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;phi&#39;</span><span class="p">])</span>         <span class="c1"># Value of phi</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Plot phi</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># --- plot wave</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span>   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tension phi / V&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">phi_t</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Courant memristor / A&quot;</span><span class="p">)</span>
+
+<span class="c1"># ---- Parameter of the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude / ua&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Activation of the memristor and its deactivation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 51&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="n">Roff</span> <span class="o">=</span> <span class="mf">1e6</span> <span class="o">@</span> <span class="n">u_Ohm</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="c1"># Enregistrement du sous-circuit</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span>
-<span class="ne">---&gt; </span><span class="mi">52</span>     <span class="n">Memristor</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>         <span class="s1">&#39;memristor&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>         <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>         <span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="n">Ron</span><span class="o">=</span><span class="n">Ron</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="n">Roff</span><span class="o">=</span><span class="n">Roff</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="c1"># Instanciation</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span> <span class="s1">&#39;memristor&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">)</span>
-
-<span class="nn">Input In [10],</span> in <span class="ni">Memristor.__init__</span><span class="nt">(self, name, K, C, Ron, Roff)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="bp">self</span><span class="o">.</span><span class="n">VCCS</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="c1"># Résistance dépendante de l&#39;état</span>
-<span class="ne">---&gt; </span><span class="mi">22</span> <span class="bp">self</span><span class="o">.</span><span class="n">BehavioralResistor</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="s1">&#39;mem&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">resistance</span><span class="o">=</span><span class="s1">&#39;Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))&#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="p">)</span>
-
-<span class="nn">File ~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\__init__.py:56,</span> in <span class="ni">_make_function.&lt;locals&gt;.function</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="k">return</span> <span class="n">element_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\Netlist.py:691,</span> in <span class="ni">FixedPinElement.__init__</span><span class="nt">(self, netlist, name, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">688</span>             <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s2">&quot;Node &#39;</span><span class="si">{}</span><span class="s2">&#39; is missing for element </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pin_definition</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">689</span>         <span class="n">pin_definition_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">pin_definition</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">691</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">netlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">693</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pin_definition</span><span class="p">,</span> <span class="n">netlist</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">694</span>               <span class="k">for</span> <span class="n">pin_definition</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pin_definition_nodes</span><span class="p">]</span>
-
-<span class="nn">File ~\anaconda3\envs\game\lib\site-packages\PySpice\Spice\Netlist.py:526,</span> in <span class="ni">Element.__init__</span><span class="nt">(self, netlist, name, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">524</span>         <span class="k">pass</span> <span class="c1"># cf. NonLinearVoltageSource</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">526</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown argument </span><span class="si">{}</span><span class="s1">=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pins</span> <span class="o">=</span> <span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="n">netlist</span><span class="o">.</span><span class="n">_add_element</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: Unknown argument resistance=Ron*limit(V(phi),0,1) + Roff*(1-limit(V(phi),0,1))
+<img alt="../_images/9c5f4eb2ec103859336534cc97dc05dcad1e81ba87a3e3302b4afd528a3c803f.png" src="../_images/9c5f4eb2ec103859336534cc97dc05dcad1e81ba87a3e3302b4afd528a3c803f.png" />
+</div>
+</div>
+<p>When <span class="math notranslate nohighlight">\(\phi\)</span> (<em>orange curve</em>) is above <span class="math notranslate nohighlight">\(0.5 \ V \)</span>, current is able to flow through the memristor (<em>blue curve</em>). This occurs in the time intervals between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(3 \ ms\)</span>, and between <span class="math notranslate nohighlight">\(6\)</span> and <span class="math notranslate nohighlight">\(10 \ ms\)</span>.</p>
+<p>However, when <span class="math notranslate nohighlight">\(\phi\)</span> (<em>orange curve</em>) falls below <span class="math notranslate nohighlight">\(0.5 \ V\)</span>, current can no longer flow through the memristor.</p>
+<p>There is still much more to explore about this circuit, particularly regarding the role and influence of <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+</section>
+<section id="resistance-evolution-of-the-memristor">
+<h2>Resistance evolution of the Memristor<a class="headerlink" href="#resistance-evolution-of-the-memristor" title="Link to this heading">#</a></h2>
+<p>The resistance value of a memristor changes according to three factors: first, the applied voltage; second, the duration of the application; and third, the direction of the voltage. The objective of the next section is to verify these three statements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Initial conditions</span>
+<span class="c1"># =========================</span>
+<span class="n">vs</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1"># Voltage at node S</span>
+<span class="n">vd</span> <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># Voltage amplitude at node D</span>
+<span class="n">vd_half</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># Half voltage amplitude at node D</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="mf">1.2</span>     <span class="c1"># Enables modification of the memristor resistance</span>
+<span class="n">mid</span> <span class="o">=</span> <span class="s2">&quot;1ms&quot;</span>    <span class="c1"># Half of the signal</span>
+<span class="n">f</span>   <span class="o">=</span> <span class="mf">1e3</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Importance of phi</span>
+<span class="c1"># =========================</span>
+
+<span class="c1"># ---- Create the circuit</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;Memristor resistance evolution&#39;</span><span class="p">)</span>
+
+<span class="c1"># ---- Include memristor model</span>
+<span class="n">memristor</span> <span class="o">=</span> <span class="n">Memristor</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">Kp</span><span class="o">=</span><span class="mf">0.13e-3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_pF</span><span class="p">,</span> <span class="n">Vto</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">memristor</span><span class="p">)</span>
+
+
+<span class="c1"># ---- Input Signal Definitions</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">vs</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">phi</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">BehavioralSource</span><span class="p">(</span>
+    <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">voltage_expression</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;(time &lt; </span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s1"> ? </span><span class="si">{</span><span class="n">vd</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">vd_half</span><span class="si">}</span><span class="s1">) * sin(2*pi*</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">*time)&#39;</span>
+<span class="p">)</span>
+
+
+<span class="c1"># ---- Creation memristor</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;Mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;mem1&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to see that there is a function called <code class="docutils literal notranslate"><span class="pre">BehavioralSource</span></code>. This current source allows control of different parameters as a function of time. From <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(1 \ ms\)</span>, the amplitude is <span class="math notranslate nohighlight">\(1 \ V\)</span>, and after <span class="math notranslate nohighlight">\(1 \ ms\)</span>, the amplitude is <span class="math notranslate nohighlight">\(0.5 \ V\)</span>. Therefore, the equation is:
+$<span class="math notranslate nohighlight">\(
+V(t)=
+\begin{cases}
+1 \cdot \sin(2\pi f t) &amp; t &lt; 1 \ ms \\
+0.5 \cdot \sin(2\pi f t) &amp; t \ge 1 \ ms
+\end{cases}
+\)</span>$</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Simulation Setup</span>
+<span class="c1"># =========================</span>
+
+<span class="c1"># Create the simulator instance</span>
+<span class="c1"># Temperature parameters are set to nominal operating conditions</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Transient Analysis</span>
+<span class="c1"># =========================</span>
+
+<span class="c1"># Perform a transient simulation to observe the dynamic behavior</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">@</span> <span class="n">u_ms</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Get variable</span>
+<span class="c1"># =========================</span>
+<span class="n">time</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>                            <span class="c1"># Time</span>
+<span class="n">ids</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;vs&#39;</span><span class="p">])</span>                 <span class="c1"># Currant in the memresistor</span>
+<span class="n">vds</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s1">&#39;s&#39;</span><span class="p">])</span> <span class="c1"># Tension in the memresistor</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Plot resistance current</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># --- plot wave</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span>   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ids courant&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">vds</span><span class="p">,</span>   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;vds&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ---- Parameter of the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude / ua&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Activation of the memristor and its deactivation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bad064478e0ccdb4156021b0eaf8d35a02199a60b2d2e5937459e19af13f68e1.png" src="../_images/bad064478e0ccdb4156021b0eaf8d35a02199a60b2d2e5937459e19af13f68e1.png" />
+</div>
+</div>
+<p>The voltage curve is shown in orange. Before 1 ms, the signal amplitude is 2 V, but after that time, the signal amplitude is only 0.5 V. It is possible to see that on these graph.</p>
+<p>It is possible to see that the voltage and current change over time, but not in the same way, which means that the resistance also changes over time. The objective of the next section is to visualize this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Resistance Calculate</span>
+<span class="c1"># =========================</span>
+<span class="c1"># ---- constant</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-12</span>   <span class="c1"># just for limite 0 divise</span>
+
+<span class="c1"># ---- resistance</span>
+<span class="n">resistance</span> <span class="o">=</span> <span class="n">vds</span> <span class="o">/</span> <span class="p">(</span><span class="n">ids</span><span class="o">+</span><span class="n">epsilon</span><span class="p">)</span>
+
+<span class="c1"># ---- Divised wave</span>
+<span class="n">part_1_evolu_resist</span> <span class="o">=</span> <span class="n">resistance</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">resistance</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>    <span class="c1"># 0 ms to 1 ms</span>
+<span class="n">part_2_evolu_resist</span> <span class="o">=</span> <span class="n">resistance</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resistance</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># 1 ms to 2 ms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================</span>
+<span class="c1"># Plot resistance</span>
+<span class="c1"># =========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># --- plot wave</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">part_1_evolu_resist</span><span class="p">)]</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">part_1_evolu_resist</span><span class="p">,</span>   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;resistance with 3 V / Ohm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">part_2_evolu_resist</span><span class="p">)]</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">part_2_evolu_resist</span><span class="p">,</span>   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;resistance with 0.5 V / Ohm&quot;</span><span class="p">)</span>
+
+<span class="c1"># ---- Parameter of the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Resistance / ohm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">.01</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Resistor evolution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1cd889cf45ad0b3e3dd9e8df6f53780b85171a2e7a5456b4ac09968139b8a2c5.png" src="../_images/1cd889cf45ad0b3e3dd9e8df6f53780b85171a2e7a5456b4ac09968139b8a2c5.png" />
+</div>
+</div>
+<p>From the graph, we can observe that the higher the applied voltage, the greater the decrease in resistance. The curve corresponding to 3 V shows a faster and more pronounced drop in resistance compared to the 0.5 V case.</p>
+<p>Furthermore, the longer the voltage is applied, the larger the change in resistance, whether it is decreasing or increasing.</p>
+<p>It is also important to note the presence of a lower plateau: the resistance does not decrease indefinitely but appears to reach a minimum limit value.</p>
+<p>There is still much to say about memristors, but for now the study will stop here.</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<span class="target" id="id2"></span></section>
+<section id="writing-matrix">
+<h2>Writing Matrix<a class="headerlink" href="#writing-matrix" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Author</p></th>
+<th class="head"><p>Reviewer</p></th>
+<th class="head"><p>Approver</p></th>
+<th class="head"><p>Section</p></th>
+<th class="head"><p>Date 1</p></th>
+<th class="head"><p>Date 2</p></th>
+<th class="head"><p>Date 3</p></th>
+<th class="head"><p>General Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sacha</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>Entire document</p></td>
+<td><p>2026-02-07</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>Initial draft of the full document</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -906,6 +1503,24 @@ It also includes setting up the formatting parameters for the plots and visualiz
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Capacite.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Capacitor</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="diode/Diode.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Diode</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -927,7 +1542,36 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-creation-memristor">Class creation Memristor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Memristor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation">Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-state">Internal State</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-state-dynamics">Internal State Dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-variation">Resistance Variation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-characteristic-plot">I–V Characteristic Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conductance-model">Conductance Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-expression">Current Expression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-iv-representation">Parametric I–V Representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memristor-implementation-in-spice">Memristor Implementation in SPICE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-code">Description code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-controlled-current-source-vccs">Voltage-Controlled Current Source (VCCS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#large-resistor-r">Large Resistor <span class="math notranslate nohighlight">\(R\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-controlled-switch">Voltage-Controlled Switch</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#capacitor-memory-element">Capacitor: Memory Element</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mosfet-resistance-control">MOSFET (Resistance Control)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spice-simulation">Spice Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-phi">Importance of phi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-evolution-of-the-memristor">Resistance evolution of the Memristor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-matrix">Writing Matrix</a></li>
 </ul>
   </nav></div>
 

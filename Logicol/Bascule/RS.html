@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Book on electronics</title>
+    <title>RS Latches and Flip-Flops &#8212; Book on electronics</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Logicol/Bascule/RS';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -181,7 +183,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -421,7 +425,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>RS Latches and Flip-Flops</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -430,9 +434,35 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-principle">Operating Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs-latch-implementation-using-logic-gates">RS Latch Implementation Using Logic Gates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-rs-latch">Asynchronous RS Latch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-visualization">Circuit Visualization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#using-nand-gates">Using NAND Gates</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#with-nor-gate">With NOR Gate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthcronous-rs-latch">Synthcronous RS Latch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Circuit Visualization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Using NAND Gates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -443,7 +473,1097 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="rs-latches-and-flip-flops">
+<h1>RS Latches and Flip-Flops<a class="headerlink" href="#rs-latches-and-flip-flops" title="Link to this heading">#</a></h1>
+<section id="import-and-formatting">
+<h2>Import and Formatting<a class="headerlink" href="#import-and-formatting" title="Link to this heading">#</a></h2>
+<p>The goal of this section is to import all the necessary files and libraries required for the subsequent data analysis.<br />
+It also includes setting up the formatting parameters for the plots and visualizations.</p>
+<section id="import">
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Standard import</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># ----- Spice import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Spice.Netlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">SubCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PySpice.Unit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">#</a></h3>
+<p>Adjusting Plotly chart settings for clarity and consistency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----  Formatting charts</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.pylabtools</span><span class="w"> </span><span class="kn">import</span> <span class="n">figsize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#bcbcbc&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;legend.fancybox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;large&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;grid.linestyle&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;--&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;patch.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;#eeeeee&quot;</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.titlesize&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;x-large&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>The <strong>RS latch</strong> is the simplest memory element used to store a single bit of information. As shown in <a class="reference internal" href="#rs-representation-classique"><span class="std std-ref">Symbolic representation of an RS latch</span></a>, it consists of two inputs and two outputs. The inputs are labeled <em>S</em> (<strong>Set</strong>) and <em>R</em> (<strong>Reset</strong>). The outputs are denoted by <em>Q</em> and <span class="math notranslate nohighlight">\(\bar{Q}\)</span>, where <span class="math notranslate nohighlight">\(\bar{Q}\)</span> is always the logical complement of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<figure class="align-center" id="rs-representation-classique">
+<a class="reference internal image-reference" href="../../_images/RS_classique.svg"><img alt="../../_images/RS_classique.svg" src="../../_images/RS_classique.svg" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Symbolic representation of an RS latch</span><a class="headerlink" href="#rs-representation-classique" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As illustrated in <a class="reference internal" href="#rs-representation-bascule-synchrone-asynchrone"><span class="std std-ref">Symbolic representation of an asynchronous RS latch versus a synchronous RS latch</span></a>, there are two main types of RS memory elements: <strong>asynchronous RS latches</strong> and <strong>synchronous RS latches</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Asynchronous vs. synchronous
+An asynchronous RS latch changes its output state immediately when its input signals change.<br />
+In contrast, a synchronous RS latch updates its output only when a clock signal is active (or, depending on the implementation, on a specific clock edge such as the rising or falling edge).</p>
+</div>
+<figure class="align-center" id="rs-representation-bascule-synchrone-asynchrone">
+<a class="reference internal image-reference" href="../../_images/RS_asynchrone.svg"><img alt="../../_images/RS_asynchrone.svg" src="../../_images/RS_asynchrone.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Symbolic representation of an asynchronous RS latch versus a synchronous RS latch</span><a class="headerlink" href="#rs-representation-bascule-synchrone-asynchrone" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="operating-principle">
+<h2>Operating Principle<a class="headerlink" href="#operating-principle" title="Link to this heading">#</a></h2>
+<p>The values of the outputs <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(\bar{Q}\)</span> depend on the input signals <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<ul class="simple">
+<li><p>When <span class="math notranslate nohighlight">\(S = 1\)</span>, the latch is <strong>set</strong>: the outputs become <span class="math notranslate nohighlight">\(Q = 1\)</span> and <span class="math notranslate nohighlight">\(\bar{Q} = 0\)</span>.</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(R = 1\)</span>, the latch is <strong>reset</strong>: the outputs become <span class="math notranslate nohighlight">\(Q = 0\)</span> and <span class="math notranslate nohighlight">\(\bar{Q} = 1\)</span>.</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(S = 0\)</span> and <span class="math notranslate nohighlight">\(R = 0\)</span>, the latch <strong>stores the previous state</strong>:
+<span class="math notranslate nohighlight">\(Q_n = Q_{n-1}\)</span> and <span class="math notranslate nohighlight">\(\bar{Q}*n = \bar{Q}*{n-1}\)</span>.</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(S = 1\)</span> and <span class="math notranslate nohighlight">\(R = 1\)</span>, this configuration is <strong>forbidden</strong>, as it leads to an undefined or unstable behavior.</p></li>
+</ul>
+<p>The truth table summarizing the possible configurations is given in <a class="reference internal" href="#table-de-verite-d-une-bascule-rs"><span class="std std-ref">Truth table of an RS latch</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="table-de-verite-d-une-bascule-rs">
+<caption><span class="caption-text">Truth table of an RS latch</span><a class="headerlink" href="#table-de-verite-d-une-bascule-rs" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(S\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(R\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\bar{Q}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_{n-1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\bar{Q}_{n-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>undefined</p></td>
+<td><p>undefined</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the remainder of this study, the objective is to analyze <strong>synchronous and asynchronous RS latches</strong> from an electronic perspective, extending the discussion down to <strong>transistor-level design</strong>.</p>
+<p>The timing diagram of an asynchronous RS latch is illustrated in <a class="reference internal" href="#rs-chronograme"><span class="std std-ref">Timing diagram of an RS latch</span></a>.</p>
+<figure class="align-center" id="rs-chronograme">
+<a class="reference internal image-reference" href="../../_images/RS_chronograme.svg"><img alt="../../_images/RS_chronograme.svg" src="../../_images/RS_chronograme.svg" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Timing diagram of an RS latch</span><a class="headerlink" href="#rs-chronograme" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For the RS flip-flop, the truth table is very similar to that of the RS latch, with a few differences.<br />
+First, the forbidden condition occurs when <span class="math notranslate nohighlight">\(H = 1\)</span>, <span class="math notranslate nohighlight">\(S = 1\)</span>, and <span class="math notranslate nohighlight">\(R = 1\)</span>. If any one of these signals is equal to 0, the circuit operates normally.</p>
+<p>Another important point is that the output changes only when the clock signal <span class="math notranslate nohighlight">\(H\)</span> is active (or, depending on the implementation, during the clock transition).</p>
+<p>Table <a class="reference internal" href="#table-de-verite-d-une-bascule-rs-synchrone"><span class="std std-ref">Truth table of an RS flip-flop</span></a> presents the corresponding truth table.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="table-de-verite-d-une-bascule-rs-synchrone">
+<caption><span class="caption-text">Truth table of an RS flip-flop</span><a class="headerlink" href="#table-de-verite-d-une-bascule-rs-synchrone" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(H\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(S\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(R\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\bar{Q}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_{n-1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\bar{Q}_{n-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>X</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_{n-1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\bar{Q}_{n-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>undefined</p></td>
+<td><p>undefined</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="rs-latch-implementation-using-logic-gates">
+<h2>RS Latch Implementation Using Logic Gates<a class="headerlink" href="#rs-latch-implementation-using-logic-gates" title="Link to this heading">#</a></h2>
+<p>There are two types of RS latches: <strong>synchronous RS latches</strong> and <strong>asynchronous RS latches</strong>.
+The objective of this section is to study both types, highlighting their <strong>differences</strong> as well as their <strong>common characteristics</strong>.</p>
+<p>Before starting, it is important to note that there are <strong>many possible electronic implementations</strong> of an RS latch. Some designs offer better performance than others in terms of speed, power consumption, or robustness. The final choice of implementation depends entirely on the <strong>design specifications</strong> and the <strong>operating environment</strong> in which the circuit is intended to function.</p>
+<section id="asynchronous-rs-latch">
+<h3>Asynchronous RS Latch<a class="headerlink" href="#asynchronous-rs-latch" title="Link to this heading">#</a></h3>
+<section id="circuit-visualization">
+<h4>Circuit Visualization<a class="headerlink" href="#circuit-visualization" title="Link to this heading">#</a></h4>
+<p>Figure <a class="reference internal" href="#rs-asynchrone-porte-logique"><span class="std std-ref">Different logic-gate implementations of an asynchronous RS latch</span></a> illustrates the construction of an asynchronous RS latch using <strong>NAND gates</strong> and <strong>NOR gates</strong>.
+In both cases, the circuit is conceptually simple: it consists of two identical logic gates (either two NAND gates or two NOR gates). One input of each gate is connected to the control signals <em>R</em> and <em>S</em>, while the output of each gate is fed back to the input of the other gate, creating a cross-coupled structure.</p>
+<figure class="align-center" id="rs-asynchrone-porte-logique">
+<a class="reference internal image-reference" href="../../_images/RS_asynchrone_porte_logique.svg"><img alt="../../_images/RS_asynchrone_porte_logique.svg" src="../../_images/RS_asynchrone_porte_logique.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Different logic-gate implementations of an asynchronous RS latch</span><a class="headerlink" href="#rs-asynchrone-porte-logique" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Although the two circuits are structurally very similar, their behavior differs due to the nature of the logic gates used.</p>
+<p>With NOR gates, the output behavior directly follows the logical definition of the RS latch.<br />
+With NAND gates, however, the signals are inverted. As a result, the forbidden condition is no longer <span class="math notranslate nohighlight">\(R = 1\)</span> and <span class="math notranslate nohighlight">\(S = 1\)</span>, but instead <span class="math notranslate nohighlight">\(R = 0\)</span> and <span class="math notranslate nohighlight">\(S = 0\)</span>.</p>
+<p>Furthermore, in NAND-based RS latches, the inputs are typically considered <strong>active-low</strong>, meaning that the latch responds when the input transitions to a low logic level rather than a high one.</p>
+</div>
+<p>The objective of the next section is to analyze whether these two implementations exhibit meaningful differences by studying their behavior through simulation.</p>
+</section>
+<section id="simulation">
+<h4>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h4>
+<section id="using-nand-gates">
+<h5>Using NAND Gates<a class="headerlink" href="#using-nand-gates" title="Link to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NAND</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NAND gate</span>
+
+<span class="sd">    External nodes:</span>
+<span class="sd">        A   : Input</span>
+<span class="sd">        B   : Input</span>
+<span class="sd">        Y   : Output</span>
+<span class="sd">        VDD : Power supply</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Declare external terminals of the subcircuit</span>
+    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a NAND subcircuit.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the subcircuit instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Initialize the SubCircuit</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
+        
+        <span class="c1"># ============================================================</span>
+        <span class="c1"># CMOS Logic Core</span>
+        <span class="c1"># NAND gate implementation</span>
+        <span class="c1"># ============================================================</span>
+        
+        <span class="c1"># ----------------------------</span>
+        <span class="c1"># PMOS Pull-Up Network (PUN)</span>
+        <span class="c1"># PMOS transistors are connected in parallel</span>
+        <span class="c1"># ----------------------------</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># ----------------------------</span>
+        <span class="c1"># NMOS Pull-Down Network (PDN)</span>
+        <span class="c1"># NMOS transistors are connected in series</span>
+        <span class="c1"># ----------------------------</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">3</span><span class="p">,</span>
+            <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;inter&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">4</span><span class="p">,</span>
+            <span class="s1">&#39;inter&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">RS_NAND</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    RS with NAND gate</span>
+
+<span class="sd">    External nodes:</span>
+<span class="sd">        R     : Input</span>
+<span class="sd">        S     : Input</span>
+<span class="sd">        Q     : Output</span>
+<span class="sd">        Q_bar : Output</span>
+<span class="sd">        VDD   : Power supply</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Declare external terminals of the subcircuit</span>
+    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a RS subcircuit with NAND Gate.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the subcircuit instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Initialize the SubCircuit</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;NAND&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span>  <span class="s1">&#39;Q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;L2&#39;</span><span class="p">,</span> <span class="s1">&#39;NAND&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span>  <span class="s1">&#39;Q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># CMOS RS</span>
+<span class="c1"># Technology: PTM 65 nm</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Create a new circuit for each input combination</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;RS with NAND gate&#39;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Model Libraries</span>
+<span class="c1"># Include NMOS, PMOS transistor models</span>
+<span class="c1"># Include NAND with transistor models</span>
+<span class="c1"># Include RS with NAND gate</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Include transistor models</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_nmos_bulk.mod&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_pmos_bulk.mod&#39;</span><span class="p">)</span>
+
+<span class="c1"># Include internal model</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">NAND</span><span class="p">(</span><span class="s1">&#39;NAND&#39;</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">RS_NAND</span><span class="p">(</span><span class="s1">&#39;RS_NAND&#39;</span><span class="p">))</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Power Supply Definition</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Supply voltage</span>
+<span class="n">VDD</span> <span class="o">=</span> <span class="mf">1.2</span>
+
+<span class="c1"># DC power supply (VDD)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;dd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">VDD</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Input Signal Definitions</span>
+<span class="c1"># Two pulse voltage sources are used to test all logic states</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">@</span> <span class="n">u_ns</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">PieceWiseLinearVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;R&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vr&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="mf">0.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">2.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">4.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">5.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">6.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span>   <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">7.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span>   <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">8.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">10</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">12</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">14</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">15.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">16</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">17.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">18</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">PieceWiseLinearVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;S&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vs&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mf">0.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">1.9</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">2.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span>   <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">3.9</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span>   <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">4.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">6.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">8.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">9.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">10</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">12</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">13.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">14</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">16</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">18</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># ===========================================================</span>
+<span class="c1"># Add RS circuit</span>
+<span class="c1"># ===========================================================</span>
+
+<span class="c1"># RS circuit</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">,</span> <span class="s1">&#39;RS_NAND&#39;</span><span class="p">,</span> <span class="s1">&#39;vr&#39;</span><span class="p">,</span> <span class="s1">&#39;vs&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Simulation Setup</span>
+<span class="c1"># Transient analysis of the CMOS logic gate</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Create the simulator instance</span>
+<span class="c1"># Temperature parameters are set to nominal operating conditions</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span>
+    <span class="n">vs</span>     <span class="o">=</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  
+    <span class="n">vr</span>     <span class="o">=</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  
+    <span class="n">q</span>      <span class="o">=</span> <span class="mi">0</span>   <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  <span class="c1"># V(q) = 0 V</span>
+    <span class="n">q_bar</span>  <span class="o">=</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  <span class="c1"># V(q_bar) = 1.2 V</span>
+<span class="p">)</span>
+
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Transient Analysis</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Perform a transient simulation to observe the dynamic behavior</span>
+<span class="c1"># of the inputs (A, B) and the output (Vout)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">20</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: vs: no DC value, transient time 0 value used
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: vr: no DC value, transient time 0 value used
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">time</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;RS chronograme with NAND gate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vr&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">4.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vs&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">3.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">1.5</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;q_bar&quot;</span><span class="p">]),</span>  <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Q bar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ns&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/09b0bea5df76288274a92838257fe0de00772843f11d6858ff9867ae4d5b66a1.png" src="../../_images/09b0bea5df76288274a92838257fe0de00772843f11d6858ff9867ae4d5b66a1.png" />
+</div>
+</div>
+<p>En utilisant, il est possible de voir que les systèmes sont inverser, cela veut dire que pour activé, il faut qu’une valeur passe de 1 à 0. Mais aussi la valeur interdite est la valeur ou <span class="math notranslate nohighlight">\(R=0\)</span> et ou <span class="math notranslate nohighlight">\(S=1\)</span>. Mais sinon, il est possible de retrouver la même table de vérité. Lorsque <span class="math notranslate nohighlight">\(S\)</span> passe de 0 à 1 alors la valeur de <span class="math notranslate nohighlight">\(Q\)</span> passe de la valeur 0 à 1. Ensuite lorsque <span class="math notranslate nohighlight">\(R\)</span> (reset) passe à 0 alors la valeur de <span class="math notranslate nohighlight">\(Q\)</span> passe à 0. Si les deux valeurs <span class="math notranslate nohighlight">\(S\)</span> et <span class="math notranslate nohighlight">\(R\)</span> sont a 1 alors la valeur de Q ne bouge pas.</p>
+</section>
+<section id="with-nor-gate">
+<h5>With NOR Gate<a class="headerlink" href="#with-nor-gate" title="Link to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NOR</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NOR gate</span>
+
+<span class="sd">    External nodes:</span>
+<span class="sd">        A   : Input</span>
+<span class="sd">        B   : Input</span>
+<span class="sd">        Y   : Output</span>
+<span class="sd">        VDD : Power supply</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Declare external terminals of the subcircuit</span>
+    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a NAND subcircuit.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the subcircuit instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Initialize the SubCircuit</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
+        
+        <span class="c1"># ============================================================</span>
+        <span class="c1"># CMOS Logic Core</span>
+        <span class="c1"># NOR gate implementation</span>
+        <span class="c1"># ============================================================</span>
+        
+        <span class="c1"># ----------------------------</span>
+        <span class="c1"># PMOS Pull-Up Network (PUN)</span>
+        <span class="c1"># PMOS transistors are connected in parallel</span>
+        <span class="c1"># ----------------------------</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;inter&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;inter&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_pmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># ----------------------------</span>
+        <span class="c1"># NMOS Pull-Down Network (PDN)</span>
+        <span class="c1"># NMOS transistors are connected in series</span>
+        <span class="c1"># ----------------------------</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">3</span><span class="p">,</span>
+            <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">MOSFET</span><span class="p">(</span>
+            <span class="mi">4</span><span class="p">,</span>
+            <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s1">&#39;ptm65nm_nmos&#39;</span><span class="p">,</span>
+            <span class="n">l</span><span class="o">=</span><span class="mf">0.35</span> <span class="o">@</span> <span class="n">u_um</span><span class="p">,</span>
+            <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_um</span>
+        <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">RS_NOR</span><span class="p">(</span><span class="n">SubCircuit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    RS with NOR gate</span>
+
+<span class="sd">    External nodes:</span>
+<span class="sd">        R     : Input</span>
+<span class="sd">        S     : Input</span>
+<span class="sd">        Q     : Output</span>
+<span class="sd">        Q_bar : Output</span>
+<span class="sd">        VDD   : Power supply</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Declare external terminals of the subcircuit</span>
+    <span class="n">__nodes__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;Q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a RS subcircuit with NAND Gate.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the subcircuit instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Initialize the SubCircuit</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__nodes__</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;NOR&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span>  <span class="s1">&#39;Q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;L2&#39;</span><span class="p">,</span> <span class="s1">&#39;NOR&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span>  <span class="s1">&#39;Q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;VDD&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># CMOS RS</span>
+<span class="c1"># Technology: PTM 65 nm</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Create a new circuit for each input combination</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;RS with NAND gate&#39;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Model Libraries</span>
+<span class="c1"># Include NMOS, PMOS transistor models</span>
+<span class="c1"># Include NAND with transistor models</span>
+<span class="c1"># Include RS with NAND gate</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Include transistor models</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_nmos_bulk.mod&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_pmos_bulk.mod&#39;</span><span class="p">)</span>
+
+<span class="c1"># Include internal model</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">NOR</span><span class="p">(</span><span class="s1">&#39;NOR&#39;</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">RS_NOR</span><span class="p">(</span><span class="s1">&#39;RS_NOR&#39;</span><span class="p">))</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Power Supply Definition</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Supply voltage</span>
+<span class="n">VDD</span> <span class="o">=</span> <span class="mf">1.2</span>
+
+<span class="c1"># DC power supply (VDD)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;dd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">VDD</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Input Signal Definitions</span>
+<span class="c1"># Two pulse voltage sources are used to test all logic states</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">@</span> <span class="n">u_ns</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">PieceWiseLinearVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;R&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vr&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="mf">0.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">2.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">4.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">5.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">6.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">7.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">8.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">10</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">12</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">14</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">15.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">16</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">17.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">18</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">PieceWiseLinearVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;S&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vs&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mf">0.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">1.9</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">2.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">3.9</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">4.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">6.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">8.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">9.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">10</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">12</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">13.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">14</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">16</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">18</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># ===========================================================</span>
+<span class="c1"># Add RS circuit</span>
+<span class="c1"># ===========================================================</span>
+
+<span class="c1"># RS circuit</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">,</span> <span class="s1">&#39;RS_NOR&#39;</span><span class="p">,</span> <span class="s1">&#39;vr&#39;</span><span class="p">,</span> <span class="s1">&#39;vs&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Simulation Setup</span>
+<span class="c1"># Transient analysis of the CMOS logic gate</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Create the simulator instance</span>
+<span class="c1"># Temperature parameters are set to nominal operating conditions</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span>
+    <span class="n">vs</span>     <span class="o">=</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  
+    <span class="n">vr</span>     <span class="o">=</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  
+    <span class="n">q</span>      <span class="o">=</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  <span class="c1"># V(q) = 1.2 V</span>
+    <span class="n">q_bar</span>  <span class="o">=</span> <span class="mi">0</span>   <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  <span class="c1"># V(q_bar) = 0 V</span>
+<span class="p">)</span>
+
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Transient Analysis</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Perform a transient simulation to observe the dynamic behavior</span>
+<span class="c1"># of the inputs (A, B) and the output (Vout)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">20</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: vs: no DC value, transient time 0 value used
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: vr: no DC value, transient time 0 value used
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">time</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;RS chronograme with NAND gate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vr&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">4.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vs&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">3.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">1.5</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;q_bar&quot;</span><span class="p">]),</span>  <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Q bar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ns&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f537f1bed18cd1a631741524c7798579ef2fd3d94ce2e0eb920e824295f4e8a1.png" src="../../_images/f537f1bed18cd1a631741524c7798579ef2fd3d94ce2e0eb920e824295f4e8a1.png" />
+</div>
+</div>
+<p>Il est possible de voir que cette fois la valeur correspond parfaitement à la valeur du chronograme présenté dans sur le chronogramme.</p>
+</section>
+</section>
+</section>
+<section id="synthcronous-rs-latch">
+<h3>Synthcronous RS Latch<a class="headerlink" href="#synthcronous-rs-latch" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4>Circuit Visualization<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Dans cette partie, l’objectif cette fois et de faire la même chose que dans la partie précédente avec des portes logiques, mais cette fois l’objectif est d’avoir une modification de la valeur que sur le front montant de l’horloge. Le montage électronique est quasiment le même qu’avec un montage asynchrone, juste il faut rajouter soit deux portes NAND ou deux portes NOR qui permettent de relier les entrées R et S avec l’entrée H, le montage est représenté sur la <a class="reference internal" href="#rs-synchrone-porte-logique"><span class="std std-ref">Different logic-gate implementations of an synchronous RS flip-flop</span></a></p>
+<figure class="align-center" id="rs-synchrone-porte-logique">
+<a class="reference internal image-reference" href="../../_images/RS_synchrone_porte_logique.svg"><img alt="../../_images/RS_synchrone_porte_logique.svg" src="../../_images/RS_synchrone_porte_logique.svg" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Different logic-gate implementations of an synchronous RS flip-flop</span><a class="headerlink" href="#rs-synchrone-porte-logique" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id2">
+<h4>Simulation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<section id="id3">
+<h5>Using NAND Gates<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># CMOS RS</span>
+<span class="c1"># Technology: PTM 65 nm</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Create a new circuit for each input combination</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">(</span><span class="s1">&#39;RS with NAND gate&#39;</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Model Libraries</span>
+<span class="c1"># Include NMOS, PMOS transistor models</span>
+<span class="c1"># Include NAND with transistor models</span>
+<span class="c1"># Include RS with NAND gate</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Include transistor models</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_nmos_bulk.mod&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;lib/ptm_65nm_pmos_bulk.mod&#39;</span><span class="p">)</span>
+
+<span class="c1"># Include internal model</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">NAND</span><span class="p">(</span><span class="s1">&#39;NAND&#39;</span><span class="p">))</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">subcircuit</span><span class="p">(</span><span class="n">RS_NAND</span><span class="p">(</span><span class="s1">&#39;RS_NAND&#39;</span><span class="p">))</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Power Supply Definition</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Supply voltage</span>
+<span class="n">VDD</span> <span class="o">=</span> <span class="mf">1.2</span>
+
+<span class="c1"># DC power supply (VDD)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="s1">&#39;dd&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">,</span> <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span> <span class="n">VDD</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Input Signal Definitions</span>
+<span class="c1"># Two pulse voltage sources are used to test all logic states</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">@</span> <span class="n">u_ns</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">PulseVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;H&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vh&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>
+    <span class="n">pulse_width</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>
+    <span class="n">period</span> <span class="o">=</span> <span class="mf">1.4</span> <span class="o">@</span> <span class="n">u_ns</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">PieceWiseLinearVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;R&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vr&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="mf">0.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">2.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">4.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">5.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">6.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">7.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">8.0</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">10</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">12</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">14</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">15.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">16</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">17.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">18</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">circuit</span><span class="o">.</span><span class="n">PieceWiseLinearVoltageSource</span><span class="p">(</span>
+    <span class="s1">&#39;S&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;vs&#39;</span><span class="p">,</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">gnd</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mf">0.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">1.9</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">2.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">3.9</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">4.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">6.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">8.0</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">9.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">10</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">12</span>  <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>  <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">13.9</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">14</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">16</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">18</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># ===========================================================</span>
+<span class="c1"># Add RS circuit</span>
+<span class="c1"># ===========================================================</span>
+
+<span class="c1"># RS circuit</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;NAND&#39;</span><span class="p">,</span> <span class="s1">&#39;vr&#39;</span><span class="p">,</span> <span class="s1">&#39;vh&#39;</span><span class="p">,</span> <span class="s1">&#39;vr_synchro&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;L2&#39;</span><span class="p">,</span> <span class="s1">&#39;NAND&#39;</span><span class="p">,</span> <span class="s1">&#39;vs&#39;</span><span class="p">,</span> <span class="s1">&#39;vh&#39;</span><span class="p">,</span> <span class="s1">&#39;vs_synchro&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">,</span> <span class="s1">&#39;RS_NAND&#39;</span><span class="p">,</span> <span class="s1">&#39;vr_synchro&#39;</span><span class="p">,</span> <span class="s1">&#39;vs_synchro&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;q_bar&#39;</span><span class="p">,</span> <span class="s1">&#39;vdd&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Simulation Setup</span>
+<span class="c1"># Transient analysis of the CMOS logic gate</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Create the simulator instance</span>
+<span class="c1"># Temperature parameters are set to nominal operating conditions</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">simulator</span><span class="p">(</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">nominal_temperature</span><span class="o">=</span><span class="mi">25</span>
+<span class="p">)</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">initial_condition</span><span class="p">(</span>
+    <span class="n">vs</span>     <span class="o">=</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  
+    <span class="n">vr</span>     <span class="o">=</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  
+    <span class="n">q</span>      <span class="o">=</span> <span class="mi">0</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  <span class="c1"># V(q) = 1.2 V</span>
+    <span class="n">q_bar</span>  <span class="o">=</span> <span class="n">VDD</span> <span class="o">@</span> <span class="n">u_V</span><span class="p">,</span>  <span class="c1"># V(q_bar) = 0 V</span>
+<span class="p">)</span>
+
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Transient Analysis</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># Perform a transient simulation to observe the dynamic behavior</span>
+<span class="c1"># of the inputs (A, B) and the output (Vout)</span>
+<span class="n">analysis</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">transient</span><span class="p">(</span>
+    <span class="n">step_time</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>
+    <span class="n">end_time</span><span class="o">=</span><span class="mi">20</span> <span class="o">@</span> <span class="n">u_ns</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: vs: no DC value, transient time 0 value used
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: vr: no DC value, transient time 0 value used
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">time</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;RS chronograme with NAND gate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vh&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vr&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">4.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vs&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">3.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">])</span><span class="o">+</span><span class="mf">1.5</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;q_bar&quot;</span><span class="p">]),</span>  <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Q bar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time / ns&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4fd28374a5c9d5fcd2858f3ce35550b5ac4dfffd04f78124b7a112cff5b163f9.png" src="../../_images/4fd28374a5c9d5fcd2858f3ce35550b5ac4dfffd04f78124b7a112cff5b163f9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">analysis</span><span class="p">[</span><span class="s2">&quot;vh&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.00000000e+00, 1.20000000e-02, 2.40000000e-02, 4.80000000e-02,
+       9.60000000e-02, 1.92000000e-01, 3.84000000e-01, 7.68000000e-01,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.10400000e+00,
+       9.12000000e-01, 5.28000000e-01, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 5.81385499e-02, 1.74415650e-01, 3.94045493e-01,
+       8.33305180e-01, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.12320000e+00, 9.69600000e-01, 6.62400000e-01,
+       4.80000000e-02, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       1.20000000e-01, 3.60000000e-01, 8.40000000e-01, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.08000000e+00, 8.40000000e-01, 3.60000000e-01,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 4.66337288e-02, 1.39901187e-01,
+       3.09072000e-01, 6.47413627e-01, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.08000000e+00, 8.40000000e-01, 3.60000000e-01,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 5.87360326e-02,
+       1.76208098e-01, 4.11152228e-01, 8.81040489e-01, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.08000000e+00,
+       8.40000000e-01, 3.60000000e-01, 3.10862447e-15, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 5.85121945e-02, 1.75536584e-01, 4.09585362e-01,
+       8.77682918e-01, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.08000000e+00,
+       8.40000000e-01, 3.60000000e-01, 3.10862447e-15, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       1.20000000e-01, 3.60000000e-01, 8.06043941e-01, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.08000000e+00, 8.40000000e-01, 3.60000000e-01,
+       1.28785871e-14, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 5.87359278e-02,
+       1.76207783e-01, 4.11151495e-01, 8.81038917e-01, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.08000000e+00, 8.40000000e-01, 3.60864509e-01,
+       1.28785871e-14, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 5.75112763e-02,
+       1.72533829e-01, 3.99458166e-01, 8.53306840e-01, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.08000000e+00, 8.40000000e-01, 3.60000000e-01,
+       1.28785871e-14, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 5.87334465e-02,
+       1.76200339e-01, 4.11134125e-01, 8.81001697e-01, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.08000000e+00, 8.40000000e-01, 3.60000000e-01,
+       1.28785871e-14, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 7.63630760e-02, 2.29089228e-01,
+       5.34541532e-01, 1.14544614e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.08000000e+00, 8.40000000e-01, 3.60000000e-01, 1.28785871e-14,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 5.87380135e-02, 1.76214041e-01,
+       4.11166095e-01, 8.81070203e-01, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.12320000e+00, 9.69600000e-01,
+       6.62400000e-01, 4.80000000e-02, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 1.20000000e-01, 3.60000000e-01, 8.40000000e-01,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.08000000e+00, 8.40000000e-01,
+       3.60000000e-01, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 4.69103472e-02,
+       1.40731042e-01, 3.10407135e-01, 6.49759321e-01, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.08000000e+00, 8.40000000e-01,
+       3.60000000e-01, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       0.00000000e+00, 0.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+       5.87360329e-02, 1.76208099e-01, 4.11152231e-01, 8.81040494e-01,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00, 1.20000000e+00,
+       1.20000000e+00, 1.20000000e+00, 1.20000000e+00])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analysis</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;m.xl1.m1#sbody&#39;, &#39;m.xl1.m1#body&#39;, &#39;m.xl1.m1#dbody&#39;, &#39;m.xl1.m1#gate&#39;, &#39;m.xl1.m2#sbody&#39;, &#39;m.xl1.m2#body&#39;, &#39;m.xl1.m2#dbody&#39;, &#39;m.xl1.m2#gate&#39;, &#39;m.xl2.m1#sbody&#39;, &#39;m.xl2.m1#body&#39;, &#39;m.xl2.m1#dbody&#39;, &#39;m.xl2.m1#gate&#39;, &#39;m.xl2.m2#sbody&#39;, &#39;m.xl2.m2#body&#39;, &#39;m.xl2.m2#dbody&#39;, &#39;m.xl2.m2#gate&#39;, &#39;m.xx1.xl1.m1#sbody&#39;, &#39;m.xx1.xl1.m1#body&#39;, &#39;m.xx1.xl1.m1#dbody&#39;, &#39;m.xx1.xl1.m1#gate&#39;, &#39;m.xx1.xl1.m2#sbody&#39;, &#39;m.xx1.xl1.m2#body&#39;, &#39;m.xx1.xl1.m2#dbody&#39;, &#39;m.xx1.xl1.m2#gate&#39;, &#39;m.xx1.xl2.m1#sbody&#39;, &#39;m.xx1.xl2.m1#body&#39;, &#39;m.xx1.xl2.m1#dbody&#39;, &#39;m.xx1.xl2.m1#gate&#39;, &#39;m.xx1.xl2.m2#sbody&#39;, &#39;m.xx1.xl2.m2#body&#39;, &#39;m.xx1.xl2.m2#dbody&#39;, &#39;m.xx1.xl2.m2#gate&#39;, &#39;m.xl1.m3#sbody&#39;, &#39;m.xl1.m3#body&#39;, &#39;m.xl1.m3#dbody&#39;, &#39;m.xl1.m3#gate&#39;, &#39;m.xl1.m4#sbody&#39;, &#39;m.xl1.m4#body&#39;, &#39;m.xl1.m4#dbody&#39;, &#39;m.xl1.m4#gate&#39;, &#39;m.xl2.m3#sbody&#39;, &#39;m.xl2.m3#body&#39;, &#39;m.xl2.m3#dbody&#39;, &#39;m.xl2.m3#gate&#39;, &#39;m.xl2.m4#sbody&#39;, &#39;m.xl2.m4#body&#39;, &#39;m.xl2.m4#dbody&#39;, &#39;m.xl2.m4#gate&#39;, &#39;m.xx1.xl1.m3#sbody&#39;, &#39;m.xx1.xl1.m3#body&#39;, &#39;m.xx1.xl1.m3#dbody&#39;, &#39;m.xx1.xl1.m3#gate&#39;, &#39;m.xx1.xl1.m4#sbody&#39;, &#39;m.xx1.xl1.m4#body&#39;, &#39;m.xx1.xl1.m4#dbody&#39;, &#39;m.xx1.xl1.m4#gate&#39;, &#39;m.xx1.xl2.m3#sbody&#39;, &#39;m.xx1.xl2.m3#body&#39;, &#39;m.xx1.xl2.m3#dbody&#39;, &#39;m.xx1.xl2.m3#gate&#39;, &#39;m.xx1.xl2.m4#sbody&#39;, &#39;m.xx1.xl2.m4#body&#39;, &#39;m.xx1.xl2.m4#dbody&#39;, &#39;m.xx1.xl2.m4#gate&#39;, &#39;xx1.xl2.inter&#39;, &#39;xx1.xl1.inter&#39;, &#39;q&#39;, &#39;q_bar&#39;, &#39;xl2.inter&#39;, &#39;vs_synchro&#39;, &#39;xl1.inter&#39;, &#39;vr_synchro&#39;, &#39;vs&#39;, &#39;vr&#39;, &#39;vh&#39;, &#39;vdd&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -489,9 +1609,35 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-formatting">Import and Formatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import">Import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting">Formatting</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-principle">Operating Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs-latch-implementation-using-logic-gates">RS Latch Implementation Using Logic Gates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-rs-latch">Asynchronous RS Latch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-visualization">Circuit Visualization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#using-nand-gates">Using NAND Gates</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#with-nor-gate">With NOR Gate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthcronous-rs-latch">Synthcronous RS Latch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Circuit Visualization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Using NAND Gates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>

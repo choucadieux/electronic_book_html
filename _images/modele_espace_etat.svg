@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.17215734"
-     inkscape:cx="1411.4995"
-     inkscape:cy="136.50304"
+     inkscape:zoom="0.48693448"
+     inkscape:cx="2203.5819"
+     inkscape:cy="699.27272"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -1781,5 +1781,16 @@
        d="M 310.65808,2.9870968 H 774.62249 V 95.181591"
        id="path180"
        sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15.9089px;line-height:16.1593px;font-family:serif;-inkscape-font-specification:'serif Bold';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:3.92138;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:fill markers stroke"
+       x="475.4845"
+       y="115.87606"
+       id="text180"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:serif;-inkscape-font-specification:'serif Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.92138"
+         x="475.4845"
+         y="115.87606"
+         id="tspan180">h(t)</tspan></text>
   </g>
 </svg>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Field-Effect Transistors (JFET)" href="../transistor/JFET.html" />
-    <link rel="prev" title="Capacitor" href="../Capacite.html" />
+    <link rel="prev" title="Memristor" href="../Memristor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,7 +183,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Memristor.html">Memristor</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -564,7 +566,7 @@ In this section, we will first introduce the <strong>standard diode</strong>, th
 <a class="reference internal image-reference" href="../../_images/Diode-EN_A-K.svg"><img alt="../../_images/Diode-EN_A-K.svg" src="../../_images/Diode-EN_A-K.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Electrical symbol of a diode</span><a class="headerlink" href="#diode-symbol" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Electrical symbol of a diode</span><a class="headerlink" href="#diode-symbol" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The electrical symbol of a diode is simple: a <strong>triangle</strong> pointing toward a <strong>bar</strong>.
@@ -600,7 +602,7 @@ The following table summarizes this behavior:</p>
 <a class="reference internal image-reference" href="../../_images/VfI_diode.svg"><img alt="../../_images/VfI_diode.svg" src="../../_images/VfI_diode.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Ideal diode I–V characteristic</span><a class="headerlink" href="#diode-characteristic" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Ideal diode I–V characteristic</span><a class="headerlink" href="#diode-characteristic" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -684,7 +686,7 @@ You can find its technical specifications in the following document:
 <a class="reference internal image-reference" href="../../_images/montage.svg"><img alt="../../_images/montage.svg" src="../../_images/montage.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Experimental setup for measuring diode voltage–current characteristics</span><a class="headerlink" href="#diode-iv-setup" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Experimental setup for measuring diode voltage–current characteristics</span><a class="headerlink" href="#diode-iv-setup" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -985,7 +987,7 @@ The reference document for this part is: SPICE Diode Model Documentation.</p>
 <a class="reference internal image-reference" href="../../_images/schema_equivalent_diode_dc.svg"><img alt="../../_images/schema_equivalent_diode_dc.svg" src="../../_images/schema_equivalent_diode_dc.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">DC Large-Signal SPICE Diode Model</span><a class="headerlink" href="#montage-equivalent-diode" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">DC Large-Signal SPICE Diode Model</span><a class="headerlink" href="#montage-equivalent-diode" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The <a class="reference internal" href="#montage-equivalent-diode"><span class="std std-ref">DC Large-Signal SPICE Diode Model</span></a> represents the diode under <strong>DC conditions</strong>.
@@ -1491,12 +1493,12 @@ A <strong>freewheeling diode</strong> protects circuits from <strong>voltage spi
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Capacite.html"
+       href="../Memristor.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Capacitor</p>
+        <p class="prev-next-title">Memristor</p>
       </div>
     </a>
     <a class="right-next"

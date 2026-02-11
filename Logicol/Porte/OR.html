@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -181,7 +181,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -530,7 +532,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/symbol_or.svg"><img alt="../../_images/symbol_or.svg" src="../../_images/symbol_or.svg" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Symbol for an OR logic gate</span><a class="headerlink" href="#symbol-or" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Symbol for an OR logic gate</span><a class="headerlink" href="#symbol-or" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -538,7 +540,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <h2>Truth Table<a class="headerlink" href="#truth-table" title="Link to this heading">#</a></h2>
 <p>The truth table is given below:</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="table-de-verite-d-une-porte-or">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">Truth table of a OR gate</span><a class="headerlink" href="#table-de-verite-d-une-porte-or" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">Truth table of a OR gate</span><a class="headerlink" href="#table-de-verite-d-une-porte-or" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>A</p></th>
 <th class="head"><p>B</p></th>
@@ -568,7 +570,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <p>The truth table of an AND gate is very simple (<a class="reference internal" href="#table-de-verite-d-une-porte-or"><span class="std std-ref">Truth table of a OR gate</span></a>).To obtain an output value equal to <code class="docutils literal notranslate"><span class="pre">1</span></code>, at least one of the two inputs—or both inputs—must be equal to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Overwise, the output value is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <p>Conversely, for a <code class="docutils literal notranslate"><span class="pre">NOR</span></code> gate (<a class="reference internal" href="#table-de-verite-d-une-porte-nor"><span class="std std-ref">Truth table of a NOR gate</span></a>), both inputs <em>A</em> and <em>B</em> must be equal to <code class="docutils literal notranslate"><span class="pre">0</span></code> for the output to be <code class="docutils literal notranslate"><span class="pre">1</span></code>. Otherwise, the output value is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <div class="pst-scrollable-table-container"><table class="table table-center" id="table-de-verite-d-une-porte-nor">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">Truth table of a NOR gate</span><a class="headerlink" href="#table-de-verite-d-une-porte-nor" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">Truth table of a NOR gate</span><a class="headerlink" href="#table-de-verite-d-une-porte-nor" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>A</p></th>
 <th class="head"><p>B</p></th>
@@ -610,7 +612,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/CMOS_NOR1.svg"><img alt="../../_images/CMOS_NOR1.svg" src="../../_images/CMOS_NOR1.svg" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Electronic circuit of a CMOS NOR gate</span><a class="headerlink" href="#circuit-electronique-cmos-nor" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Electronic circuit of a CMOS NOR gate</span><a class="headerlink" href="#circuit-electronique-cmos-nor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The operation of the circuit is relatively simple <a class="reference internal" href="#cmos-nor-demonstration"><span class="std std-ref">NAND gate operation demonstration</span></a>.</p>
@@ -618,7 +620,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/CMOS_NOR_demonstration.svg"><img alt="../../_images/CMOS_NOR_demonstration.svg" src="../../_images/CMOS_NOR_demonstration.svg" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">NAND gate operation demonstration</span><a class="headerlink" href="#cmos-nor-demonstration" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">NAND gate operation demonstration</span><a class="headerlink" href="#cmos-nor-demonstration" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -629,7 +631,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/CMOS_NOR_spice.svg"><img alt="../../_images/CMOS_NOR_spice.svg" src="../../_images/CMOS_NOR_spice.svg" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">SPICE schematic of a CMOS NOR gate using four transistors</span><a class="headerlink" href="#cmos-nor-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">SPICE schematic of a CMOS NOR gate using four transistors</span><a class="headerlink" href="#cmos-nor-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -966,7 +968,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/CMOS_OR_spice.svg"><img alt="../../_images/CMOS_OR_spice.svg" src="../../_images/CMOS_OR_spice.svg" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">SPICE schematic of a CMOS OR gate using four transistors</span><a class="headerlink" href="#cmos-or-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">SPICE schematic of a CMOS OR gate using four transistors</span><a class="headerlink" href="#cmos-or-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1188,7 +1190,7 @@ It corresponds to the <strong>drain connection shared by both transistors</stron
 <a class="reference internal image-reference" href="../../_images/layer_nor1.svg"><img alt="../../_images/layer_nor1.svg" src="../../_images/layer_nor1.svg" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 98 </span><span class="caption-text">CMOS layout of a NOR gate</span><a class="headerlink" href="#cmos-layer-nor" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">CMOS layout of a NOR gate</span><a class="headerlink" href="#cmos-layer-nor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

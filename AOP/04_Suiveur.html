@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,7 +183,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -533,7 +535,7 @@ As shown in the <a class="reference internal" href="#aopvoltagefollower"><span c
 <a class="reference internal image-reference" href="../_images/Aopvoltagefollower.svg"><img alt="../_images/Aopvoltagefollower.svg" src="../_images/Aopvoltagefollower.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Voltage follower circuit</span><a class="headerlink" href="#aopvoltagefollower" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Voltage follower circuit</span><a class="headerlink" href="#aopvoltagefollower" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -563,7 +565,7 @@ In practice, this means:</p>
 <a class="reference internal image-reference" href="../_images/Aopvoltagefollower_demonstration.svg"><img alt="../_images/Aopvoltagefollower_demonstration.svg" src="../_images/Aopvoltagefollower_demonstration.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Derivation of the voltage follower equation</span><a class="headerlink" href="#demonstation-aop-suiveur" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Derivation of the voltage follower equation</span><a class="headerlink" href="#demonstation-aop-suiveur" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the <a class="reference internal" href="#demonstation-aop-suiveur"><span class="std std-ref">Derivation of the voltage follower equation</span></a>, we can write the following relations.
@@ -587,7 +589,7 @@ Therefore, the final relationship becomes:</p>
 <a class="reference internal image-reference" href="../_images/Aopvoltagefollower_pyspace.svg"><img alt="../_images/Aopvoltagefollower_pyspace.svg" src="../_images/Aopvoltagefollower_pyspace.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 76 </span><span class="caption-text">SPICE simulation schematic of a voltage follower</span><a class="headerlink" href="#montage-aop-follower" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">SPICE simulation schematic of a voltage follower</span><a class="headerlink" href="#montage-aop-follower" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In this model, no additional active components are required — only:</p>
@@ -722,7 +724,7 @@ From <strong>Ohm’s law</strong>, we have:</p>
 <a class="reference internal image-reference" href="../_images/generateur_non_parfait.svg"><img alt="../_images/generateur_non_parfait.svg" src="../_images/generateur_non_parfait.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Equivalent assembly of a non-perfect voltage source</span><a class="headerlink" href="#source-tension" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Equivalent assembly of a non-perfect voltage source</span><a class="headerlink" href="#source-tension" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="math notranslate nohighlight">
@@ -867,7 +869,7 @@ V_\text{out} = V_\text{in} \cdot \frac{R_\text{load}}{R_\text{load} + R_\text{in
 <a class="reference internal image-reference" href="../_images/Linearity_and_saturation.svg"><img alt="../_images/Linearity_and_saturation.svg" src="../_images/Linearity_and_saturation.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Amplifier linearity and saturation</span><a class="headerlink" href="#amplifier-linearity-suiveur" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Amplifier linearity and saturation</span><a class="headerlink" href="#amplifier-linearity-suiveur" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">

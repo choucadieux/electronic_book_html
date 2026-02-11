@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,7 +183,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -410,7 +412,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -426,6 +430,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation-d-etat">Équation d’État</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation-de-sortie">Équation de sortie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-de-transfert">Fonction de transfert</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -453,7 +467,7 @@ L’espace d’état est une représentation mathématique de l’état d’un s
 </div>
 <p>La <a class="reference internal" href="#modele-espace-etat"><span class="std std-ref">Modèle d’espace d’état</span></a> donne une représentation de ce que l’on va étudier dans cette partie.</p>
 <figure class="align-center" id="modele-espace-etat">
-<a class="reference internal image-reference" href="../_images/modele_espace_etat.svg"><img alt="../_images/modele_espace_etat.svg" src="../_images/modele_espace_etat.svg" style="width: 400px;" />
+<a class="reference internal image-reference" href="../_images/modele_espace_etat.svg"><img alt="../_images/modele_espace_etat.svg" src="../_images/modele_espace_etat.svg" style="width: 700px;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Modèle d’espace d’état</span><a class="headerlink" href="#modele-espace-etat" title="Link to this image">#</a></p>
@@ -471,97 +485,92 @@ L’espace d’état est une représentation mathématique de l’état d’un s
 <li><p><strong>La sortie</strong> <span class="math notranslate nohighlight">\(y(T)\)</span>: Le signal observé ou prédit au temps ttt, combinant les effets à la fois de l’état actuel et de l’entrée directe.</p></li>
 <li><p><strong>Mises à jour</strong> de la représentation de l’état est mise à jour pendant l’entraînement pour minimiser l’erreur de prédiction, en apprenant efficacement la dynamique du système encodée en <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(D\)</span>.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Dans un certain nombre de cours ou même dans la plus part des autres notebooks ce cours on une notation différentes au niveau des entrées et de la variable d’état.</p>
+<p>Dans la plus part des cas, l’entrée qui est noté <span class="math notranslate nohighlight">\(x(t)\)</span> dans se cours se note souvent <span class="math notranslate nohighlight">\(u(t)\)</span> et les états intermédiaires sont soit noté <span class="math notranslate nohighlight">\(x(t)\)</span> ou <span class="math notranslate nohighlight">\(h(t)\)</span>. Cela peut être dans certain cas assez perturbant. Mais les équations reste les mêmes.</p>
+</div>
+<p>Grâce à la <a class="reference internal" href="#modele-espace-etat"><span class="std std-ref">Modèle d’espace d’état</span></a> il est possible de déterminer deux équations :</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\dot{h}(t) = A * h(t) + B * u(t)\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[y(t) = C * h(t) + D * u(t)\]</div>
+</li>
+</ul>
+<p>La première équation porte le nom d’<em>équation d’état</em>, la seconde équation porte le nom d’<em>équation de sortie</em>.</p>
+<section id="equation-d-etat">
+<h2>Équation d’État<a class="headerlink" href="#equation-d-etat" title="Link to this heading">#</a></h2>
+<p>L’équation d’état permet de savoir comment l’état interne du système (qui n’est pas visible)  évolue en fonction de l’état précédent et de l’entrée. L’équation est la suivante :</p>
+<div class="math notranslate nohighlight">
+\[\dot{h}(t) = A * h(t) + B * u(t)\]</div>
+<p>avec :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h(t)\)</span>: État caché à l’instant t</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dot{h}(t)\)</span>: Mise à jour/nouvel état caché</p></li>
+<li><p><span class="math notranslate nohighlight">\(x(t)\)</span>: Entrée externe au temps t</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span>: matrice de transition d’état (<em>contrôle comment l’état précédent influence l’état suivant</em>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span>: Matrice d’entrée (<em>contrôle la façon dont l’entrée affecte l’état</em>)</p></li>
+</ul>
+<p>L’équation d’état définit comment l’état interne caché du système évolue au fil du temps en fonction de l’état précédent et de l’entrée courante.</p>
+</section>
+<section id="equation-de-sortie">
+<h2>Équation de sortie<a class="headerlink" href="#equation-de-sortie" title="Link to this heading">#</a></h2>
+<p>Cette fois, a partir de l’état interne du système et la sortie courante, l’objectif est de déterminer la sortie à l’intant t. L’équation est la suivante :
+$<span class="math notranslate nohighlight">\(y(t)=C∗h(t)+D∗u(t)\)</span>$
+où</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y(t)\)</span>: Sortie au temps t</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span>: Matrice de sortie (<em>état caché des cartes à la sortie</em>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span>: Matrice de flux optionnelle (<em>mappage directe de l’entrée à la sortie</em>)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Les matrices <em>A</em>, <em>B</em>, <em>C</em> et <em>D</em> définisse le comportement complet du système. Lorsque l’on utilise de l’apprentissage suppervisé ce sont ces quatres matrices qui sont généralement appris grâce aux données d’entrainement.</p>
+</div>
+</section>
+<section id="fonction-de-transfert">
+<h2>Fonction de transfert<a class="headerlink" href="#fonction-de-transfert" title="Link to this heading">#</a></h2>
+<p>A partir de ces 4 paramètres, il est possible de calculer la fonction de transfert de notre système dans le domaine de Laplace à partir de cette équation :</p>
+<div class="math notranslate nohighlight">
+\[H(s) = C (sI - A)^{-1} B + D\]</div>
+<p>avec :</p>
+<ul class="simple">
+<li><p>H(s) : la fonction de transfert</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span>: Matrice de sortie</p></li>
+<li><p>s : le paramètre de Laplace</p></li>
+<li><p>I : la matrice identité</p></li>
+<li><p>A : matrice de transition d’état</p></li>
+<li><p>B : Matrice d’entrée</p></li>
+<li><p>D : Matrice de flux</p></li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Il ne faut pas comfondre h(t) et H(s). h(t) correspond à l’état caché de notre système alors que H(s) est la fonction de transfert de notre système dans le domaine de Laplace, les deux paramètres n’ont rien a voir.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tensor</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch.distributions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normal</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">next_obs</span><span class="p">(</span><span class="n">current_l</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]),</span>
-             <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]),</span>
-             <span class="n">F</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]),</span>
-             <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
-             <span class="n">sigma_t</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">):</span>
- 
-    <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[])</span>
 
-    <span class="n">y_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">current_l</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>                      
-    <span class="n">obs_noise</span> <span class="o">=</span> <span class="n">sigma_t</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>      
-    <span class="n">z_t</span> <span class="o">=</span> <span class="n">y_t</span> <span class="o">+</span> <span class="n">obs_noise</span>
-    <span class="n">state_noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-
-    <span class="n">next_l</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">current_l</span><span class="p">)</span> <span class="o">+</span> <span class="n">g</span> <span class="o">*</span> <span class="n">state_noise</span>
-    <span class="k">return</span> <span class="n">next_l</span><span class="p">,</span> <span class="n">z_t</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.2.6 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with &#39;pybind11&gt;=2.12&#39;.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to &#39;numpy&lt;2&#39; or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File &quot;C:\Users\sacha\anaconda3\envs\game\lib\runpy.py&quot;, line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File &quot;C:\Users\sacha\anaconda3\envs\game\lib\runpy.py&quot;, line 86, in _run_code
-    exec(code, run_globals)
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel_launcher.py&quot;, line 17, in &lt;module&gt;
-    app.launch_new_instance()
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\traitlets\config\application.py&quot;, line 992, in launch_instance
-    app.start()
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelapp.py&quot;, line 712, in start
-    self.io_loop.start()
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\tornado\platform\asyncio.py&quot;, line 215, in start
-    self.asyncio_loop.run_forever()
-  File &quot;C:\Users\sacha\anaconda3\envs\game\lib\asyncio\base_events.py&quot;, line 603, in run_forever
-    self._run_once()
-  File &quot;C:\Users\sacha\anaconda3\envs\game\lib\asyncio\base_events.py&quot;, line 1909, in _run_once
-    handle._run()
-  File &quot;C:\Users\sacha\anaconda3\envs\game\lib\asyncio\events.py&quot;, line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelbase.py&quot;, line 504, in dispatch_queue
-    await self.process_one()
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelbase.py&quot;, line 493, in process_one
-    await dispatch(*args)
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelbase.py&quot;, line 400, in dispatch_shell
-    await result
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelbase.py&quot;, line 724, in execute_request
-    reply_content = await reply_content
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel\ipkernel.py&quot;, line 383, in do_execute
-    res = shell.run_cell(
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\ipykernel\zmqshell.py&quot;, line 528, in run_cell
-    return super().run_cell(*args, **kwargs)
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\IPython\core\interactiveshell.py&quot;, line 2881, in run_cell
-    result = self._run_cell(
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\IPython\core\interactiveshell.py&quot;, line 2936, in _run_cell
-    return runner(coro)
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\IPython\core\async_helpers.py&quot;, line 129, in _pseudo_sync_runner
-    coro.send(None)
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\IPython\core\interactiveshell.py&quot;, line 3135, in run_cell_async
-    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\IPython\core\interactiveshell.py&quot;, line 3338, in run_ast_nodes
-    if await self.run_code(code, result, async_=asy):
-  File &quot;C:\Users\sacha\AppData\Roaming\Python\Python310\site-packages\IPython\core\interactiveshell.py&quot;, line 3398, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &quot;C:\Users\sacha\AppData\Local\Temp\ipykernel_13968\1145134314.py&quot;, line 1, in &lt;cell line: 1&gt;
-    def next_obs(current_l: Tensor = torch.tensor([0., 0.]),
-C:\Users\sacha\AppData\Local\Temp\ipykernel_13968\1145134314.py:1: UserWarning: Failed to initialize NumPy: _ARRAY_API not found (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:77.)
-  def next_obs(current_l: Tensor = torch.tensor([0., 0.]),
-</pre></div>
+<img alt="../_images/5cfca8e9638a7e8e54cc45c61a17bce089ca6379176bf7d307663f2c16e55a25.png" src="../_images/5cfca8e9638a7e8e54cc45c61a17bce089ca6379176bf7d307663f2c16e55a25.png" />
 </div>
 </div>
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -600,6 +609,23 @@ C:\Users\sacha\AppData\Local\Temp\ipykernel_13968\1145134314.py:1: UserWarning: 
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation-d-etat">Équation d’État</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equation-de-sortie">Équation de sortie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-de-transfert">Fonction de transfert</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

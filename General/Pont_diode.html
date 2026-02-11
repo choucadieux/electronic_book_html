@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,7 +183,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Base_componant/Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -527,7 +529,7 @@ For example, when a system must maintain a specific polarity (e.g., +10 V), and 
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit.svg"><img alt="../_images/pont_diode_circuit.svg" src="../_images/pont_diode_circuit.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Electrical schematic of a diode bridge circuit</span><a class="headerlink" href="#pont-diode-circuit" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Electrical schematic of a diode bridge circuit</span><a class="headerlink" href="#pont-diode-circuit" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The circuit shown above consists of <strong>four diodes</strong> arranged <strong>symmetrically</strong>.
@@ -559,7 +561,7 @@ V_s = V_e
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_1.svg"><img alt="../_images/pont_diode_circuit_cas_1.svg" src="../_images/pont_diode_circuit_cas_1.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 1</span><a class="headerlink" href="#pont-diode-circuit-cas-1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 1</span><a class="headerlink" href="#pont-diode-circuit-cas-1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -576,7 +578,7 @@ V_s = -V_e
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_2.svg"><img alt="../_images/pont_diode_circuit_cas_2.svg" src="../_images/pont_diode_circuit_cas_2.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 2</span><a class="headerlink" href="#pont-diode-circuit-cas-2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 2</span><a class="headerlink" href="#pont-diode-circuit-cas-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Thus, in both cases, the output voltage <span class="math notranslate nohighlight">\(V_s\)</span> remains <strong>positive</strong>, regardless of the polarity of <span class="math notranslate nohighlight">\(V_e\)</span>.</p>
@@ -595,7 +597,7 @@ V_s = 0
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_cas_3.svg"><img alt="../_images/pont_diode_circuit_cas_3.svg" src="../_images/pont_diode_circuit_cas_3.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 3</span><a class="headerlink" href="#pont-diode-circuit-cas-3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Electrical schematic of the diode bridge – Case 3</span><a class="headerlink" href="#pont-diode-circuit-cas-3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -640,7 +642,7 @@ We start with the model shown in the <a class="reference internal" href="#model-
 <a class="reference internal image-reference" href="../_images/pont_diode_circuit_spice.svg"><img alt="../_images/pont_diode_circuit_spice.svg" src="../_images/pont_diode_circuit_spice.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">SPICE model of the diode bridge circuit</span><a class="headerlink" href="#model-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">SPICE model of the diode bridge circuit</span><a class="headerlink" href="#model-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the schematic above, we can see the <strong>diode bridge</strong> just as we previously constructed it.

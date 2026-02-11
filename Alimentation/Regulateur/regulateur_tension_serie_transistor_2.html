@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,7 +183,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Electronics - Component</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Concept_base.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Capacite.html">Capacitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Base_componant/Memristor.html">Memristor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/diode/Diode.html">Diode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/JFET.html">Field-Effect Transistors (JFET)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Base_componant/transistor/Bipolaire.html">Bipolar Junction Transistor (BJT)</a></li>
@@ -535,7 +537,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/bloc_logique.svg"><img alt="../../_images/bloc_logique.svg" src="../../_images/bloc_logique.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener-second-notebook" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Logical blocks of a regulator</span><a class="headerlink" href="#bloc-logique-diode-zener-second-notebook" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can see that the regulator is made up of four logical blocks. The goal is to eventually construct an electronic circuit that performs voltage regulation.</p>
@@ -547,7 +549,7 @@ It also includes setting up the formatting parameters for the plots and visualiz
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_serie_transistor_2.svg"><img alt="../../_images/regulateur_tension_serie_transistor_2.svg" src="../../_images/regulateur_tension_serie_transistor_2.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Series voltage regulator with a transistor</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Series voltage regulator with a transistor</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This circuit is very similar to the one presented in the section
@@ -563,7 +565,7 @@ Second, between the load and transistor <span class="math notranslate nohighligh
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_serie_transistor_2_with_bloc.svg"><img alt="../../_images/regulateur_tension_serie_transistor_2_with_bloc.svg" src="../../_images/regulateur_tension_serie_transistor_2_with_bloc.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Series voltage regulator with a transistor — block diagram</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-with-bloc" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Series voltage regulator with a transistor — block diagram</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-with-bloc" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -601,7 +603,7 @@ This makes it much easier to adjust and control the output voltage.</p>
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_serie_transistor_2_demonstration.svg"><img alt="../../_images/regulateur_tension_serie_transistor_2_demonstration.svg" src="../../_images/regulateur_tension_serie_transistor_2_demonstration.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Series voltage regulator with transistor — diagram for the demonstration</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-demonstration" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Series voltage regulator with transistor — diagram for the demonstration</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-demonstration" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="output-voltage">
@@ -669,7 +671,7 @@ $<span class="math notranslate nohighlight">\(U_{R1} = U_{Z1} + U_{BE1}\)</span>
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_serie_transistor_2_boucle_retro.svg"><img alt="../../_images/regulateur_tension_serie_transistor_2_boucle_retro.svg" src="../../_images/regulateur_tension_serie_transistor_2_boucle_retro.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Explanation of the feedback loop within the system</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-boucle-retro" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Explanation of the feedback loop within the system</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-boucle-retro" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At first glance, the diagram in <a class="reference internal" href="#regulateur-tension-serie-transistor-2-boucle-retro"><span class="std std-ref">Explanation of the feedback loop within the system</span></a> may seem complex. However, when examined step by step, the operation of the loop becomes much easier to understand.</p>
@@ -702,7 +704,7 @@ $<span class="math notranslate nohighlight">\(U_{R1} = U_{Z1} + U_{BE1}\)</span>
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_serie_transistor_2_space.svg"><img alt="../../_images/regulateur_tension_serie_transistor_2_space.svg" src="../../_images/regulateur_tension_serie_transistor_2_space.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Series voltage regulator — circuit schematic for implementation in SPACE</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-space" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Series voltage regulator — circuit schematic for implementation in SPACE</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-space" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1309,7 +1311,7 @@ as soon as the voltage across <span class="math notranslate nohighlight">\(R_5\)
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_serie_transistor_2_limitor_courant.svg"><img alt="../../_images/regulateur_tension_serie_transistor_2_limitor_courant.svg" src="../../_images/regulateur_tension_serie_transistor_2_limitor_courant.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Voltage Regulator with a current limiter</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-limitor-courant" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Voltage Regulator with a current limiter</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-limitor-courant" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In the next section, we will examine how to implement this circuit in SPICE.</p>
@@ -1321,7 +1323,7 @@ as soon as the voltage across <span class="math notranslate nohighlight">\(R_5\)
 <a class="reference internal image-reference" href="../../_images/regulateur_tension_serie_transistor_2_limitor_courant_spice.svg"><img alt="../../_images/regulateur_tension_serie_transistor_2_limitor_courant_spice.svg" src="../../_images/regulateur_tension_serie_transistor_2_limitor_courant_spice.svg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Voltage Regulator with a current limiter (SPICE)</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-limitor-courant-spice" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Voltage Regulator with a current limiter (SPICE)</span><a class="headerlink" href="#regulateur-tension-serie-transistor-2-limitor-courant-spice" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
